@@ -1,4 +1,4 @@
-<div class="containerAll" ngModel="cadEmpregador">
+<div class="containerAll" ngModel="cadEmpregador" id="containerAllCadastro">
     <div class="tituloConteudoPaginas">
             <h3>Cadastro</h3>
             <h6>Empregador</h6>
@@ -65,9 +65,11 @@
                             <label for="inputZip">CEP</label>
                             <input type="text" class="form-control" id="inputZip" placeholder="00000-000">
                         </div>
-                        </div>               
-                        <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
-                        <button type="submit" class="btn btn-primary" id="btnVoltar" (click)="voltar()">Voltar</button>
+                        </div> 
+                        <div id="botoesCadastro">             
+                            <button type="submit" class="btn btn-secondary" id="btnCadastrar">Cadastrar</button>
+                            <button type="submit" class="btn btn-secondary" id="btnLimpar" (click)="voltar()">Voltar</button>
+                        </div>
                 </form>
             </div>
         </div>

@@ -21,7 +21,19 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { ConfiguracoesComponent } from './configuracoes/configuracoes.component';
 import { ConfiguracoesContaComponent } from './configuracoes/configuracoes-conta/configuracoes-conta.component';
 
+import {  NgxSocialButtonModule,
+  FacebookLoginProvider,
+  SocialServiceConfig
+} from "ngx-social-button";
 
+// Configs
+export function getAuthServiceConfigs() {
+  let config = new SocialServiceConfig()
+      .addFacebook("Your-Facebook-app-id")
+      .addGoogle("Your-Google-Client-Id")
+      .addLinkedIn("Your-LinkedIn-Client-Id");
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -38,16 +50,23 @@ import { ConfiguracoesContaComponent } from './configuracoes/configuracoes-conta
     RankingComponent,
     PerfilComponent,
     ConfiguracoesComponent,
-    ConfiguracoesContaComponent,
-    
+    ConfiguracoesContaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(ROUTES),
-    HttpClientModule
+    HttpClientModule,
+    NgxSocialButtonModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: SocialServiceConfig,
+      useFactory: getAuthServiceConfigs,
+      
+      
+    }
+  ],
   bootstrap: [  
     AppComponent,  
     HeaderComponent

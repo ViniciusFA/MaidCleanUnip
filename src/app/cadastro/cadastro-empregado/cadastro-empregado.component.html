@@ -1,7 +1,7 @@
 
 <script src="../../../assets/css/bootstrap-4.3.1-dist/js/bootstrap.js"></script>
 
-<div class="containerAll" ngModel="cadFunc">
+<div class="containerAll" ngModel="cadFunc" id="containerAllCadastro">
    <div class="tituloConteudoPaginas" >
         <h3>Cadastro</h3>
         <h6>Funcionário</h6>
@@ -68,9 +68,11 @@
                         <label for="inputZip">CEP</label>
                         <input type="text" class="form-control" id="inputZip" placeholder="00000-000">
                     </div>
-                    </div>               
-                    <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
-                    <button type="submit" class="btn btn-primary" id="btnVoltar" (click)="voltar()">Voltar</button>
+                    </div>   
+                    <div id="botoesCadastro">            
+                        <button type="submit" class="btn btn-secondary" id="btnCadastrar" >Cadastrar</button>
+                        <button type="submit" class="btn btn-secondary" id="btnLimpar" (click)="voltar()">Voltar</button>
+                    </div>
             </form>
         </div>
     </div>

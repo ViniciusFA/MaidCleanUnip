@@ -2,7 +2,7 @@
     <h3>Fale Conosco</h3>
 </div>
 
-<form>
+<form id="containerAllContato">
         <div class="form-row">
             <div class="form-group col-md-6">
                     <label for="inputNome">Nome</label>
@@ -31,9 +31,9 @@
           <label for="exampleFormControlTextarea1">Mensagem</label>
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        <div class="btnEnviarLimpar">
+        <div class="botoesContato">
             <button type="button" class="btn btn-secondary">Enviar</button>
             &nbsp;
-            <button type="button" class="btn btn-secondary" (click)="limparCampos()" >Limpar</button>
+            <button type="button" class="btn btn-secondary" id="btnLimpar" (click)="limparCampos()" >Limpar</button>
         </div>
       </form>

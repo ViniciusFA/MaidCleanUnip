@@ -11,6 +11,7 @@ import { ConfiguracoesComponent } from './configuracoes/configuracoes.component'
 import { PerfilComponent } from './perfil/perfil.component';
 import { ConfiguracoesContaComponent } from './configuracoes/configuracoes-conta/configuracoes-conta.component';
 
+
 export const ROUTES: Routes = [
     {path: '', component: HomeComponent},
     {path: 'cadastro', component: CadastroComponent},
@@ -21,7 +22,6 @@ export const ROUTES: Routes = [
     {path: 'cadastro-empregador', component: CadastroEmpregadorComponent},
     {path: 'configuracoes', component: ConfiguracoesComponent},
     {path: 'configuracoesConta', component: ConfiguracoesContaComponent},
-    {path: 'perfil', component: PerfilComponent}
-    
+    {path: 'perfil', component: PerfilComponent}  
     
 ]

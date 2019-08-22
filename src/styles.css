@@ -28,7 +28,6 @@
 
 */
 
-
  @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,600");
  :root {
    --blue: #007bff;
@@ -1937,9 +1936,9 @@
  }
  
  .table .thead-dark th {
-   color: #fff;
-   background-color: #343a40;
-   border-color: #454d55;
+   color: rgb(24, 23, 23);
+   background-color: #d1d3d4;
+   border-color: #aeb5bd;
  }
  
  .table .thead-light th {
@@ -5843,6 +5842,7 @@
    background-clip: padding-box;
    border: 1px solid rgba(0, 0, 0, 0.2);
    outline: 0;
+   height: 500px
  }
  
  .modal-backdrop {
@@ -10358,9 +10358,7 @@
    background-color:black;
  }
 
- .btnEnviarLimpar{
-  margin-left: 40%;
- }
+
 
  .tabelaProfissionais{
   margin-left: 10%;
@@ -10390,11 +10388,6 @@
 
  #radioGenero{
    margin:0 auto;
- }
-
- #btnCadastrar{
-   margin-left:40%;
-   margin-top: 20px;
  }
 
  .containerCarrossel{
@@ -10464,4 +10457,200 @@
 #navbarMenu{
   background-color: black !important;
   height: 10%;
+}
+
+#containerAllCadastro{
+  margin-left: 10%;
+}
+
+#containerAllContato{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#botoesCadastro{
+  margin-left: 35%;
+  margin-top: 20px;
+  margin-bottom: 5%;
+}
+
+.botoesContato{
+  margin-left: 40%;
+ }
+
+ #btnLimpar{
+  margin-left: 5%;
+ }
+
+ #headerTableRank{
+   background-color: gray !important;
+ }
+ #ddlMenuPerfil{
+   display:none;
+ }
+ #btnCadastrarHeader{
+   background-color: blue;
+   line-height: 0.5rem !important; 
+ }
+ .c4{
+  -webkit-box-align: center;
+  align-items: center;
+ }
+ .bw{
+  display: flex;
+ }
+ .de{
+  margin-left: -4px;
+ }
+ .df{
+  margin-right: -4px;
+ }
+ .dn{
+  align-self: center;
+ }
+ .do{
+  font-size: 16px;
+ }
+ .dp {
+  height: 1em;
+}
+.dg {
+  margin-left: 5px;
+}
+.dh {
+  margin-right: 55px;
+}
+.al {
+    overflow: initial;
+}
+.dr {
+  width: 1em;
+}
+.d5 {
+  padding-top: 0;
+}
+
+.d4 {
+  padding-right: 1px;
+}
+
+.d3 {
+  padding-left: 1px;
+}
+
+.d2 {
+  padding-bottom: 0;
+}
+.cv {
+  white-space: nowrap;
+}
+.cco {
+  transition: color 200ms ease, background-color 200ms ease;
+}
+.ct {
+  font-weight: 500;
+}
+.cs {
+  text-align: inherit;
+}
+.cn {
+  margin-top: 0;
+}
+.cm {
+  margin-bottom: 0;
+}
+.cl {
+  line-height: 20px;
+}
+.ck {
+  font-size: 14px;
+}
+.cj {
+  cursor: pointer;
+}
+.ci {
+  background-color: transparent;
+}
+.cf {
+  border: 0;
+}
+.c8 {
+  outline: none;
+}
+.c7 {
+  margin-right: 7px;
+}
+.c6 {
+  margin-left: 7px;
+}
+.c4 {
+  -webkit-box-align: center;
+  align-items: center;
+}
+.c1 {
+  color: currentColor;
+}
+.bw {
+  display: flex;
+}
+.be {
+  font-family:  'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
+}
+.b5 {
+  text-decoration: none;
+}
+user agent stylesheet
+button {
+  -webkit-appearance: button;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
+  box-sizing: border-box;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 6px;
+  border-width: 2px;
+  border-style: outset;
+  border-image: initial;
+}
+.c2 {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+}
+.bf {
+  -webkit-font-smoothing: antialiased;
+}
+html {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.bb:read-only ::selection {
+  color: #FFFFFF;
+}
+.ba:read-only ::selection {
+  background-color: #276EF1;
+}
+#containerEntrarLogin{
+  width: 320px;
+}
+#btnEntrarLogin{
+  width: 433px;
+  height: 35px;
+}
+#containerModalBody{
+  margin: 0 auto;
+}
+#esqueceuSenha{
+  margin-top: 15px;
+  margin-left: 70px;
+}
+#exampleModalLongTitle{
+  margin-left: 40%;
 }
