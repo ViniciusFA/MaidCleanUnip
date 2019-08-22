@@ -1,0 +1,27 @@
+{
+  "empregados": [
+
+    {
+      "nome": "Maria Josefina de Jesus",
+      "cpf": "111.222.333-44",
+      "sexo": "Feminino",
+      "profissao": "Faxineira",
+      "experiencia": "1 ano"
+     },
+     {
+      "nome": "Antonioeta da Silva Maria",
+      "cpf": "222.333.444-55",
+      "sexo": "Feminino",
+      "profissao": "Diariasta",
+      "experiencia": "2 anos"
+     },
+  {
+      "nome": "BAntonioeta da Silva Maria",
+      "cpf": "222.333.444-55",
+      "sexo": "Feminino",
+      "profissao": "Diariasta",
+      "experiencia": "2 anos"
+     }
+
+  ]
+}

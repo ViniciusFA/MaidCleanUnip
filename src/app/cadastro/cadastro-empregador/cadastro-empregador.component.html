@@ -1,0 +1,74 @@
+<div class="containerAll" ngModel="cadEmpregador">
+    <div class="tituloConteudoPaginas">
+            <h3>Cadastro</h3>
+            <h6>Empregador</h6>
+    </div>
+    <div class="containerFormContato">
+            <div class="conteudoFormContato">
+                <form><div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputEmail4">Nome</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="email@seuemail.com.br">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputPassword4">Sobrenome</label>
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Insira a sua senha">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="email@seuemail.com.br">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label for="inputAddress">Experiência</label>
+                                <input type="text" class="form-control" id="inputAddress" placeholder="Endereço Residencial">
+                        </div>
+                        <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputEmail4">Usuário</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Insira um usuário">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputPassword4">Senha</label>
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Insira a sua senha">
+                        </div>
+                        <div class="form-group col-md-4">
+                                <div class="form-check" id="radioGenero">
+                                    <p style="text-align: center">Sexo</p>
+                                    <input type="radio" name="gender" value="male"> Masculino
+                                    <input type="radio" name="gender" value="female"> Faminino
+                                </div>
+                        </div>
+                        </div>                
+                        <div class="form-group">
+                        <label for="inputAddress">Endereço</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Endereço Residencial">
+                        </div>
+                        <div class="form-group">
+                        <label for="inputAddress2">Complemento</label>
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartmento">
+                        </div>
+                        <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Cidade</label>
+                            <input type="text" class="form-control" id="inputCity" placeholder="São Paulo">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Estado</label>
+                            <select id="inputState" class="form-control">
+                            <option selected>Escolha...</option>
+                            <option>Rio de Janeiro</option>
+                            <option>São Paulo</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputZip">CEP</label>
+                            <input type="text" class="form-control" id="inputZip" placeholder="00000-000">
+                        </div>
+                        </div>               
+                        <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
+                        <button type="submit" class="btn btn-primary" id="btnVoltar" (click)="voltar()">Voltar</button>
+                </form>
+            </div>
+        </div>
+    </div>

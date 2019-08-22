@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MaidCleanUnip": {
+    "MaidClean": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/MaidCleanUnip",
+            "outputPath": "dist/MaidClean",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,9 +24,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/assets/css/bootstrap-4.0.0/css/bootstrap.min.css",
+              "src/styles.css"               
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/css/bootstrap-4.0.0/js/bootstrap.min.js",
+              "src/assets/js/jquery/dist/jquery.min.js",
+              "src/assets/js/js/dist/alert.js",
+              "src/assets/js/js/dist/carousel.js",
+              "src/assets/js/js/dist/dropdown.js",
+              "src/assets/js/popper.js/dist/popper.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -58,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "MaidCleanUnip:build"
+            "browserTarget": "MaidClean:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "MaidCleanUnip:build:production"
+              "browserTarget": "MaidClean:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "MaidCleanUnip:build"
+            "browserTarget": "MaidClean:build"
           }
         },
         "test": {
@@ -84,9 +92,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+                          
             ],
-            "scripts": []
+            "scripts": [
+              
+            ]
           }
         },
         "lint": {
@@ -106,15 +116,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "MaidCleanUnip:serve"
+            "devServerTarget": "MaidClean:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "MaidCleanUnip:serve:production"
+              "devServerTarget": "MaidClean:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "MaidCleanUnip"
+  "defaultProject": "MaidClean"
 }
