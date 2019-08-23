@@ -1,31 +1,65 @@
 
-<div class="container">      
-
+<div class="container">  
     <div class="row">
         <div class="col-md-12">
-            <div class="tituloConteudoPaginas" id="tituloFuncCadastrados">
-                    <h3>Pesquisar Profissionais</h3>
-            </div>
             <div class="conteudoPesquisa">
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Insira um nome" aria-label="Search">
-                    <button type="button" class="btn btn-secondary btn-sm">Pesquisar</button>
+                <form class="form-inline" id="formPesquisaCampos">
+                    <!--Título da página / formulário-->
+                        <div class="tituloConteudoPaginas" id="tituloFuncCadastrados">
+                                <h3>Pesquisar Profissionais</h3>
+                        </div>
+                        <div class="form-row" id="camposFormPesquisa">                               
+                                <div class="col-6">
+                                  <input type="text" class="form-control" id="campoNome" placeholder="nome">
+                                </div>
+                                <br>
+                                <div class="col-6">
+                                  <input type="text" class="form-control" id="campoSobreNome" placeholder="sobrenome">
+                                </div>
+                                <br>
+                                <div class="col-3">
+                                    <select class="form-control form-control-sm-3" id="campoEstado">
+                                            <option>Estado</option>
+                                            <option>RJ</option>
+                                            <option>SP</option>
+                                    </select>
+                                 </div>
+                                <div class="col-3">
+                                  <input type="text" class="form-control" placeholder="cidade" id="campoCidade">
+                                </div>
+                                <div class="col-3">
+                                        <select class="form-control form-control-sm-3" id="campoSexo">
+                                                <option>Sexo</option>
+                                                <option>Feminino</option>
+                                                <option>Masculino</option>
+                                        </select>
+                                </div>
+                                <div class="col-3">
+                                        <select class="form-control form-control-sm-3" id="campoExperiencia">
+                                                <option>Experiência</option>
+                                                <option>+ 1 ano</option>
+                                                <option>+ 2 anos</option>
+                                        </select>
+                                </div>
+                        </div>    
+                        <!--Botões limpar e pesquisar -->
+                        <div class="botoesPesquisar">   
+                                <button type="button" class="btn btn-secondary" id="btnLimparPesquisa" (click)="limparCampos()" >Limpar</button>
+                                <button type="button" class="btn btn-secondary" id="btnEnviarPesquisa">Pesquisar</button>
+                            </div>
                 </form>
             </div>
 
             <div class="tabelaProfissionais" >
-                <table style="
-                    width: 900px;
-                    
-                    height: 240px;
-                ">
+                <table id="tabelaProfissionais">
                     <thead>
-                    <tr style="background-color:lightgrey; color:black ;height:50px;">
+                    <tr style="background-color:lightgrey; color:gray;height:50px;">
                         <th scope="col"><strong>Nome</strong></th>
                         <th scope="col"><strong>CPF</strong></th>
                         <th scope="col"><strong>Sexo</strong></th>
                         <th scope="col"><strong>Profissão</strong></th>
                         <th scope="col"><strong>Experiência</strong></th>
+                        <th scope="col"><strong>Ranking</strong></th>
                     </tr>
                     </thead>
                     <tbody >
@@ -35,6 +69,7 @@
                         <td>{{item.sexo}}</td>
                         <td>{{item.profissao}}</td>   
                         <td>{{item.experiencia}}</td>
+                        <td>{{item.ranking}}</td>
                     </tr>
                     
                     </tbody>

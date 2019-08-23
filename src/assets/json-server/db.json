@@ -6,21 +6,24 @@
       "cpf": "111.222.333-44",
       "sexo": "Feminino",
       "profissao": "Faxineira",
-      "experiencia": "1 ano"
+      "experiencia": "1 ano",
+      "ranking": "2"
      },
      {
       "nome": "Antonioeta da Silva Maria",
       "cpf": "222.333.444-55",
       "sexo": "Feminino",
       "profissao": "Diariasta",
-      "experiencia": "2 anos"
+      "experiencia": "2 anos",
+      "ranking": "3"
      },
   {
       "nome": "BAntonioeta da Silva Maria",
       "cpf": "222.333.444-55",
       "sexo": "Feminino",
       "profissao": "Diariasta",
-      "experiencia": "2 anos"
+      "experiencia": "2 anos",
+      "ranking": "1"
      }
 
   ]

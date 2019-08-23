@@ -45,6 +45,10 @@ export class HeaderComponent {
         // Now sign-in with userData
                
     });
-}
+  }
   
+  fecharPopUo(callback){
+    callback();
+  }
+
 }

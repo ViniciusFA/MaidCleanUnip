@@ -26,7 +26,16 @@
  @import 'assets/js/js/dist/carousel.js';
  @import 'assets/js/popper.js/dist/popper.js';
 
+
+@font-face {
+  font-family: Arciform;
+  src: url(assets/fonts/arciform/Arciform.otf) format("opentype");
+}
 */
+@font-face {
+  font-family: Philosopher;
+  src: url(assets/fonts/philosopher/Philosopher-Regular.ttf) format("opentype");
+}
 
  @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,600");
  :root {
@@ -5842,7 +5851,7 @@
    background-clip: padding-box;
    border: 1px solid rgba(0, 0, 0, 0.2);
    outline: 0;
-   height: 500px
+   height: 560px
  }
  
  .modal-backdrop {
@@ -5874,7 +5883,6 @@
        -ms-flex-pack: justify;
            justify-content: space-between;
    padding: 1rem 1rem;
-   border-bottom: 1px solid #eceeef;
  }
  
  .modal-header .close {
@@ -10310,129 +10318,96 @@
  .badge {
    padding-top: 0.28rem;
  }
- 
- .badge-pill {
+  .badge-pill {
    border-radius: 10rem;
  }
- 
- .list-group-item h1, .list-group-item h2, .list-group-item h3, .list-group-item h4, .list-group-item h5, .list-group-item h6,
+  .list-group-item h1, .list-group-item h2, .list-group-item h3, .list-group-item h4, .list-group-item h5, .list-group-item h6,
  .list-group-item .h1, .list-group-item .h2, .list-group-item .h3, .list-group-item .h4, .list-group-item .h5, .list-group-item .h6 {
    color: inherit;
- }
- 
+ } 
  .card-title, .card-header {
    color: inherit;
  }
- 
- .tituloConteudoPaginas{
+  .tituloConteudoPaginas{
    margin:0 auto;
    margin-top: 34px;
-   width: 30%;
- } 
-
+   width: 15%;
+ }
  .escolhaProfissional{
   margin-left: 33%;
   width:25%;
-  margin-top: 50px;
-  position:relative;
-  
+  margin-top: 20px;
+  position:relative;  
  }
-
-
  .footer{
   position:fixed;
   bottom:0;
   width:100%;
-  background-color:black;
+  background-color:#334c73;
   text-align: center;
   height: 20px;
   color:white;
  }
-
  #dropdownMenuButton{
    width: 100%;
  }
 
-
  #btnEnviar:hover{
    background-color:black;
  }
-
-
-
- .tabelaProfissionais{
-  margin-left: 10%;
- }
-
  .paginacaoProfissionais{
   margin-left: 120%;  
   display:none;
- }
-
- 
+ } 
  #btnVoltarFuncionarios{
   margin-left:60px;
   color:gray;
   display: none;
 }
-
 #btnVoltarFuncionarios:hover{
  color:blue;
  text-decoration-color: blue;
  display: none;
 }
-
  .containerFormContato{
   width:90%;
  }
-
  #radioGenero{
    margin:0 auto;
  }
-
  .containerCarrossel{
    width:30%;
    height: 30%;
    margin-left:40%;
  }
-
 #tituloCadstroIndex{
-  margin-left: 42%;
+  margin-left: 40%;
 }
-
 #tituloFuncCadastrados{
   width: 41%;
-}
- 
-
+} 
  #enviarEscolhaCadastro{
-  margin-left: 48%;
+  margin-left: 37%;
+  width: 50%;
  }
-
  #tabelaRanking{
   margin-left: 10%;
  }
-
  #tituloRanking{
   width: 20%;
  }
-
  #ddlEscolhaCadastro{
-  margin-left: 30%;
+  margin-left: 16%;
+  width: 100%;
  }
-
  #btnPesquisarFunc{
    background-color: gray;
    border-color: gray;
    color:white;   
  }
-
  .conteudoPesquisa{
-  margin-left: 63%;
-  margin-top: 3%;
   margin-bottom: 5%;
  }
-
  #semResultTextoTabela{
   text-align: center;
  }
@@ -10440,48 +10415,39 @@
  .semResultadoTabela{
   margin-left: 10%;
  }
-
  #dropdownNavbar{
    background-color: black;
    color:white;
    border:black;
    margin-right: 70px;
  }
-
  #dropdownNavbar:hover{
   background-color: black;
   color:white;
   border:0;
 }
-
 #navbarMenu{
-  background-color: black !important;
+  background-color: #334c73 !important;
   height: 10%;
 }
-
 #containerAllCadastro{
   margin-left: 10%;
 }
-
 #containerAllContato{
   margin-left: 10%;
   margin-right: 10%;
 }
-
 #botoesCadastro{
   margin-left: 35%;
   margin-top: 20px;
   margin-bottom: 5%;
 }
-
 .botoesContato{
   margin-left: 40%;
  }
-
  #btnLimpar{
   margin-left: 5%;
  }
-
  #headerTableRank{
    background-color: gray !important;
  }
@@ -10649,8 +10615,133 @@ html {
 }
 #esqueceuSenha{
   margin-top: 15px;
-  margin-left: 70px;
+  margin-left: 30%;
 }
 #exampleModalLongTitle{
   margin-left: 40%;
+}
+#formPesquisaCampos{  
+  height: 370px;
+}
+#camposFormPesquisa{
+  margin-left: 1%;
+}
+
+#campoNome{
+  width: 100%;
+  margin-bottom: 7%;
+}
+#campoSobreNome{
+  width: 100%;
+}
+#campoEstado{
+  width: 100%;
+}
+#campoCidade{
+  width: 100%;
+}
+#campoSexo{
+  width: 100%;
+}
+#campoExperiencia{
+  width: 100%;
+}
+.botoesPesquisar{
+  margin: 0 auto;
+}
+#tabelaProfissionais{
+  width: 100%;                    
+  height: 185px;
+}
+#btnEnviarPesquisa{
+  margin-left: 15px;
+  padding: 8px;
+}
+#btnLimparPesquisa{
+  padding: 8px;
+  width: 70px;
+}
+.tabelaProfissionais{
+  margin-bottom: 5%;
+}
+.conteudoGrids{
+  margin-bottom: 5%;
+  margin-left: 10%;
+}
+#imgProcon{
+  width: 254px;
+  height: 170px;
+}
+#imgDefensoria{
+  width: 254px;
+  height: 170px;
+}
+#imgJusBrasil{
+  width: 237px;
+  height: 160px;
+}
+#imgJusTrab{
+  width: 254px;
+  height: 170px;
+}
+#cardProcon{
+  width: 16rem;
+}
+#cardDefensoria{
+  width: 16rem;
+}
+#cardJusBrasil{
+  width: 16rem;
+  height: 99%;
+}
+#cardJusTrab{
+  width: 16rem;
+}
+#formGridLegislacao{
+  margin-bottom: 5%;
+}
+.conteudoLinkLegislacao{
+  margin-left: 27%;
+}
+.tituloRecomendLegislacao{
+  margin:0 auto;
+  margin-top: 34px;
+  width: 13%;
+  font-family: h
+}
+#legislacaoAncora > div a:hover{
+  color: blue;
+}
+.opcaoLoginCad{
+  margin-left: 30%;
+}
+#linkCadastroLogin{
+  margin-left: 5%;
+}
+.textoOpcaoCadastro{
+  text-align: center;
+  margin-left: 30%;
+}
+#containerCadPrincipal{
+  margin-top: 80px;
+}
+#opcaoCadastro{
+  height: 49px;
+}
+#subTituloLegislacao{
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 3%;
+}
+.textoPrincipalLegislacao > p{
+  text-align: center;
+}
+.textoSecundarioLegislacao{
+  margin-top: 3%;
+}
+.textoSecundarioLegislacao > p{
+  text-align: center;
+}
+#signIn:hover{
+  color: white;
 }

@@ -1,7 +1,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbarMenu">
-    <a class="navbar-brand" href="#">Logo</a>
+    <a class="navbar-brand" href="#">MAID CLEAN</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
      
     </button>
@@ -15,7 +15,7 @@
             <a class="nav-link" [routerLink]="['/pesquisar']">Pesquisar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/ranking']">Ranking</a>
+          <a class="nav-link" [routerLink]="['/legislacao']">Legislação</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/contato']">Contato</a>
@@ -34,7 +34,7 @@
                 fill="currentcolor">
               </path>     
             </svg>
-            <span class="dg dh">&nbsp;Entrar&nbsp;</span>
+            <span class="dg dh" id="btnEntrarNav">&nbsp;Entrar&nbsp;</span>
           </div>
         </div>
       </button>  
@@ -66,11 +66,12 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Log In</h5>
+          
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <h5 class="modal-title" id="exampleModalLongTitle">MAID</h5>
         <div class="modal-body" id="containerModalBody">
             <hr width=85%/> 
           <!-- Inicio das validações / campos de login-->
@@ -93,6 +94,14 @@
             <facebook-login-button  (socialUser)="getSocialUser($event)"></facebook-login-button>
             <google-login-button (socialUser)="getSocialUser($event)"></google-login-button>
 
+            <hr WIDTH=85%/> 
+
+            <div class="opcaoLoginCad">
+              <p style="margin-bottom: 0rem;">Não tem uma conta?</p>
+              <div id="linkCadastroLogin">                      
+                      <a [routerLink]="['cadastro']" data-dismiss="modal" aria-hidden="true">Cadastre-se aqui</a>          
+              </div>
+            </div>
           </form>
         </div>        
       </div>

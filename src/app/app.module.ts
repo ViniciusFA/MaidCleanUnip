@@ -15,16 +15,17 @@ import { PesquisarComponent } from './pesquisar/pesquisar.component';
 import { CadastroEmpregadoComponent } from './cadastro/cadastro-empregado/cadastro-empregado.component';
 import { CadastroEmpregadorComponent } from './cadastro/cadastro-empregador/cadastro-empregador.component';
 import { FuncionariosCadastradosComponent } from './pesquisar/funcionarios-cadastrados/funcionarios-cadastrados.component';
-import { RankingComponent } from './ranking/ranking.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PerfilComponent } from './perfil/perfil.component';
 import { ConfiguracoesComponent } from './configuracoes/configuracoes.component';
 import { ConfiguracoesContaComponent } from './configuracoes/configuracoes-conta/configuracoes-conta.component';
+import { LegislacaoComponent } from './legislacao/legislacao.component';
 
 import {  NgxSocialButtonModule,
   FacebookLoginProvider,
   SocialServiceConfig
 } from "ngx-social-button";
+
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -47,10 +48,10 @@ export function getAuthServiceConfigs() {
     CadastroEmpregadoComponent,
     CadastroEmpregadorComponent,
     FuncionariosCadastradosComponent,
-    RankingComponent,
     PerfilComponent,
     ConfiguracoesComponent,
-    ConfiguracoesContaComponent
+    ConfiguracoesContaComponent,
+    LegislacaoComponent
   ],
   imports: [
     BrowserModule,

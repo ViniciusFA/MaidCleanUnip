@@ -3,25 +3,25 @@
 <script src="../../assets/js/js/src/abrirCadastro.js"></script>
 
 
-<div class="container" >
+<div class="container" id="containerCadPrincipal">
   <div class="row">
     <div class="col-md-12">
     <div class="tituloConteudoPaginas" id="tituloCadstroIndex">
-            <h3>Cadastro</h3>
+            <h3>Cadastre-se</h3>
     </div>
-
-    <div class="escolhaProfissional">
-    
+   
+    <div class="escolhaProfissional">    
         <div class="dropdown" id="ddlEscolhaCadastro" ngModel="selectedOption" >      
         <select #cadastro  class="form-control" id="opcaoCadastro" >
             <option *ngFor="let cad of cadastros" ngValue="cadastro.id">
                 {{cad.nome}}
               </option>            
         </select>
-        </div>          
-      
+        </div>  
       <br>
-        
+      <div class="textoOpcaoCadastro">
+          <p><b>Seleciona uma das opções</b></p>
+      </div>
        <!-- <button type="button" class="btn btn-outline-secondary" id="btnEnviar">Enviar</button> -->
       <button type="button" class="btn btn-outline-secondary" id="enviarEscolhaCadastro" (click)="abrirOpcao()">Enviar</button>
       </div>
