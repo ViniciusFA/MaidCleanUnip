@@ -10294,6 +10294,7 @@
  }
  
  th {
+   width: 28%;
    font-size: 0.765625rem;
    text-transform: uppercase;
  }
@@ -10744,4 +10745,11 @@ html {
 }
 #signIn:hover{
   color: white;
+}
+#tabelaHeaderfuncionarios{
+  margin-left: 30%;
+  text-align: center;
+}
+#btnDetalhesLista{
+  margin-left: 2%;
 }

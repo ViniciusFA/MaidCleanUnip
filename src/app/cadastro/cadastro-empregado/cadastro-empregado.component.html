@@ -8,32 +8,32 @@
     </div>
     <div class="containerFormContato">
         <div class="conteudoFormContato">
-            <form><div class="form-row">
+            <form><div class="form-row" (ngSubmit)="onSubmit()">
                     <div class="form-group col-md-4">
                         <label for="inputEmail4">Nome</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="email@seuemail.com.br">
+                        <input type="text" class="form-control" id="inputEmail4" required ngModel="funcionario.nome" placeholder="email@seuemail.com.br">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputPassword4">Sobrenome</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Insira a sua senha">
+                        <input type="text" class="form-control" id="inputPassword4" required ngModel="funcionario.sobrenome" placeholder="Insira a sua senha">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="email@seuemail.com.br">
+                        <input type="email" class="form-control" id="inputEmail4" ngModel="funcionario.email" placeholder="email@seuemail.com.br">
                         </div>
                     </div>
                     <div class="form-group">
                             <label for="inputAddress">Experiência</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="Endereço Residencial">
+                            <input type="text" class="form-control" id="inputAddress" ngModel="funcionario.experiencia" placeholder="Endereço Residencial">
                     </div>
                     <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="inputEmail4">Usuário</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="Insira um usuário">
+                        <input type="email" class="form-control" id="inputEmail4" ngModel="funcionario.usuario" placeholder="Insira um usuário">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputPassword4">Senha</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Insira a sua senha">
+                        <input type="password" class="form-control" id="inputPassword4" ngModel="funcionario.senha" placeholder="Insira a sua senha">
                     </div>
                     <div class="form-group col-md-4">
                             <div class="form-check" id="radioGenero">
@@ -45,16 +45,16 @@
                     </div>                
                     <div class="form-group">
                     <label for="inputAddress">Endereço</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="Endereço Residencial">
+                    <input type="text" class="form-control" id="inputAddress" ngModel="funcionario.endereco" placeholder="Endereço Residencial">
                     </div>
                     <div class="form-group">
                     <label for="inputAddress2">Complemento</label>
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartmento">
+                    <input type="text" class="form-control" id="inputAddress2" ngModel="funcionario.complemento" placeholder="Apartmento">
                     </div>
                     <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputCity">Cidade</label>
-                        <input type="text" class="form-control" id="inputCity" placeholder="São Paulo">
+                        <input type="text" class="form-control" id="inputCity" ngModel="funcionario.cidade" placeholder="São Paulo">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputState">Estado</label>
@@ -66,11 +66,11 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="inputZip">CEP</label>
-                        <input type="text" class="form-control" id="inputZip" placeholder="00000-000">
+                        <input type="text" class="form-control" id="inputZip" ngModel="funcionario.cep" placeholder="00000-000">
                     </div>
                     </div>   
                     <div id="botoesCadastro">            
-                        <button type="submit" class="btn btn-secondary" id="btnCadastrar" >Cadastrar</button>
+                        <button type="submit" class="btn btn-secondary" id="btnCadastrar" (click)="cadastrar()">Cadastrar</button>
                         <button type="submit" class="btn btn-secondary" id="btnLimpar" (click)="voltar()">Voltar</button>
                     </div>
             </form>

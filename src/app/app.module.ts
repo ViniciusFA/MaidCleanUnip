@@ -25,6 +25,7 @@ import {  NgxSocialButtonModule,
   FacebookLoginProvider,
   SocialServiceConfig
 } from "ngx-social-button";
+import { FuncionarioDetalhesComponent } from './services/funcionario/funcionario-detalhes/funcionario-detalhes.component';
 
 
 // Configs
@@ -51,7 +52,8 @@ export function getAuthServiceConfigs() {
     PerfilComponent,
     ConfiguracoesComponent,
     ConfiguracoesContaComponent,
-    LegislacaoComponent
+    LegislacaoComponent,
+    FuncionarioDetalhesComponent
   ],
   imports: [
     BrowserModule,

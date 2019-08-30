@@ -10,6 +10,8 @@ import { ConfiguracoesComponent } from './configuracoes/configuracoes.component'
 import { PerfilComponent } from './perfil/perfil.component';
 import { ConfiguracoesContaComponent } from './configuracoes/configuracoes-conta/configuracoes-conta.component';
 import { LegislacaoComponent } from './legislacao/legislacao.component';
+import { FuncionarioDetalhesComponent } from './services/funcionario/funcionario-detalhes/funcionario-detalhes.component';
+import { FuncionariosCadastradosComponent } from './pesquisar/funcionarios-cadastrados/funcionarios-cadastrados.component';
 
 
 export const ROUTES: Routes = [
@@ -22,6 +24,8 @@ export const ROUTES: Routes = [
     {path: 'configuracoes', component: ConfiguracoesComponent},
     {path: 'configuracoesConta', component: ConfiguracoesContaComponent},
     {path: 'perfil', component: PerfilComponent},
-    {path: 'legislacao', component: LegislacaoComponent}  
+    {path: 'legislacao', component: LegislacaoComponent},
+    {path: 'funcionarios-cadastrados', component: FuncionariosCadastradosComponent},
+    { path: 'detalhes', component: FuncionarioDetalhesComponent },
     
 ]
