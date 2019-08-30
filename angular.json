@@ -24,9 +24,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/assets/css/bootstrap-4.0.0/css/bootstrap.min.css",
+              "src/styles.css"               
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/css/bootstrap-4.0.0/js/bootstrap.min.js",
+              "src/assets/js/jquery/dist/jquery.min.js",
+              "src/assets/js/js/dist/alert.js",
+              "src/assets/js/js/dist/carousel.js",
+              "src/assets/js/js/dist/dropdown.js",
+              "src/assets/js/popper.js/dist/popper.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -84,9 +92,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+                          
             ],
-            "scripts": []
+            "scripts": [
+              
+            ]
           }
         },
         "lint": {

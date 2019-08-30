@@ -1,0 +1,25 @@
+{
+  "ranking": [
+	{
+	"posicao":1,
+	"nome":"Maria Josefina de Jesus",
+	"cpf":"111.222.333-44",
+	"profissao":"Faxineira",
+	"pontuacao":"345.45"
+	},
+	{
+	"posicao":2,
+	"nome":"Antonioeta da Silva Maria",
+	"cpf":"222.333.444-55",
+	"profissao":"Diariasta",
+	"pontuacao":"334.67"
+	},
+	{
+	"posicao":3,
+	"nome":"Suellen Tania de Souza",
+	"cpf":"333.444.555-66",
+	"profissao":"Faxineira",
+	"pontuacao":"330.87"
+	}
+    ]	
+}
