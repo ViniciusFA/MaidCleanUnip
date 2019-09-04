@@ -1,7 +1,7 @@
 import { Funcionario } from '../../services/funcionario/funcionario';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FuncionarioService } from '../../services/funcionario/FuncionarioService';
+import { FuncionarioService } from '../../services/funcionario/funcionario.service';
 
 @Component({
   selector: 'app-cadastro-empregado',
@@ -21,18 +21,19 @@ export class CadastroEmpregadoComponent implements OnInit {
   cadastrar(): void {
     this.submetido = false;
     this.funcionario = new Funcionario();
+    this.salvar(this.funcionario);
   }
 
-  salvar(){
+  salvar(funcionario){
     this.funcionarioService.criarFuncionario(this.funcionario)
-    .subscribe(data => console.log(data), error => console.log(error));
+    .subscribe(data => funcionario = data);
     this.funcionario = new Funcionario();
-    this.irParaLista();
+    //this.irParaLista();
   }
 
   onSubmit(){
     this.submetido = true;
-    this.salvar();
+    //this.salvar();
   }
 
   voltar():void{

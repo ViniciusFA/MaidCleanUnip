@@ -10358,7 +10358,6 @@
  }
  .paginacaoProfissionais{
   margin-left: 120%;  
-  display:none;
  } 
  #btnVoltarFuncionarios{
   margin-left:60px;
@@ -10752,4 +10751,14 @@ html {
 }
 #btnDetalhesLista{
   margin-left: 2%;
+}
+.grupoBotoesDetalhes{
+  margin-left: 30%;
+  margin-bottom: 3%;
+}
+#btnVoltarDetalhes{
+  margin-left:1%;
+}
+.conteudoPageDetalhes{
+  margin-left: 1%;
 }

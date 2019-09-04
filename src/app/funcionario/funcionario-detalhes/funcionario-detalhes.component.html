@@ -1,0 +1,71 @@
+  <!--Título da página / formulário-->
+  <div class="tituloConteudoPaginas" id="tituloFuncCadastrados">
+      <h3>Detalhes do Funcionário</h3>
+</div>
+
+<h4>Aqui será um modal - PopUp</h4>
+<hr/>
+
+<div *ngIf="funcionario">
+  
+<div class="conteudoPageDetalhes">
+  <div>
+      <label> <b>Id:</b> </label>{{funcionario.Id}}
+  </div>
+  <div>    
+    <label><b> Nome:</b></label> {{funcionario.nome}}
+  </div>
+  <div>
+    <label><b>Sobrenome:</b></label> {{funcionario.sobrenome}}
+  </div> 
+  <div>
+      <label><b>Email:</b></label> {{funcionario.email}}
+  </div>  
+  <div>
+      <label><b>Facebook:</b></label> {{funcionario.facebook}}
+  </div>
+  <div>
+      <label><b>Tem Whatsapp::</b></label> {{funcionario.hasWhatsapp}}
+  </div>
+  <div>
+      <label><b>Telefone::</b></label> {{funcionario.telefone}}
+  </div>
+  <div>
+      <label><b>Profissão::</b></label> {{funcionario.profissao}}
+  </div>
+  <div>
+      <label><b>Experiência::</b></label> {{funcionario.experiencia}}
+  </div>
+  <div>
+      <label><b>CPF:</b></label> {{funcionario.cpf}}
+  </div>
+  <div>
+      <label><b>Endereço:</b></label> {{funcionario.endereco}}
+  </div>
+  <div>
+      <label><b>Complemento:</b></label> {{funcionario.complemento}}
+  </div>
+  <div>
+      <label><b>Cidade:</b></label> {{funcionario.cidade}}
+  </div>
+  <div>
+      <label><b>Estado:</b></label> {{funcionario.estado}}
+  </div>
+  <div>
+      <label><b>CEP:</b></label> {{funcionario.cep}}
+  </div>
+  <div>
+      <label><b>Avaliação:</b></label> {{funcionario.avaliacao}}
+  </div>
+  <div>
+      <label><b>Sexo:</b></label> {{funcionario.sexo}}
+  </div>
+</div>
+
+<br>
+<br>
+<hr/>
+<div class="grupoBotoesDetalhes">
+  <button   class="btn btn-secondary">Atualizar </button>
+  <button  [routerLink]="['/funcionarios-cadastrados']" class="btn btn-secondary" id="btnVoltarDetalhes">Voltar </button><br>
+</div>

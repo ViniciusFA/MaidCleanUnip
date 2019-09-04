@@ -6,32 +6,31 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 
-export class FuncionarioService {
+export class EmpregadorService {
 
-    private baseUrl = '';
-
+    private baseUrl =''
+        
     constructor(private http: HttpClient){}
 
-    getFuncionario(id: number):Observable<any>{
+    getEmpregador(id: number):Observable<any>{
         return this.http.get('${this.baseUrl}/${id}');
     }
 
-    criarFuncionario(funcionario: Object):Observable<Object> {
-        return this.http.post(`${this.baseUrl}`, funcionario);
+    criarEmpregador(empregador: Object):Observable<Object> {
+        return this.http.post(`${this.baseUrl}`, empregador);
     }
 
-    atualizarFuncionario(id: number, value:any): Observable<Object>{
+    atualizarEmpregador(id: number, value:any): Observable<Object>{
         return this.http.put(`${this.baseUrl}/${id}`, value);
     }
 
-    apagarFuncionario(id: number): Observable<any>{
+    apagarEmpregador(id: number): Observable<any>{
         return this.http.delete(`${this.baseUrl}/${id}`, {
             responseType: 'text'
         });
     }
 
-    getFuncionarioLista():Observable<any>{
+    getEmpregadorLista():Observable<any>{
         return this.http.get(`${this.baseUrl}`);
     }
-
 }

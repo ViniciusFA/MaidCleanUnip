@@ -1,7 +1,7 @@
-import { Funcionario } from '../../services/funcionario/funcionario';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FuncionarioService } from '../../services/funcionario/FuncionarioService';
+import { EmpregadorService } from '../../services/empregador/empregador.service';
+import { Empregador } from 'src/app/services/empregador/empregador';
 
 @Component({
   selector: 'app-cadastro-empregador',
@@ -9,10 +9,10 @@ import { FuncionarioService } from '../../services/funcionario/FuncionarioServic
 })
 export class CadastroEmpregadorComponent implements OnInit {
 
-  funcionario: Funcionario = new Funcionario();
+  empregador: Empregador = new Empregador();
   submetido = false;
 
-  constructor(private funcionarioService: FuncionarioService,
+  constructor(private empregadorService: EmpregadorService,
     private router: Router) { }
 
   ngOnInit() {
@@ -20,14 +20,13 @@ export class CadastroEmpregadorComponent implements OnInit {
 
   cadastrar():void{
     this.submetido = false;
-    //trocar Funcionario por Empregador quando essa classe estiver pronta
-    this.funcionario = new Funcionario();
+    this.empregador = new Empregador();
   }
 
   salvar(){
-    this.funcionarioService.criarFuncionario(this.funcionario)
+    this.empregadorService.criarEmpregador(this.empregador)
     .subscribe(data => console.log(data), error => console.log(error));
-    this.funcionario = new Funcionario();
+    this.empregador = new Empregador();
     this.irParaLista();
   }
 

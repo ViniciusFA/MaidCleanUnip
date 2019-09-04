@@ -10,7 +10,7 @@ import { ConfiguracoesComponent } from './configuracoes/configuracoes.component'
 import { PerfilComponent } from './perfil/perfil.component';
 import { ConfiguracoesContaComponent } from './configuracoes/configuracoes-conta/configuracoes-conta.component';
 import { LegislacaoComponent } from './legislacao/legislacao.component';
-import { FuncionarioDetalhesComponent } from './services/funcionario/funcionario-detalhes/funcionario-detalhes.component';
+import { FuncionarioDetalhesComponent } from './funcionario/funcionario-detalhes/funcionario-detalhes.component';
 import { FuncionariosCadastradosComponent } from './pesquisar/funcionarios-cadastrados/funcionarios-cadastrados.component';
 
 

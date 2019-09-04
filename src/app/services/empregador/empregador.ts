@@ -1,4 +1,4 @@
-export class Funcionario{
+export class Empregador{
     idFuncionario:number;
     nome:string;
     sobrenome:string;
@@ -11,8 +11,8 @@ export class Funcionario{
     hasWhatsapp:number;
     telefone:number;
     profissao:string;
-    experiencia:string;
-    cpf:number;
+    residencia:string;
+    cnpj:number;
     endereco:string;
     complemento:string;
     cidade:string;

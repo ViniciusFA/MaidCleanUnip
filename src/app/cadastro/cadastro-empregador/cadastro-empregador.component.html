@@ -5,73 +5,84 @@
     </div>
     <div class="containerFormContato">
             <div class="conteudoFormContato">
-                <form><div class="form-row" (ngSubmit)="onSubmit()">
-                        <div class="form-group col-md-4">
-                            <label for="inputEmail4">Nome</label>
-                            <!--trocar o funcionario.nome por empregador(objeto da classe Empregador.ts).atributo nome-->
-                            <input type="nome" class="form-control" id="inputEmail4" required  ngModel="funcionario.nome" placeholder="email@seuemail.com.br">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputPassword4">Sobrenome</label>
-                            <input type="sobrenome" class="form-control" id="inputPassword4" required ngModel="funcionario.sobrenome" placeholder="Insira a sua senha">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" ngModel="funcionario.email" placeholder="email@seuemail.com.br">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                                <label for="inputAddress">Experiência</label>
-                                <input type="text" class="form-control" id="inputAddress" ngModel="funcionario.experiencia" placeholder="Endereço Residencial">
-                        </div>
-                        <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="inputEmail4">Usuário</label>
-                            <input type="text" class="form-control" id="inputEmail4" ngModel="funcionario.usuario" placeholder="Insira um usuário">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputPassword4">Senha</label>
-                            <input type="password" class="form-control" id="inputPassword4" ngModel="funcionario.senha" placeholder="Insira a sua senha">
-                        </div>
-                        <div class="form-group col-md-4">
-                                <div class="form-check" id="radioGenero">
-                                    <p style="text-align: center">Sexo</p>
-                                    <input type="radio" name="gender" value="male"> Masculino
-                                    <input type="radio" name="gender" value="female"> Faminino
+                    <form>
+                            <div class="form-row" (ngSubmit)="onSubmit()">
+                                <div class="form-group col-md-4">
+                                    <label for="inputNome">Nome</label>
+                                    <input type="text" class="form-control" id="inputNome" required ngModel="empregador.nome" placeholder="Seu nome aqui">
                                 </div>
-                        </div>
-                        </div>                
-                        <div class="form-group">
-                        <label for="inputAddress">Endereço</label>
-                        <input type="text" class="form-control" id="inputAddress" ngModel="funcionario.endereco" placeholder="Endereço Residencial">
-                        </div>
-                        <div class="form-group">
-                        <label for="inputAddress2">Complemento</label>
-                        <input type="text" class="form-control" id="inputAddress2" ngModel="funcionario.complemento" placeholder="Apartmento">
-                        </div>
-                        <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputCity">Cidade</label>
-                            <input type="text" class="form-control" id="inputCity" ngModel="funcionario.cidade" placeholder="São Paulo">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputState">Estado</label>
-                            <select id="inputState" class="form-control">
-                            <option selected>Escolha...</option>
-                            <option>Rio de Janeiro</option>
-                            <option>São Paulo</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="inputZip">CEP</label>
-                            <input type="text" class="form-control" id="inputZip" ngModel="funcionario.cep" placeholder="00000-000">
-                        </div>
-                        </div> 
-                        <div id="botoesCadastro">             
-                            <button type="submit" class="btn btn-secondary" id="btnCadastrar" (click)="cadastrar()">Cadastrar</button>
-                            <button type="submit" class="btn btn-secondary" id="btnLimpar" (click)="voltar()">Voltar</button>
-                        </div>
-                </form>
+                                <div class="form-group col-md-4">
+                                    <label for="inputSobrenome">Sobrenome</label>
+                                    <input type="text" class="form-control" id="inputSobrenome" required ngModel="empregador.sobrenome" placeholder="Seu sobrenome aqui">
+                                </div>
+                                <div class="form-group col-md-4">
+                                        <label for="inputPassword4">CPF</label>
+                                        <input type="text" class="form-control" id="inputCPF" required ngModel="empregador.cpf" placeholder="000.000.000-00">
+                                </div>
+                            </div>                    
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="inputUsuario">Usuário</label>
+                                    <input type="text" class="form-control" id="inputUsuario" ngModel="empregador.usuario" placeholder="Insira um usuário">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="inputPassword4">Senha</label>
+                                    <input type="password" class="form-control" id="inputPassword4" ngModel="empregador.senha" placeholder="Insira a sua senha">
+                                </div>  
+                                <div class="form-group col-md-3">
+                                        <label for="inputEmail4">Email</label>
+                                        <input type="email" class="form-control" id="inputEmail4" ngModel="empregador.email" placeholder="email@seuemail.com.br">
+                                </div>                      
+                                <div class="form-group col-md-3">
+                                            <label for="labelRadioGenero">Sexo</label>
+                                            <select id="radioGenero" class="form-control">
+                                                <option selected>Selecione</option>
+                                                <option>Masculino</option>
+                                                <option>Feminino</option>
+                                            </select>
+                                </div>
+                            </div>  
+                            <div class="form-row">
+                                <div class="form-group col-md-8">
+                                    <label for="inputEndereco">Endereço</label>
+                                    <input type="text" class="form-control" id="inputEndereco" ngModel="empregador.endereco" placeholder="Endereço Residencial">
+                                </div>
+                                <div class="form-group col-md-4">
+                                        <label for="inputComplemento2">Complemento</label>
+                                        <input type="text" class="form-control" id="inputComplemento2" ngModel="empregador.complemento" placeholder="Complemento">
+                                </div>
+                            </div>                    
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputCity">Cidade</label>
+                                    <input type="text" class="form-control" id="inputCity" ngModel="empregador.cidade" placeholder="São Paulo">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputState">Estado</label>
+                                    <select id="inputState" class="form-control">
+                                        <option selected>Escolha...</option>
+                                        <option>Rio de Janeiro</option>
+                                        <option>São Paulo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputCep">CEP</label>
+                                    <input type="text" class="form-control" id="inputCep" ngModel="empregador.cep" placeholder="00000-000">
+                                </div>
+                            </div>   
+                            <div class="form-group col-md-2">
+                                    <label for="inpuResiencia">Residência</label>
+                                    <select id="inpuResiencia" class="form-control">
+                                            <option selected>Selecione</option>
+                                            <option>Casa</option>
+                                            <option>Apartamento</option>
+                                        </select>
+                            </div>
+                            <div id="botoesCadastro">            
+                                <button type="submit" class="btn btn-secondary" id="btnCadastrar" (click)="cadastrar()">Cadastrar</button>
+                                <button type="submit" class="btn btn-secondary" id="btnLimpar" (click)="voltar()">Voltar</button>
+                            </div>
+                    </form>
             </div>
         </div>
     </div>

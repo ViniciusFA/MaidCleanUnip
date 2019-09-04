@@ -2,7 +2,7 @@ import { Observable } from "rxjs";
 import { Funcionario } from "../../services/funcionario/funcionario";
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FuncionarioService } from '../../services/funcionario/FuncionarioService';
+import { FuncionarioService } from '../../services/funcionario/funcionario.service';
 
 @Component({
   selector: 'app-funcionarios-cadastrados',
@@ -12,10 +12,13 @@ export class FuncionariosCadastradosComponent implements OnInit {
 
   funcionarios:Observable<Funcionario[]>;
 
+  funcionarioss: Array<any>;
+
   constructor(private funcionarioService: FuncionarioService,
               private router: Router) { }
 
   ngOnInit() {
+    this.getFuncionarioLista();
   }
 
   recarregarDados(){
@@ -33,6 +36,11 @@ export class FuncionariosCadastradosComponent implements OnInit {
 
   detalhesFuncionario(id:number){
     this.router.navigate(['detalhes', id]);
+  }
+
+  getFuncionarioLista(){
+    this.funcionarioService.getFuncionarioLista().subscribe(dados => 
+      this.funcionarioss = dados);
   }
 
 }

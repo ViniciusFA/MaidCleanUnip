@@ -20,12 +20,12 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { ConfiguracoesComponent } from './configuracoes/configuracoes.component';
 import { ConfiguracoesContaComponent } from './configuracoes/configuracoes-conta/configuracoes-conta.component';
 import { LegislacaoComponent } from './legislacao/legislacao.component';
-
 import {  NgxSocialButtonModule,
   FacebookLoginProvider,
   SocialServiceConfig
 } from "ngx-social-button";
-import { FuncionarioDetalhesComponent } from './services/funcionario/funcionario-detalhes/funcionario-detalhes.component';
+import { FuncionarioDetalhesComponent } from './funcionario/funcionario-detalhes/funcionario-detalhes.component';
+import { FuncionarioService } from './services/funcionario/funcionario.service'
 
 
 // Configs
@@ -63,12 +63,11 @@ export function getAuthServiceConfigs() {
     NgxSocialButtonModule
   ],
   providers: [
+    FuncionarioService,
     {
       provide: SocialServiceConfig,
-      useFactory: getAuthServiceConfigs,
-      
-      
-    }
+      useFactory: getAuthServiceConfigs,      
+    }   
   ],
   bootstrap: [  
     AppComponent,  

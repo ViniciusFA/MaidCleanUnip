@@ -16,21 +16,21 @@
                     </tr>
                     </thead>
                     <tbody >
-                    <!-- 
                     <tr *ngFor="let funcionario of funcionarios | async">                       
                         <td>{{funcionario.nome}}</td>
                         <td>{{funcionario.sexo}}</td>
                         <td>{{funcionario.profissao}}</td>
-                    -->
-                    <tr>
-                        <td>Maria</td>
-                        <td>Feminino</td>
-                        <td>Empregada Doméstica</td>
                         <td>
                              <button (click)="apagarFuncionario(funcionario.id)" class="btn btn-danger">X</button>
                              <button (click)="detalhesFuncionario(funcionario.id)" [routerLink]="['/detalhes']" class="btn btn-info" id="btnDetalhesLista">Detalhes</button>
                         </td>
-                    </tr>                                     
+                    </tr>  
+                    <tr>
+                        <td>
+                            <button (click)="apagarFuncionario(funcionario.id)" class="btn btn-danger">X</button>
+                            <button (click)="detalhesFuncionario(funcionario.id)" [routerLink]="['/detalhes']" class="btn btn-info" id="btnDetalhesLista">Detalhes</button>
+                       </td>
+                    </tr>                                   
                     </tbody>
                 </table> 
             </div>
