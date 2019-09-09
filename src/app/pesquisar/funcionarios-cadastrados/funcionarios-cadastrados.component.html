@@ -3,7 +3,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="tituloConteudoPaginas" id="tituloFuncCadastrados">
-                    <h3>Profissionais Cadastrados</h3>
+                    <!--<h3>Profissionais Cadastrados</h3>-->
+                    <h3>{{titulo}}</h3>
+
             </div>
             <div class="tabelaProfissionais">
                 <table id="tabelaProfissionais">
@@ -16,24 +18,25 @@
                     </tr>
                     </thead>
                     <tbody >
-                    <tr *ngFor="let funcionario of funcionarios | async">                       
+                    <tr *ngFor="let funcionario of funcionarios">                       
                         <td>{{funcionario.nome}}</td>
                         <td>{{funcionario.sexo}}</td>
                         <td>{{funcionario.profissao}}</td>
                         <td>
-                             <button (click)="apagarFuncionario(funcionario.id)" class="btn btn-danger">X</button>
-                             <button (click)="detalhesFuncionario(funcionario.id)" [routerLink]="['/detalhes']" class="btn btn-info" id="btnDetalhesLista">Detalhes</button>
+                             <button (click)="excluir(funcionario.id)" class="btn btn-danger">X</button>
+                             <button (click)="editar(funcionario.id)" class="btn btn-info" id="btnDetalhesLista">Detalhes</button>
                         </td>
                     </tr>  
                     <tr>
                         <td>
-                            <button (click)="apagarFuncionario(funcionario.id)" class="btn btn-danger">X</button>
-                            <button (click)="detalhesFuncionario(funcionario.id)" [routerLink]="['/detalhes']" class="btn btn-info" id="btnDetalhesLista">Detalhes</button>
+                            <button (click)="excluir(funcionario.id)" class="btn btn-danger">X</button>
+                            <button (click)="editar(funcionario.id)"  class="btn btn-info" id="btnDetalhesLista">Detalhes</button>
                        </td>
                     </tr>                                   
                     </tbody>
                 </table> 
             </div>
+            <!-- Paginação -->
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <div class="paginacaoProfissionais">
@@ -66,8 +69,10 @@
                 </div>   
                
         </div>
+        <!--
         <div class="form-row">
-            <button type="button" class="btn btn-secondary" id="btnVoltarFuncionarios">Voltar</button>
+            <button type="button" class="btn btn-secondary" id="btnVoltarFuncionarios" [routerLink]="['/']">Voltar</button>
         </div>
+        -->
     </div>
 </div>

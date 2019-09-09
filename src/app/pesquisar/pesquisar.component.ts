@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Funcionario } from '../services/funcionario/funcionario';
 
 @Component({
   selector: 'app-pesquisar',
@@ -7,15 +8,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PesquisarComponent implements OnInit {
   
-  result: Object;
-  urlToJson = 'http://localhost:3000/empregados';
+  funcionario: Funcionario;
 
-  constructor(public http:HttpClient) {}
+  constructor() {}
 
   ngOnInit():void {
-    this.http.get<any>(this.urlToJson).subscribe(response => {
-      this.result = JSON.parse(JSON.stringify(response));  
-      });
+  
     }
  
 }

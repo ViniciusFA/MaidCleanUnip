@@ -1,8 +1,8 @@
-import { Observable } from "rxjs";
-import { Funcionario } from "../../services/funcionario/funcionario";
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 import { FuncionarioService } from '../../services/funcionario/funcionario.service';
+import { Funcionario } from '../../services/funcionario/funcionario';
+import { Response } from '../../services/response';
 
 @Component({
   selector: 'app-funcionarios-cadastrados',
@@ -10,37 +10,52 @@ import { FuncionarioService } from '../../services/funcionario/funcionario.servi
 })
 export class FuncionariosCadastradosComponent implements OnInit {
 
-  funcionarios:Observable<Funcionario[]>;
-
-  funcionarioss: Array<any>;
+  private funcionarios: Funcionario[] = new Array();
+  private titulo:string;
 
   constructor(private funcionarioService: FuncionarioService,
               private router: Router) { }
 
-  ngOnInit() {
-    this.getFuncionarioLista();
+  ngOnInit() {   
+    this.titulo= "Funcionários Cadastrados";
+
+     /*CHAMA O SERVIÇO E RETORNA TODAS AS PESSOAS CADASTRADAS */
+     this.funcionarioService.getFuncionarios().subscribe(res => this.funcionarios = res);
+     console.log("Funcionarios vindo dentor de ngOnInit" + this.funcionarios);
   }
 
-  recarregarDados(){
-    this.funcionarios = this.funcionarioService.getFuncionarioLista();
-  }
+   /**EXCLUI UM REGISTRO QUANDO CLICAMOS NA OPÇÃO EXCLUIR DE UMA 
+     * LINHA DA TABELA*/
+    excluir(codigo:number, index:number):void{
+      if(confirm("Deseja realmente excluir esse funcionário?")){
 
-  apagarFuncionario(id:number){
-    this.funcionarioService.apagarFuncionario(id)
-    .subscribe( data => {
-      console.log(data);
-      this.recarregarDados();
-    },
-    error => console.log(error));
-  }
+        /*CHAMA O SERVIÇO PARA REALIZAR A EXCLUSÃO */
+        this.funcionarioService.deleteFuncionario(codigo).subscribe(response =>{
 
-  detalhesFuncionario(id:number){
-    this.router.navigate(['detalhes', id]);
-  }
+        /**PEGA O RESPONSE DO SERVIÇO */
+        let res:Response = <Response>response;
+        
+        /*1 = SUCESSO
+              * MOSTRAMOS A MENSAGEM RETORNADA PELO SERVIÇO E DEPOIS REMOVEMOS
+              O REGISTRO DA TABELA HTML*/
+              if(res.codigo == 1){
+                alert(res.mensagem);
+                this.funcionarios.splice(index,1);
+              }
+              else{
+                /*0 = EXCEPTION GERADA NO SERVIÇO JAVA */
+                alert(res.mensagem);
+              }
+            },
+            (erro) => {
+              /*MOSTRA ERROS NÃO TRATADOS */
+              alert(erro);
+        });
+      }
+    }
 
-  getFuncionarioLista(){
-    this.funcionarioService.getFuncionarioLista().subscribe(dados => 
-      this.funcionarioss = dados);
-  }
+    editar(codigo: number):void{
+      this.router.navigate(['/detalhes',codigo]);
+    }
 
 }

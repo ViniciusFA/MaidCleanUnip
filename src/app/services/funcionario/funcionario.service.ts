@@ -1,45 +1,65 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import { Router } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs/RX';
 
+import { Funcionario } from '../../services/funcionario/funcionario';
+import { ConfigService } from '../../services/config.service';
+
+@Injectable()
 export class FuncionarioService {
 
-  //  private funcionarioUrl: string;
-   // private listaFuncionariosUrl: string;
+    private baseUrlService: string = '';
+    private headers:Headers;
+    private options:RequestOptions;
+    
 
-   funcionarioUrl = 'http://localhost-8080/cadastro-empregado';
-   listaFuncionariosUrl = 'http://localhost:8080/cadastro';
-      
-    constructor(private http: HttpClient){
+    constructor(private http:Http,
+                private router: Router,
+                private configService:ConfigService){
+                 
+               /**SETANDO A URL DO SERVIÇO REST QUE VAI SER ACESSADO */
+                this.baseUrlService = configService.getUrlService + '/funcionario';
+
+               /*ADICIONANDO O JSON NO HEADER */
+                this.headers = new Headers ({ 'Content-Type': 'application/json:charset=UTF-8' });
+                this.options = new RequestOptions ({ headers : this.headers});
+            }
+
+    
+    /**CONSULTA TODAS AS PESSOAS CADASTRADAS */
+    getFuncionarios(){
+        return this.http.get(this.baseUrlService + 's-cadastrados' ).map(res => res.json());       
     }
 
-    getFuncionario(id: number):Observable<any>{
-        return this.http.get('${this.baseUrl}/${id}');
+    /**ADICIONA UMA NOVA PESSOA */
+    addFuncionario(funcionario: Funcionario){
+
+        return this.http.post(this.baseUrlService + '/cadastro-empregado', JSON.stringify(funcionario), this.options)
+        .map(res => res.json());
     }
 
-    criarFuncionario(funcionario: Object):Observable<Object> {
-        return this.http.post(`${this.funcionarioUrl}`, funcionario);
+    /**EXCLUI UMA PESSOA */
+    deleteFuncionario(codigo: number){
+
+        return this.http.delete(this.baseUrlService + codigo).map(res => res.json());
     }
 
-    atualizarFuncionario(id: number, value:any): Observable<Object>{
-        return this.http.put(`${this.funcionarioUrl}/${id}`, value);
-    }
+    /**CONSULTA UMA PESSOA PELO CÓDIGO */
+    getFuncionario(codigo: number){
 
-    apagarFuncionario(id: number): Observable<any>{
-        return this.http.delete(`${this.funcionarioUrl}/${id}`, {
-            responseType: 'text'
-        });
+        return this.http.get(this.baseUrlService + codigo).map(res => res.json());
     }
+  
+    /**ATUALIZA INFORMAÇÕES DA PESSOA */
+    updateFuncionario(funcionario: Funcionario){
 
-    //getFuncionarioLista():Observable<any>{
-      //  return this.http.get(`${this.listaFuncionariosUrl}`);
-   // }
-   getFuncionarioLista(){
-       return this.http.get<any[]>(`${this.listaFuncionariosUrl}`);
-   }
+        return this.http.put(this.baseUrlService, JSON.stringify(funcionario),this.options)
+        .map(res => res.json());
+    }
 
 }

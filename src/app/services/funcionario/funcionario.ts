@@ -1,21 +1,26 @@
 export class Funcionario{
-    idFuncionario:number;
+    id:number;
+    cpf:string;
     nome:string;
-    sobrenome:string;
-    usuario:string;
+    sobrenome:string;    
+    login:string;    
     senha:string;
-    avaliacao:string;
-    sexo:string;
     email:string;
     urlFacebook: string;
     hasWhatsapp:number;
-    telefone:number;
+    telefone:string;
     profissao:string;
     experiencia:string;
-    cpf:number;
     endereco:string;
-    complemento:string;
+    complemento:string;    
     cidade:string;
     estado:string;
-    cep:number;
+    cep:number;    
+    avaliacao:string;
+    sexo:string;
+    
+    
+    
+    
+    
 }

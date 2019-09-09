@@ -5,7 +5,7 @@
             <div class="conteudoPesquisa">
                 <!--Título da página / formulário-->
                 <div class="tituloConteudoPaginas" id="tituloFuncCadastrados">
-                        <h3>Pesquisar Profissionais</h3>
+                        <h3>Pesquisar Profissionais</h3>                       
                 </div>
                 <hr/>
                 <form class="form-inline" id="formPesquisaCampos">
@@ -65,18 +65,19 @@
                     </tr>
                     </thead>
                     <tbody >
-                    <tr class="classTr" *ngFor = 'let item of result'>
-                        <td>{{item.nome}}</td>
-                        <td>{{item.cpf}}</td>
-                        <td>{{item.sexo}}</td>
-                        <td>{{item.profissao}}</td>   
-                        <td>{{item.experiencia}}</td>
-                        <td>{{item.ranking}}</td>
+                    <tr class="classTr" *ngFor = 'let func of funcionario'>
+                        <td>{{func.nome}}</td>
+                        <td>{{func.cpf}}</td>
+                        <td>{{func.sexo}}</td>
+                        <td>{{func.profissao}}</td>   
+                        <td>{{func.experiencia}}</td>
+                        <td>{{func.ranking}}</td>
                     </tr>
                     
                     </tbody>
                 </table> 
             </div>
+            <!-- PAginação-->
             <div class="form-row">
                 <div class="form-group col-md-9">
                    <div class="col-md-6">

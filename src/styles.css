@@ -10362,7 +10362,6 @@
  #btnVoltarFuncionarios{
   margin-left:60px;
   color:gray;
-  display: none;
 }
 #btnVoltarFuncionarios:hover{
  color:blue;
