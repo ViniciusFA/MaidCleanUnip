@@ -18,21 +18,17 @@
                     </tr>
                     </thead>
                     <tbody >
-                    <tr *ngFor="let funcionario of funcionarios">                       
+                    <tr *ngFor="let funcionario of funcionarios" class="linhaTabelaFuncCadastrados">                       
                         <td>{{funcionario.nome}}</td>
-                        <td>{{funcionario.sexo}}</td>
+                        <td>
+                            {{funcionario.sexo}}
+                        </td>
                         <td>{{funcionario.profissao}}</td>
                         <td>
                              <button (click)="excluir(funcionario.id)" class="btn btn-danger">X</button>
                              <button (click)="editar(funcionario.id)" class="btn btn-info" id="btnDetalhesLista">Detalhes</button>
                         </td>
-                    </tr>  
-                    <tr>
-                        <td>
-                            <button (click)="excluir(funcionario.id)" class="btn btn-danger">X</button>
-                            <button (click)="editar(funcionario.id)"  class="btn btn-info" id="btnDetalhesLista">Detalhes</button>
-                       </td>
-                    </tr>                                   
+                    </tr>                                    
                     </tbody>
                 </table> 
             </div>

@@ -40,6 +40,6 @@ export class CadastroEmpregadoComponent implements OnInit {
     });
     console.log(this.funcionario);
     this.funcionario = new Funcionario();   
-    
+    alert("Funcionário acadastrado com sucesso.");
   }
 }

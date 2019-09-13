@@ -55,7 +55,7 @@ export class FuncionariosCadastradosComponent implements OnInit {
     }
 
     editar(codigo: number):void{
-      this.router.navigate(['/detalhes',codigo]);
+      this.router.navigate(['/funcionarios-cadastrados']);
     }
 
 }

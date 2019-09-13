@@ -23,9 +23,9 @@ export class CadastroComponent implements OnInit {
    let value = (<HTMLSelectElement>document.getElementById('opcaoCadastro')).value;
    
    if(value == 'Empregador'){
-    this.router.navigate(['/cadastro-empregador']);
+      this.router.navigate(['/cadastro-empregador']);
    }else if(value == 'Empregado'){
-    this.router.navigate(['/cadastro-empregado']);
+      this.router.navigate(['/cadastro-empregado']);
    }
 
   }

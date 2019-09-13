@@ -23,30 +23,33 @@ export class FuncionarioService {
                 private configService:ConfigService){
                  
                /**SETANDO A URL DO SERVIÇO REST QUE VAI SER ACESSADO */
-                this.baseUrlService = configService.getUrlService + '/funcionario';
+                this.baseUrlService = configService.getUrlService() + '/funcionario';
 
                /*ADICIONANDO O JSON NO HEADER */
-                this.headers = new Headers ({ 'Content-Type': 'application/json:charset=UTF-8' });
+                this.headers = new Headers ({ 'Content-Type': 'application/json;charset=UTF-8' });
                 this.options = new RequestOptions ({ headers : this.headers});
             }
 
     
     /**CONSULTA TODAS AS PESSOAS CADASTRADAS */
     getFuncionarios(){
-        return this.http.get(this.baseUrlService + 's-cadastrados' ).map(res => res.json());       
+
+        return this.http.get(this.baseUrlService ).map(res => res.json());       
     }
 
     /**ADICIONA UMA NOVA PESSOA */
     addFuncionario(funcionario: Funcionario){
 
-        return this.http.post(this.baseUrlService + '/cadastro-empregado', JSON.stringify(funcionario), this.options)
-        .map(res => res.json());
+        alert(JSON.stringify(funcionario));
+        
+        return this.http.post(this.baseUrlService , JSON.stringify(funcionario), this.options)
+        .map(res => res.json());  
     }
 
     /**EXCLUI UMA PESSOA */
     deleteFuncionario(codigo: number){
 
-        return this.http.delete(this.baseUrlService + codigo).map(res => res.json());
+        return this.http.delete(this.baseUrlService + '/' +  codigo).map(res => res.json());
     }
 
     /**CONSULTA UMA PESSOA PELO CÓDIGO */
