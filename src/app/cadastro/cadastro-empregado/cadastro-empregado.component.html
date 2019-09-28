@@ -3,74 +3,120 @@
 
 <div class="containerAll" ngModel="cadFunc" id="containerAllCadastro">
    <div class="tituloConteudoPaginas" >
+       <h3>{{titulo}}</h3>
+       <h6>{{subtitulo}}</h6>
+       <!--
         <h3>Cadastro</h3>
         <h6>Funcionário</h6>
+        -->
     </div>
     <div class="containerFormContato">
         <div class="conteudoFormContato">
-            <form><div class="form-row" (ngSubmit)="onSubmit()">
-                    <div class="form-group col-md-4">
-                        <label for="inputEmail4">Nome</label>
-                        <input type="text" class="form-control" id="inputEmail4" required ngModel="funcionario.nome" placeholder="email@seuemail.com.br">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputPassword4">Sobrenome</label>
-                        <input type="text" class="form-control" id="inputPassword4" required ngModel="funcionario.sobrenome" placeholder="Insira a sua senha">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" ngModel="funcionario.email" placeholder="email@seuemail.com.br">
+            <form (ngSubmit)="salvar()">
+                <!-- Primeira Linha-->
+                    <div class="form-row" >
+                        <div class="form-group col-md-4">
+                            <label for="inputNome">Nome</label>
+                            <input type="text" class="form-control" id="inputNome" [(ngModel)]="funcionario.nome"  required placeholder="Seu Nome" />
                         </div>
-                    </div>
-                    <div class="form-group">
-                            <label for="inputAddress">Experiência</label>
-                            <input type="text" class="form-control" id="inputAddress" ngModel="funcionario.experiencia" placeholder="Endereço Residencial">
-                    </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputSobrenome">Sobrenome</label>
+                            <input type="text" class="form-control" id="inputSobrenome"  [(ngModel)]="funcionario.sobrenome" requiredplaceholder="Seu sobrenome">
+                        </div>
+                        <div class="form-group col-md-4">
+                                <label for="inputCPF">CPF</label>
+                                <input type="text" class="form-control" id="inputCPF"  [(ngModel)]="funcionario.cpf" required placeholder="000.000.000-00">
+                        </div>
+                    </div>  
+                    <!-- Segunda Linha-->                
                     <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputEmail4">Usuário</label>
-                        <input type="email" class="form-control" id="inputEmail4" ngModel="funcionario.usuario" placeholder="Insira um usuário">
+                        <div class="form-group col-md-3">
+                            <label for="inputUsuario">Usuário</label>
+                            <input type="text" class="form-control" id="inputUsuario" [(ngModel)]="funcionario.login" placeholder="Insira um usuário">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputSenha">Senha</label>
+                            <input type="password" class="form-control" id="inputSenha" autocomplete="username password" [(ngModel)]="funcionario.senha" placeholder="Insira a sua senha">
+                        </div>  
+                        <div class="form-group col-md-3">
+                                <label for="inputEmail">Email</label>
+                                <input type="email" class="form-control" id="inputEmail" autocomplete="username email" [(ngModel)]="funcionario.email" placeholder="email@seuemail.com.br">
+                        </div>                      
+                        <div class="form-group col-md-3">
+                                    <label for="labelRadioGenero">Sexo</label>
+                                    <select id="radioGenero" class="form-control" [(ngModel)]="funcionario.sexo">
+                                        <option selected>Selecione</option>
+                                        <option >Masculino</option>
+                                        <option>Feminino</option>
+                                    </select>
+                        </div>
+                    </div>  
+                    <!-- Terceira Linha-->
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label for="inputEndereco">Endereço</label>
+                            <input type="text" class="form-control" id="inputEndereco" [(ngModel)]="funcionario.endereco" placeholder="Endereço Residencial">
+                        </div>
+                        <div class="form-group col-md-4">
+                                <label for="inputComplemento">Complemento</label>
+                                <input type="text" class="form-control" id="inputComplemento" [(ngModel)]="funcionario.complemento" placeholder="Complemento">
+                        </div>
+                    </div>                    
+                    <!-- Quarta Linha-->              
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Cidade</label>
+                            <input type="text" class="form-control" id="inputCity" [(ngModel)]="funcionario.cidade" placeholder="São Paulo">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputEstado">Estado</label>
+                            <select id="inputEstado" class="form-control" [(ngModel)]="funcionario.estado">
+                                <option selected>Selecione</option>
+                                <option>Rio de Janeiro</option>
+                                <option>São Paulo</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputCEP">CEP</label>
+                            <input type="text" class="form-control" id="inputCEP" [(ngModel)]="funcionario.cep" placeholder="00000-000">
+                        </div>
+                    </div> 
+                    <!-- Quinta Linha-->  
+                    <div class="form-group">
+                            <label for="inpuExperiencia">Experiência</label>
+                            <input type="text" class="form-control" id="inputExperiencia" [(ngModel)]="funcionario.experiencia" placeholder="Experiência Profissional">
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputPassword4">Senha</label>
-                        <input type="password" class="form-control" id="inputPassword4" ngModel="funcionario.senha" placeholder="Insira a sua senha">
-                    </div>
-                    <div class="form-group col-md-4">
-                            <div class="form-check" id="radioGenero">
-                                <p style="text-align: center">Sexo</p>
-                                <input type="radio" name="gender" value="male"> Masculino
-                                <input type="radio" name="gender" value="female"> Faminino
+                     <!-- Sexta Linha-->
+                     <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputTelefone">Telefone</label>
+                            <input type="text" class="form-control" id="inputTelefone" [(ngModel)]="funcionario.telefone" placeholder="Telefone">
+                        </div>
+                        <div class="form-group col-md-4">
+                                <label for="inputEstado">Tem Whatsapp?</label>
+                                <select id="inputWhatsapp" class="form-control" [(ngModel)]="funcionario.hasWhatsapp">
+                                    <option selected>Selecione</option>
+                                    <option>Sim</option>
+                                    <option>Não</option>
+                                </select>
+                       </div>
+                        <div class="form-group col-md-4">
+                                    <label for="inputProfissao">Profissão</label>
+                                    <input type="text" class="form-control" id="inputProfissao" [(ngModel)]="funcionario.profissao" placeholder="Profissão">      
                             </div>
-                    </div>
-                    </div>                
+                    </div>  
+                     <!-- Sétima Linha-->  
                     <div class="form-group">
-                    <label for="inputAddress">Endereço</label>
-                    <input type="text" class="form-control" id="inputAddress" ngModel="funcionario.endereco" placeholder="Endereço Residencial">
-                    </div>
+                            <label for="inputFacebook">Facebook</label>
+                            <input type="text" class="form-control" id="inputFacebook" [(ngModel)]="funcionario.urlFacebook" placeholder="Insira o seu facebook">
+                    </div> 
+                    <!-- Anexo CV-->
                     <div class="form-group">
-                    <label for="inputAddress2">Complemento</label>
-                    <input type="text" class="form-control" id="inputAddress2" ngModel="funcionario.complemento" placeholder="Apartmento">
-                    </div>
-                    <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCity">Cidade</label>
-                        <input type="text" class="form-control" id="inputCity" ngModel="funcionario.cidade" placeholder="São Paulo">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputState">Estado</label>
-                        <select id="inputState" class="form-control">
-                        <option selected>Escolha...</option>
-                        <option>Rio de Janeiro</option>
-                        <option>São Paulo</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputZip">CEP</label>
-                        <input type="text" class="form-control" id="inputZip" ngModel="funcionario.cep" placeholder="00000-000">
-                    </div>
-                    </div>   
+                            <a href="" >Anexar CV</a>
+                   </div>
+                   <!-- Botões-->
                     <div id="botoesCadastro">            
-                        <button type="submit" class="btn btn-secondary" id="btnCadastrar" (click)="cadastrar()">Cadastrar</button>
+                        <button type="submit" class="btn btn-secondary" id="btnCadastrar" (click)="salvar()">Cadastrar</button>
                         <button type="submit" class="btn btn-secondary" id="btnLimpar" (click)="voltar()">Voltar</button>
                     </div>
             </form>

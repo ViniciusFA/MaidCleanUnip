@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  SocialService
-} from "ngx-social-button";
+import {  SocialService } from "ngx-social-button";
 
 @Component({
   selector: 'app-header',
@@ -17,6 +15,7 @@ export class HeaderComponent {
   constructor(private socialAuthService: SocialService){}
 
   ngOnInit() {
+   
   }  
 
   signOut(){

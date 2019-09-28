@@ -10,8 +10,8 @@ import { ConfiguracoesComponent } from './configuracoes/configuracoes.component'
 import { PerfilComponent } from './perfil/perfil.component';
 import { ConfiguracoesContaComponent } from './configuracoes/configuracoes-conta/configuracoes-conta.component';
 import { LegislacaoComponent } from './legislacao/legislacao.component';
-import { FuncionarioDetalhesComponent } from './services/funcionario/funcionario-detalhes/funcionario-detalhes.component';
-import { FuncionariosCadastradosComponent } from './pesquisar/funcionarios-cadastrados/funcionarios-cadastrados.component';
+import { FuncionarioDetalhesComponent } from './funcionario/funcionario-detalhes/funcionario-detalhes.component';
+import { OportunidadesComponent } from './oportunidades/oportunidades.component'
 
 
 export const ROUTES: Routes = [
@@ -25,7 +25,7 @@ export const ROUTES: Routes = [
     {path: 'configuracoesConta', component: ConfiguracoesContaComponent},
     {path: 'perfil', component: PerfilComponent},
     {path: 'legislacao', component: LegislacaoComponent},
-    {path: 'funcionarios-cadastrados', component: FuncionariosCadastradosComponent},
-    { path: 'detalhes', component: FuncionarioDetalhesComponent },
+    {path: 'detalhes', component: FuncionarioDetalhesComponent },
+    {path: 'oportunidades', component: OportunidadesComponent }
     
 ]

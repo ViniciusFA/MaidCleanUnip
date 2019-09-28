@@ -1,7 +1,10 @@
-import { Funcionario } from '../../services/funcionario/funcionario';
+
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FuncionarioService } from '../../services/funcionario/FuncionarioService';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FuncionarioService } from '../../services/funcionario/funcionario.service';
+import { Funcionario } from '../../services/funcionario/funcionario';
+import { Response } from '../../services/response';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-cadastro-empregado',
@@ -9,38 +12,34 @@ import { FuncionarioService } from '../../services/funcionario/FuncionarioServic
 })
 export class CadastroEmpregadoComponent implements OnInit {
 
-  funcionario: Funcionario = new Funcionario();
-  submetido = false;
+  private titulo: string;
+  private subtitulo:string;
+  private funcionario:Funcionario = new Funcionario();
 
   constructor(private funcionarioService: FuncionarioService,
-              private router: Router) { }
+              private router: Router,
+              private activatedRoute:ActivatedRoute) {}
 
+  /*CARREGADO NA INICIALIZAÇÃO DO COMPONENTE */            
   ngOnInit() {
+    this.subtitulo="Funcionário";   
   }
 
-  cadastrar(): void {
-    this.submetido = false;
-    this.funcionario = new Funcionario();
-  }
+  /*FUNÇÃO PARA SALVAR UM NOVO REGISTRO OU ALTERAÇÃO EM UM REGISTRO EXISTENTE */
+  salvar():void{
 
-  salvar(){
-    this.funcionarioService.criarFuncionario(this.funcionario)
-    .subscribe(data => console.log(data), error => console.log(error));
-    this.funcionario = new Funcionario();
-    this.irParaLista();
-  }
 
-  onSubmit(){
-    this.submetido = true;
-    this.salvar();
-  }
+      /*CHAMA O SERVIÇO PARA ADICIONAR UMA NOVA PESSOA */
+      this.funcionarioService.addFuncionario(this.funcionario)
+                             .subscribe(response => {
 
-  voltar():void{
-    this.router.navigate(['/cadastro']);
+     //PEGA O RESPONSE DO RETORNO DO SERVIÇO
+      let res:Response = <Response>response;
+     
+   
+    });
+    console.log(this.funcionario.nome);
+    this.funcionario = new Funcionario();   
+    alert("Funcionário cadastrado com sucesso.");
   }
-
-  irParaLista(){
-    this.router.navigate(['/pesquisar']);
-  }
-
 }

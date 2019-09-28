@@ -3,11 +3,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="conteudoPesquisa">
+                <!--Título da página / formulário-->
+                <div class="tituloConteudoPaginas">
+                        <h3>Pesquisar Profissionais</h3>                       
+                </div>
+                <hr/>
                 <form class="form-inline" id="formPesquisaCampos">
-                    <!--Título da página / formulário-->
-                        <div class="tituloConteudoPaginas" id="tituloFuncCadastrados">
-                                <h3>Pesquisar Profissionais</h3>
-                        </div>
+                    
                         <div class="form-row" id="camposFormPesquisa">                               
                                 <div class="col-6">
                                   <input type="text" class="form-control" id="campoNome" placeholder="nome">
@@ -63,18 +65,19 @@
                     </tr>
                     </thead>
                     <tbody >
-                    <tr class="classTr" *ngFor = 'let item of result'>
-                        <td>{{item.nome}}</td>
-                        <td>{{item.cpf}}</td>
-                        <td>{{item.sexo}}</td>
-                        <td>{{item.profissao}}</td>   
-                        <td>{{item.experiencia}}</td>
-                        <td>{{item.ranking}}</td>
+                    <tr class="classTr" *ngFor = 'let func of funcionarios'>
+                        <td>{{func.nome}}</td>
+                        <td>{{func.cpf}}</td>
+                        <td>{{func.sexo}}</td>
+                        <td>{{func.profissao}}</td>   
+                        <td>{{func.experiencia}}</td>
+                        <td>{{func.ranking}}</td>
                     </tr>
                     
                     </tbody>
                 </table> 
             </div>
+            <!-- PAginação-->
             <div class="form-row">
                 <div class="form-group col-md-9">
                    <div class="col-md-6">

@@ -8,6 +8,8 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  private mensagem:string = "Página Inicial.";
+
   ngOnInit() {
   }
 
