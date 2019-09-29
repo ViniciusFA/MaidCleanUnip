@@ -10,5 +10,4 @@ export class LegislacaoComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

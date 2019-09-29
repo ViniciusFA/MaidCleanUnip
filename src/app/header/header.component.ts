@@ -40,14 +40,11 @@ export class HeaderComponent {
 
     this.socialAuthService.signIn(socialPlatformProvider).then(
     (socialUser) => {
-        console.log(socialPlatform+" sign in data : " , socialUser);
-        // Now sign-in with userData
-               
+        console.log(socialPlatform+" sign in data : " , socialUser);               
     });
   }
-  
+
   fecharPopUo(callback){
     callback();
   }
-
 }

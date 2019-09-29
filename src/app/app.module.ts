@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import  { ROUTES } from './app.routes';
+import { ROUTES } from './app.routes';
 import { HttpModule } from '@angular/http';
 import { ConfigService } from '../app/services/config.service';
 import { FuncionarioService } from './services/funcionario/funcionario.service'
@@ -26,6 +26,8 @@ import {  NgxSocialButtonModule,
 import { FuncionarioDetalhesComponent } from './funcionario/funcionario-detalhes/funcionario-detalhes.component';
 import { OportunidadesComponent } from './oportunidades/oportunidades.component';
 import { FormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ContatoService } from './services/contato/contato.service';
 
 
 
@@ -62,9 +64,10 @@ export function getAuthServiceConfigs() {
     AppRoutingModule,
     RouterModule.forRoot(ROUTES),
     HttpModule,
+    HttpClientModule,
     NgxSocialButtonModule
   ],
-  providers: [ ConfigService, FuncionarioService,   
+  providers: [ ConfigService, FuncionarioService, ContatoService,  
     {
       provide: SocialServiceConfig,
       useFactory: getAuthServiceConfigs,      

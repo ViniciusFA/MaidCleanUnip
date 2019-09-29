@@ -13,6 +13,4 @@ export class OportunidadesComponent implements OnInit {
   ngOnInit() {   
     this.titulo= "Oportunidades";   
   }
-
-  
 }

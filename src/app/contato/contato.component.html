@@ -1,25 +1,24 @@
 <div class="tituloConteudoPaginas">
-    <h3>Fale Conosco</h3>
+    <h3>{{titulo}}</h3>
 </div>
-
-<form id="containerAllContato">
+<form id="containerAllContato" (ngSubmit)="enviar()">
         <div class="form-row">
             <div class="form-group col-md-6">
                     <label for="inputNome">Nome</label>
-                    <input type="text" class="form-control" id="inputNome" placeholder="Insira o seu nome">
+                    <input type="text" class="form-control" id="inputNome" [(ngModel)]="contato.nome" name="nome" ngDefaultControl placeholder="Insira o seu nome">
             </div>
             <div class="form-group col-md-6">
                     <label for="inputSobreNome">Sobrenome</label>
-                    <input type="text" class="form-control" id="inputSobreNome" placeholder="Insira o seu Sobrenome">
+                    <input type="text" class="form-control" id="inputSobreNome" [(ngModel)]="contato.sobrenome" name="sobrenome" ngDefaultControl placeholder="Insira o seu Sobrenome">
             </div>
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Email address</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          <input type="email" class="form-control" id="exampleFormControlInput1" [(ngModel)]="contato.email" name="email" ngDefaultControl placeholder="name@example.com">
         </div>
         <div class="form-group">
           <label for="exampleFormControlSelect1">Motivo </label>
-          <select class="form-control" id="exampleFormControlSelect1">
+          <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="contato.motivo" name="motivo" ngDefaultControl>
             <option value="0">Selecione</option>
             <option value="1">Críticas</option>
             <option value="2">Ouvidoria</option>
@@ -29,10 +28,10 @@
         </div>        
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Mensagem</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="contato.mensagem" name="mensagem" ngDefaultControl></textarea>
         </div>
         <div class="botoesContato">
-            <button type="button" class="btn btn-secondary">Enviar</button>
+            <button type="submit" class="btn btn-secondary">Enviar</button>
             &nbsp;
             <button type="button" class="btn btn-secondary" id="btnLimpar" (click)="limparCampos()" >Limpar</button>
         </div>

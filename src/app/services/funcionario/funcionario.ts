@@ -7,7 +7,7 @@ export class Funcionario{
     senha:string;    
     email:string;   
     urlFacebook: string;
-    hasWhatsapp:number;
+    hasWhatsapp:string;
     telefone:string;    
     profissao:string;
     experiencia:string;
@@ -15,11 +15,7 @@ export class Funcionario{
     complemento:string; 
     cidade:string;
     estado:string;
-    cep:number;           
+    cep:string;           
     avaliacao:string;
     sexo:string;
-    
-    
-    
-    
 }

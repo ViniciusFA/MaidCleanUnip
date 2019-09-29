@@ -19,7 +19,7 @@ export class FuncionarioService {
     
 
     constructor(private http:Http,
-                private router: Router,
+                //private router: Router,
                 private configService:ConfigService){
                  
                /**SETANDO A URL DO SERVIÇO REST QUE VAI SER ACESSADO */
@@ -39,11 +39,9 @@ export class FuncionarioService {
 
     /**ADICIONA UMA NOVA PESSOA */
     addFuncionario(funcionario: Funcionario){
-
-        alert(JSON.stringify(funcionario));
         
-        return this.http.post(this.baseUrlService , JSON.stringify(funcionario), this.options)
-        .map(res => res.json());  
+        return this.http.post(this.baseUrlService, JSON.stringify(funcionario),this.options)
+        .map(res => res.json());
     }
 
     /**EXCLUI UMA PESSOA */
@@ -60,9 +58,8 @@ export class FuncionarioService {
   
     /**ATUALIZA INFORMAÇÕES DA PESSOA */
     updateFuncionario(funcionario: Funcionario){
-
+       
         return this.http.put(this.baseUrlService, JSON.stringify(funcionario),this.options)
         .map(res => res.json());
     }
-
 }

@@ -1,6 +1,6 @@
 import { Funcionario } from '../funcionario';
 import { Component, OnInit, Input } from '@angular/core';
-import {  FuncionarioService } from '../FuncionarioService';
+import {  FuncionarioService } from '../funcionario.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -27,6 +27,4 @@ export class FuncionarioDetalhesComponent implements OnInit {
       this.funcionario = data;
     }, error => console.log(error));
   }
-
-
 }

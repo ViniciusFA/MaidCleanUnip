@@ -51,7 +51,6 @@
                             </div>
                 </form>
             </div>
-
             <div class="tabelaProfissionais" >
                 <table id="tabelaProfissionais">
                     <thead>
@@ -65,15 +64,14 @@
                     </tr>
                     </thead>
                     <tbody >
-                    <tr class="classTr" *ngFor = 'let func of funcionarios'>
-                        <td>{{func.nome}}</td>
-                        <td>{{func.cpf}}</td>
-                        <td>{{func.sexo}}</td>
-                        <td>{{func.profissao}}</td>   
-                        <td>{{func.experiencia}}</td>
-                        <td>{{func.ranking}}</td>
-                    </tr>
-                    
+                    <tr class="classTr"  *ngFor='let func of funcionarios'>
+                                <td>{{func.nome}}</td>
+                                <td>{{func.cpf}}</td>
+                                <td>{{func.sexo}}</td>
+                                <td>{{func.profissao}}</td>   
+                                <td>{{func.experiencia}}</td>
+                                <td>{{func.ranking}}</td>                                              
+                    </tr>        
                     </tbody>
                 </table> 
             </div>
@@ -111,14 +109,10 @@
                         </div>
                 </div>   
                 <div class="form-group col-md-3">
-                    <!--
-                         <button type="button" class="btn btn-secondary" id="btnVoltarFuncionarios">Voltar</button>
-                     -->
                    <div class="col-md-6" >                      
                         <a href="" id="btnVoltarFuncionarios">Voltar</a>
                     </div>                 
                </div>  
-        </div>
-       
+        </div>       
     </div>
 </div>

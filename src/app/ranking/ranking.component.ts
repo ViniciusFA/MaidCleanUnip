@@ -10,5 +10,4 @@ export class RankingComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

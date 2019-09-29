@@ -27,6 +27,4 @@ export class FuncionarioDetalhesComponent implements OnInit {
       this.funcionario = data;
     }, error => console.log(error));
   }
-
-
 }

@@ -10,5 +10,4 @@ export class ParceirosComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

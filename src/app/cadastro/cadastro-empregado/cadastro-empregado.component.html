@@ -1,14 +1,10 @@
 
 <script src="../../../assets/css/bootstrap-4.3.1-dist/js/bootstrap.js"></script>
 
-<div class="containerAll" ngModel="cadFunc" id="containerAllCadastro">
+<div class="containerAll" [(ngModel)]="cadFunc" name="cadunc" ngDefaultControl id="containerAllCadastro">
    <div class="tituloConteudoPaginas" >
        <h3>{{titulo}}</h3>
        <h6>{{subtitulo}}</h6>
-       <!--
-        <h3>Cadastro</h3>
-        <h6>Funcionário</h6>
-        -->
     </div>
     <div class="containerFormContato">
         <div class="conteudoFormContato">
@@ -17,34 +13,34 @@
                     <div class="form-row" >
                         <div class="form-group col-md-4">
                             <label for="inputNome">Nome</label>
-                            <input type="text" class="form-control" id="inputNome" [(ngModel)]="funcionario.nome"  required placeholder="Seu Nome" />
+                            <input type="text" class="form-control" id="inputNome" [(ngModel)]="funcionario.nome"  name="nome" ngDefaultControl required placeholder="Seu Nome" />
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputSobrenome">Sobrenome</label>
-                            <input type="text" class="form-control" id="inputSobrenome"  [(ngModel)]="funcionario.sobrenome" requiredplaceholder="Seu sobrenome">
+                            <input type="text" class="form-control" id="inputSobrenome"  [(ngModel)]="funcionario.sobrenome" name="sobrenome" ngDefaultControl requiredplaceholder="Seu sobrenome">
                         </div>
                         <div class="form-group col-md-4">
                                 <label for="inputCPF">CPF</label>
-                                <input type="text" class="form-control" id="inputCPF"  [(ngModel)]="funcionario.cpf" required placeholder="000.000.000-00">
+                                <input type="text" class="form-control" id="inputCPF"  [(ngModel)]="funcionario.cpf" name="cpf" ngDefaultControl required placeholder="000.000.000-00">
                         </div>
                     </div>  
                     <!-- Segunda Linha-->                
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label for="inputUsuario">Usuário</label>
-                            <input type="text" class="form-control" id="inputUsuario" [(ngModel)]="funcionario.login" placeholder="Insira um usuário">
+                            <input type="text" class="form-control" id="inputUsuario" [(ngModel)]="funcionario.login" name="login" ngDefaultControl placeholder="Insira um usuário" >
                         </div>
                         <div class="form-group col-md-3">
                             <label for="inputSenha">Senha</label>
-                            <input type="password" class="form-control" id="inputSenha" autocomplete="username password" [(ngModel)]="funcionario.senha" placeholder="Insira a sua senha">
+                            <input type="password" class="form-control" id="inputSenha" autocomplete="username password" [(ngModel)]="funcionario.senha"name="senha" ngDefaultControl placeholder="Insira a sua senha">
                         </div>  
                         <div class="form-group col-md-3">
                                 <label for="inputEmail">Email</label>
-                                <input type="email" class="form-control" id="inputEmail" autocomplete="username email" [(ngModel)]="funcionario.email" placeholder="email@seuemail.com.br">
+                                <input type="email" class="form-control" id="inputEmail" autocomplete="username email" [(ngModel)]="funcionario.email" name="emal" ngDefaultControl placeholder="email@seuemail.com.br">
                         </div>                      
                         <div class="form-group col-md-3">
                                     <label for="labelRadioGenero">Sexo</label>
-                                    <select id="radioGenero" class="form-control" [(ngModel)]="funcionario.sexo">
+                                    <select id="radioGenero" class="form-control" [(ngModel)]="funcionario.sexo" name="sexo" ngDefaultControl>
                                         <option selected>Selecione</option>
                                         <option >Masculino</option>
                                         <option>Feminino</option>
@@ -55,22 +51,22 @@
                     <div class="form-row">
                         <div class="form-group col-md-8">
                             <label for="inputEndereco">Endereço</label>
-                            <input type="text" class="form-control" id="inputEndereco" [(ngModel)]="funcionario.endereco" placeholder="Endereço Residencial">
+                            <input type="text" class="form-control" id="inputEndereco" [(ngModel)]="funcionario.endereco" name="endereco" ngDefaultControl placeholder="Endereço Residencial">
                         </div>
                         <div class="form-group col-md-4">
                                 <label for="inputComplemento">Complemento</label>
-                                <input type="text" class="form-control" id="inputComplemento" [(ngModel)]="funcionario.complemento" placeholder="Complemento">
+                                <input type="text" class="form-control" id="inputComplemento" [(ngModel)]="funcionario.complemento" name="complemento" ngDefaultControl placeholder="Complemento">
                         </div>
                     </div>                    
                     <!-- Quarta Linha-->              
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCity">Cidade</label>
-                            <input type="text" class="form-control" id="inputCity" [(ngModel)]="funcionario.cidade" placeholder="São Paulo">
+                            <input type="text" class="form-control" id="inputCity" [(ngModel)]="funcionario.cidade" name="cidade" ngDefaultControl placeholder="São Paulo">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEstado">Estado</label>
-                            <select id="inputEstado" class="form-control" [(ngModel)]="funcionario.estado">
+                            <select id="inputEstado" class="form-control" [(ngModel)]="funcionario.estado" name="estado" ngDefaultControl>
                                 <option selected>Selecione</option>
                                 <option>Rio de Janeiro</option>
                                 <option>São Paulo</option>
@@ -78,37 +74,37 @@
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputCEP">CEP</label>
-                            <input type="text" class="form-control" id="inputCEP" [(ngModel)]="funcionario.cep" placeholder="00000-000">
+                            <input type="text" class="form-control" id="inputCEP" [(ngModel)]="funcionario.cep" name="cep" ngDefaultControl placeholder="00000-000">
                         </div>
                     </div> 
                     <!-- Quinta Linha-->  
                     <div class="form-group">
                             <label for="inpuExperiencia">Experiência</label>
-                            <input type="text" class="form-control" id="inputExperiencia" [(ngModel)]="funcionario.experiencia" placeholder="Experiência Profissional">
+                            <input type="text" class="form-control" id="inputExperiencia" [(ngModel)]="funcionario.experiencia" name="experiencia" ngDefaultControl placeholder="Experiência Profissional">
                     </div>
                      <!-- Sexta Linha-->
                      <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="inputTelefone">Telefone</label>
-                            <input type="text" class="form-control" id="inputTelefone" [(ngModel)]="funcionario.telefone" placeholder="Telefone">
+                            <input type="text" class="form-control" id="inputTelefone" [(ngModel)]="funcionario.telefone" name="telefone" ngDefaultControl placeholder="Telefone">
                         </div>
                         <div class="form-group col-md-4">
                                 <label for="inputEstado">Tem Whatsapp?</label>
-                                <select id="inputWhatsapp" class="form-control" [(ngModel)]="funcionario.hasWhatsapp">
+                                <select id="inputWhatsapp" class="form-control" [(ngModel)]="funcionario.hasWhatsapp" name="hasWhatsapp" ngDefaultControl>
                                     <option selected>Selecione</option>
-                                    <option>Sim</option>
-                                    <option>Não</option>
+                                    <option >Sim</option>
+                                    <option >Não</option>
                                 </select>
                        </div>
                         <div class="form-group col-md-4">
                                     <label for="inputProfissao">Profissão</label>
-                                    <input type="text" class="form-control" id="inputProfissao" [(ngModel)]="funcionario.profissao" placeholder="Profissão">      
+                                    <input type="text" class="form-control" id="inputProfissao" [(ngModel)]="funcionario.profissao" name="profissao" ngDefaultControl placeholder="Profissão">      
                             </div>
                     </div>  
                      <!-- Sétima Linha-->  
                     <div class="form-group">
                             <label for="inputFacebook">Facebook</label>
-                            <input type="text" class="form-control" id="inputFacebook" [(ngModel)]="funcionario.urlFacebook" placeholder="Insira o seu facebook">
+                            <input type="text" class="form-control" id="inputFacebook" [(ngModel)]="funcionario.urlFacebook" name="urlFacebook" ngDefaultControl placeholder="Insira o seu facebook">
                     </div> 
                     <!-- Anexo CV-->
                     <div class="form-group">
@@ -116,7 +112,7 @@
                    </div>
                    <!-- Botões-->
                     <div id="botoesCadastro">            
-                        <button type="submit" class="btn btn-secondary" id="btnCadastrar" (click)="salvar()">Cadastrar</button>
+                        <button type="submit" class="btn btn-secondary" id="btnCadastrar">Cadastrar</button>
                         <button type="submit" class="btn btn-secondary" id="btnLimpar" (click)="voltar()">Voltar</button>
                     </div>
             </form>

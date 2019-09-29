@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FuncionarioService } from '../../services/funcionario/funcionario.service';
 import { Funcionario } from '../../services/funcionario/funcionario';
 import { Response } from '../../services/response';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-cadastro-empregado',
@@ -19,27 +18,39 @@ export class CadastroEmpregadoComponent implements OnInit {
   constructor(private funcionarioService: FuncionarioService,
               private router: Router,
               private activatedRoute:ActivatedRoute) {}
-
-  /*CARREGADO NA INICIALIZAÇÃO DO COMPONENTE */            
+          
   ngOnInit() {
     this.subtitulo="Funcionário";   
   }
 
   /*FUNÇÃO PARA SALVAR UM NOVO REGISTRO OU ALTERAÇÃO EM UM REGISTRO EXISTENTE */
   salvar():void{
-
-
+    
       /*CHAMA O SERVIÇO PARA ADICIONAR UMA NOVA PESSOA */
       this.funcionarioService.addFuncionario(this.funcionario)
                              .subscribe(response => {
 
      //PEGA O RESPONSE DO RETORNO DO SERVIÇO
-      let res:Response = <Response>response;
-     
+      let res:Response = <Response>response;     
    
-    });
-    console.log(this.funcionario.nome);
-    this.funcionario = new Funcionario();   
-    alert("Funcionário cadastrado com sucesso.");
+     /*SE RETORNOU 1 DEVEMOS MOSTRAR A MENSAGEM DE SUCESSO
+           E LIMPAR O FORMULÁRIO PARA INSERIR UM NOVO REGISTRO*/
+           if(res.codigo == 1){
+            alert(res.mensagem);
+            this.funcionario = new Funcionario();
+           }
+           else{
+             /*
+             ESSA MENSAGEM VAI SER MOSTRADA CASO OCORRA ALGUMA EXCEPTION
+             NO SERVIDOR (CODIGO = 0)*/
+             alert(res.mensagem);
+           }
+         },
+         (erro) => {   
+           /**AQUI VAMOS MOSTRAR OS ERROS NÃO TRATADOS
+             EXEMPLO: SE APLICAÇÃO NÃO CONSEGUIR FAZER UMA REQUEST NA API                        */                 
+            alert(erro);
+         });                            
+   
   }
 }

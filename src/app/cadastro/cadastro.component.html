@@ -13,7 +13,7 @@
     <div class="escolhaProfissional">    
         <div class="dropdown" id="ddlEscolhaCadastro" ngModel="selectedOption" >      
         <select #cadastro  class="form-control" id="opcaoCadastro" >
-            <option *ngFor="let cad of cadastros" ngValue="cadastro.id">
+            <option ngDefaultControl *ngFor="let cad of cadastros" ngValue="cadastros.id">
                 {{cad.nome}}
               </option>            
         </select>
@@ -22,8 +22,7 @@
       <div class="textoOpcaoCadastro">
           <p><b>Seleciona uma das opções</b></p>
       </div>
-       <!-- <button type="button" class="btn btn-outline-secondary" id="btnEnviar">Enviar</button> -->
-      <button type="button" class="btn btn-outline-secondary" id="enviarEscolhaCadastro" (click)="abrirOpcao()">Enviar</button>
+        <button type="button" class="btn btn-outline-secondary" id="enviarEscolhaCadastro" (click)="abrirOpcao()">Enviar</button>
       </div>
     </div>
   </div>

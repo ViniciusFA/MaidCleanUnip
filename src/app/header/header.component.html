@@ -3,9 +3,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbarMenu">
     <a class="navbar-brand" href="#">MAID CLEAN</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-     
     </button>
-  
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -24,7 +22,6 @@
           <a class="nav-link" [routerLink]="['/contato']">Contato</a>
         </li>
       </ul>
-
       <!-- menu para logar-->
       <button arial-label="Entrar" aria-expanded="false" class="dotcom-header-main-nav-item__link ci cf c1 cj ck cl cm c6 c7 cn co cp cq cr cs c4 bw be ct c8 b5 cco cv cw cx cy cz d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 da db dc dd "
        id="signIn" data-toggle="modal" data-target="#exampleModalCenter">
@@ -41,12 +38,10 @@
           </div>
         </div>
       </button>  
-
       <!-- Botão de cadastrar-->
       <div>
           <button type="button" class="btn btn-primary" id="btnCadastrarHeader" [routerLink]="['/cadastro']">Cadastre-se</button>
       </div>
-
       <!-- Menu estará ativo depois que o usuario estiver logado-->
       <div class="dropdown" id="ddlMenuPerfil">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownNavbar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,13 +58,11 @@
         </div>
     </div>
   </nav>
-
   <!-- Modal PopUp para logar-->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          
+        <div class="modal-header">0
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -91,14 +84,10 @@
             <div id="esqueceuSenha">
               <a [routerLink]="['']">Esqueceu a sua senha?</a>
             </div>
-
             <hr WIDTH=85%/> 
-
             <facebook-login-button  (socialUser)="getSocialUser($event)"></facebook-login-button>
             <google-login-button (socialUser)="getSocialUser($event)"></google-login-button>
-
-            <hr WIDTH=85%/> 
-
+             <hr WIDTH=85%/> 
             <div class="opcaoLoginCad">
               <p style="margin-bottom: 0rem;">Não tem uma conta?</p>
               <div id="linkCadastroLogin">                      
