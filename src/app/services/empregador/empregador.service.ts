@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
+import { Empregador } from './empregador';
+import { ConfigService } from '../config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,25 +10,34 @@ import { Observable } from 'rxjs';
 
 export class EmpregadorService {
 
-    private baseUrl =''
+    private baseUrlService:string ='';
+    private headers:Headers;
+    private options:RequestOptions;
         
-    constructor(private http: HttpClient){}
+    constructor(private http: Http,
+                private configService: ConfigService){
+                    this.baseUrlService = configService.getUrlService() + '/empregador';
+                    this.headers = new Headers ({ 'Content-Type': 'application/json;charset=UTF-8' });
+                    this.options = new RequestOptions ({ headers : this.headers});
+                }
 
-    getEmpregador(id: number):Observable<any>{
+    getEmpregador(id: number){
         return this.http.get('${this.baseUrl}/${id}');
     }
-    criarEmpregador(empregador: Object):Observable<Object> {
-        return this.http.post(`${this.baseUrl}`, empregador);
+    criarEmpregador(empregador: Empregador) {
+        
+        return this.http.post(this.baseUrlService, JSON.stringify(empregador),this.options)
+        .map(res=>res.json());
     }
-    atualizarEmpregador(id: number, value:any): Observable<Object>{
-        return this.http.put(`${this.baseUrl}/${id}`, value);
+    atualizarEmpregador(id: number){
+        this.baseUrlService = this.baseUrlService +'/id';
+        return this.http.put(this.baseUrlService, id);
     }
-    apagarEmpregador(id: number): Observable<any>{
-        return this.http.delete(`${this.baseUrl}/${id}`, {
-            responseType: 'text'
-        });
+    apagarEmpregador(id: number){
+        this.baseUrlService = this.baseUrlService +'/id';
+        return this.http.put(this.baseUrlService, id);
     }
-    getEmpregadorLista():Observable<any>{
-        return this.http.get(`${this.baseUrl}`);
+    getEmpregadorLista(){
+        return this.http.get(this.baseUrlService);
     }
 }

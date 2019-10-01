@@ -1,37 +1,37 @@
-<div class="containerAll" ngModel="cadEmpregador" id="containerAllCadastro">
+<div class="containerAll" [(ngModel)]="cadEmpregador" name="cadEmpregador" ngDefaultControl id="containerAllCadastro">
     <div class="tituloConteudoPaginas">
             <h3>Cadastro</h3>
             <h6>Empregador</h6>
     </div>
     <div class="containerFormContato">
             <div class="conteudoFormContato">
-                    <form>
-                            <div class="form-row" (ngSubmit)="onSubmit()">
+                    <form (ngSubmit)="salvar()">
+                            <div class="form-row" >
                                 <div class="form-group col-md-4">
                                     <label for="inputNome">Nome</label>
-                                    <input type="text" class="form-control" id="inputNome" required [(ngModel)]="empregador.nome" name="nom" placeholder="Seu nome aqui">
+                                    <input type="text" class="form-control" id="inputNome" required [(ngModel)]="empregador.nome" name="nome" ngDefaultControl placeholder="Seu nome aqui">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputSobrenome">Sobrenome</label>
-                                    <input type="text" class="form-control" id="inputSobrenome" required [(ngModel)]="empregador.sobrenome"  name="sobre" placeholder="Seu sobrenome aqui">
+                                    <input type="text" class="form-control" id="inputSobrenome" required [(ngModel)]="empregador.sobrenome"  name="sobrenome" ngDefaultControl placeholder="Seu sobrenome aqui">
                                 </div>
                                 <div class="form-group col-md-4">
                                         <label for="inputPassword4">CPF</label>
-                                        <input type="text" class="form-control" id="inputCPF" required [(ngModel)]="empregador.cpf" name="c" placeholder="000.000.000-00">
+                                        <input type="text" class="form-control" id="inputCPF" required [(ngModel)]="empregador.cpf" name="cpf" ngDefaultControl placeholder="000.000.000-00">
                                 </div>
                             </div>                    
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label for="inputUsuario">Usuário</label>
-                                    <input type="text" class="form-control" id="inputUsuario" [(ngModel)]="empregador.usuario" name="us" placeholder="Insira um usuário">
+                                    <input type="text" class="form-control" id="inputUsuario" [(ngModel)]="empregador.login" name="login" ngDefaultControl placeholder="Insira um usuário">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Senha</label>
-                                    <input type="password" class="form-control" id="inputPassword4" [(ngModel)]="empregador.senha" name="sen" placeholder="Insira a sua senha">
+                                    <input type="password" class="form-control" id="inputPassword4" [(ngModel)]="empregador.senha" name="senha" ngDefaultControl placeholder="Insira a sua senha">
                                 </div>  
                                 <div class="form-group col-md-3">
                                         <label for="inputEmail4">Email</label>
-                                        <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="empregador.email" name="em" placeholder="email@seuemail.com.br">
+                                        <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="empregador.email" name="email" ngDefaultControl placeholder="email@seuemail.com.br">
                                 </div>                      
                                 <div class="form-group col-md-3">
                                             <label for="labelRadioGenero">Sexo</label>
@@ -45,17 +45,17 @@
                             <div class="form-row">
                                 <div class="form-group col-md-8">
                                     <label for="inputEndereco">Endereço</label>
-                                    <input type="text" class="form-control" id="inputEndereco" [(ngModel)]="empregador.endereco" name="end" placeholder="Endereço Residencial">
+                                    <input type="text" class="form-control" id="inputEndereco" [(ngModel)]="empregador.endereco" name="endereco" ngDefaultControl placeholder="Endereço Residencial">
                                 </div>
                                 <div class="form-group col-md-4">
                                         <label for="inputComplemento2">Complemento</label>
-                                        <input type="text" class="form-control" id="inputComplemento2" [(ngModel)]="empregador.complemento" name="comp" placeholder="Complemento">
+                                        <input type="text" class="form-control" id="inputComplemento2" [(ngModel)]="empregador.complemento" name="complemento" ngDefaultControl placeholder="Complemento">
                                 </div>
                             </div>                    
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Cidade</label>
-                                    <input type="text" class="form-control" id="inputCity" [(ngModel)]="empregador.cidade" name="cid" placeholder="São Paulo">
+                                    <input type="text" class="form-control" id="inputCity" [(ngModel)]="empregador.cidade" name="cidade" ngDefaultControl placeholder="São Paulo">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputState">Estado</label>
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputCep">CEP</label>
-                                    <input type="text" class="form-control" id="inputCep" [(ngModel)]="empregador.cep" placeholder="00000-000">
+                                    <input type="text" class="form-control" id="inputCep" [(ngModel)]="empregador.cep" name="cep" ngDefaultControl placeholder="00000-000">
                                 </div>
                             </div>   
                             <div class="form-group col-md-2">
@@ -79,7 +79,7 @@
                                         </select>
                             </div>
                             <div id="botoesCadastro">            
-                                <button type="submit" class="btn btn-secondary" id="btnCadastrar" (click)="cadastrar()">Cadastrar</button>
+                                <button type="submit" class="btn btn-secondary" id="btnCadastrar" >Cadastrar</button>
                                 <button type="submit" class="btn btn-secondary" id="btnLimpar" (click)="voltar()">Voltar</button>
                             </div>
                     </form>

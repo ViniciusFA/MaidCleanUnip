@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmpregadorService } from '../../services/empregador/empregador.service';
 import { Empregador } from 'src/app/services/empregador/empregador';
+import { Response } from '../../services/response';
 
 @Component({
   selector: 'app-cadastro-empregador',
@@ -25,22 +26,23 @@ export class CadastroEmpregadorComponent implements OnInit {
 
   salvar(){
     this.empregadorService.criarEmpregador(this.empregador)
-    .subscribe(data => console.log(data), error => console.log(error));
-    this.empregador = new Empregador();
-    this.irParaLista();
-  }
-
-  onSubmit(){
-    this.submetido = true;
-    this.salvar();
+                          .subscribe(response=> {
+      let res:Response = <Response>response;
+      
+      if(res.codigo == 1){
+        alert(res.mensagem);
+        this.empregador = new Empregador();   
+      }else{
+        alert(res.mensagem);
+      }
+    }
+    ,(erro) =>{
+      alert(erro);  
+    });    
   }
 
   voltar():void{
     this.router.navigate(['/cadastro']);
-  }
-
-  irParaLista(){
-    this.router.navigate(['/pesquisar']);
   }
 
 }

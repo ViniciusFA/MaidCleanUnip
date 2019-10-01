@@ -2,7 +2,7 @@ export class Empregador{
     idFuncionario:number;
     nome:string;
     sobrenome:string;
-    usuario:string;
+    login:string;
     senha:string;
     avaliacao:string;
     sexo:string;
@@ -17,5 +17,5 @@ export class Empregador{
     complemento:string;
     cidade:string;
     estado:string;
-    cep:number;
+    cep:string;
 }

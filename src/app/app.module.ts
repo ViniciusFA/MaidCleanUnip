@@ -29,8 +29,6 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ContatoService } from './services/contato/contato.service';
 
-
-
 // Configs
 export function getAuthServiceConfigs() {
   let config = new SocialServiceConfig()
