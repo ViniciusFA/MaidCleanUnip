@@ -20,6 +20,16 @@ export class PesquisarComponent implements OnInit {
     this.funcionarioService.getFuncionarios().subscribe(res => this.funcionarios = res);
     console.log("Funcionarios vindo dentor de ngOnInit" + this.funcionarios);
     }
+
+    limparCampos():void{
+      (<HTMLSelectElement>document.getElementById('campoNome')).value = "";
+      (<HTMLSelectElement>document.getElementById('campoSobreNome')).value = "";
+      (<HTMLSelectElement>document.getElementById('campoEstado')).value = "Estado";
+      (<HTMLSelectElement>document.getElementById('campoCidade')).value = ""; 
+      (<HTMLSelectElement>document.getElementById('campoSexo')).value = "Sexo"; 
+      (<HTMLSelectElement>document.getElementById('campoExperiencia')).value = "Experiência";      
+    }
+
     /**EXCLUI UM REGISTRO QUANDO CLICAMOS NA OPÇÃO EXCLUIR DE UMA 
      * LINHA DA TABELA*/
     excluir(codigo:number, index:number):void{

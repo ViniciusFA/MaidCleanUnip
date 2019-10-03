@@ -10330,9 +10330,9 @@
    color: inherit;
  }
   .tituloConteudoPaginas{
-   margin:0 auto;
+   margin:1% auto;
    margin-top: 34px;
-   width: 34%;
+   width: 17%;
  }
  .escolhaProfissional{
   margin-left: 33%;
@@ -10373,6 +10373,7 @@
  }
  #radioGenero{
    margin:0 auto;
+   height: 59%;
  }
  .containerCarrossel{
    width:30%;
@@ -10635,15 +10636,18 @@ html {
 }
 #campoEstado{
   width: 100%;
+  height: 100%;
 }
 #campoCidade{
   width: 100%;
 }
 #campoSexo{
   width: 100%;
+  height: 100%;
 }
 #campoExperiencia{
   width: 100%;
+  height: 100%;
 }
 .botoesPesquisar{
   margin: 0 auto;
@@ -10763,4 +10767,20 @@ html {
 }
 .linhaTabelaFuncCadastrados{
   text-align: center;
+}
+#inputState{
+  height: 60%;
+}
+#inpuResiencia{
+  height: 0%;
+  margin-left: -9%;
+}
+#inputEstado{
+  height: 60%;
+}
+#inputWhatsapp{
+  height: 60%;
+}
+#selectMotivo{
+  height: 100%;
 }

@@ -24,8 +24,9 @@ export class ContatoComponent implements OnInit {
   limparCampos():void{
     (<HTMLSelectElement>document.getElementById('inputNome')).value = "";
     (<HTMLSelectElement>document.getElementById('inputSobreNome')).value = "";
-    (<HTMLSelectElement>document.getElementById('exampleFormControlInput1')).value = "";
-    (<HTMLSelectElement>document.getElementById('exampleFormControlTextarea1')).value = ""; 
+    (<HTMLSelectElement>document.getElementById('selectEmail')).value = "";
+    (<HTMLSelectElement>document.getElementById('selectMotivo')).value = "Selecione"; 
+    (<HTMLSelectElement>document.getElementById('TextAreaMensagm')).value = ""; 
   }
 
   enviar(){
