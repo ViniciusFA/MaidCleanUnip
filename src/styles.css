@@ -10768,6 +10768,7 @@ html {
 .linhaTabelaFuncCadastrados{
   text-align: center;
 }
+<<<<<<< HEAD
 #inputState{
   height: 60%;
 }
@@ -10784,3 +10785,34 @@ html {
 #selectMotivo{
   height: 100%;
 }
+=======
+.home{
+  background-image: url("../src/img/home_parallax_words02.jpg");
+}
+.hero {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 660px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.parallax {
+  background-attachment: fixed;
+}
+.page-container {
+   padding: 20px 10px;
+   width: 100%;
+   max-width: 650px;
+   margin: auto;
+   text-align: left;
+   background-color: white;
+   
+}
+.contentHome{
+  width: 100%;
+}
+>>>>>>> 6a9d2a4c420ac7abdeeaf61e2365459d9e360f10
