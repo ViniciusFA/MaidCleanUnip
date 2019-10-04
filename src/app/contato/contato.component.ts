@@ -3,6 +3,7 @@ import { Contato } from "../services/contato/contato.";
 import { Response } from '../services/response';
 import { ContatoService } from '../services/contato/contato.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contato',
@@ -12,13 +13,16 @@ export class ContatoComponent implements OnInit {
 
   private contato:Contato = new Contato();
   private titulo:string;
+  private formulario:FormGroup;
 
   constructor(private contatoService:ContatoService,
               private router:Router,
-              private activatedRoute:ActivatedRoute) { }
+              private activatedRoute:ActivatedRoute,
+              private formBuilder:FormBuilder) { }
 
   ngOnInit() {
     this.titulo="Fale Conosco";
+    this.configurarFormulario();
   }
 
   limparCampos():void{
@@ -28,6 +32,17 @@ export class ContatoComponent implements OnInit {
     (<HTMLSelectElement>document.getElementById('selectMotivo')).value = "Selecione"; 
     (<HTMLSelectElement>document.getElementById('TextAreaMensagm')).value = ""; 
   }
+
+    configurarFormulario(){
+      this.formulario = this.formBuilder.group({
+
+        nome:this.formBuilder.control('',[Validators.required, Validators.minLength(3)]),
+        sobrenome: this.formBuilder.control('',Validators.minLength(5)),
+        email: this.formBuilder.control('',Validators.email),      
+        motivo: this.formBuilder.control('',Validators.required),
+        mensagem: this.formBuilder.control('')        
+      });
+    }
 
   enviar(){
     this.contatoService.sendMessage(this.contato)
@@ -45,5 +60,6 @@ export class ContatoComponent implements OnInit {
     (erro) =>{
       alert(erro);
     });
+    this.formulario.reset();
   }
 }

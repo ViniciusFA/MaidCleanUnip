@@ -1,52 +1,46 @@
 
-<div class="container">
+
+
+<div class="container">  
     <div class="row">
         <div class="col-md-12">
-            <div class="tituloConteudoPaginas" id="tituloFuncCadastrados">
-                    <!--<h3>Profissionais Cadastrados</h3>-->
-                    <h3>{{titulo}}</h3>
+            <div class="tituloConteudoPaginas" id="tituloVagasCadastradas">
+                <!--<h3>Profissionais Cadastrados</h3>-->
+                <h3>Vagas</h3>
+                <hr/>
+                <form class="form-inline" id="formPesquisaCampos" (ngSubmit)="pesquisar()">
 
-            </div>
-           
-            <!-- Paginação -->
-            <!--
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <div class="paginacaoProfissionais">
-                                <div>
-                                    <ul class="pagination pagination-sm">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" [routerLink]="['/pesquisar']">&laquo;</a>
-                                    </li>
-                                    <li class="page-item active">
-                                        <a class="page-link" [routerLink]="['/pesquisar']">1</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" [routerLink]="['/pesquisar']">2</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" [routerLink]="['/pesquisar']">3</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" [routerLink]="['/pesquisar']">4</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" [routerLink]="['/pesquisar']">5</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" [routerLink]="['/pesquisar']">&raquo;</a>
-                                    </li>
-                                    </ul>
-                                </div>
-                        </div>
-                </div>   
-               
+                    <div class="form-row" id="camposFormPesquisa">                               
+                            <div class="col-6">
+                            <input type="text" class="form-control" id="campoIDVaga"  [(ngModel)]="vaga.id" name="id_vaga" ngDefaultControl placeholder="ID da vaga">
+                            </div>
+                            <br>
+                            <div class="col-6">
+                            <input type="text" class="form-control" id="campoNomeVaga"  [(ngModel)]="vaga.nome" name="nome" ngDefaultControl placeholder="Insira algo para pesquisar">
+                            </div>
+                            <br>
+                            <div class="col-3">
+                                <select class="form-control form-control-sm-3"  id="campoProfissaoo" >
+                                        <option *ngFor="let profissao of profissoes" [ngValue]="profissao">{{profissao}}</option>
+                                        
+                                </select>
+                            </div>
+                            <div class="col-3">
+                                    <select class="form-control form-control-sm-3" id="campoEstado" [(ngModel)]="vaga.estado" name="estado" ngDefaultControl>
+                                            <option>Estado</option>
+                                            <option>Rio de Janeiro</option>
+                                            <option>São Paulo</option>
+                                    </select>
+                            </div>
+                    </div>    
+                    <!--Botões limpar e pesquisar -->
+                    <div class="botoesPesquisar">   
+                            <button type="submit" class="btn btn-secondary" id="btnLimparPesquisa" (click)="limparCampos()" >Limpar</button>
+                            <button type="submit" class="btn btn-secondary" id="btnEnviarPesquisa">Pesquisar</button>
+                    </div>
+                 </form>
+             </div>
         </div>
-    -->
-        <!--
-        <div class="form-row">
-            <button type="button" class="btn btn-secondary" id="btnVoltarFuncionarios" [routerLink]="['/']">Voltar</button>
-        </div>
-        -->
-    </div>
-</div>
+    </div>         
+</div>   
+    

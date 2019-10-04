@@ -10332,7 +10332,7 @@
   .tituloConteudoPaginas{
    margin:1% auto;
    margin-top: 34px;
-   width: 17%;
+   width: 34%;
  }
  .escolhaProfissional{
   margin-left: 33%;
@@ -10785,7 +10785,7 @@ html {
   height: 100%;
 }
 .home{
-  background-image: url("../src/img/confianca.jpg");
+  background-image: url("../src/img/home_parallax.jpg");
 }
 .purpleImage{
   background-image: url("../src/img/teste.jpg");
@@ -10820,4 +10820,13 @@ html {
   height: 200px;
 }
 
-
+#idVaga{
+  width: 100%;
+  margin-bottom: 7%;
+}
+#tituloVagasCadastradas{
+  width: 45%;
+}
+#tituloVagasCadastradas h3{
+  margin-left: 35%
+}

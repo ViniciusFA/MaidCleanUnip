@@ -1,24 +1,24 @@
 <div class="tituloConteudoPaginas">
     <h3>{{titulo}}</h3>
 </div>
-<form id="containerAllContato" (ngSubmit)="enviar()">
+<form id="containerAllContato" [formGroup]="formulario" (ngSubmit)="enviar()">
         <div class="form-row">
             <div class="form-group col-md-6">
                     <label for="inputNome">Nome</label>
-                    <input type="text" class="form-control" id="inputNome" [(ngModel)]="contato.nome" name="nome" ngDefaultControl placeholder="Insira o seu nome">
+                    <input type="text" class="form-control" id="inputNome" formControlName="nome"  ngDefaultControl placeholder="Insira o seu nome">
             </div>
             <div class="form-group col-md-6">
                     <label for="inputSobreNome">Sobrenome</label>
-                    <input type="text" class="form-control" id="inputSobreNome" [(ngModel)]="contato.sobrenome" name="sobrenome" ngDefaultControl placeholder="Insira o seu sobrenome">
+                    <input type="text" class="form-control" id="inputSobreNome" formControlName="sobrenome"  ngDefaultControl placeholder="Insira o seu sobrenome">
             </div>
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Email</label>
-          <input type="email" class="form-control" id="selectEmail" [(ngModel)]="contato.email" name="email" ngDefaultControl placeholder="name@example.com">
+          <input type="email" class="form-control" id="selectEmail" formControlName="email"  ngDefaultControl placeholder="name@example.com">
         </div>
         <div class="form-group">
           <label for="selectMotivo">Motivo </label>
-          <select class="form-control" id="selectMotivo" [(ngModel)]="contato.motivo" name="motivo" ngDefaultControl>
+          <select class="form-control" id="selectMotivo" formControlName="motivo"  ngDefaultControl>
             <option value="0">Selecione</option>
             <option value="1">Críticas</option>
             <option value="2">Ouvidoria</option>
@@ -28,10 +28,10 @@
         </div>        
         <div class="form-group">
           <label for="TextAreaMensagm">Mensagem</label>
-          <textarea class="form-control" id="TextAreaMensagm" rows="4" [(ngModel)]="contato.mensagem" name="mensagem" ngDefaultControl></textarea>
+          <textarea class="form-control" id="TextAreaMensagm" rows="4" formControlName="mensagem"  ngDefaultControl></textarea>
         </div>
         <div class="botoesContato">
-            <button type="submit" class="btn btn-secondary">Enviar</button>
+            <button type="submit" class="btn btn-secondary" [disabled]="formulario.invalid">Enviar</button>
             &nbsp;
             <button type="button" class="btn btn-secondary" id="btnLimpar" (click)="limparCampos()" >Limpar</button>
         </div>

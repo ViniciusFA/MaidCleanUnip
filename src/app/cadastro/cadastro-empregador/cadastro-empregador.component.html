@@ -5,37 +5,37 @@
     </div>
     <div class="containerFormContato">
             <div class="conteudoFormContato">
-                    <form (ngSubmit)="salvar()">
+                    <form (ngSubmit)="salvar()" [formGroup]="formulario">
                             <div class="form-row" >
                                 <div class="form-group col-md-4">
                                     <label for="inputNome">Nome</label>
-                                    <input type="text" class="form-control" id="inputNome" required [(ngModel)]="empregador.nome" name="nome" ngDefaultControl placeholder="Seu nome aqui">
+                                    <input type="text" class="form-control" id="inputNome" formControlName="nome" ngDefaultControl placeholder="Seu nome">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputSobrenome">Sobrenome</label>
-                                    <input type="text" class="form-control" id="inputSobrenome" required [(ngModel)]="empregador.sobrenome"  name="sobrenome" ngDefaultControl placeholder="Seu sobrenome aqui">
+                                    <input type="text" class="form-control" id="inputSobrenome" formControlName="sobrenome" ngDefaultControl placeholder="Seu sobrenome">
                                 </div>
                                 <div class="form-group col-md-4">
-                                        <label for="inputPassword4">CPF</label>
-                                        <input type="text" class="form-control" id="inputCPF" required [(ngModel)]="empregador.cpf" name="cpf" ngDefaultControl placeholder="000.000.000-00">
+                                        <label for="inputPassword4">CNPJ</label>
+                                        <input type="text" class="form-control" id="inputCPF" formControlName="cnpj" ngDefaultControl placeholder="000.000.000-00">
                                 </div>
                             </div>                    
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label for="inputUsuario">Usuário</label>
-                                    <input type="text" class="form-control" id="inputUsuario" [(ngModel)]="empregador.login" name="login" ngDefaultControl placeholder="Insira um usuário">
+                                    <input type="text" class="form-control" id="inputUsuario"  formControlName="login" ngDefaultControl placeholder="Insira um usuário">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">Senha</label>
-                                    <input type="password" class="form-control" id="inputPassword4" [(ngModel)]="empregador.senha" name="senha" ngDefaultControl placeholder="Insira a sua senha">
+                                    <input type="password" class="form-control" id="inputPassword4" formControlName="senha"ngDefaultControl placeholder="Insira a sua senha">
                                 </div>  
                                 <div class="form-group col-md-3">
                                         <label for="inputEmail4">Email</label>
-                                        <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="empregador.email" name="email" ngDefaultControl placeholder="email@seuemail.com.br">
+                                        <input type="email" class="form-control" id="inputEmail4" formControlName="email" ngDefaultControl placeholder="email@seuemail.com.br">
                                 </div>                      
                                 <div class="form-group col-md-3">
                                             <label for="labelRadioGenero">Sexo</label>
-                                            <select id="radioGenero" class="form-control">
+                                            <select id="radioGenero" class="form-control" formControlName="sexo">
                                                 <option selected>Selecione</option>
                                                 <option>Masculino</option>
                                                 <option>Feminino</option>
@@ -45,21 +45,21 @@
                             <div class="form-row">
                                 <div class="form-group col-md-8">
                                     <label for="inputEndereco">Endereço</label>
-                                    <input type="text" class="form-control" id="inputEndereco" [(ngModel)]="empregador.endereco" name="endereco" ngDefaultControl placeholder="Endereço Residencial">
+                                    <input type="text" class="form-control" id="inputEndereco" formControlName="endereco" ngDefaultControl placeholder="Endereço Residencial">
                                 </div>
                                 <div class="form-group col-md-4">
                                         <label for="inputComplemento2">Complemento</label>
-                                        <input type="text" class="form-control" id="inputComplemento2" [(ngModel)]="empregador.complemento" name="complemento" ngDefaultControl placeholder="Complemento">
+                                        <input type="text" class="form-control" id="inputComplemento2" formControlName="complemento" ngDefaultControl placeholder="Complemento">
                                 </div>
                             </div>                    
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Cidade</label>
-                                    <input type="text" class="form-control" id="inputCity" [(ngModel)]="empregador.cidade" name="cidade" ngDefaultControl placeholder="São Paulo">
+                                    <input type="text" class="form-control" id="inputCity"  formControlName="cidade" ngDefaultControl placeholder="São Paulo">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputState">Estado</label>
-                                    <select id="inputState" class="form-control">
+                                    <select id="inputState" class="form-control" formControlName="estado">
                                         <option selected>Escolha...</option>
                                         <option>Rio de Janeiro</option>
                                         <option>São Paulo</option>
@@ -67,19 +67,19 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputCep">CEP</label>
-                                    <input type="text" class="form-control" id="inputCep" [(ngModel)]="empregador.cep" name="cep" ngDefaultControl placeholder="00000-000">
+                                    <input type="text" class="form-control" id="inputCep" formControlName="cep" ngDefaultControl placeholder="00000-000">
                                 </div>
                             </div>   
                             <div class="form-group col-md-2">
                                     <label for="inpuResiencia">Residência</label>
-                                    <select id="inpuResiencia" class="form-control">
+                                    <select id="inpuResiencia" class="form-control" formControlName="residencia">
                                             <option selected>Selecione</option>
                                             <option>Casa</option>
                                             <option>Apartamento</option>
                                         </select>
                             </div>
                             <div id="botoesCadastro">            
-                                <button type="submit" class="btn btn-secondary" id="btnCadastrar" >Cadastrar</button>
+                                <button type="submit" class="btn btn-secondary" id="btnCadastrar" [disabled]="formulario.invalid"> Cadastrar</button>
                                 <button type="submit" class="btn btn-secondary" id="btnLimpar" (click)="voltar()">Voltar</button>
                             </div>
                     </form>

@@ -11,7 +11,7 @@
     </div>
    
     <div class="escolhaProfissional">    
-        <div class="dropdown" id="ddlEscolhaCadastro" ngModel="selectedOption" >      
+        <div class="dropdown" id="ddlEscolhaCadastro" [(ngModel)]="selectedOption" name="selectedOption" ngDefaultControl >      
         <select #cadastro  class="form-control" id="opcaoCadastro" >
             <option *ngFor="let cad of cadastros" ngValue="cadastros.id">
                 {{cad.nome}}

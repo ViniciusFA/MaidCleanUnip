@@ -25,7 +25,7 @@ import {  NgxSocialButtonModule,
 } from "ngx-social-button";
 import { FuncionarioDetalhesComponent } from './funcionario/funcionario-detalhes/funcionario-detalhes.component';
 import { OportunidadesComponent } from './oportunidades/oportunidades.component';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule}   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ContatoService } from './services/contato/contato.service';
 
@@ -59,6 +59,7 @@ export function getAuthServiceConfigs() {
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     RouterModule.forRoot(ROUTES),
     HttpModule,
