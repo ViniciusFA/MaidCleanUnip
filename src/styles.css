@@ -10768,7 +10768,6 @@ html {
 .linhaTabelaFuncCadastrados{
   text-align: center;
 }
-<<<<<<< HEAD
 #inputState{
   height: 60%;
 }
@@ -10785,16 +10784,18 @@ html {
 #selectMotivo{
   height: 100%;
 }
-=======
 .home{
-  background-image: url("../src/img/home_parallax_words02.jpg");
+  background-image: url("../src/img/confianca.jpg");
+}
+.purpleImage{
+  background-image: url("../src/img/teste.jpg");
 }
 .hero {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 660px;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10815,4 +10816,8 @@ html {
 .contentHome{
   width: 100%;
 }
->>>>>>> 6a9d2a4c420ac7abdeeaf61e2365459d9e360f10
+.paragrago_home{
+  height: 200px;
+}
+
+
