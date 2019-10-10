@@ -1,0 +1,43 @@
+ <!-- Modal PopUp para logar-->
+ <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">0
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <h5 class="modal-title" id="exampleModalLongTitle">MAID</h5>
+        <div class="modal-body" id="containerModalBody">
+            <hr width=85%/> 
+          <!-- Inicio das validações / campos de login-->
+            <form [formGroup]="formulario" (ngSubmit)="logar()">
+            <div class="form-group">
+                <!--Fazer reactive forms-->
+              <input type="email" class="form-control" formControlName="nm_usuario" ngDefaultControl id="exampleInputEmail1" form aria-describedby="emailHelp" placeholder="Insira o usuário">
+               </div>
+            <div class="form-group">
+                 <!--Fazer reactive forms-->
+              <input type="password" class="form-control" formControlName="senha" ngDefaultControl id="exampleInputPassword1" placeholder="Senha">
+            </div>
+            <div id="containerEntrarLogin">
+              <button id="btnEntrarLogin" type="submit" class="btn btn-secondary btn-sm" >Entrar</button>
+            </div>
+            <div id="esqueceuSenha">
+              <a [routerLink]="['']">Esqueceu a sua senha?</a>
+            </div>
+            <hr WIDTH=85%/> 
+            <facebook-login-button  (socialUser)="getSocialUser($event)"></facebook-login-button>
+            <google-login-button (socialUser)="getSocialUser($event)"></google-login-button>
+             <hr WIDTH=85%/> 
+            <div class="opcaoLoginCad">
+              <p style="margin-bottom: 0rem;">Não tem uma conta?</p>
+              <div id="linkCadastroLogin">                      
+                      <a [routerLink]="['cadastro']" data-dismiss="modal" aria-hidden="true">Cadastre-se aqui</a>          
+              </div>
+            </div>
+          </form>
+        </div>        
+      </div>
+    </div>
+  </div>

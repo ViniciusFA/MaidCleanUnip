@@ -28,6 +28,9 @@ import { OportunidadesComponent } from './oportunidades/oportunidades.component'
 import { FormsModule, ReactiveFormsModule}   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ContatoService } from './services/contato/contato.service';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './services/login/LoginService';
+import { LogoutComponent } from './logout/logout.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -54,7 +57,9 @@ export function getAuthServiceConfigs() {
     ConfiguracoesComponent,
     ConfiguracoesContaComponent,
     LegislacaoComponent,
-    FuncionarioDetalhesComponent
+    FuncionarioDetalhesComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +71,7 @@ export function getAuthServiceConfigs() {
     HttpClientModule,
     NgxSocialButtonModule
   ],
-  providers: [ ConfigService, FuncionarioService, ContatoService,  
+  providers: [ ConfigService, FuncionarioService, ContatoService,LoginService,  
     {
       provide: SocialServiceConfig,
       useFactory: getAuthServiceConfigs,      

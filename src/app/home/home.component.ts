@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  private titulo:string;
+
   constructor() { }
 
-  private mensagem:string = "Página Inicial.";
-
   ngOnInit() {
+    this.titulo=" Seja Bem Vindo";
   }
 }

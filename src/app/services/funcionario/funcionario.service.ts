@@ -53,7 +53,7 @@ export class FuncionarioService {
     /**CONSULTA UMA PESSOA PELO CÓDIGO */
     getFuncionario(codigo: number){
 
-        return this.http.get(this.baseUrlService + codigo).map(res => res.json());
+        return this.http.get(this.baseUrlService + '/' + codigo).map(res => res.json());
     }
   
     /**ATUALIZA INFORMAÇÕES DA PESSOA */

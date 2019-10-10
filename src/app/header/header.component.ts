@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  SocialService } from "ngx-social-button";
+import { AutenticacaoService } from '../services/login/AutenticacaoService';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,16 @@ export class HeaderComponent {
       hashtag:"#FACEBOOK-SHARE-HASGTAG"
   };
   
-  constructor(private socialAuthService: SocialService){}
+  constructor(private socialAuthService: SocialService,
+              private auth: AutenticacaoService){}
 
   ngOnInit() {
    
   }  
+
+  usuarioLogIn(){
+    this.auth.usuarioLogIn();
+  }
 
   signOut(){
     if(this.socialAuthService.isSocialLoggedIn()){

@@ -24,7 +24,7 @@
       </ul>
       <!-- menu para logar-->
       <button arial-label="Entrar" aria-expanded="false" class="dotcom-header-main-nav-item__link ci cf c1 cj ck cl cm c6 c7 cn co cp cq cr cs c4 bw be ct c8 b5 cco cv cw cx cy cz d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 da db dc dd "
-       id="signIn" data-toggle="modal" data-target="#exampleModalCenter">
+       id="signIn" data-toggle="modal" data-target="#exampleModalCenter" >
         <div tabindex="-1" class="c4 bw de df cw">
           <div class="dn do dp dq dg dh al dr ds cg dt ch du">
             <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" >
@@ -34,7 +34,8 @@
                 fill="currentcolor">
               </path>     
             </svg>
-            <span class="dg dh" id="btnEntrarNav">&nbsp;Entrar&nbsp;</span>
+            <span class="dg dh" id="btnEntrarNav" *ngIf="!usuarioLogIn()" [routerLink]="['/login']" >&nbsp;Entrar&nbsp;</span>
+            <span class="dg dh" id="btnEntrarNav" *ngIf="usuarioLogIn()" [routerLink]="['/logout']" >&nbsp;Sair&nbsp;</span>
           </div>
         </div>
       </button>  
@@ -58,44 +59,4 @@
         </div>
     </div>
   </nav>
-  <!-- Modal PopUp para logar-->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">0
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <h5 class="modal-title" id="exampleModalLongTitle">MAID</h5>
-        <div class="modal-body" id="containerModalBody">
-            <hr width=85%/> 
-          <!-- Inicio das validações / campos de login-->
-            <form>
-            <div class="form-group">
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Insira o seu email">
-               </div>
-            <div class="form-group">
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
-            </div>
-            <div id="containerEntrarLogin">
-              <button id="btnEntrarLogin" type="button" class="btn btn-secondary btn-sm">Entrar</button>
-            </div>
-            <div id="esqueceuSenha">
-              <a [routerLink]="['']">Esqueceu a sua senha?</a>
-            </div>
-            <hr WIDTH=85%/> 
-            <facebook-login-button  (socialUser)="getSocialUser($event)"></facebook-login-button>
-            <google-login-button (socialUser)="getSocialUser($event)"></google-login-button>
-             <hr WIDTH=85%/> 
-            <div class="opcaoLoginCad">
-              <p style="margin-bottom: 0rem;">Não tem uma conta?</p>
-              <div id="linkCadastroLogin">                      
-                      <a [routerLink]="['cadastro']" data-dismiss="modal" aria-hidden="true">Cadastre-se aqui</a>          
-              </div>
-            </div>
-          </form>
-        </div>        
-      </div>
-    </div>
-  </div>
+ 

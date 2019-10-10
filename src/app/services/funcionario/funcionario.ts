@@ -1,3 +1,5 @@
+import { Usuario } from '../usuario/usuario';
+
 export class Funcionario{
     id:number;
     cpf:string;
@@ -15,7 +17,7 @@ export class Funcionario{
     complemento:string; 
     cidade:string;
     estado:string;
-    cep:string;           
-    avaliacao:string;
+    cep:string;       
     sexo:string;
+    id_usuario:Usuario;
 }

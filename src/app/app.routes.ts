@@ -12,6 +12,8 @@ import { ConfiguracoesContaComponent } from './configuracoes/configuracoes-conta
 import { LegislacaoComponent } from './legislacao/legislacao.component';
 import { FuncionarioDetalhesComponent } from './funcionario/funcionario-detalhes/funcionario-detalhes.component';
 import { OportunidadesComponent } from './oportunidades/oportunidades.component'
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 export const ROUTES: Routes = [
@@ -26,6 +28,8 @@ export const ROUTES: Routes = [
     {path: 'perfil', component: PerfilComponent},
     {path: 'legislacao', component: LegislacaoComponent},
     {path: 'detalhes', component: FuncionarioDetalhesComponent },
-    {path: 'oportunidades', component: OportunidadesComponent }
+    {path: 'oportunidades', component: OportunidadesComponent },
+    {path: 'login', component: LoginComponent },
+    {path: 'logout', component: LogoutComponent }
     
 ]
