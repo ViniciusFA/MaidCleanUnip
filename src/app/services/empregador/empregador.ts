@@ -5,10 +5,10 @@ export class Empregador{
     login:string;
     senha:string;
     avaliacao:string;
-    sexo:string;
+    sexo:boolean;
     email:string;
     urlFacebook: string;
-    hasWhatsapp:number;
+    hasWhatsapp:boolean;
     telefone:number;
     profissao:string;
     residencia:string;
@@ -16,6 +16,6 @@ export class Empregador{
     endereco:string;
     complemento:string;
     cidade:string;
-    estado:string;
-    cep:string;
+    estado:Number;
+    cep:Number;
 }

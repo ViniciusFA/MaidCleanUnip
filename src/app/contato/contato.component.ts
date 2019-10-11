@@ -45,6 +45,8 @@ export class ContatoComponent implements OnInit {
     }
 
   enviar(){
+    this.contato = this.formulario.value;
+
     this.contatoService.sendMessage(this.contato)
     .subscribe(response => {
 
@@ -52,14 +54,13 @@ export class ContatoComponent implements OnInit {
 
       if(res.codigo == 1){
         alert(res.mensagem);
-        this.contato = new Contato();
+        this.formulario.reset();
       }else{
         alert(res.mensagem);
       }
     },
     (erro) =>{
       alert(erro);
-    });
-    this.formulario.reset();
+    });   
   }
 }

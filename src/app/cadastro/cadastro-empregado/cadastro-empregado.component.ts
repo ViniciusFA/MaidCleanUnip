@@ -16,6 +16,7 @@ export class CadastroEmpregadoComponent implements OnInit {
   private subtitulo:string;
   private funcionario:Funcionario = new Funcionario();
   private formulario: FormGroup;
+  private valorInteiro: Number = null;
 
   constructor(private funcionarioService: FuncionarioService,
               private router: Router,
@@ -32,31 +33,51 @@ export class CadastroEmpregadoComponent implements OnInit {
   configurarFormulario(){
     this.formulario = this.formBuilder.group({
 
-      nome: new FormControl('',[Validators.required, Validators.minLength(3)]),
-      sobrenome: new FormControl('',Validators.minLength(5)),
-      login: new FormControl('',[Validators.required, Validators.minLength(3)]),
+      nome: new FormControl('',[Validators.required, Validators.minLength(3),Validators.maxLength(15)]),
+      sobrenome: new FormControl('',[Validators.minLength(5),Validators.maxLength(40)]),
+      login: new FormControl('',[Validators.required, Validators.minLength(5),Validators.maxLength(10)]),
       senha: new FormControl('',[Validators.required, Validators.minLength(6),Validators.maxLength(8)]),
-      avaliacao: new FormControl(''),
-      sexo: new FormControl(''),
+      sexo: new FormControl(false),
       email: new FormControl('',Validators.email),
-      urlFacebook: new FormControl(''),
-      hasWhatsapp: new FormControl(''),
-      telefone: new FormControl(''),
-      profissao: new FormControl(''),
-      cpf: new FormControl(''),
-      endereco: new FormControl(''),
-      complemento: new FormControl(''),
-      cidade: new FormControl(''),
+      urlFacebook: new FormControl('',Validators.maxLength(80)),
+      hasWhatsapp: new FormControl((false)),
+      telefone: new FormControl('',Validators.maxLength(13)),
+      profissao: new FormControl('',Validators.maxLength(80)),
+      cpf: new FormControl('',[Validators.minLength(11),Validators.maxLength(11)]),
+      endereco: new FormControl('',Validators.maxLength(100)),
+      complemento: new FormControl('',Validators.maxLength(15)),
+      cidade: new FormControl('',Validators.maxLength(15)),
       estado: new FormControl(''),
-      experiencia: new FormControl(''),      
-      cep: new FormControl('')
+      experiencia: new FormControl('',Validators.maxLength(35)),      
+      cep: new FormControl('',Validators.maxLength(13))
     });
   }
 
   /*FUNÇÃO PARA SALVAR UM NOVO REGISTRO OU ALTERAÇÃO EM UM REGISTRO EXISTENTE */
   salvar():void{
-
+    
+    //populando o objeto funcionario através dos valores recebidos no reactiveforms
     let funcionario = this.formulario.value as Funcionario;
+
+    //Convertendo o valor da opção(string) para boolean
+    this.valorInteiro = this.formulario.value.hasWhatsapp
+    if(this.valorInteiro == 1){
+     funcionario.hasWhatsapp = true;
+    }else{
+      funcionario.hasWhatsapp = false;
+    }
+
+    //Convertendo o valor da opção(string) para boolean
+    this.valorInteiro = this.formulario.value.sexo;    
+    if(this.valorInteiro == 1){
+      funcionario.sexo = true;
+     }else{
+       funcionario.sexo = false;
+     }
+
+     //convertendo o valor da opção (string) para inteiro
+    funcionario.estado = parseInt (this.formulario.value.estado);
+
 
     /*CHAMA O SERVIÇO PARA ADICIONAR UMA NOVA PESSOA */
     this.funcionarioService.addFuncionario(funcionario)
@@ -81,7 +102,7 @@ export class CadastroEmpregadoComponent implements OnInit {
       },
         (erro) => {
           /**AQUI VAMOS MOSTRAR OS ERROS NÃO TRATADOS
-            EXEMPLO: SE APLICAÇÃO NÃO CONSEGUIR FAZER UMA REQUEST NA API                        */
+            EXEMPLO: SE APLICAÇÃO NÃO CONSEGUIR FAZER UMA REQUEST NA API*/
           alert(erro);
         });    
   }

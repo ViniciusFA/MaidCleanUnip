@@ -2,22 +2,22 @@ import { Usuario } from '../usuario/usuario';
 
 export class Funcionario{
     id:number;
-    cpf:string;
     nome:string;
-    sobrenome:string;      
+    cpf:string;
     login:string;       
-    senha:string;    
+    senha:string; 
     email:string;   
-    urlFacebook: string;
-    hasWhatsapp:string;
+    urlFacebook: string;    
+    hasWhatsapp:boolean;
     telefone:string;    
     profissao:string;
     experiencia:string;
     endereco:string;
     complemento:string; 
     cidade:string;
-    estado:string;
+    estado:Number;
     cep:string;       
-    sexo:string;
-    id_usuario:Usuario;
+    sexo:boolean;
+    sobrenome:string; 
+    id_usuario:Number;    
 }

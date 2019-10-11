@@ -13,6 +13,7 @@ export class CadastroEmpregadorComponent implements OnInit {
 
   empregador: Empregador = new Empregador();
   formulario: FormGroup;
+  private valorInteiro: Number = null;
 
   constructor(private empregadorService: EmpregadorService,
               private router: Router,
@@ -51,7 +52,38 @@ export class CadastroEmpregadorComponent implements OnInit {
   }
 
   salvar(){
-    this.empregadorService.criarEmpregador(this.formulario.value)
+
+    let empregador = this.formulario.value as Empregador;
+
+    //convertendo value do option(string) para inteiro
+    empregador.estado= parseInt (this.formulario.value.estado);
+
+    //Convertendo o valor da opção(string) para boolean
+    this.valorInteiro = this.formulario.value.sexo;    
+    if(this.valorInteiro == 1){
+        empregador.sexo = true;
+      }else{
+       empregador.sexo = false;
+      }
+
+    //convertendo value do option(string) para inteiro
+    empregador.cnpj= parseInt (this.formulario.value.cnpj);
+
+     //convertendo value do option(string) para inteiro
+     empregador.cep= parseInt (this.formulario.value.cep);
+
+     //convertendo value do option(string) para inteiro
+     empregador.telefone= parseInt (this.formulario.value.telefone);
+
+     //Convertendo o valor da opção(string) para boolean
+    this.valorInteiro = this.formulario.value.hasWhatsapp;    
+    if(this.valorInteiro == 1){
+        empregador.hasWhatsapp = true;
+      }else{
+       empregador.hasWhatsapp = false;
+      }
+
+    this.empregadorService.criarEmpregador(empregador)
                           .subscribe(response=> {
       let res:Response = <Response>response;
       

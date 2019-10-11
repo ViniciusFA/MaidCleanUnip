@@ -14,14 +14,17 @@
                         <div class="form-group col-md-4">
                             <label for="inputNome">Nome</label>
                             <input type="text" class="form-control" id="inputNome" formControlName="nome" ngDefaultControl required placeholder="Seu Nome" />
+                            <p>(Insira entre 3 a 15 caracteres)</p>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputSobrenome">Sobrenome</label>
                             <input type="text" class="form-control" id="inputSobrenome" formControlName="sobrenome" ngDefaultControl requiredplaceholder="Seu sobrenome">
+                            <p>(Insira entre 5 a 40 caracteres)</p>
                         </div>
                         <div class="form-group col-md-4">
                                 <label for="inputCPF">CPF</label>
-                                <input type="text" class="form-control" id="inputCPF"  formControlName="cpf"  ngDefaultControl required placeholder="000.000.000-00">
+                                <input type="text" class="form-control" id="inputCPF"  formControlName="cpf"  ngDefaultControl required placeholder="00000000000">
+                                 <p>(Insira 11 caracteres)</p>   
                         </div>
                     </div>  
                     <!-- Segunda Linha-->                
@@ -29,21 +32,24 @@
                         <div class="form-group col-md-3">
                             <label for="inputUsuario">Usuário</label>
                             <input type="text" class="form-control" id="inputUsuario" formControlName="login"  ngDefaultControl placeholder="Insira um usuário" >
+                            <p>(Insira entre 5 a 10 caracteres)</p>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="inputSenha">Senha</label>
-                            <input type="password" class="form-control" id="inputSenha" autocomplete="username senha" formControlName="senha"  ngDefaultControl placeholder="Insira a sua senha">
+                            <input type="password" class="form-control" id="inputSenha" autocomplete="username senha" formControlName="senha"  ngDefaultControl placeholder="Insira a senha">
+                            <p>(Insira entre 6 a 8 caracteres)</p>
                         </div>  
                         <div class="form-group col-md-3">
                                 <label for="inputEmail">Email</label>
                                 <input type="email" class="form-control" id="inputEmail" autocomplete="username email" formControlName="email"  ngDefaultControl placeholder="email@seuemail.com.br">
-                        </div>                      
+                                <p>(Insira até 50 caracteres)</p>
+                         </div>                      
                         <div class="form-group col-md-3">
-                                    <label for="labelRadioGenero">Sexo</label>
+                                    <label for="labelRadioGenero">Sexo Feminino?</label>
                                     <select id="radioGenero" class="form-control" formControlName="sexo"  ngDefaultControl>
                                         <option selected>Selecione</option>
-                                        <option >Masculino</option>
-                                        <option>Feminino</option>
+                                        <option value='1'>Sim</option>
+                                        <option value='0'>Não</option>
                                     </select>
                         </div>
                     </div>  
@@ -52,10 +58,12 @@
                         <div class="form-group col-md-8">
                             <label for="inputEndereco">Endereço</label>
                             <input type="text" class="form-control" id="inputEndereco" formControlName="endereco"  ngDefaultControl placeholder="Endereço Residencial">
+                            <p>(Insira até 100 caracteres)</p>
                         </div>
                         <div class="form-group col-md-4">
                                 <label for="inputComplemento">Complemento</label>
                                 <input type="text" class="form-control" id="inputComplemento" formControlName="complemento"  ngDefaultControl placeholder="Complemento">
+                                <p>(Insira até 15 caracteres)</p>
                         </div>
                     </div>                    
                     <!-- Quarta Linha-->              
@@ -63,48 +71,54 @@
                         <div class="form-group col-md-6">
                             <label for="inputCity">Cidade</label>
                             <input type="text" class="form-control" id="inputCity" formControlName="cidade"  ngDefaultControl placeholder="São Paulo">
+                            <p>(Insira até 15 caracteres)</p>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEstado">Estado</label>
                             <select id="inputEstado" class="form-control" formControlName="estado"  ngDefaultControl>
                                 <option selected>Selecione</option>
-                                <option>Rio de Janeiro</option>
-                                <option>São Paulo</option>
+                                <option value='0'>Rio de Janeiro</option>
+                                <option value='1'>São Paulo</option>
                             </select>
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputCEP">CEP</label>
                             <input type="text" class="form-control" id="inputCEP" formControlName="cep"  ngDefaultControl placeholder="00000-000">
+                            <p>(Insira até 13 caracteres)</p>
                         </div>
                     </div> 
                     <!-- Quinta Linha-->  
                     <div class="form-group">
                             <label for="inpuExperiencia">Experiência</label>
                             <input type="text" class="form-control" id="inputExperiencia" formControlName="experiencia"  ngDefaultControl placeholder="Experiência Profissional">
+                            <p>(Insira até 15 caracteres)</p>
                     </div>
                      <!-- Sexta Linha-->
                      <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="inputTelefone">Telefone</label>
                             <input type="text" class="form-control" id="inputTelefone" formControlName="telefone"  ngDefaultControl placeholder="Telefone">
+                            <p>(Insira até 13 caracteres)</p>
                         </div>
                         <div class="form-group col-md-4">
                                 <label for="inputEstado">Tem Whatsapp?</label>
                                 <select id="inputWhatsapp" class="form-control" formControlName="hasWhatsapp"  ngDefaultControl>
                                     <option selected>Selecione</option>
-                                    <option >Sim</option>
-                                    <option >Não</option>
+                                    <option value='1'>Sim</option>
+                                    <option value='0'>Não</option>
                                 </select>
                        </div>
                         <div class="form-group col-md-4">
                                     <label for="inputProfissao">Profissão</label>
                                     <input type="text" class="form-control" id="inputProfissao" formControlName="profissao"  ngDefaultControl placeholder="Profissão">      
-                            </div>
+                                    <p>(Insira até 80 caracteres)</p>
+                        </div>
                     </div>  
                      <!-- Sétima Linha-->  
                     <div class="form-group">
                             <label for="inputFacebook">Facebook</label>
                             <input type="text" class="form-control" id="inputFacebook" formControlName="urlFacebook"  ngDefaultControl placeholder="Insira o seu facebook">
+                            <p>(Insira até 80 caracteres)</p>
                     </div> 
                     <!-- Anexo CV-->
                     <div class="form-group">
