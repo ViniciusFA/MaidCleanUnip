@@ -23,8 +23,7 @@ export class LoginService {
 
     verificarUsuario(login: Login){        
 
-        console.log("Nome do usuario: " + login.nm_usuario);
-        return this.http.post(this.baseUrlService + "/usuario", JSON.stringify(login),this.options)
+        return this.http.get(this.baseUrlService + "/usuario" + "/" + login.nm_usuario, this.options)
         .map(res => res.json());
     }
 }

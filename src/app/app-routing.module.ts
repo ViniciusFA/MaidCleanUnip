@@ -6,8 +6,8 @@ import { LogoutComponent } from './logout/logout.component';
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent,canActivate:[AutenticacaoService] },
-  { path: 'logout', component: LogoutComponent,canActivate:[AutenticacaoService] },
+//{ path: 'login', component: LoginComponent,canActivate:[AutenticacaoService] },
+  //{ path: 'logout', component: LogoutComponent,canActivate:[AutenticacaoService] },
 ];
 
 @NgModule({
