@@ -33,12 +33,12 @@
                                         <label for="inputEmail4">Email</label>
                                         <input type="email" class="form-control" id="inputEmail4" formControlName="email" ngDefaultControl placeholder="email@seuemail.com.br">
                                 </div>                      
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3" formControlName="sexo" name="sexo" ngDefaultControl>
                                             <label for="labelRadioGenero">Sexo</label>
-                                            <select id="radioGenero" class="form-control" formControlName="sexo">
-                                                <option selected>Selecione</option>
-                                                <option value='1'>Masculino</option>
-                                                <option value='0'>Feminino</option>
+                                            <select id="radioGenero" class="form-control" >
+                                                <option *ngFor="let sexo of sexos" ngValue="sexos.id">
+                                                    {{sexo.nome}}
+                                                </option>
                                             </select>
                                 </div>
                             </div>  
@@ -57,12 +57,12 @@
                                     <label for="inputCity">Cidade</label>
                                     <input type="text" class="form-control" id="inputCity"  formControlName="cidade" ngDefaultControl placeholder="São Paulo">
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-4" formControlName="estado" name="estado" ngDefaultControl>
                                     <label for="inputState">Estado</label>
-                                    <select id="inputState" class="form-control" formControlName="estado">
-                                        <option selected>Escolha...</option>
-                                        <option value='0'>Rio de Janeiro</option>
-                                        <option value='1'>São Paulo</option>
+                                    <select id="inputState" class="form-control" >
+                                        <option *ngFor="let estado of estados" ngValue="estados.id">
+                                            {{estado.nome}}
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-2">
@@ -70,12 +70,12 @@
                                     <input type="text" class="form-control" id="inputCep" formControlName="cep" ngDefaultControl placeholder="00000-000">
                                 </div>
                             </div>   
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-2" formControlName="residencia" name="residencia" ngDefaultControl>
                                     <label for="inpuResiencia">Residência</label>
-                                    <select id="inpuResiencia" class="form-control" formControlName="residencia">
-                                            <option selected>Selecione</option>
-                                            <option value='0'>Casa</option>
-                                            <option value='1'>Apartamento</option>
+                                    <select id="inpuResiencia" class="form-control" >
+                                            <option *ngFor="let residencia of residencias" ngValue="residencias.id">
+                                                {{residencia.nome}}
+                                            </option>
                                         </select>
                             </div>
                             <div id="botoesCadastro">            

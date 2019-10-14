@@ -5,6 +5,8 @@ import { FuncionarioService } from '../../services/funcionario/funcionario.servi
 import { Funcionario } from '../../services/funcionario/funcionario';
 import { Response } from '../../services/response';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
+import { Estados } from 'src/app/util/estados';
+import { Sexo } from 'src/app/util/sexo';
 
 @Component({
   selector: 'app-cadastro-empregado',
@@ -30,6 +32,18 @@ export class CadastroEmpregadoComponent implements OnInit {
     this.subtitulo="Funcionário";  
   }
 
+  estados = [
+    new Estados(0, 'Estados'),
+    new Estados(1, 'Rio de Janeiro'),
+    new Estados(2, 'São Paulo'),
+  ];
+
+  sexos = [
+    new Sexo(0, 'Sexo'),
+    new Sexo(1, 'Feminino'),
+    new Sexo(2, 'Masculino'),
+  ];
+
   configurarFormulario(){
     this.formulario = this.formBuilder.group({
 
@@ -37,7 +51,7 @@ export class CadastroEmpregadoComponent implements OnInit {
       sobrenome: new FormControl('',[Validators.minLength(5),Validators.maxLength(40)]),
       login: new FormControl('',[Validators.required, Validators.minLength(5),Validators.maxLength(10)]),
       senha: new FormControl('',[Validators.required, Validators.minLength(6),Validators.maxLength(8)]),
-      sexo: new FormControl(false),
+      sexo: new FormControl(''),
       email: new FormControl('',Validators.email),
       urlFacebook: new FormControl('',Validators.maxLength(80)),
       hasWhatsapp: new FormControl((false)),

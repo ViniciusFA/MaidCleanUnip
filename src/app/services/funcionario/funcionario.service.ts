@@ -19,7 +19,6 @@ export class FuncionarioService {
     
 
     constructor(private http:Http,
-                //private router: Router,
                 private configService:ConfigService){
                  
                /**SETANDO A URL DO SERVIÇO REST QUE VAI SER ACESSADO */

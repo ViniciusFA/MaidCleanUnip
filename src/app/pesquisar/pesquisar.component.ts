@@ -3,6 +3,14 @@ import {Router} from '@angular/router';
 import { FuncionarioService } from '../services/funcionario/funcionario.service';
 import { Funcionario } from '../services/funcionario/funcionario';
 import { Response } from '../services/response';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { Estados } from '../util/estados';
+import { Experiencia } from '../util/experiencia';
+import { Sexo } from '../util/sexo';
+import { PesquisaFuncionarioService } from '../services/Pesquisa/PesquisaFuncionarioService';
+import { PesquisaFuncionario } from '../services/Pesquisa/PesquisaFuncionario';
+import { Http } from '@angular/http';
+
 
 @Component({
   selector: 'app-pesquisar',
@@ -12,15 +20,51 @@ export class PesquisarComponent implements OnInit {
   
   private funcionarios: Funcionario[] = new Array();
   private titulo:string;
+  private formulario:FormGroup;  
+  private pesquisaFuncionario:PesquisaFuncionario = new PesquisaFuncionario();
 
   constructor(private funcionarioService: FuncionarioService,
-    private router: Router) {}
+              private formBuildder:FormBuilder,
+              private pesquisaFuncionarioService:PesquisaFuncionarioService) {
+
+              this.configurarFormulario();
+    }
 
   ngOnInit(){
     this.funcionarioService.getFuncionarios().subscribe(res => this.funcionarios = res);
-    console.log("Funcionarios vindo dentor de ngOnInit" + this.funcionarios);
     }
 
+    estados = [
+      new Estados(0, 'Estado'),
+      new Estados(1, 'Rio de Janeiro'),
+      new Estados(2, 'São Paulo'),
+    ];
+
+    experiencias = [
+      new Experiencia(0, 'Experiência'),
+      new Experiencia(1, 'Sem Experiência'),
+      new Experiencia(1, ' 1 a 6 meses'),
+      new Experiencia(1, ' 6 a 12 meses'),
+      new Experiencia(1, ' 1 a 2 anos'),
+    ];
+
+    sexos = [
+      new Sexo(0,'Sexo'),
+      new Sexo(1, 'Feminino'),
+      new Sexo(2, 'Masculino'),
+    ];
+
+    configurarFormulario(){
+      this.formulario = this.formBuildder.group({
+        nome:new FormControl(''),
+        sobrenome:new FormControl(''),
+        estado:new FormControl(''),
+        cidade:new FormControl(''),
+        sexo:new FormControl(''),
+        experiencia:new FormControl('')
+      });
+    }
+  
     limparCampos():void{
       (<HTMLSelectElement>document.getElementById('campoNome')).value = "";
       (<HTMLSelectElement>document.getElementById('campoSobreNome')).value = "";
@@ -28,6 +72,30 @@ export class PesquisarComponent implements OnInit {
       (<HTMLSelectElement>document.getElementById('campoCidade')).value = ""; 
       (<HTMLSelectElement>document.getElementById('campoSexo')).value = "Sexo"; 
       (<HTMLSelectElement>document.getElementById('campoExperiencia')).value = "Experiência";      
+    }
+
+    pesquisar(){     
+     this.pesquisaFuncionario = this.formulario.value ;
+
+     console.log(this.pesquisaFuncionario);
+      //Verifia se há campo preenchido para pesquisa
+      if(    this.pesquisaFuncionario.nome == "" || this.pesquisaFuncionario.nome  == null 
+          && this.pesquisaFuncionario.sobrenome == "" || this.pesquisaFuncionario.sobrenome == null
+          && this.pesquisaFuncionario.estado == "" || this.pesquisaFuncionario.estado == null
+          && this.pesquisaFuncionario.cidade == "" || this.pesquisaFuncionario.cidade == null
+          && this.pesquisaFuncionario.sexo == "" || this.pesquisaFuncionario.sexo == null
+          && this.pesquisaFuncionario.experiencia == "" || this.pesquisaFuncionario.experiencia == null){
+            alert("Preencha pelo menos um campo para pesquisar.");
+      }else{   
+
+      this.pesquisaFuncionarioService.buscar(this.pesquisaFuncionario)
+      .subscribe(response =>{
+       console.log("Resposta: " + response);
+      },
+        (erro)=> {
+          alert(erro);
+      });
+      }
     }
 
     /**EXCLUI UM REGISTRO QUANDO CLICAMOS NA OPÇÃO EXCLUIR DE UMA 

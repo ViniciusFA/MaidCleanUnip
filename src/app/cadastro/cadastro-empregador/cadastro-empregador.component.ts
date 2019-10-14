@@ -4,6 +4,9 @@ import { EmpregadorService } from '../../services/empregador/empregador.service'
 import { Empregador } from 'src/app/services/empregador/empregador';
 import { Response } from '../../services/response';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { Sexo } from 'src/app/util/sexo';
+import { Estados } from 'src/app/util/estados';
+import { Residencia } from 'src/app/util/residencia';
 
 @Component({
   selector: 'app-cadastro-empregador',
@@ -22,6 +25,24 @@ export class CadastroEmpregadorComponent implements OnInit {
   ngOnInit() {
     this.configurarFormulario(); 
   }
+  
+  estados = [
+    new Estados(0, 'Estados'),
+    new Estados(1, 'Rio de Janeiro'),
+    new Estados(2, 'São Paulo'),
+  ];
+
+  sexos = [
+    new Sexo(0,'Sexo'),
+    new Sexo(1, 'Feminino'),
+    new Sexo(2, 'Masculino'),
+  ];
+
+  residencias = [
+    new Residencia(0,'Residência'),
+    new Residencia(1, 'Apartamnto'),
+    new Residencia(2, 'Casa'),
+  ];
 
   configurarFormulario(){
     this.formulario = this.formBuilder.group({

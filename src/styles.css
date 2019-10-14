@@ -10371,9 +10371,9 @@
  .containerFormContato{
   width:90%;
  }
- #radioGenero{
+ #tipoSexo{
    margin:0 auto;
-   height: 59%;
+   height: 42%;
  }
  .containerCarrossel{
    width:30%;
@@ -10776,10 +10776,10 @@ html {
   margin-left: -9%;
 }
 #inputEstado{
-  height: 60%;
+  height: 42%;
 }
 #inputWhatsapp{
-  height: 60%;
+  height: 42%;
 }
 #selectMotivo{
   height: 100%;
@@ -10844,4 +10844,11 @@ html {
 }
 .formatacaoTextoHome p{
   color: black;
+}
+#inputStateEmpregado{
+  height: 42%;
+}
+#radioGenero{
+  margin:0 auto;
+  height: 60%;
 }

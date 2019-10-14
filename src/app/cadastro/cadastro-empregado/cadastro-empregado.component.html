@@ -44,12 +44,12 @@
                                 <input type="email" class="form-control" id="inputEmail" autocomplete="username email" formControlName="email"  ngDefaultControl placeholder="email@seuemail.com.br">
                                 <p>(Insira até 50 caracteres)</p>
                          </div>                      
-                        <div class="form-group col-md-3">
-                                    <label for="labelRadioGenero">Sexo Feminino?</label>
-                                    <select id="radioGenero" class="form-control" formControlName="sexo"  ngDefaultControl>
-                                        <option selected>Selecione</option>
-                                        <option value='1'>Sim</option>
-                                        <option value='0'>Não</option>
+                        <div class="form-group col-md-3" formControlName="sexo" name="sexo" ngDefaultControl>
+                                    <label for="labelRadioGenero">Sexo</label>
+                                    <select id="tipoSexo" class="form-control">
+                                            <option *ngFor="let sexo of sexos" ngValue="sexos.id">
+                                                    {{sexo.nome}}
+                                            </option>
                                     </select>
                         </div>
                     </div>  
@@ -73,12 +73,12 @@
                             <input type="text" class="form-control" id="inputCity" formControlName="cidade"  ngDefaultControl placeholder="São Paulo">
                             <p>(Insira até 15 caracteres)</p>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-4" formControlName="estado"  name="estado" ngDefaultControl>
                             <label for="inputEstado">Estado</label>
-                            <select id="inputEstado" class="form-control" formControlName="estado"  ngDefaultControl>
-                                <option selected>Selecione</option>
-                                <option value='0'>Rio de Janeiro</option>
-                                <option value='1'>São Paulo</option>
+                            <select id="inputStateEmpregado" class="form-control" >
+                                <option *ngFor="let estado of estados" ngValue="estados.id">
+                                    {{estado.nome}}
+                                </option>
                             </select>
                         </div>
                         <div class="form-group col-md-2">
@@ -100,9 +100,9 @@
                             <input type="text" class="form-control" id="inputTelefone" formControlName="telefone"  ngDefaultControl placeholder="Telefone">
                             <p>(Insira até 13 caracteres)</p>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-4" formControlName="hasWhatsapp" name="whatsapp" ngDefaultControl>
                                 <label for="inputEstado">Tem Whatsapp?</label>
-                                <select id="inputWhatsapp" class="form-control" formControlName="hasWhatsapp"  ngDefaultControl>
+                                <select id="inputWhatsapp" class="form-control" >
                                     <option selected>Selecione</option>
                                     <option value='1'>Sim</option>
                                     <option value='0'>Não</option>

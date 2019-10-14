@@ -31,6 +31,7 @@ import { ContatoService } from './services/contato/contato.service';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './services/login/LoginService';
 import { LogoutComponent } from './logout/logout.component';
+import { PesquisaFuncionarioService } from './services/Pesquisa/PesquisaFuncionarioService';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -71,7 +72,8 @@ export function getAuthServiceConfigs() {
     HttpClientModule,
     NgxSocialButtonModule
   ],
-  providers: [ ConfigService, FuncionarioService, ContatoService,LoginService,  
+  providers: [ ConfigService, FuncionarioService, ContatoService,LoginService,
+              PesquisaFuncionarioService,
     {
       provide: SocialServiceConfig,
       useFactory: getAuthServiceConfigs,      
