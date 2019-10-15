@@ -1,4 +1,4 @@
-
+﻿
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FuncionarioService } from '../../services/funcionario/funcionario.service';
@@ -61,15 +61,16 @@ export class CadastroEmpregadoComponent implements OnInit {
       endereco: new FormControl('',Validators.maxLength(100)),
       complemento: new FormControl('',Validators.maxLength(15)),
       cidade: new FormControl('',Validators.maxLength(15)),
-      estado: new FormControl(''),
+      estado: new FormControl(''),     
       experiencia: new FormControl('',Validators.maxLength(35)),      
       cep: new FormControl('',Validators.maxLength(13))
     });
   }
 
+
+
   /*FUNÇÃO PARA SALVAR UM NOVO REGISTRO OU ALTERAÇÃO EM UM REGISTRO EXISTENTE */
   salvar():void{
-    
     //populando o objeto funcionario através dos valores recebidos no reactiveforms
     let funcionario = this.formulario.value as Funcionario;
 
@@ -92,11 +93,6 @@ export class CadastroEmpregadoComponent implements OnInit {
        funcionario.sexo = false;
      }
      */
-
-     //convertendo o valor da opção (string) para inteiro
-     /*
-    funcionario.estado = parseInt (this.formulario.value.estado);
-    */
 
     /*CHAMA O SERVIÇO PARA ADICIONAR UMA NOVA PESSOA */
     this.funcionarioService.addFuncionario(funcionario)

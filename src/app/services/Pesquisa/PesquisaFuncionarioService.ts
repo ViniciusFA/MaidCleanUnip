@@ -2,6 +2,7 @@ import { PesquisaFuncionario } from './PesquisaFuncionario';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { ConfigService } from '../config.service';
 import { Injectable } from '@angular/core';
+import { Funcionario } from '../funcionario/funcionario';
 
 
 
@@ -27,5 +28,4 @@ export class PesquisaFuncionarioService{
            res.json() 
             console.log(res);
         });
-    }
 }

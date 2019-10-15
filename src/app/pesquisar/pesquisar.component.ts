@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { FuncionarioService } from '../services/funcionario/funcionario.service';
 import { Funcionario } from '../services/funcionario/funcionario';
@@ -24,6 +24,9 @@ export class PesquisarComponent implements OnInit {
   private pesquisaFuncionario:PesquisaFuncionario = new PesquisaFuncionario();
   private funcionario:Funcionario = new Funcionario();
   
+
+  private funcionario: Funcionario = new Funcionario();
+  private valorInteiro:number = 0;
 
   constructor(private funcionarioService: FuncionarioService,
               private formBuilder:FormBuilder,
@@ -80,7 +83,11 @@ export class PesquisarComponent implements OnInit {
     }
 
     pesquisar(){     
-      this.funcionario = this.formulario.value ;
+
+     this.funcionario = this.formulario.value ;
+     this.funcionario = this.formulario.value;
+
+     this.valorInteiro = this.formulario.value.estado;
 
       //Verifia se há campo preenchido para pesquisa
       if(    this.funcionario.nome == "" || this.funcionario.nome  == null 
@@ -95,6 +102,7 @@ export class PesquisarComponent implements OnInit {
       this.pesquisaFuncionarioService.buscar(this.funcionario)
       .subscribe(response =>{
        console.log("Resposta: " + response);
+       this.funcionario = new Funcionario();
       },
         (erro)=> {
           alert(erro);
