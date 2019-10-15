@@ -2,6 +2,7 @@ import { PesquisaFuncionario } from './PesquisaFuncionario';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { ConfigService } from '../config.service';
 import { Injectable } from '@angular/core';
+import { Funcionario } from '../funcionario/funcionario';
 
 
 
@@ -21,7 +22,7 @@ export class PesquisaFuncionarioService{
                 this.options =new RequestOptions({headers: this.headers})
                 }
 
-    buscar(pesqiosaFuncionario:PesquisaFuncionario){
+    buscar(funcionario:Funcionario){
        return this.http.get(this.baseUrlService + '/search' ).map(res => res.json());
     }
 }

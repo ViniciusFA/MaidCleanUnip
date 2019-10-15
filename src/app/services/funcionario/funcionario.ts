@@ -8,16 +8,16 @@ export class Funcionario{
     senha:string; 
     email:string;   
     urlFacebook: string;    
-    hasWhatsapp:boolean;
+    hasWhatsapp:string;
     telefone:string;    
     profissao:string;
     experiencia:string;
     endereco:string;
     complemento:string; 
     cidade:string;
-    estado:Number;
+    estado:string;
     cep:string;       
-    sexo:boolean;
+    sexo:string;
     sobrenome:string; 
     id_usuario:Number;    
 }
