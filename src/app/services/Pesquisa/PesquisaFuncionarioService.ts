@@ -21,7 +21,11 @@ export class PesquisaFuncionarioService{
                 this.options =new RequestOptions({headers: this.headers})
                 }
 
-    buscar(pesqiosaFuncionario:PesquisaFuncionario){
-       return this.http.get(this.baseUrlService + '/search' ).map(res => res.json());
+    buscar(pesquisaFuncionario:PesquisaFuncionario){
+       return this.http.get(this.baseUrlService , {params: pesquisaFuncionario} 
+       ).map(res => { 
+           res.json() 
+            console.log(res);
+        });
     }
 }

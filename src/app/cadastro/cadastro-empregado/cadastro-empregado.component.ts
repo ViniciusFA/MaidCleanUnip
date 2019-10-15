@@ -74,24 +74,29 @@ export class CadastroEmpregadoComponent implements OnInit {
     let funcionario = this.formulario.value as Funcionario;
 
     //Convertendo o valor da opção(string) para boolean
+    /*
     this.valorInteiro = this.formulario.value.hasWhatsapp
     if(this.valorInteiro == 1){
      funcionario.hasWhatsapp = true;
     }else{
       funcionario.hasWhatsapp = false;
     }
+    */
 
     //Convertendo o valor da opção(string) para boolean
+    /*
     this.valorInteiro = this.formulario.value.sexo;    
     if(this.valorInteiro == 1){
       funcionario.sexo = true;
      }else{
        funcionario.sexo = false;
      }
+     */
 
      //convertendo o valor da opção (string) para inteiro
+     /*
     funcionario.estado = parseInt (this.formulario.value.estado);
-
+    */
 
     /*CHAMA O SERVIÇO PARA ADICIONAR UMA NOVA PESSOA */
     this.funcionarioService.addFuncionario(funcionario)

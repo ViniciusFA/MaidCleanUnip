@@ -6,30 +6,42 @@
         <div class="col-md-12">
             <div class="tituloConteudoPaginas" id="tituloVagasCadastradas">
                 <!--<h3>Profissionais Cadastrados</h3>-->
-                <h3>Vagas</h3>
-                <hr/>
-                <form class="form-inline" id="formPesquisaCampos" (ngSubmit)="pesquisar()">
-
+                <h3>{{titulo}}</h3>
+            </div>
+            <hr/>
+            <form class="form-inline" id="formPesquisaCampos" [formGroup]="formulario" (ngSubmit)="pesquisar()">
+                
                     <div class="form-row" id="camposFormPesquisa">                               
                             <div class="col-6">
-                            <input type="text" class="form-control" id="campoIDVaga"  [(ngModel)]="vaga.id" name="id_vaga" ngDefaultControl placeholder="ID da vaga">
+                              <input type="text" class="form-control" id="campoNome"  formControlName="nome" name="nome" ngDefaultControl placeholder="Nome">
                             </div>
                             <br>
                             <div class="col-6">
-                            <input type="text" class="form-control" id="campoNomeVaga"  [(ngModel)]="vaga.nome" name="nome" ngDefaultControl placeholder="Insira algo para pesquisar">
+                              <input type="text" class="form-control" id="campoSobreNome"  formControlName="sobrenome" name="sobrenome" ngDefaultControl placeholder="Sobrenome">
                             </div>
                             <br>
-                            <div class="col-3">
-                                <select class="form-control form-control-sm-3"  id="campoProfissaoo" >
-                                        <option *ngFor="let profissao of profissoes" [ngValue]="profissao">{{profissao}}</option>
-                                        
+                            <div class="col-3" formControlName="estado" name="ddlEstado" ngDefaultControl>
+                                <select class="form-control form-control-sm-3"  id="campoEstado" >
+                                        <option *ngFor="let estado of estados" ngValue="estados.id">
+                                            {{estado.nome}}
+                                        </option>
                                 </select>
-                            </div>
+                             </div>
                             <div class="col-3">
-                                    <select class="form-control form-control-sm-3" id="campoEstado" [(ngModel)]="vaga.estado" name="estado" ngDefaultControl>
-                                            <option>Estado</option>
-                                            <option>Rio de Janeiro</option>
-                                            <option>São Paulo</option>
+                              <input type="text" class="form-control" placeholder="Cidade" id="campoCidade" formControlName="cidade" name="cidade" ngDefaultControl>
+                            </div>
+                            <div class="col-3" formControlName="sexo" name="sexo" ngDefaultControl>
+                                    <select class="form-control form-control-sm-3" id="campoSexo" >
+                                            <option *ngFor="let sexo of sexos" ngValue="sexo.id">
+                                            {{sexo.nome}}
+                                            </option>
+                                    </select>
+                            </div>
+                            <div class="col-3" formControlName="experiencia" name="experiencia" ngDefaultControl>
+                                    <select class="form-control form-control-sm-3" id="campoExperiencia" >
+                                            <option *ngFor="let experiencia of experiencias" ngValue="experiencias.id">
+                                            {{experiencia.nome}}
+                                            </option>
                                     </select>
                             </div>
                     </div>    
@@ -37,10 +49,105 @@
                     <div class="botoesPesquisar">   
                             <button type="submit" class="btn btn-secondary" id="btnLimparPesquisa" (click)="limparCampos()" >Limpar</button>
                             <button type="submit" class="btn btn-secondary" id="btnEnviarPesquisa">Pesquisar</button>
-                    </div>
-                 </form>
+                   </div>
+               </form>
+             </div>
+             <div>
+                    <div class="container">
+                            <div class="card-columns d-flex justify-content-center">
+                              <!--Card 01 linha 01-->
+                              <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Emprego 01</h5>
+                                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                      <a href="#" class="card-link">Card link</a>
+                                      <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                  </div>
+                                  &nbsp;
+                               <!--Card 02 linha 01-->
+                               <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Emprego 02</h5>
+                                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                      <a href="#" class="card-link">Card link</a>
+                                      <a href="#" class="card-link">Another link</a>
+                                    </div>
+                               </div>
+                               &nbsp;
+                                <!--Card 03 linha 01-->
+                                <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                          <h5 class="card-title">Emprego 03</h5>
+                                          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          <a href="#" class="card-link">Card link</a>
+                                          <a href="#" class="card-link">Another link</a>
+                                        </div>
+                                   </div>
+                                   &nbsp;
+                                <!--Card 04 linha 01-->
+                               <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Emprego 04</h5>
+                                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                      <a href="#" class="card-link">Card link</a>
+                                      <a href="#" class="card-link">Another link</a>
+                                    </div>
+                               </div>
+                            </div>
+                              <div class="card-columns d-flex justify-content-center">
+                                 <!--Card 01 linha 02-->
+                                 <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                          <h5 class="card-title">Emprego 05</h5>
+                                          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          <a href="#" class="card-link">Card link</a>
+                                          <a href="#" class="card-link">Another link</a>
+                                        </div>
+                                   </div>
+                                   &nbsp;
+                                 <!--Card 02 linha 02-->
+                                 <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                          <h5 class="card-title">Emprego 06</h5>
+                                          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          <a href="#" class="card-link">Card link</a>
+                                          <a href="#" class="card-link">Another link</a>
+                                        </div>
+                                   </div>
+                                   &nbsp;
+                                 <!--Card 03 linha 02-->
+                                 <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                          <h5 class="card-title">Emprego 07</h5>
+                                          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          <a href="#" class="card-link">Card link</a>
+                                          <a href="#" class="card-link">Another link</a>
+                                        </div>
+                                   </div>
+                                   &nbsp;
+                                 <!--Card 04 linha 02-->
+                                 <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                          <h5 class="card-title">Emprego 08</h5>
+                                          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          <a href="#" class="card-link">Card link</a>
+                                          <a href="#" class="card-link">Another link</a>
+                                        </div>
+                                   </div>
+                            </div>
+                            <br>
+                            <br>
+                          </div>
              </div>
         </div>
-    </div>         
-</div>   
+    </div>   
     

@@ -30,6 +30,5 @@ export const ROUTES: Routes = [
     {path: 'detalhes', component: FuncionarioDetalhesComponent },
     {path: 'oportunidades', component: OportunidadesComponent },
     {path: 'login', component: LoginComponent },
-    {path: 'logout', component: LogoutComponent }
-    
+    {path: 'logout', component: LogoutComponent }    
 ]

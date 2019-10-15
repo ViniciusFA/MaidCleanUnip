@@ -22,15 +22,20 @@ export class PesquisarComponent implements OnInit {
   private titulo:string;
   private formulario:FormGroup;  
   private pesquisaFuncionario:PesquisaFuncionario = new PesquisaFuncionario();
+  private funcionario:Funcionario = new Funcionario();
+  
 
   constructor(private funcionarioService: FuncionarioService,
-              private formBuildder:FormBuilder,
-              private pesquisaFuncionarioService:PesquisaFuncionarioService) {
+              private formBuilder:FormBuilder,
+              private pesquisaFuncionarioService:PesquisaFuncionarioService,
+              private router:Router
+              ) {
 
               this.configurarFormulario();
     }
 
   ngOnInit(){
+    this.titulo = "Pesquisar Funcionários";
     this.funcionarioService.getFuncionarios().subscribe(res => this.funcionarios = res);
     }
 
@@ -55,7 +60,7 @@ export class PesquisarComponent implements OnInit {
     ];
 
     configurarFormulario(){
-      this.formulario = this.formBuildder.group({
+      this.formulario = this.formBuilder.group({
         nome:new FormControl(''),
         sobrenome:new FormControl(''),
         estado:new FormControl(''),
@@ -75,20 +80,19 @@ export class PesquisarComponent implements OnInit {
     }
 
     pesquisar(){     
-     this.pesquisaFuncionario = this.formulario.value ;
+      this.funcionario = this.formulario.value ;
 
-     console.log(this.pesquisaFuncionario);
       //Verifia se há campo preenchido para pesquisa
-      if(    this.pesquisaFuncionario.nome == "" || this.pesquisaFuncionario.nome  == null 
-          && this.pesquisaFuncionario.sobrenome == "" || this.pesquisaFuncionario.sobrenome == null
-          && this.pesquisaFuncionario.estado == "" || this.pesquisaFuncionario.estado == null
-          && this.pesquisaFuncionario.cidade == "" || this.pesquisaFuncionario.cidade == null
-          && this.pesquisaFuncionario.sexo == "" || this.pesquisaFuncionario.sexo == null
-          && this.pesquisaFuncionario.experiencia == "" || this.pesquisaFuncionario.experiencia == null){
+      if(    this.funcionario.nome == "" || this.funcionario.nome  == null 
+          && this.funcionario.sobrenome == "" || this.funcionario.sobrenome == null
+          && this.funcionario.estado == "" || this.funcionario.estado == null
+          && this.funcionario.cidade == "" || this.funcionario.cidade == null
+          && this.funcionario.sexo == "" || this.funcionario.sexo == null
+          && this.funcionario.experiencia == "" || this.funcionario.experiencia == null){
             alert("Preencha pelo menos um campo para pesquisar.");
       }else{   
 
-      this.pesquisaFuncionarioService.buscar(this.pesquisaFuncionario)
+      this.pesquisaFuncionarioService.buscar(this.funcionario)
       .subscribe(response =>{
        console.log("Resposta: " + response);
       },
@@ -126,5 +130,6 @@ export class PesquisarComponent implements OnInit {
               alert(erro);
         });
       }
-    } 
+    }
+    
 }
