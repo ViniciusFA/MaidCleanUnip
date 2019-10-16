@@ -11,6 +11,6 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.titulo=" Seja Bem Vindo";
+    this.titulo="Home Page";
   }
 }

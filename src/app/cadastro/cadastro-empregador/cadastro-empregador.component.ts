@@ -33,38 +33,35 @@ export class CadastroEmpregadorComponent implements OnInit {
   ];
 
   sexos = [
-    new Sexo(0,'Sexo'),
+    new Sexo(0, 'Sexo'),
     new Sexo(1, 'Feminino'),
     new Sexo(2, 'Masculino'),
   ];
 
   residencias = [
-    new Residencia(0,'Residência'),
-    new Residencia(1, 'Apartamnto'),
+    new Residencia(0, 'Residência'),
+    new Residencia(1, 'Apartamento'),
     new Residencia(2, 'Casa'),
   ];
 
   configurarFormulario(){
     this.formulario = this.formBuilder.group({
 
-      nome:this.formBuilder.control('',[Validators.required, Validators.minLength(3)]),
-      sobrenome: this.formBuilder.control('',Validators.minLength(5)),
-      login: this.formBuilder.control('',[Validators.required, Validators.minLength(3)]),
+      nome:this.formBuilder.control('',[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+      sobrenome: this.formBuilder.control('',[Validators.minLength(3),Validators.maxLength(40)]),
+      login: this.formBuilder.control('',[Validators.required, Validators.minLength(3),Validators.maxLength(10)]),
       senha: this.formBuilder.control('',[Validators.required, Validators.minLength(6),Validators.maxLength(8)]),
-      avaliacao: this.formBuilder.control(''),
+      avaliacao: this.formBuilder.control('',[Validators.email,Validators.maxLength(50)]),
       sexo: this.formBuilder.control(''),
-      email: this.formBuilder.control('',Validators.email),
-      urlFacebook: this.formBuilder.control(''),
-      hasWhatsapp: this.formBuilder.control(''),
-      telefone: this.formBuilder.control(''),
-      profissao: this.formBuilder.control(''),
+      email: this.formBuilder.control('',[Validators.email,Validators.maxLength(50)]),
+      telefone: this.formBuilder.control('',Validators.maxLength(13)),
       residencia: this.formBuilder.control(''),
-      cnpj: this.formBuilder.control(''),
-      endereco: this.formBuilder.control(''),
-      complemento: this.formBuilder.control(''),
-      cidade: this.formBuilder.control(''),
+      cnpj: this.formBuilder.control('',Validators.maxLength(20)),
+      endereco: this.formBuilder.control('',Validators.maxLength(100)),
+      complemento: this.formBuilder.control('',Validators.maxLength(40)),
+      cidade: this.formBuilder.control('',Validators.maxLength(30)),
       estado: this.formBuilder.control(''),
-      cep: this.formBuilder.control('')
+      cep: this.formBuilder.control('',Validators.maxLength(8))
     });
   }
 
@@ -76,49 +73,20 @@ export class CadastroEmpregadorComponent implements OnInit {
 
     let empregador = this.formulario.value as Empregador;
 
-    //convertendo value do option(string) para inteiro
-    empregador.estado= parseInt (this.formulario.value.estado);
-
-    //Convertendo o valor da opção(string) para boolean
-    this.valorInteiro = this.formulario.value.sexo;    
-    if(this.valorInteiro == 1){
-        empregador.sexo = true;
-      }else{
-       empregador.sexo = false;
-      }
-
-    //convertendo value do option(string) para inteiro
-    empregador.cnpj= parseInt (this.formulario.value.cnpj);
-
-     //convertendo value do option(string) para inteiro
-     empregador.cep= parseInt (this.formulario.value.cep);
-
-     //convertendo value do option(string) para inteiro
-     empregador.telefone= parseInt (this.formulario.value.telefone);
-
-     //Convertendo o valor da opção(string) para boolean
-    this.valorInteiro = this.formulario.value.hasWhatsapp;    
-    if(this.valorInteiro == 1){
-        empregador.hasWhatsapp = true;
-      }else{
-       empregador.hasWhatsapp = false;
-      }
-
     this.empregadorService.criarEmpregador(empregador)
                           .subscribe(response=> {
       let res:Response = <Response>response;
       
       if(res.codigo == 1){
         alert(res.mensagem);
-        this.empregador = new Empregador();   
+        this.formulario.reset();   
       }else{
         alert(res.mensagem);
       }
     }
     ,(erro) =>{
       alert(erro);  
-    });  
-    this.formulario.reset();  
+    });      
   }
 
   voltar():void{

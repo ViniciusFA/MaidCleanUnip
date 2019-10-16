@@ -10769,11 +10769,10 @@ html {
   text-align: center;
 }
 #inputState{
-  height: 60%;
+  height: 40%;
 }
-#inpuResiencia{
-  height: 0%;
-  margin-left: -9%;
+#inpuResidencia{
+  height: 42%;
 }
 #inputEstado{
   height: 42%;
@@ -10850,7 +10849,7 @@ html {
 }
 #radioGenero{
   margin:0 auto;
-  height: 60%;
+  height: 40%;
 }
 #btnAtualizarDetalhes{
   margin-left:1%;
@@ -10863,4 +10862,25 @@ html {
 }
 #btnInfoFuncionario{
   cursor: pointer;
+}
+#campoNomeVagas{
+  width: 100%;
+}
+#campoSobreNomeVagas{
+  width: 100%;
+}
+#campoEstadoVagas{
+  width: 100%;
+  height: 55%;
+}
+#campoSexoVagas{
+  width: 100%;
+  height: 55%;
+}
+#campoExperienciaVagas{
+  width: 100%;
+  height: 55%;
+}
+#campoCidadeVagas{
+  width: 100%;
 }

@@ -4,6 +4,7 @@ import { Response } from '../services/response';
 import { ContatoService } from '../services/contato/contato.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MotivoMensagem } from '../util/motivoMensagem';
 
 @Component({
   selector: 'app-contato',
@@ -25,6 +26,15 @@ export class ContatoComponent implements OnInit {
     this.configurarFormulario();
   }
 
+  motivos = [
+    new MotivoMensagem(0, "Selecione"),
+    new MotivoMensagem(1, "Críticas"),
+    new MotivoMensagem(2, "Elogio"),
+    new MotivoMensagem(3, "Ouvidoria"),
+    new MotivoMensagem(4, "Reclamação"),
+    new MotivoMensagem(5, "Sugestão"),
+  ]
+
   limparCampos():void{
     (<HTMLSelectElement>document.getElementById('inputNome')).value = "";
     (<HTMLSelectElement>document.getElementById('inputSobreNome')).value = "";
@@ -36,11 +46,11 @@ export class ContatoComponent implements OnInit {
     configurarFormulario(){
       this.formulario = this.formBuilder.group({
 
-        nome:this.formBuilder.control('',[Validators.required, Validators.minLength(3)]),
-        sobrenome: this.formBuilder.control('',Validators.minLength(5)),
-        email: this.formBuilder.control('',Validators.email),      
+        nome:this.formBuilder.control('',[Validators.required, Validators.minLength(3),Validators.maxLength(30)]),
+        sobrenome: this.formBuilder.control('',[Validators.required, Validators.minLength(3),Validators.maxLength(40)]),
+        email: this.formBuilder.control('',[Validators.required, Validators.email, Validators.maxLength(70)]),      
         motivo: this.formBuilder.control('',Validators.required),
-        mensagem: this.formBuilder.control('')        
+        mensagem: this.formBuilder.control('',[Validators.required,Validators.maxLength(400)])        
       });
     }
 

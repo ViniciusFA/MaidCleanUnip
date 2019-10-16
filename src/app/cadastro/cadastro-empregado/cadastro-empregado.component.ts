@@ -48,7 +48,7 @@ export class CadastroEmpregadoComponent implements OnInit {
     this.formulario = this.formBuilder.group({
 
       nome: new FormControl('',[Validators.required, Validators.minLength(3),Validators.maxLength(15)]),
-      sobrenome: new FormControl('',[Validators.minLength(5),Validators.maxLength(40)]),
+      sobrenome: new FormControl('',[Validators.minLength(3),Validators.maxLength(40)]),
       login: new FormControl('',[Validators.required, Validators.minLength(5),Validators.maxLength(10)]),
       senha: new FormControl('',[Validators.required, Validators.minLength(6),Validators.maxLength(8)]),
       sexo: new FormControl(''),
@@ -71,29 +71,11 @@ export class CadastroEmpregadoComponent implements OnInit {
 
   /*FUNÇÃO PARA SALVAR UM NOVO REGISTRO OU ALTERAÇÃO EM UM REGISTRO EXISTENTE */
   salvar():void{
+
     //populando o objeto funcionario através dos valores recebidos no reactiveforms
     let funcionario = this.formulario.value as Funcionario;
 
-    //Convertendo o valor da opção(string) para boolean
-    /*
-    this.valorInteiro = this.formulario.value.hasWhatsapp
-    if(this.valorInteiro == 1){
-     funcionario.hasWhatsapp = true;
-    }else{
-      funcionario.hasWhatsapp = false;
-    }
-    */
-
-    //Convertendo o valor da opção(string) para boolean
-    /*
-    this.valorInteiro = this.formulario.value.sexo;    
-    if(this.valorInteiro == 1){
-      funcionario.sexo = true;
-     }else{
-       funcionario.sexo = false;
-     }
-     */
-
+   
     /*CHAMA O SERVIÇO PARA ADICIONAR UMA NOVA PESSOA */
     this.funcionarioService.addFuncionario(funcionario)
       .subscribe(response => {

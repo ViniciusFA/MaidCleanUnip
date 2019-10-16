@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import { FuncionarioService } from '../services/funcionario/funcionario.service';
 import { Funcionario } from '../services/funcionario/funcionario';
 import { Response } from '../services/response';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Estados } from '../util/estados';
 import { Experiencia } from '../util/experiencia';
 import { Sexo } from '../util/sexo';
@@ -63,22 +63,22 @@ export class PesquisarComponent implements OnInit {
 
     configurarFormulario(){
       this.formulario = this.formBuilder.group({
-        nome:new FormControl(''),
-        sobrenome:new FormControl(''),
+        nome:new FormControl('',[Validators.minLength(3),Validators.maxLength(15)]),
+        sobrenome:new FormControl('',[Validators.minLength(3),Validators.maxLength(40)]),
         estado:new FormControl(''),
-        cidade:new FormControl(''),
+        cidade:new FormControl('',Validators.maxLength(15)),
         sexo:new FormControl(''),
         experiencia:new FormControl('')
       });
     }
   
-    limparCampos():void{
-      (<HTMLSelectElement>document.getElementById('campoNome')).value = "";
-      (<HTMLSelectElement>document.getElementById('campoSobreNome')).value = "";
-      (<HTMLSelectElement>document.getElementById('campoEstado')).value = "Estado";
-      (<HTMLSelectElement>document.getElementById('campoCidade')).value = ""; 
-      (<HTMLSelectElement>document.getElementById('campoSexo')).value = "Sexo"; 
-      (<HTMLSelectElement>document.getElementById('campoExperiencia')).value = "Experiência";      
+    limparCampos(){
+      (<HTMLSelectElement>document.getElementById('campoNomeVagas')).value = "";
+      (<HTMLSelectElement>document.getElementById('campoSobreNomeVagas')).value = "";
+      (<HTMLSelectElement>document.getElementById('campoEstadoVagas')).value = "Estado";
+      (<HTMLSelectElement>document.getElementById('campoCidadeVagas')).value = ""; 
+      (<HTMLSelectElement>document.getElementById('campoSexoVagas')).value = "Sexo"; 
+      (<HTMLSelectElement>document.getElementById('campoExperienciaVagas')).value = "Experiência";      
     }
 
     getIdFuncionario(){}

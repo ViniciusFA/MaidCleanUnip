@@ -13,32 +13,35 @@
                     
                         <div class="form-row" id="camposFormPesquisa">                               
                                 <div class="col-6">
-                                  <input type="text" class="form-control" id="campoNome"  formControlName="nome" name="nome" ngDefaultControl placeholder="Nome">
+                                  <input type="text" class="form-control" id="campoNomeVagas"  formControlName="nome" name="nome" ngDefaultControl placeholder="Nome">
+                                  <p>(Insira entre 3 a 15 caracteres)</p>
                                 </div>
                                 <br>
                                 <div class="col-6">
-                                  <input type="text" class="form-control" id="campoSobreNome"  formControlName="sobrenome" name="sobrenome" ngDefaultControl placeholder="Sobrenome">
+                                  <input type="text" class="form-control" id="campoSobreNomeVagas"  formControlName="sobrenome" name="sobrenome" ngDefaultControl placeholder="Sobrenome">
+                                  <p>(Insira entre 3 a 40 caracteres)</p>
                                 </div>
                                 <br>
                                 <div class="col-3" formControlName="estado" name="ddlEstado" ngDefaultControl>
-                                    <select class="form-control form-control-sm-3"  id="campoEstado" >
+                                    <select class="form-control form-control-sm-3"  id="campoEstadoVagas" >
                                             <option *ngFor="let estado of estados" ngValue="estados.id">
                                                 {{estado.nome}}
                                             </option>
                                     </select>
                                  </div>
                                 <div class="col-3">
-                                  <input type="text" class="form-control" placeholder="Cidade" id="campoCidade" formControlName="cidade" name="cidade" ngDefaultControl>
+                                  <input type="text" class="form-control" placeholder="Cidade" id="campoCidadeVagas" formControlName="cidade" name="cidade" ngDefaultControl>
+                                  <p>(Insira até 15 caracteres)</p>
                                 </div>
                                 <div class="col-3" formControlName="sexo" name="sexo" ngDefaultControl>
-                                        <select class="form-control form-control-sm-3" id="campoSexo" >
+                                        <select class="form-control form-control-sm-3" id="campoSexoVagas" >
                                                 <option *ngFor="let sexo of sexos" ngValue="sexo.id">
                                                 {{sexo.nome}}
                                                 </option>
                                         </select>
                                 </div>
                                 <div class="col-3" formControlName="experiencia" name="experiencia" ngDefaultControl>
-                                        <select class="form-control form-control-sm-3" id="campoExperiencia" >
+                                        <select class="form-control form-control-sm-3" id="campoExperienciaVagas" >
                                                 <option *ngFor="let experiencia of experiencias" ngValue="experiencias.id">
                                                     {{experiencia.nome}}
                                                 </option>
@@ -47,8 +50,8 @@
                         </div>    
                         <!--Botões limpar e pesquisar -->
                         <div class="botoesPesquisar">   
-                                <button type="submit" class="btn btn-secondary" id="btnLimparPesquisa" (click)="limparCampos()" >Limpar</button>
-                                <button type="submit" class="btn btn-secondary" id="btnEnviarPesquisa">Pesquisar</button>
+                                <button type="button" class="btn btn-secondary" id="btnLimparPesquisa" (click)="limparCampos()" >Limpar</button>
+                                <button type="submit" class="btn btn-secondary" id="btnEnviarPesquisa" [disabled]="formulario.invalid">Pesquisar</button>
                         </div>
                 </form>
             
