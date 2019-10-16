@@ -28,4 +28,5 @@ export class PesquisaFuncionarioService{
            res.json() 
             console.log(res);
         });
+    }
 }

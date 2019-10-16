@@ -1,0 +1,107 @@
+<div class="tituloConteudoPaginas">
+        <!--  <h3>Pesquisar Profissionais</h3>  -->
+          <h3>{{titulo}}</h3>                     
+</div>
+ <hr/>
+ <div class="conteudoPageDetalhes">
+        <div>
+            <label> <b>Id:</b> </label>{{funcionario.Id}}
+        </div>
+        <div>    
+            <label><b> Nome:</b></label> {{funcionario.nome}}
+        </div>
+        <div>
+            <label><b>Sobrenome:</b></label> {{funcionario.sobrenome}}
+        </div> 
+        <div>
+            <label><b>Email:</b></label> {{funcionario.email}}
+        </div>  
+        <div>
+            <label><b>Facebook:</b></label> {{funcionario.facebook}}
+        </div>
+        <div>
+            <label><b>Whatsapp::</b></label> {{funcionario.hasWhatsapp}}
+        </div>
+        <div>
+            <label><b>Telefone::</b></label> {{funcionario.telefone}}
+        </div>
+        <div>
+            <label><b>Profissão::</b></label> {{funcionario.profissao}}
+        </div>
+        <div>
+            <label><b>Experiência::</b></label> {{funcionario.experiencia}}
+        </div>
+        <div>
+            <label><b>CPF:</b></label> {{funcionario.cpf}}
+        </div>
+        <div>
+            <label><b>Endereço:</b></label> {{funcionario.endereco}}
+        </div>
+        <div>
+            <label><b>Complemento:</b></label> {{funcionario.complemento}}
+        </div>
+        <div>
+            <label><b>Cidade:</b></label> {{funcionario.cidade}}
+        </div>
+        <div>
+            <label><b>Estado:</b></label> {{funcionario.estado}}
+        </div>
+        <div>
+            <label><b>CEP:</b></label> {{funcionario.cep}}
+        </div>
+        <div>
+            <label><b>Avaliação:</b></label> {{funcionario.avaliacao}}
+        </div>
+        <div>
+            <label><b>Sexo:</b></label> {{funcionario.sexo}}
+        </div>
+    </div>
+
+    <div class="grupoBotoesDetalhes">
+         <button  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmExcluir" >Excluir </button>
+         <button  class="btn btn-primary btn-sm" id="btnAtualizarDetalhes" data-toggle="modal" data-target="#confirmAtualizar">Atualizar </button>
+         <button  class="btn btn-primary btn-sm" [routerLink]="['/pesquisar']" id="btnVoltarDetalhes">Voltar </button><br>
+     </div>
+     <br>
+
+<!-- Modal para confirmar a EXCLUSÃO de funcionário-->
+<div class="modal" tabindex="-1" role="dialog" id="confirmExcluir">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" id="modalBodyInfoExcluir">
+            <div class="modal-header">
+              <h5 class="modal-title">Excluir Funcionário</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" >
+                 <p>Tem certeza que deseja excluir esse funcionário?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+              <button type="button" class="btn btn-primary" (click)="excluirFuncionario()">Excluir</button>
+            </div>
+          </div>
+        </div>
+</div>
+
+<!-- Modal para confirmar a ATUALIZAÇÃO de funcionário-->
+<div class="modal" tabindex="-1" role="dialog" id="confirmAtualizar">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" id="modalBodyInfoAtualizar">
+            <div class="modal-header">
+              <h5 class="modal-title">Atualizar Funcionário</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" >
+                 <p>Tem certeza que deseja atualizar esse funcionário?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+              <button type="button" class="btn btn-primary" (click)="atualizarFuncionario()">Atualizar</button>
+            </div>
+          </div>
+        </div>
+</div>

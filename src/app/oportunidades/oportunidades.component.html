@@ -13,11 +13,11 @@
                 
                     <div class="form-row" id="camposFormPesquisa">                               
                             <div class="col-6">
-                              <input type="text" class="form-control" id="campoNome"  formControlName="nome" name="nome" ngDefaultControl placeholder="Nome">
+                              <input type="text" class="form-control" id="campoNome"  formControlName="nomeVaga" name="nomeVaga" ngDefaultControl placeholder="Nome da Vaga">
                             </div>
                             <br>
                             <div class="col-6">
-                              <input type="text" class="form-control" id="campoSobreNome"  formControlName="sobrenome" name="sobrenome" ngDefaultControl placeholder="Sobrenome">
+                              <input type="text" class="form-control" id="campoSobreNome"  formControlName="assunto" name="assunto" ngDefaultControl placeholder="Assunto da vaga">
                             </div>
                             <br>
                             <div class="col-3" formControlName="estado" name="ddlEstado" ngDefaultControl>
@@ -30,18 +30,18 @@
                             <div class="col-3">
                               <input type="text" class="form-control" placeholder="Cidade" id="campoCidade" formControlName="cidade" name="cidade" ngDefaultControl>
                             </div>
-                            <div class="col-3" formControlName="sexo" name="sexo" ngDefaultControl>
+                            <div class="col-3" formControlName="residencia" name="sexo" ngDefaultControl>
                                     <select class="form-control form-control-sm-3" id="campoSexo" >
-                                            <option *ngFor="let sexo of sexos" ngValue="sexo.id">
-                                            {{sexo.nome}}
+                                            <option *ngFor="let residencia of residencias" ngValue="residencia.id">
+                                            {{residencia.nome}}
                                             </option>
                                     </select>
                             </div>
                             <div class="col-3" formControlName="experiencia" name="experiencia" ngDefaultControl>
                                     <select class="form-control form-control-sm-3" id="campoExperiencia" >
-                                            <option *ngFor="let experiencia of experiencias" ngValue="experiencias.id">
-                                            {{experiencia.nome}}
-                                            </option>
+                                            <option>Experiência</option>
+                                            <option>Sim</option>
+                                            <option>Não</option>
                                     </select>
                             </div>
                     </div>    
@@ -61,8 +61,9 @@
                                       <h5 class="card-title">Emprego 01</h5>
                                       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                      <a href="#" class="card-link">Card link</a>
-                                      <a href="#" class="card-link">Another link</a>
+                                      <a href="#" class="card-link">Candidate-se</a>
+                                      &nbsp;
+                                      <a href="#" class="card-link">Saber Mais</a>
                                     </div>
                                   </div>
                                   &nbsp;

@@ -14,6 +14,7 @@ import { FuncionarioDetalhesComponent } from './funcionario/funcionario-detalhes
 import { OportunidadesComponent } from './oportunidades/oportunidades.component'
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { InfoFuncionarioComponent } from './info-funcionario/info-funcionario.component';
 
 
 export const ROUTES: Routes = [
@@ -30,5 +31,6 @@ export const ROUTES: Routes = [
     {path: 'detalhes', component: FuncionarioDetalhesComponent },
     {path: 'oportunidades', component: OportunidadesComponent },
     {path: 'login', component: LoginComponent },
-    {path: 'logout', component: LogoutComponent }    
+    {path: 'logout', component: LogoutComponent },
+    {path: 'infoFuncionario', component: InfoFuncionarioComponent }       
 ]

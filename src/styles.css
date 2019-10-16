@@ -2630,8 +2630,8 @@
  
  .btn-primary {
    color: #fff;
-   background-color: #1a1a1a;
-   border-color: #1a1a1a;
+   background-color: #334c73;
+   border-color: #334c73;
  }
  
  .btn-primary:hover {
@@ -5047,7 +5047,7 @@
  
  .badge-info {
    color: #fff;
-   background-color: #1F9BCF;
+   background-color: rgb(18, 114, 155);
  }
  
  a.badge-info:hover, a.badge-info:focus {
@@ -10331,7 +10331,7 @@
  }
   .tituloConteudoPaginas{
    margin:1% auto;
-   margin-top: 34px;
+   margin-top: 2%;
    width: 34%;
  }
  .escolhaProfissional{
@@ -10757,7 +10757,7 @@ html {
 }
 .grupoBotoesDetalhes{
   margin-left: 30%;
-  margin-bottom: 3%;
+  margin-bottom: 1%;
 }
 #btnVoltarDetalhes{
   margin-left:1%;
@@ -10851,4 +10851,16 @@ html {
 #radioGenero{
   margin:0 auto;
   height: 60%;
+}
+#btnAtualizarDetalhes{
+  margin-left:1%;
+}
+#modalBodyInfoExcluir{
+  height: 100%;
+}
+#modalBodyInfoAtualizar{
+  height: 100%;
+}
+#btnInfoFuncionario{
+  cursor: pointer;
 }

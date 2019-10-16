@@ -22,10 +22,8 @@ export class PesquisarComponent implements OnInit {
   private titulo:string;
   private formulario:FormGroup;  
   private pesquisaFuncionario:PesquisaFuncionario = new PesquisaFuncionario();
-  private funcionario:Funcionario = new Funcionario();
-  
+  private funcionario:Funcionario = new Funcionario(); 
 
-  private funcionario: Funcionario = new Funcionario();
   private valorInteiro:number = 0;
 
   constructor(private funcionarioService: FuncionarioService,
@@ -40,6 +38,7 @@ export class PesquisarComponent implements OnInit {
   ngOnInit(){
     this.titulo = "Pesquisar Funcionários";
     this.funcionarioService.getFuncionarios().subscribe(res => this.funcionarios = res);
+    this.getIdFuncionario();
     }
 
     estados = [
@@ -82,8 +81,9 @@ export class PesquisarComponent implements OnInit {
       (<HTMLSelectElement>document.getElementById('campoExperiencia')).value = "Experiência";      
     }
 
-    pesquisar(){     
+    getIdFuncionario(){}
 
+    pesquisar(){   
      this.funcionario = this.formulario.value ;
      this.funcionario = this.formulario.value;
 
@@ -138,6 +138,14 @@ export class PesquisarComponent implements OnInit {
               alert(erro);
         });
       }
+    }
+
+    infoFuncionario(){
+      //this.funcionarioService.getFuncionario();
+      //fazer uma funcionalidade para pegar o id escolhido e inserir no getFuncionario() de
+      //funcionarioService()
+
+      this.router.navigate(['infoFuncionario']);
     }
     
 }

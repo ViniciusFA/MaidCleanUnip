@@ -51,7 +51,7 @@
                                 <button type="submit" class="btn btn-secondary" id="btnEnviarPesquisa">Pesquisar</button>
                         </div>
                 </form>
-            </div>
+            
             <!-- Tabela de resultados da pesquisa-->
             <div class="tabelaProfissionais" >
                 <table id="tabelaProfissionais">
@@ -63,7 +63,7 @@
                         <th scope="col"><strong>Cidade</strong></th>
                         <th scope="col"><strong>Sexo</strong></th>
                         <th scope="col"><strong>Experiência</strong></th>
-                        <th scope="col"><strong>Ações</strong></th>
+                        <th scope="col"><strong>&nbsp;</strong></th>
                     </tr>
                     </thead>
                     <tbody >
@@ -87,20 +87,27 @@
                         <td>Feminino</td> 
                         <td>2 anos</td> 
                         <td>
-                           <button type="button" class="btn btn-outline-dark"  data-toggle="modal" data-target=".bd-example-modal-lg">
+                            <!--                            
+                           <button type="button" class="btn btn-outline-dark"  (click)="infoFuncionario()">
                                info
                             </button>
+                            -->
+                           <a  id="btnInfoFuncionario" (click)="infoFuncionario()">  
+                               <span class="badge badge-info">
+                                   Info
+                                </span>
+                           </a>
+                            
+                                
+                            
                         </td>                              
                     </tr>        
                     </tbody>
                 </table> 
             </div>
 
-            <!--Modal Informações-->
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        ...
+                            
+
                       </div>
                 </div>
              </div>
@@ -145,4 +152,3 @@
                </div>  
         </div>       
     </div>
-</div>

@@ -1,7 +1,8 @@
 export class Vaga{
-    id: number;
     nome:string;
+    assunto:string;
     cidade:string;
     estado:string;
-    profissao:string;
+    residencia:string;
+    experiencia:string;
 }
