@@ -23,10 +23,8 @@ export class PesquisaFuncionarioService{
                 }
 
     buscar(pesquisaFuncionario:PesquisaFuncionario){
-       return this.http.get(this.baseUrlService , {params: pesquisaFuncionario} 
-       ).map(res => { 
-           res.json() 
-            console.log(res);
-        });
+       return this.http.get(this.baseUrlService + '/listaFuncionarios', {params: pesquisaFuncionario} 
+       ).map(res => res.json());
+                
     }
 }

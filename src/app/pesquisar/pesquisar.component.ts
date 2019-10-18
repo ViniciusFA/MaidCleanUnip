@@ -10,6 +10,7 @@ import { Sexo } from '../util/sexo';
 import { PesquisaFuncionarioService } from '../services/Pesquisa/PesquisaFuncionarioService';
 import { PesquisaFuncionario } from '../services/Pesquisa/PesquisaFuncionario';
 import { Http } from '@angular/http';
+import { InfoFuncionarioComponent } from '../info-funcionario/info-funcionario.component';
 
 
 @Component({
@@ -23,8 +24,7 @@ export class PesquisarComponent implements OnInit {
   private formulario:FormGroup;  
   private pesquisaFuncionario:PesquisaFuncionario = new PesquisaFuncionario();
   private funcionario:Funcionario = new Funcionario(); 
-
-  private valorInteiro:number = 0;
+  private inforFuncionario:InfoFuncionarioComponent ; 
 
   constructor(private funcionarioService: FuncionarioService,
               private formBuilder:FormBuilder,
@@ -37,8 +37,8 @@ export class PesquisarComponent implements OnInit {
 
   ngOnInit(){
     this.titulo = "Pesquisar Funcionários";
-    this.funcionarioService.getFuncionarios().subscribe(res => this.funcionarios = res);
-    this.getIdFuncionario();
+    //busca todas as pessoas registradas na tabela ao iniciar a página.
+    this.funcionarioService.getFuncionarios().subscribe(res => this.funcionarios = res);    
     }
 
     estados = [
@@ -81,13 +81,8 @@ export class PesquisarComponent implements OnInit {
       (<HTMLSelectElement>document.getElementById('campoExperienciaVagas')).value = "Experiência";      
     }
 
-    getIdFuncionario(){}
-
     pesquisar(){   
      this.funcionario = this.formulario.value ;
-     this.funcionario = this.formulario.value;
-
-     this.valorInteiro = this.formulario.value.estado;
 
       //Verifia se há campo preenchido para pesquisa
       if(    this.funcionario.nome == "" || this.funcionario.nome  == null 
@@ -97,13 +92,19 @@ export class PesquisarComponent implements OnInit {
           && this.funcionario.sexo == "" || this.funcionario.sexo == null
           && this.funcionario.experiencia == "" || this.funcionario.experiencia == null){
             alert("Preencha pelo menos um campo para pesquisar.");
+            //busca todas as pessoas registradas na tabela.
+            this.funcionarioService.getFuncionarios().subscribe(res => this.funcionarios = res);
       }else{   
-
+       
       this.pesquisaFuncionarioService.buscar(this.funcionario)
       .subscribe(response =>{
-       console.log("Resposta: " + response);
-       this.funcionario = new Funcionario();
-      },
+        if(response.length == 0 ){
+          alert("Não há registros dessa pesquisa.");
+        }else{         
+            //recebe a resposta do back end e atualiza a tabela de funcionários
+            this.funcionarios = response;
+        }      
+    },
         (erro)=> {
           alert(erro);
       });
@@ -140,12 +141,10 @@ export class PesquisarComponent implements OnInit {
       }
     }
 
-    infoFuncionario(){
-      //this.funcionarioService.getFuncionario();
-      //fazer uma funcionalidade para pegar o id escolhido e inserir no getFuncionario() de
-      //funcionarioService()
-
-      this.router.navigate(['infoFuncionario']);
+    infoFuncionario(funcionario:Funcionario){
+      console.log(funcionario.id);
+      this.router.navigate(['infoFuncionario'],{queryParams: funcionario});
+      //this.inforFuncionario.atualizarFuncionario(funcionario);
     }
     
 }

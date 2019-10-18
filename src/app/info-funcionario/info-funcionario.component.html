@@ -4,65 +4,67 @@
 </div>
  <hr/>
  <div class="conteudoPageDetalhes">
-        <div>
-            <label> <b>Id:</b> </label>{{funcionario.Id}}
-        </div>
-        <div>    
-            <label><b> Nome:</b></label> {{funcionario.nome}}
-        </div>
-        <div>
-            <label><b>Sobrenome:</b></label> {{funcionario.sobrenome}}
-        </div> 
-        <div>
-            <label><b>Email:</b></label> {{funcionario.email}}
-        </div>  
-        <div>
-            <label><b>Facebook:</b></label> {{funcionario.facebook}}
-        </div>
-        <div>
-            <label><b>Whatsapp::</b></label> {{funcionario.hasWhatsapp}}
-        </div>
-        <div>
-            <label><b>Telefone::</b></label> {{funcionario.telefone}}
-        </div>
-        <div>
-            <label><b>Profissão::</b></label> {{funcionario.profissao}}
-        </div>
-        <div>
-            <label><b>Experiência::</b></label> {{funcionario.experiencia}}
-        </div>
-        <div>
-            <label><b>CPF:</b></label> {{funcionario.cpf}}
-        </div>
-        <div>
-            <label><b>Endereço:</b></label> {{funcionario.endereco}}
-        </div>
-        <div>
-            <label><b>Complemento:</b></label> {{funcionario.complemento}}
-        </div>
-        <div>
-            <label><b>Cidade:</b></label> {{funcionario.cidade}}
-        </div>
-        <div>
-            <label><b>Estado:</b></label> {{funcionario.estado}}
-        </div>
-        <div>
-            <label><b>CEP:</b></label> {{funcionario.cep}}
-        </div>
-        <div>
-            <label><b>Avaliação:</b></label> {{funcionario.avaliacao}}
-        </div>
-        <div>
-            <label><b>Sexo:</b></label> {{funcionario.sexo}}
-        </div>
-    </div>
+   <div id="conteudoLabelsFuncInfo">
+          <div>
+              <label> <b>ID:</b> </label> &nbsp;  {{funcionarioInfo.id}}                           
+          </div>
+          <div>    
+              <label><b> Nome:</b></label> {{funcionarioInfo.nome}}
+          </div>
+          <div>
+              <label><b>Sobrenome:</b></label> {{funcionarioInfo.sobrenome}}
+          </div> 
+          <div>
+              <label><b>Email:</b></label> {{funcionarioInfo.email}}
+          </div>  
+          <div>
+              <label><b>Facebook:</b></label> {{funcionarioInfo.urlFacebook}}
+          </div>
+          <div>
+              <label><b>Whatsapp::</b></label> {{funcionarioInfo.hasWhatsapp}}
+          </div>
+          <div>
+              <label><b>Telefone::</b></label> {{funcionarioInfo.telefone}}
+          </div>
+          <div>
+              <label><b>Profissão::</b></label> {{funcionarioInfo.profissao}}
+          </div>
+          <div>
+              <label><b>Experiência::</b></label> {{funcionarioInfo.experiencia}}
+          </div>
+          <div>
+              <label><b>CPF:</b></label> {{funcionarioInfo.cpf}}
+          </div>
+          <div>
+              <label><b>Endereço:</b></label> {{funcionarioInfo.endereco}}
+          </div>
+          <div>
+              <label><b>Complemento:</b></label> {{funcionarioInfo.complemento}}
+          </div>
+          <div>
+              <label><b>Cidade:</b></label> {{funcionarioInfo.cidade}}
+          </div>
+          <div>
+              <label><b>Estado:</b></label> {{funcionarioInfo.estado}}
+          </div>
+          <div>
+              <label><b>CEP:</b></label> {{funcionarioInfo.cep}}
+          </div>
+          <div>
+              <label><b>Avaliação:</b></label> {{funcionarioInfo.avaliacao}}
+          </div>
+          <div>
+              <label><b>Sexo:</b></label> {{funcionarioInfo.sexo}}
+          </div>
+      </div>
+  </div>
 
-    <div class="grupoBotoesDetalhes">
+  <div class="grupoBotoesDetalhes">
          <button  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmExcluir" >Excluir </button>
-         <button  class="btn btn-primary btn-sm" id="btnAtualizarDetalhes" data-toggle="modal" data-target="#confirmAtualizar">Atualizar </button>
+         <button  class="btn btn-primary btn-sm" id="btnEditarDetalhes" data-toggle="modal" data-target="#editarFuncionario">Editar </button>
          <button  class="btn btn-primary btn-sm" [routerLink]="['/pesquisar']" id="btnVoltarDetalhes">Voltar </button><br>
-     </div>
-     <br>
+    </div>
+  <br>
 
 <!-- Modal para confirmar a EXCLUSÃO de funcionário-->
 <div class="modal" tabindex="-1" role="dialog" id="confirmExcluir">
@@ -79,14 +81,14 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
-              <button type="button" class="btn btn-primary" (click)="excluirFuncionario()">Excluir</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmExcluir" (click)="excluir(funcionarioInfo)">Excluir</button>
             </div>
           </div>
         </div>
 </div>
 
-<!-- Modal para confirmar a ATUALIZAÇÃO de funcionário-->
-<div class="modal" tabindex="-1" role="dialog" id="confirmAtualizar">
+<!-- Modal para a EDIÇÂO de funcionário-->
+<div class="modal" tabindex="-1" role="dialog" id="editarFuncionario">
         <div class="modal-dialog" role="document">
           <div class="modal-content" id="modalBodyInfoAtualizar">
             <div class="modal-header">
@@ -100,7 +102,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
-              <button type="button" class="btn btn-primary" (click)="atualizarFuncionario()">Atualizar</button>
+              <button type="button" class="btn btn-primary" (click)="atualizarFuncionario()">Editar</button>
             </div>
           </div>
         </div>

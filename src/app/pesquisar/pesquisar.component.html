@@ -12,35 +12,41 @@
                 <form class="form-inline" id="formPesquisaCampos" [formGroup]="formulario" (ngSubmit)="pesquisar()">
                     
                         <div class="form-row" id="camposFormPesquisa">                               
-                                <div class="col-6">
+                                <div class="col-6" id="textoLabelPadrao">
+                                    <b>Nome</b>
                                   <input type="text" class="form-control" id="campoNomeVagas"  formControlName="nome" name="nome" ngDefaultControl placeholder="Nome">
                                   <p>(Insira entre 3 a 15 caracteres)</p>
                                 </div>
                                 <br>
-                                <div class="col-6">
+                                <div class="col-6" id="textoLabelPadrao">
+                                    <b>Sobrenome</b>
                                   <input type="text" class="form-control" id="campoSobreNomeVagas"  formControlName="sobrenome" name="sobrenome" ngDefaultControl placeholder="Sobrenome">
                                   <p>(Insira entre 3 a 40 caracteres)</p>
                                 </div>
                                 <br>
-                                <div class="col-3" formControlName="estado" name="ddlEstado" ngDefaultControl>
+                                <div class="col-3" formControlName="estado" name="estado" ngDefaultControl id="textoLabelPadrao">
+                                   <b>Estado</b>
                                     <select class="form-control form-control-sm-3"  id="campoEstadoVagas" >
                                             <option *ngFor="let estado of estados" ngValue="estados.id">
                                                 {{estado.nome}}
                                             </option>
                                     </select>
                                  </div>
-                                <div class="col-3">
-                                  <input type="text" class="form-control" placeholder="Cidade" id="campoCidadeVagas" formControlName="cidade" name="cidade" ngDefaultControl>
+                                <div class="col-3" id="textoLabelPadrao">
+                                    <b>Cidade</b>
+                                  <input type="text" class="form-control" placeholder="Cidade" id="campoCidadeOportunidades" formControlName="cidade" name="cidade" ngDefaultControl>
                                   <p>(Insira até 15 caracteres)</p>
                                 </div>
-                                <div class="col-3" formControlName="sexo" name="sexo" ngDefaultControl>
+                                <div class="col-3" formControlName="sexo" name="sexo" id="textoLabelPadrao" ngDefaultControl>
+                                        <b>Sexo</b>
                                         <select class="form-control form-control-sm-3" id="campoSexoVagas" >
                                                 <option *ngFor="let sexo of sexos" ngValue="sexo.id">
                                                 {{sexo.nome}}
                                                 </option>
                                         </select>
                                 </div>
-                                <div class="col-3" formControlName="experiencia" name="experiencia" ngDefaultControl>
+                                <div class="col-3" formControlName="experiencia" id="textoLabelPadrao" name="experiencia" ngDefaultControl>
+                                    <b>Experiencia</b>
                                         <select class="form-control form-control-sm-3" id="campoExperienciaVagas" >
                                                 <option *ngFor="let experiencia of experiencias" ngValue="experiencias.id">
                                                     {{experiencia.nome}}
@@ -70,9 +76,7 @@
                     </tr>
                     </thead>
                     <tbody >
-                    <tr class="classTr" >
-                     <!--
-                    <tr class="classTr" *ngFor='let func of funcionarios'>                        
+                    <tr class="classTr" id="listaFuncionariotabela" *ngFor='let func of funcionarios'>                        
                                 <td>{{func.nome}}</td>
                                 <td>{{func.sobrenome}}</td>
                                 <td>{{func.estado}}</td>
@@ -80,30 +84,12 @@
                                 <td>{{func.sexo}}</td>
                                 <td>{{func.experiencia}}</td> 
                                 <td>
-                                    <button type="button" class="btn btn-outline-dark">info</button>
-                                </td>  
-                        -->        
-                        <td>Maria</td>     
-                        <td>Joaquina</td> 
-                        <td>Rio de Janeiro</td> 
-                        <td>Rio de Janeiro</td> 
-                        <td>Feminino</td> 
-                        <td>2 anos</td> 
-                        <td>
-                            <!--                            
-                           <button type="button" class="btn btn-outline-dark"  (click)="infoFuncionario()">
-                               info
-                            </button>
-                            -->
-                           <a  id="btnInfoFuncionario" (click)="infoFuncionario()">  
-                               <span class="badge badge-info">
-                                   Info
-                                </span>
-                           </a>
-                            
-                                
-                            
-                        </td>                              
+                                    <a  id="btnInfoFuncionario" (click)="infoFuncionario(func)">  
+                                        <span class="badge badge-info">
+                                            Info
+                                         </span>
+                                    </a>   
+                                 </td>           
                     </tr>        
                     </tbody>
                 </table> 
@@ -148,10 +134,5 @@
                           </div>
                         </div>
                 </div>   
-                <div class="form-group col-md-3">
-                   <div class="col-md-6" >                      
-                        <a href="" id="btnVoltarFuncionarios">Voltar</a>
-                    </div>                 
-               </div>  
         </div>       
     </div>

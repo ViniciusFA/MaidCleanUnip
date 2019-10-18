@@ -3,32 +3,32 @@
 </div>
 <form id="containerAllContato" [formGroup]="formulario" (ngSubmit)="enviar()">
         <div class="form-row">
-            <div class="form-group col-md-6">
-                    <label for="inputNome">Nome</label>
+            <div class="form-group col-md-6"  >
+                    <label for="inputNome" id="textoLabelContato">Nome</label>
                     <input type="text" class="form-control" id="inputNome" formControlName="nome"  ngDefaultControl placeholder="Insira o seu nome">
                     <p>(Insira entre 3 e 30 caracteres)</p>
             </div>
-            <div class="form-group col-md-6">
-                    <label for="inputSobreNome">Sobrenome</label>
+            <div class="form-group col-md-6" >
+                    <label for="inputSobreNome" id="textoLabelContato">Sobrenome</label>
                     <input type="text" class="form-control" id="inputSobreNome" formControlName="sobrenome"  ngDefaultControl placeholder="Insira o seu sobrenome">
                     <p>(Insira entre 3 e 40 caracteres)</p>
             </div>
          </div>
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Email</label>
+          <div class="form-group"  >
+            <label for="exampleFormControlInput1" id="textoLabelContato">Email</label>
             <input type="email" class="form-control" id="selectEmail" formControlName="email"  ngDefaultControl placeholder="name@example.com">
             <p>(Insira até 70 caracteres)</p>
           </div>
-          <div class="form-group" formControlName="motivo"  ngDefaultControl>
-            <label for="selectMotivo">Motivo </label>
+          <div class="form-group"  formControlName="motivo"  ngDefaultControl>
+            <label for="selectMotivo"  id="textoLabelContato">Motivo </label>
             <select class="form-control" id="selectMotivo" >
               <option *ngFor="let motivo of motivos" ngValue="motivos.id">
                 {{motivo.nome}}
               </option>        
             </select>
           </div>        
-          <div class="form-group">
-            <label for="TextAreaMensagm">Mensagem</label>
+          <div class="form-group"  >
+            <label for="TextAreaMensagm" id="textoLabelContato">Mensagem</label>
             <textarea class="form-control" id="TextAreaMensagm" rows="4" formControlName="mensagem"  ngDefaultControl></textarea>
             <p>(Insira até 400 caracteres)</p>
           </div>

@@ -19,5 +19,6 @@ export class Funcionario{
     cep:string;       
     sexo:string;
     sobrenome:string; 
-    id_usuario:Number;    
+    id_usuario:Number;   
+    avaliacao:string; 
 }

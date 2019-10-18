@@ -5851,7 +5851,7 @@
    background-clip: padding-box;
    border: 1px solid rgba(0, 0, 0, 0.2);
    outline: 0;
-   height: 560px
+   height: 590px;
  }
  
  .modal-backdrop {
@@ -5882,7 +5882,7 @@
    -webkit-box-pack: justify;
        -ms-flex-pack: justify;
            justify-content: space-between;
-   padding: 1rem 1rem;
+   padding: 0rem 1rem;
  }
  
  .modal-header .close {
@@ -10881,6 +10881,45 @@ html {
   width: 100%;
   height: 55%;
 }
-#campoCidadeVagas{
+#campoCidadeOportunidades{
   width: 100%;
+  height: 55%;
+}
+#campoNomeInfoFuncionario{
+  width: 50%;
+}
+#btnEditarDetalhes{
+  margin-left:1%;
+}
+#conteudoLabelsFuncInfo{
+  color:black;
+  font-family: arial;
+}
+#conteudoLabelsFuncInfo label{
+  color:blue;
+}
+#listaFuncionariotabela{
+  color:black;
+}
+#textoRecomendacoesLegislacao{
+  color:black;
+}
+#textoLabelContato{
+color:black;
+font-family: arial;
+}
+#textoLabelPadrao{
+  color:black;
+}
+#campoEstadoOportunidades{
+  width: 100%;
+  height: 68%;
+}
+#campoResidenciaOportunidades{
+  width: 100%;
+  height: 68%;
+}
+#campoExperienciaOportunidades{
+  width: 100%;
+  height: 68%;
 }

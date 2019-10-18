@@ -12,33 +12,39 @@
             <form class="form-inline" id="formPesquisaCampos" [formGroup]="formulario" (ngSubmit)="pesquisar()">
                 
                     <div class="form-row" id="camposFormPesquisa">                               
-                            <div class="col-6">
+                            <div class="col-6" id="textoLabelPadrao">
+                                <b>Nome</b>
                               <input type="text" class="form-control" id="campoNome"  formControlName="nomeVaga" name="nomeVaga" ngDefaultControl placeholder="Nome da Vaga">
                             </div>
                             <br>
-                            <div class="col-6">
+                            <div class="col-6"  id="textoLabelPadrao">
+                              <b>Sobrenome</b>
                               <input type="text" class="form-control" id="campoSobreNome"  formControlName="assunto" name="assunto" ngDefaultControl placeholder="Assunto da vaga">
                             </div>
                             <br>
-                            <div class="col-3" formControlName="estado" name="ddlEstado" ngDefaultControl>
-                                <select class="form-control form-control-sm-3"  id="campoEstado" >
+                            <div class="col-3"  id="textoLabelPadrao" formControlName="estado" name="ddlEstado" ngDefaultControl>
+                              <b>Estado</b>
+                                <select class="form-control form-control-sm-3"  id="campoEstadoOportunidades" >
                                         <option *ngFor="let estado of estados" ngValue="estados.id">
                                             {{estado.nome}}
                                         </option>
                                 </select>
                              </div>
                             <div class="col-3">
-                              <input type="text" class="form-control" placeholder="Cidade" id="campoCidade" formControlName="cidade" name="cidade" ngDefaultControl>
+                              <b>Cidade</b>
+                              <input type="text"  id="textoLabelPadrao" class="form-control" placeholder="Cidade" id="campoCidade" formControlName="cidade" name="cidade" ngDefaultControl>
                             </div>
-                            <div class="col-3" formControlName="residencia" name="sexo" ngDefaultControl>
-                                    <select class="form-control form-control-sm-3" id="campoSexo" >
+                            <div class="col-3"  id="textoLabelPadrao" formControlName="residencia" name="sexo" ngDefaultControl>
+                                    <b>Residência</b>
+                                    <select class="form-control form-control-sm-3" id="campoResidenciaOportunidades" >
                                             <option *ngFor="let residencia of residencias" ngValue="residencia.id">
                                             {{residencia.nome}}
                                             </option>
                                     </select>
                             </div>
-                            <div class="col-3" formControlName="experiencia" name="experiencia" ngDefaultControl>
-                                    <select class="form-control form-control-sm-3" id="campoExperiencia" >
+                            <div class="col-3" id="textoLabelPadrao" formControlName="experiencia" name="experiencia" ngDefaultControl>
+                                <b>Experiência    </b>
+                                <select class="form-control form-control-sm-3" id="campoExperienciaOportunidades" >
                                             <option>Experiência</option>
                                             <option>Sim</option>
                                             <option>Não</option>

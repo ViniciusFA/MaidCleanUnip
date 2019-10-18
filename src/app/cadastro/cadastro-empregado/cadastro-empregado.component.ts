@@ -89,6 +89,7 @@ export class CadastroEmpregadoComponent implements OnInit {
           alert(res.mensagem);
           this.funcionario = new Funcionario();
           this.formulario.reset();
+          this.router.navigate(['pesquisar']);
         }
         else {
           /*
