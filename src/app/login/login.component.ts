@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
       },
       (erro) => {
         alert("Usuário não cadastrado.");
+        alert(erro);
       });
     }
   }

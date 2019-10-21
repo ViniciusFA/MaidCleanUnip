@@ -142,9 +142,7 @@ export class PesquisarComponent implements OnInit {
     }
 
     infoFuncionario(funcionario:Funcionario){
-      console.log(funcionario.id);
       this.router.navigate(['infoFuncionario'],{queryParams: funcionario});
-      //this.inforFuncionario.atualizarFuncionario(funcionario);
     }
     
 }

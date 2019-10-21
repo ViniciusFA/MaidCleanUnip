@@ -3,68 +3,124 @@
           <h3>{{titulo}}</h3>                     
 </div>
  <hr/>
- <div class="conteudoPageDetalhes">
-   <div id="conteudoLabelsFuncInfo">
-          <div>
-              <label> <b>ID:</b> </label> &nbsp;  {{funcionarioInfo.id}}                           
-          </div>
-          <div>    
-              <label><b> Nome:</b></label> {{funcionarioInfo.nome}}
-          </div>
-          <div>
-              <label><b>Sobrenome:</b></label> {{funcionarioInfo.sobrenome}}
-          </div> 
-          <div>
-              <label><b>Email:</b></label> {{funcionarioInfo.email}}
-          </div>  
-          <div>
-              <label><b>Facebook:</b></label> {{funcionarioInfo.urlFacebook}}
-          </div>
-          <div>
-              <label><b>Whatsapp::</b></label> {{funcionarioInfo.hasWhatsapp}}
-          </div>
-          <div>
-              <label><b>Telefone::</b></label> {{funcionarioInfo.telefone}}
-          </div>
-          <div>
-              <label><b>Profissão::</b></label> {{funcionarioInfo.profissao}}
-          </div>
-          <div>
-              <label><b>Experiência::</b></label> {{funcionarioInfo.experiencia}}
-          </div>
-          <div>
-              <label><b>CPF:</b></label> {{funcionarioInfo.cpf}}
-          </div>
-          <div>
-              <label><b>Endereço:</b></label> {{funcionarioInfo.endereco}}
-          </div>
-          <div>
-              <label><b>Complemento:</b></label> {{funcionarioInfo.complemento}}
-          </div>
-          <div>
-              <label><b>Cidade:</b></label> {{funcionarioInfo.cidade}}
-          </div>
-          <div>
-              <label><b>Estado:</b></label> {{funcionarioInfo.estado}}
-          </div>
-          <div>
-              <label><b>CEP:</b></label> {{funcionarioInfo.cep}}
-          </div>
-          <div>
-              <label><b>Avaliação:</b></label> {{funcionarioInfo.avaliacao}}
-          </div>
-          <div>
-              <label><b>Sexo:</b></label> {{funcionarioInfo.sexo}}
-          </div>
-      </div>
-  </div>
+<form [formGroup]="formulario">
+  <div class="conteudoPageDetalhes">
+    <div id="conteudoLabelsFuncInfo">
+            <div>
+              <div class="form-row">
+                <label> <b>ID: &nbsp;</b> </label> 
+                {{funcionarioInfo.id}}              
+              </div>                          
+            </div>
+              <br>  
+              <div class="form-row">
+                <label><b> Nome:</b></label>
+                <input class="form-control" formControlName="nome" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.nome}}" >         
+                &nbsp; <span class="badge badge-info" id="badgeAlterarFunc"(click)="habilitarEdicao(funcionarioInfo.nome)" >Alterar</span>
+              </div>
+            <br> 
+              <div class="form-row">
+                <label><b> sobrenome:</b></label>
+                <input class="form-control" formControlName="sobrenome" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.sobrenome}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.sobrenome)">Alterar</span>
+              </div>
+            <br> 
+              <div class="form-row">
+                <label><b> Email:</b></label>
+                <input class="form-control" formControlName="email" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.email}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.email)">Alterar</span>
+              </div>
+            <br> 
+              <div class="form-row">
+                <label><b> Facebook:</b></label>
+                <input class="form-control" formControlName="facebook" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.urlFacebook}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.urlFacebook)">Alterar</span>
+              </div>
+            <br> 
+              <div class="form-row">
+                <label><b> Whatsapp:</b></label>
+                <input class="form-control" formControlName="whatsapp" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.hasWhatsapp}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.hasWhatsapp)">Alterar</span>
+              </div>
+            <br> 
+            <div class="form-row">
+                <label><b> Telefone:</b></label>
+                <input class="form-control" formControlName="telefone" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.telefone}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.telefone)">Alterar</span>
+              </div>  
+            <br> 
+            <div class="form-row">
+                <label><b>Profissão::</b></label> 
+                <input class="form-control" formControlName="profissao" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.profissao}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.profissao)">Alterar</span>
+           </div>  
+            <br> 
+              <div class="form-row">
+                <label><b>Experiência::</b></label> 
+                <input class="form-control" formControlName="experiencia" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.experiencia}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.experiencia)">Alterar</span>
+              </div>
+            <br> 
+              <div class="form-row">
+                <label><b>CPF:</b></label> 
+                <input class="form-control" formControlName="cpf" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.cpf}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.cpf)">Alterar</span>
+              </div>
+            <br> 
+              <div class="form-row">
+                <label><b>Endereço:</b></label> 
+                <input class="form-control" formControlName="endereco" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.endereco}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.endereco)">Alterar</span>
+              </div>
+            <br> 
 
-  <div class="grupoBotoesDetalhes">
-         <button  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmExcluir" >Excluir </button>
-         <button  class="btn btn-primary btn-sm" id="btnEditarDetalhes" data-toggle="modal" data-target="#editarFuncionario">Editar </button>
-         <button  class="btn btn-primary btn-sm" [routerLink]="['/pesquisar']" id="btnVoltarDetalhes">Voltar </button><br>
-    </div>
-  <br>
+              <div class="form-row">
+                <label><b>Complemento:</b></label> 
+                <input class="form-control" formControlName="complemento" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.complemento}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.complemento)">Alterar</span>
+              </div>
+            <br> 
+              <div class="form-row">
+                <label><b>Cidade:</b></label> 
+                <input class="form-control" formControlName="cidade" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.cidade}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.cidade)">Alterar</span>
+              </div>
+            <br> 
+            <div class="form-row">
+                <label><b>Estado:</b></label> 
+                <input class="form-control" formControlName="estado" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.estado}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.estado)">Alterar</span>
+              </div>
+            <br> 
+              <div class="form-row">
+                <label><b>CEP:</b></label> 
+                <input class="form-control" formControlName="cep" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.cep}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.cep)">Alterar</span>
+              </div>
+            <br> 
+              <div class="form-row">
+                <label><b>Avaliação:</b></label> 
+                <input class="form-control" formControlName="avaliacao" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.avaliacao}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.avaliacao)">Alterar</span>
+              </div>
+            <br> 
+              <div class="form-row">
+                <label><b>Sexo:</b></label> 
+                <input class="form-control" formControlName="sexo" id="inputPadraoInfoFunc" type="text" placeholder="{{funcionarioInfo.sexo}}" >                           
+                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.sexo)">Alterar</span>
+              </div>
+            <br> 
+
+      <div class="grupoBotoesDetalhes">
+          <button  type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmExcluir" >Excluir </button>         
+          <button type="submit"  [disabled]="edicao" class="btn btn-primary btn-sm" id="btnEditarDetalhes" data-toggle="modal" data-target="#editarFuncionario" >Editar </button>
+         <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/pesquisar']" id="btnVoltarDetalhes">Voltar </button><br>
+      </div>
+    <br>
+
+  </div>
+</div>
+</form>
 
 <!-- Modal para confirmar a EXCLUSÃO de funcionário-->
 <div class="modal" tabindex="-1" role="dialog" id="confirmExcluir">
@@ -102,7 +158,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
-              <button type="button" class="btn btn-primary" (click)="atualizarFuncionario()">Editar</button>
+              <button type="button" class="btn btn-primary"  (click)="atualizar()">Atualizar</button>
             </div>
           </div>
         </div>

@@ -120,16 +120,10 @@
                             <input type="text" class="form-control" id="inputFacebook" formControlName="urlFacebook"  ngDefaultControl placeholder="Insira o seu facebook">
                             <p>(Insira até 80 caracteres)</p>
                     </div> 
-                    <!-- Anexo CV-->
-                     <!--
-                    <div class="form-group">
-                            <a href="" >Anexar CV</a>
-                   </div>
-                   -->
-                   <!-- Botões-->
+                    
                     <div id="botoesCadastro">            
                         <button type="submit" class="btn btn-secondary" id="btnCadastrar" [disabled]="formulario.invalid" >Cadastrar</button>
-                        <button type="submit" class="btn btn-secondary" id="btnLimpar" (click)="voltar()">Voltar</button>
+                        <button type="button" class="btn btn-secondary" id="btnLimpar" (click)="voltar()">Voltar</button>
                     </div>
             </form>
         </div>

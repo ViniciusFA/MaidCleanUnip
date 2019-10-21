@@ -10897,6 +10897,7 @@ html {
 }
 #conteudoLabelsFuncInfo label{
   color:blue;
+  margin-right: 2%;
 }
 #listaFuncionariotabela{
   color:black;
@@ -10922,4 +10923,17 @@ font-family: arial;
 #campoExperienciaOportunidades{
   width: 100%;
   height: 68%;
+}
+#downloadLegislacao{
+  color:blue;
+}
+#inputPadraoInfoFunc{
+  width: 20%;
+  background-color:#d4dfea;
+}
+#badgeAlterarFunc{
+  cursor: pointer;
+  height: 0%; 
+  margin-top: 1%;
+  margin-left: 2%;
 }
