@@ -68,23 +68,15 @@ export class CadastroEmpregadoComponent implements OnInit {
   }
 
 
-
-  /*FUNÇÃO PARA SALVAR UM NOVO REGISTRO OU ALTERAÇÃO EM UM REGISTRO EXISTENTE */
   salvar():void{
 
-    //populando o objeto funcionario através dos valores recebidos no reactiveforms
     let funcionario = this.formulario.value as Funcionario;
 
-   
-    /*CHAMA O SERVIÇO PARA ADICIONAR UMA NOVA PESSOA */
     this.funcionarioService.addFuncionario(funcionario)
       .subscribe(response => {
 
-        //PEGA O RESPONSE DO RETORNO DO SERVIÇO
         let res: Response = <Response>response;
 
-        /*SE RETORNOU 1 DEVEMOS MOSTRAR A MENSAGEM DE SUCESSO
-              E LIMPAR O FORMULÁRIO PARA INSERIR UM NOVO REGISTRO*/
         if (res.codigo == 1) {
           alert(res.mensagem);
           this.funcionario = new Funcionario();
@@ -92,15 +84,10 @@ export class CadastroEmpregadoComponent implements OnInit {
           this.router.navigate(['pesquisar']);
         }
         else {
-          /*
-          ESSA MENSAGEM VAI SER MOSTRADA CASO OCORRA ALGUMA EXCEPTION
-          NO SERVIDOR (CODIGO = 0)*/
           alert(res.mensagem);
         }
       },
         (erro) => {
-          /**AQUI VAMOS MOSTRAR OS ERROS NÃO TRATADOS
-            EXEMPLO: SE APLICAÇÃO NÃO CONSEGUIR FAZER UMA REQUEST NA API*/
           alert(erro);
         });    
   }

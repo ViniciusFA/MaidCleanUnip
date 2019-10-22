@@ -10756,7 +10756,7 @@ html {
   margin-left: 2%;
 }
 .grupoBotoesDetalhes{
-  margin-left: 30%;
+  margin-left: 9%;
   margin-bottom: 1%;
 }
 #btnVoltarDetalhes{
@@ -10783,11 +10783,12 @@ html {
 #selectMotivo{
   height: 100%;
 }
-.home{
-  background-image: url("../src/img/home_parallax.jpg");
+.home1{
+  background-image: url("../src/img/limpezaMaterial.jpg");
 }
-.purpleImage{
-  background-image: url("../src/img/teste.jpg");
+.home2{
+  background-image: url("../src/img/limpezaBoneco.jpg");
+  border:2px inset #d8d8ff;
 }
 .hero {
   background-position: center;
@@ -10806,11 +10807,9 @@ html {
 .page-container {
    padding: 20px 10px;
    width: 100%;
-   max-width: 650px;
    margin: auto;
    text-align: left;
    background-color: white;
-   
 }
 .contentHome{
   width: 100%;
@@ -10927,13 +10926,62 @@ font-family: arial;
 #downloadLegislacao{
   color:blue;
 }
-#inputPadraoInfoFunc{
-  width: 20%;
-  background-color:#d4dfea;
-}
 #badgeAlterarFunc{
   cursor: pointer;
   height: 0%; 
   margin-top: 1%;
   margin-left: 2%;
+}
+#inputInfoFunc{
+  width: 20%;
+  background-color:#d4dfea;
+  margin-left: 1%;
+}
+#inputPadraoInfoFunc2{
+  width: 20%;
+  background-color:#d4dfea;
+  margin-left: 3%;
+}
+#inputPadraoInfoFunc3{
+  width: 20%;
+  background-color:#d4dfea;
+  margin-left: 4%;
+}
+#inputPadraoInfoFunc4{
+  width: 20%;
+  background-color:#d4dfea;
+  margin-left: 2%;
+}
+#inputInfoFuncCpf{
+  width: 20%;
+  background-color:#d4dfea;   
+   margin-left: 5%;
+}
+#inputInfoFuncId{
+  width: 20%;
+  background-color:#d4dfea;
+  margin-left: 6%;
+}
+#inputInfoFuncComplemento{
+  width: 20%;
+  background-color:#d4dfea;
+}
+#badgeAlterarFunc2{
+  cursor: pointer;
+  height: 0%;
+  margin-top: 1%;
+  margin-left: 1%;
+}
+#tituloHome{
+  margin-left: 39%;
+}
+#textoHomeEstilo{
+  color: black ;
+  font-family: sans-serif;
+}
+#conteudoBotoesHome{
+margin-left: 35%;
+}
+#btnCadastrarHome{
+  margin-left: 1%;
 }
