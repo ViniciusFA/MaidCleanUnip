@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Vaga } from './vaga';
+import { Vaga } from '../services/vaga/vaga';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Estados } from '../util/estados';
 import { Residencia } from '../util/residencia';
+import { VagaService } from '../services/vaga/VagaService';
 
 @Component({
   selector: 'app-oportunidades',
@@ -10,17 +11,20 @@ import { Residencia } from '../util/residencia';
 })
 export class OportunidadesComponent implements OnInit {
   
-  private Vaga: Vaga[] = new Array();
+  private vagas: Vaga[] = new Array();
   private titulo:string;
   private formulario:FormGroup;  
 
-  constructor(private formBuilder:FormBuilder) { 
+  constructor(private formBuilder:FormBuilder,
+              private vagaService:VagaService) { 
 
     this.configurarFormulario();
   }
 
   ngOnInit() {   
     this.titulo = "Oportunidades";   
+    this.vagaService.getVagas().subscribe(res => this.vagas = res);
+    console.log(this.vagas);
   }
 
   estados = [
@@ -34,6 +38,13 @@ export class OportunidadesComponent implements OnInit {
     new Residencia(1, 'Apartamento'),
     new Residencia(2, 'Casa'),
   ];
+
+  experiencias = [
+    new Residencia(0, 'Experiência'),
+    new Residencia(1, '+6 meses'),
+    new Residencia(2, '+1 ano'),
+  ];
+
 
   configurarFormulario(){
     this.formulario = this.formBuilder.group({

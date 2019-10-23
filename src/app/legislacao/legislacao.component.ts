@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-legislacao',
@@ -6,15 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LegislacaoComponent implements OnInit {
 
-  constructor() { }
+  private url:String = '';
+  private nomeArquivoSelecionado:String = 'teste';
+  private arquivoMovManual: any ;
+
+  constructor(
+              private router:Router) { }
 
   ngOnInit() {
   }
-  downloadLeiL11324(){
 
+  downloadLeiL11324(){
+   
   }
 
   downloadLei150(){
-    
   }
+
+
 }

@@ -28,11 +28,10 @@ import { OportunidadesComponent } from './oportunidades/oportunidades.component'
 import { FormsModule, ReactiveFormsModule}   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ContatoService } from './services/contato/contato.service';
-import { LoginComponent } from './login/login.component';
 import { LoginService } from './services/login/LoginService';
-import { LogoutComponent } from './logout/logout.component';
 import { PesquisaFuncionarioService } from './services/Pesquisa/PesquisaFuncionarioService';
 import { InfoFuncionarioComponent } from './info-funcionario/info-funcionario.component';
+import { VagaService } from './services/vaga/VagaService';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -60,8 +59,6 @@ export function getAuthServiceConfigs() {
     ConfiguracoesContaComponent,
     LegislacaoComponent,
     FuncionarioDetalhesComponent,
-    LoginComponent,
-    LogoutComponent,
     InfoFuncionarioComponent
   ],
   imports: [
@@ -75,7 +72,7 @@ export function getAuthServiceConfigs() {
     NgxSocialButtonModule
   ],
   providers: [ ConfigService, FuncionarioService, ContatoService,LoginService,
-              PesquisaFuncionarioService,
+              PesquisaFuncionarioService,VagaService,
     {
       provide: SocialServiceConfig,
       useFactory: getAuthServiceConfigs,      

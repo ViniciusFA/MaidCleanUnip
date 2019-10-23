@@ -45,12 +45,14 @@
                             <div class="col-3" id="textoLabelPadrao" formControlName="experiencia" name="experiencia" ngDefaultControl>
                                 <b>Experiência    </b>
                                 <select class="form-control form-control-sm-3" id="campoExperienciaOportunidades" >
-                                            <option>Experiência</option>
-                                            <option>Sim</option>
-                                            <option>Não</option>
+                                            <option *ngFor="let experiencia of experiencias ">
+                                              {{experiencia.nome}}
+                                            </option>
+
                                     </select>
                             </div>
-                    </div>    
+                    </div>   
+                      
                     <!--Botões limpar e pesquisar -->
                     <div class="botoesPesquisar">   
                             <button type="button" class="btn btn-secondary" id="btnLimparPesquisa" (click)="limparCampos()" >Limpar</button>
@@ -60,92 +62,62 @@
              </div>
              <div>
                     <div class="container">
-                            <div class="card-columns d-flex justify-content-center">
+                            <div class="card-columns d-flex justify-content-center" >
                               <!--Card 01 linha 01-->
-                              <div class="card" style="width: 18rem;">
-                                    <div class="card-body">
-                                      <h5 class="card-title">São Paulo</h5>
-                                      <h6 class="card-subtitle mb-2 text-muted">Diarista</h6>
-                                      <p class="card-text">Procura-se Diarista para limpeza semanal em condomínio de luxo .</p>
-                                     <a href="#" class="card-link">Saber Mais</a>
+                              <div class="card" style="width: 18rem;" *ngFor="let vaga of vagas">
+                                    <div class="card-body" >
+                                      <h5 class="card-title" >
+                                      {{vaga.titulo}}
+                                    </h5>
+                                      <h6 class="card-subtitle mb-2 text-muted">
+                                          {{vaga.subtitulo}}
+                                      </h6>
+                                      <p class="card-text">
+                                        {{vaga.descricao}}
+                                      </p>
+                                     <a href="#" class="card-link" data-toggle="modal" data-target="#modalVaga">Saber mais</a>
                                     </div>
-                                  </div>
-                                  &nbsp;
-                               <!--Card 02 linha 01-->
-                               <div class="card" style="width: 18rem;">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Rio de Janeiro</h5>
-                                      <h6 class="card-subtitle mb-2 text-muted">Empregada Doméstica</h6>
-                                      <p class="card-text">Procura-se Empregada Doméstica para limpeza diária em condomínio empresarial.</p>
-                                       <a href="#" class="card-link">Saber Mais</a>
-                                    </div>
-                               </div>
-                               &nbsp;
-                                <!--Card 03 linha 01-->
-                                <div class="card" style="width: 18rem;">
-                                        <div class="card-body">
-                                          <h5 class="card-title">Manaus</h5>
-                                          <h6 class="card-subtitle mb-2 text-muted">Diarista</h6>
-                                          <p class="card-text">Procura-se Diarista para limpeza semanal em condomínio de luxo .</p>
-                                          <a href="#" class="card-link">Saber Mais</a>
-                                        </div>
-                                   </div>
-                                   &nbsp;
-                                <!--Card 04 linha 01-->
-                               <div class="card" style="width: 18rem;">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Recife</h5>
-                                      <h6 class="card-subtitle mb-2 text-muted">Empregada Doméstica</h6>
-                                      <p class="card-text">Procura-se Empregada Doméstica para limpeza diária em condomínio empresarial.</p>
-                                      <a href="#" class="card-link">Saber Mais</a>
-                                    </div>
-                               </div>
-                            </div>
-                              <div class="card-columns d-flex justify-content-center">
-                                 <!--Card 01 linha 02-->
-                                 <div class="card" style="width: 18rem;">
-                                        <div class="card-body">
-                                          <h5 class="card-title">Pernambuco</h5>
-                                          <h6 class="card-subtitle mb-2 text-muted">Diarista</h6>
-                                          <p class="card-text">Procura-se Diarista para limpeza semanal em condomínio de luxo .</p>
-                                          <a href="#" class="card-link">Saber Mais</a>
-                                        </div>
-                                   </div>
-                                   &nbsp;
-                                 <!--Card 02 linha 02-->
-                                 <div class="card" style="width: 18rem;">
-                                        <div class="card-body">
-                                          <h5 class="card-title">São Paulo</h5>
-                                          <h6 class="card-subtitle mb-2 text-muted">Empregada Doméstica</h6>
-                                          <p class="card-text">Procura-se Empregada Doméstica para limpeza diária em condomínio empresarial.</p>
-                                          <a href="#" class="card-link">Saber Mais</a>
-                                        </div>
-                                   </div>
-                                   &nbsp;
-                                 <!--Card 03 linha 02-->
-                                 <div class="card" style="width: 18rem;">
-                                        <div class="card-body">
-                                          <h5 class="card-title">Rio de Janeiro</h5>
-                                          <h6 class="card-subtitle mb-2 text-muted">Diarista</h6>
-                                          <p class="card-text">Procura-se Diarista para limpeza semanal em condomínio de luxo .</p>
-                                          <a href="#" class="card-link">Saber Mais</a>
-                                        </div>
-                                   </div>
-                                   &nbsp;
-                                 <!--Card 04 linha 02-->
-                                 <div class="card" style="width: 18rem;">
-                                        <div class="card-body">
-                                          <h5 class="card-title">Minas Gerais</h5>
-                                          <h6 class="card-subtitle mb-2 text-muted">Empregada Doméstica</h6>
-                                          <p class="card-text">Procura-se Empregada Doméstica para limpeza diária em condomínio empresarial.</p>
-                                          <a href="#" class="card-link">Saber Mais</a>
-                                        </div>
-                                   </div>
+                                  </div>  
                             </div>
                             <br>
                             <br>
                           </div>
+                          
+                          
              </div>
         </div>
     </div>   
     
+    <!-- Modal para confirmar a EXCLUSÃO de funcionário-->
+<div class="modal" tabindex="-1" role="dialog" id="modalVaga">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="modalBodyInfoExcluir">
+      <div class="modal-header">
+        <h5 class="modal-title">Vaga</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+          <label>Id:</label>
+          {{vaga.id}}
+          <br>
+          <label>Título:</label>
+          <br>
+          <label>Subtítulo:</label>
+          <br>          
+          <label>Nome do Empregador:</label>
+          <br>
+          <label>Estado:</label>
+          <br>
+          <label>Cidade:</label>
+          <br>
+          <label>Descrição:</label>
+          <br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmExcluir" (click)="Candidatar()">Candidate-se</button>
+      </div>
+    </div>
+  </div>

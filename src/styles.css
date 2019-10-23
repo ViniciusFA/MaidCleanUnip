@@ -10853,9 +10853,6 @@ html {
 #btnAtualizarDetalhes{
   margin-left:1%;
 }
-#modalBodyInfoExcluir{
-  height: 100%;
-}
 #modalBodyInfoAtualizar{
   height: 100%;
 }
@@ -10984,4 +10981,10 @@ margin-left: 35%;
 }
 #btnCadastrarHome{
   margin-left: 1%;
+}
+#downloadLegislacao{
+  cursor:pointer;
+}
+#modalBodyInfoExcluir{
+  
 }
