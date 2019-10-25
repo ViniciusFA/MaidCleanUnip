@@ -13,10 +13,11 @@ import { LegislacaoComponent } from './legislacao/legislacao.component';
 import { FuncionarioDetalhesComponent } from './funcionario/funcionario-detalhes/funcionario-detalhes.component';
 import { OportunidadesComponent } from './oportunidades/oportunidades.component'
 import { InfoFuncionarioComponent } from './info-funcionario/info-funcionario.component';
+import { LoginComponent } from './login/login.component';
 
 
 export const ROUTES: Routes = [
-    {path: '', component: HomeComponent},
+    {path: 'home', component: HomeComponent},
     {path: 'cadastro', component: CadastroComponent},
     {path: 'pesquisar', component: PesquisarComponent},
     {path: 'contato', component: ContatoComponent},
@@ -28,5 +29,6 @@ export const ROUTES: Routes = [
     {path: 'legislacao', component: LegislacaoComponent},
     {path: 'detalhes', component: FuncionarioDetalhesComponent },
     {path: 'oportunidades', component: OportunidadesComponent },
-    {path: 'infoFuncionario', component: InfoFuncionarioComponent }       
+    {path: 'infoFuncionario', component: InfoFuncionarioComponent },
+    {path: 'login', component: LoginComponent }        
 ]

@@ -1,28 +1,44 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
+import { Usuario } from '../usuario/usuario';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AutenticacaoService{
 
-    constructor(){}
+    private usuarioAutenticado:boolean = false;
+    //variavel pública
+    mostrarMenuEmitter = new EventEmitter<boolean>();
 
-    authenticate(nm_usuario, senha){
-        if(nm_usuario == "ViniAdm" && senha == "123"){
-            sessionStorage.setItem('usuário' ,nm_usuario);
-            return true;
-        } else {
-            return false;
-        }
+    constructor(private router:Router){
+
     }
 
-    usuarioLogIn(){
-        let user = sessionStorage.getItem('usuário');
-        console.log(!(user == null));
-        return !(user == null);
-    }
+    fazerLogin(usuario:Usuario){
+        if(usuario.nome == "Vini" &&
+          usuario.senha == "123"){
 
-    usuarioLogOut(){
-        sessionStorage.removeItem('usuario');
+            let permissoes = {
+              acessaHome: true,
+              acessaFuncionario: true,
+              acessaContato: false,
+              acessaLegislacao: false,
+              acessaOportunidade: false,
+            };
+
+            localStorage.setItem('permissoes', JSON.stringify(permissoes));
+
+            this.usuarioAutenticado = true;
+            this.mostrarMenuEmitter.emit(true);
+            this.router.navigate(['home'], { queryParams : { reload: true } });
+          }else{
+            this.usuarioAutenticado = false;
+            this.mostrarMenuEmitter.emit(false);
+          }
+      }
+      
+      usuarioEstaAutenticado(){
+        return this.usuarioAutenticado;
+      }
     }
-}

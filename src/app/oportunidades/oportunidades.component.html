@@ -37,7 +37,7 @@
                             <div class="col-3"  id="textoLabelPadrao" formControlName="residencia" name="sexo" ngDefaultControl>
                                     <b>Residência</b>
                                     <select class="form-control form-control-sm-3" id="campoResidenciaOportunidades" >
-                                            <option *ngFor="let residencia of residencias" ngValue="residencia.id">
+                                            <option *ngFor="let residencia of residencias" ngValue="residencias.id">
                                             {{residencia.nome}}
                                             </option>
                                     </select>
@@ -45,7 +45,7 @@
                             <div class="col-3" id="textoLabelPadrao" formControlName="experiencia" name="experiencia" ngDefaultControl>
                                 <b>Experiência    </b>
                                 <select class="form-control form-control-sm-3" id="campoExperienciaOportunidades" >
-                                            <option *ngFor="let experiencia of experiencias ">
+                                            <option *ngFor="let experiencia of experiencias " ngValue="experiencias.id">
                                               {{experiencia.nome}}
                                             </option>
 
@@ -100,7 +100,6 @@
       </div>
       <div class="modal-body" >
           <label>Id:</label>
-          {{vaga.id}}
           <br>
           <label>Título:</label>
           <br>

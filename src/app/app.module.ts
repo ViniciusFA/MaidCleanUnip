@@ -32,6 +32,8 @@ import { LoginService } from './services/login/LoginService';
 import { PesquisaFuncionarioService } from './services/Pesquisa/PesquisaFuncionarioService';
 import { InfoFuncionarioComponent } from './info-funcionario/info-funcionario.component';
 import { VagaService } from './services/vaga/VagaService';
+import { AutenticacaoService } from './services/login/AutenticacaoService';
+import { LoginComponent } from './login/login.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -59,7 +61,8 @@ export function getAuthServiceConfigs() {
     ConfiguracoesContaComponent,
     LegislacaoComponent,
     FuncionarioDetalhesComponent,
-    InfoFuncionarioComponent
+    InfoFuncionarioComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,7 @@ export function getAuthServiceConfigs() {
     NgxSocialButtonModule
   ],
   providers: [ ConfigService, FuncionarioService, ContatoService,LoginService,
-              PesquisaFuncionarioService,VagaService,
+              PesquisaFuncionarioService,VagaService,AutenticacaoService,
     {
       provide: SocialServiceConfig,
       useFactory: getAuthServiceConfigs,      

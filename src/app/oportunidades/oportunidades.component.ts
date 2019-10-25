@@ -24,7 +24,6 @@ export class OportunidadesComponent implements OnInit {
   ngOnInit() {   
     this.titulo = "Oportunidades";   
     this.vagaService.getVagas().subscribe(res => this.vagas = res);
-    console.log(this.vagas);
   }
 
   estados = [
