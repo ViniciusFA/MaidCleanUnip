@@ -13,6 +13,7 @@ import { LegislacaoComponent } from './legislacao/legislacao.component';
 import { FuncionarioDetalhesComponent } from './funcionario/funcionario-detalhes/funcionario-detalhes.component';
 import { OportunidadesComponent } from './oportunidades/oportunidades.component'
 import { InfoFuncionarioComponent } from './info-funcionario/info-funcionario.component';
+import { AnuncieComponent } from './anuncie/anuncie.component';
 
 
 export const ROUTES: Routes = [
@@ -28,5 +29,6 @@ export const ROUTES: Routes = [
     {path: 'legislacao', component: LegislacaoComponent},
     {path: 'detalhes', component: FuncionarioDetalhesComponent },
     {path: 'oportunidades', component: OportunidadesComponent },
-    {path: 'infoFuncionario', component: InfoFuncionarioComponent }       
+    {path: 'infoFuncionario', component: InfoFuncionarioComponent } ,     
+    {path: 'anuncie', component: AnuncieComponent }
 ]

@@ -1,0 +1,61 @@
+<div class="container">  
+        <div class="row">
+            <div class="col-md-12">
+                <div class="conteudoPesquisa">
+                    <div class="tituloConteudoPaginas">
+                        <h3>{{titulo}}</h3>
+                    </div>   
+                    <hr>
+                    <div>
+                        <form class="form-inline" id="formPesquisaCampos">                                            
+                            <div class="form-row" id="camposFormPesquisa">   
+                                    <div class="col-4" id="textoLabelPadrao">
+                                            <b>Nome</b>
+                                        <input type="text" class="form-control" id="campoAnuncieVagasEmpregador"  name="nome" ngDefaultControl placeholder="Nome do empregador">
+                                        <p>(Insira entre 3 a 40 caracteres)</p>
+                                    </div>                            
+                                    <div class="col-4" id="textoLabelPadrao">
+                                        <b>Título</b>
+                                    <input type="text" class="form-control" id="campoAnuncievagaTitulo"   name="titulo" ngDefaultControl placeholder="Título">
+                                    <p>(Insira entre 3 a 15 caracteres)</p>
+                                    </div>
+                                    <br>
+                                    <div class="col-4" id="textoLabelPadrao">
+                                        <b>Subtítulo</b>
+                                    <input type="text" class="form-control" id="campoAnuncioVagaSubtitulo"   name="subtitulo" ngDefaultControl placeholder="Subtítulo">
+                                    <p>(Insira entre 3 a 40 caracteres)</p>
+                                    </div>
+                                    <br>                
+                                    <div class="col-3"  name="estado" ngDefaultControl id="textoLabelPadrao">
+                                        <b>Estado</b>
+                                        <select class="form-control form-control-sm-3"  id="campoEstadoVagas" >
+                                            <option *ngFor="let estado of estados" ngValue="estados.id">
+                                                {{estado.nome}}
+                                            </option>
+                                        </select>
+                                     </div>
+                                    <div class="col-6" id="textoLabelPadrao">
+                                            <b>Cidade</b>
+                                        <input type="text" class="form-control" id="campoAnuncievagasCidade"  name="cidade" ngDefaultControl placeholder="Cidade">
+                                        <p>(Insira entre 3 a 40 caracteres)</p>
+                                    </div>  
+                                    <div class="col-12">
+                                            <br>
+                                            <label for="TextAreaMensagm" id="textoLabelAnuncieDesc">Descrição</label>                                            
+                                            <textarea class="form-control" id="TextAreaMensagm" rows="10" cols="170" ngDefaultControl></textarea>
+                                            <p>(Insira até 400 caracteres)</p>
+                                    </div>
+                            </div>    
+                            <!--Botões limpar e pesquisar -->
+                            <div class="botoesPesquisar">   
+                                    <button type="button" class="btn btn-secondary" id="btnLimparPesquisa" (click)="limparCampos()" >Limpar</button>
+                                    <button type="submit" class="btn btn-secondary" id="btnEnviarPesquisa" >Anunciar</button>
+                                    <br>
+                                    <br>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        

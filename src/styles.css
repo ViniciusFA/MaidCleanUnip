@@ -10985,6 +10985,23 @@ margin-left: 35%;
 #downloadLegislacao{
   cursor:pointer;
 }
-#modalBodyInfoExcluir{
-  
+#campoAnuncievagaTitulo{
+  width: 100%;
+}
+#campoAnuncioVagaSubtitulo{
+  width: 100%;
+}
+#campoAnuncieVagasEmpregador{
+  width: 100%;
+}
+#campoAnuncievagasEstado{
+  width: 100%;
+  height: 43%;
+}
+#campoAnuncievagasCidade{
+  width:100%
+}
+#textoLabelAnuncieDesc{
+color:black;
+font-family: arial;
 }

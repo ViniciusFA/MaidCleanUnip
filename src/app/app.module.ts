@@ -32,6 +32,7 @@ import { LoginService } from './services/login/LoginService';
 import { PesquisaFuncionarioService } from './services/Pesquisa/PesquisaFuncionarioService';
 import { InfoFuncionarioComponent } from './info-funcionario/info-funcionario.component';
 import { VagaService } from './services/vaga/VagaService';
+import { AnuncieComponent } from './anuncie/anuncie.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -59,7 +60,8 @@ export function getAuthServiceConfigs() {
     ConfiguracoesContaComponent,
     LegislacaoComponent,
     FuncionarioDetalhesComponent,
-    InfoFuncionarioComponent
+    InfoFuncionarioComponent,
+    AnuncieComponent
   ],
   imports: [
     BrowserModule,
