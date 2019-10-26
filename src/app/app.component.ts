@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AutenticacaoService } from './services/login/AutenticacaoService';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MaidClean';
+
+  constructor(){
+    console.log("teste");
+  }
+
+  ngOnInit(){
+
+  }
+
 }

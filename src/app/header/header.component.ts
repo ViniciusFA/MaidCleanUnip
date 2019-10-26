@@ -5,12 +5,13 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { LoginService } from '../services/login/LoginService';
 import { Router } from '@angular/router';
 import { Login } from '../services/login/Login';
+import { Usuario } from '../services/usuario/usuario';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
  
   shareObj = {
       href: "FACEBOOK-SHARE-LINK",
@@ -18,95 +19,50 @@ export class HeaderComponent {
   };
 
   private formulario:FormGroup;
-  
-  constructor(private loginService:LoginService,
-              private formBuilder:FormBuilder,
-              private router:Router,
-              private socialAuthService: SocialService,
-              private auth: AutenticacaoService){
+  private usuario:Usuario;
+  mostrarMenu:boolean = false;
 
-                this.configurarFormularioLogin();
-              }
+  acessaHome: Boolean = false;
+  acessaFuncionario: Boolean = false;
+  acessaContato: Boolean = false;
+  acessaLegislacao: Boolean = false;
+  acessaOportunidade: Boolean = false;
+
+  constructor(
+    private router:Router,
+  ) {
+    
+  }
 
   ngOnInit() {
-   
-  }  
+    //this.mostrarMenu;
 
-  configurarFormularioLogin(){
-    this.formulario = this.formBuilder.group({
-      nm_usuario: new FormControl(''),
-      senha: new FormControl(''),
-    });
-  }
-
-  usuarioLogIn(){
-    this.auth.usuarioLogIn();
-  }
-
-  signOut(){
-    if(this.socialAuthService.isSocialLoggedIn()){
-        this.socialAuthService.signOut().catch((err)=>{
-
-        });
-    }
-  }
-
-  getSocialUser(socialUser){
-      console.log(socialUser);
-  }
-
-  public socialSignIn(socialPlatform : string) {
-    let socialPlatformProvider;
-    if(socialPlatform == "facebook"){
-       // socialPlatformProvider = FacebookLoginProvider.PROVIDER_TYPE;
-    }else if(socialPlatform == "google"){
-       // socialPlatformProvider = GoogleLoginProvider.PROVIDER_TYPE;
+    let permissoes = JSON.parse(localStorage.getItem('permissoes'));
+    if (permissoes === null || permissoes === undefined) {
+      this.acessaContato = false;
+      this.acessaFuncionario = false;
+      this.acessaHome = false;
+      this.acessaLegislacao = false;
+      this.acessaOportunidade = false;
+    } else {
+      this.acessaContato = permissoes.acessaContato;
+      this.acessaFuncionario = permissoes.acessaFuncionario;
+      this.acessaHome = permissoes.acessaHome;
+      this.acessaLegislacao = permissoes.acessaLegislacao;
+      this.acessaOportunidade = permissoes.acessaOportunidade;
     }
 
-    this.socialAuthService.signIn(socialPlatformProvider).then(
-    (socialUser) => {
-        console.log(socialPlatform+" sign in data : " , socialUser);               
-    });
-  }
+    console.log("mostrarMenu ngOnInit: " + this.mostrarMenu);
+   }  
 
-  fecharPopUo(callback){
-    callback();
-  }
-
-  logar(){
-    let login = this.formulario.value as Login;
-
-    //verifica se campos foram preenchidos
-    if(login.nm_usuario == null || login.nm_usuario == "" 
-      || login.senha == null || login.senha ==""){
-        alert("Campo vazio. Preencha o usuário e senha para prosseguir.");
-    }else{
-
-    
-    this.loginService.verificarUsuario(login)
-    .subscribe(response =>{
-     
-        if(login.nm_usuario == response.login && login.senha == response.senha){
-          alert("Seja Bem vindo.");
-
-          //fecha o modal
-          this.fecharModal();
-
-          //redireciona para a pagina home
-          this.router.navigate(['']);
-        }
-        else if(login.nm_usuario == response.login 
-                && login.senha != response.senha){
-          alert("Senha inválida.");
-        }
-      },
-      (erro) => {
-        alert("Usuário não cadastrado.");
-        alert(erro);
-      });
-    }
+ 
+  receberParamLogin(mostrarMenu: boolean){
+    this.mostrarMenu = mostrarMenu;
+    console.log("mostrarMenu ReceberParamLogin: " + this.mostrarMenu);
   }
   
-  fecharModal(){}
-
+  logout() {
+    localStorage.removeItem('permissoes');
+    this.router.navigate(['login'], { queryParams: { logout: true } });
+  }
 }
