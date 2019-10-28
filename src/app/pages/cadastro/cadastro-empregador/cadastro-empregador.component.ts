@@ -1,3 +1,5 @@
+import { RoleEnum } from './../../../system-objects/role-enum';
+import { Usuario } from './../../../system-objects/usuario-model';
 import { Component, OnInit, ContentChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmpregadorService } from '../../../services/empregador/empregador.service';
@@ -56,7 +58,7 @@ export class CadastroEmpregadorComponent implements OnInit {
       email: this.formBuilder.control('',[Validators.email,Validators.maxLength(50)]),
       telefone: this.formBuilder.control('',Validators.maxLength(13)),
       residencia: this.formBuilder.control(''),
-      cnpj: this.formBuilder.control('',Validators.maxLength(20)),
+      cpf_cnpj: this.formBuilder.control('',Validators.maxLength(20)),
       endereco: this.formBuilder.control('',Validators.maxLength(100)),
       complemento: this.formBuilder.control('',Validators.maxLength(40)),
       cidade: this.formBuilder.control('',Validators.maxLength(30)),
@@ -71,9 +73,18 @@ export class CadastroEmpregadorComponent implements OnInit {
 
   salvar(){
 
-    let empregador = this.formulario.value as Empregador;
+    let usuario = this.formulario.value as Usuario;
 
-    this.empregadorService.criarEmpregador(empregador)
+    if(usuario.sexo == "Masculino"){
+      usuario.sexo = 'M';
+    }else{
+      usuario.sexo = 'F';
+    }
+
+    usuario.id_role = RoleEnum.Empregador;
+    usuario.profissao = '';
+
+    this.empregadorService.criarEmpregador(usuario)
                           .subscribe(response=> {
       let res:Response = <Response>response;
       

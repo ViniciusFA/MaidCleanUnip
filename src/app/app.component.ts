@@ -8,9 +8,7 @@ import { AutenticacaoService } from './services/login/AutenticacaoService';
 export class AppComponent {
   title = 'MaidClean';
 
-  constructor(){
-    console.log("teste");
-  }
+  constructor(){}
 
   ngOnInit(){
 

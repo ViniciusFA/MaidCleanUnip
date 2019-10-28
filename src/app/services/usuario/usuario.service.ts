@@ -1,19 +1,7 @@
-import { Usuario } from '../../system-objects/usuario-model';
-import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
-import { Router } from '@angular/router';
-
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs/RX';
-
-import { Funcionario } from '../../services/funcionario/funcionario';
-import { ConfigService } from '../../services/config.service';
-
-@Injectable()
-export class FuncionarioService {
-
+import { Usuario } from './../../system-objects/usuario-model';
+import { ConfigService } from './../config.service';
+import { RequestOptions, Http , Headers} from '@angular/http';
+export class UsuarioService{
     private baseUrlService: string = '';
     private headers:Headers;
     private options:RequestOptions;
@@ -23,7 +11,7 @@ export class FuncionarioService {
                 private configService:ConfigService){
                  
                /**SETANDO A URL DO SERVIÇO REST QUE VAI SER ACESSADO */
-                this.baseUrlService = configService.getUrlService() + '/funcionario';
+                this.baseUrlService = configService.getUrlService() + '/usuario';
 
                /*ADICIONANDO O JSON NO HEADER */
                 this.headers = new Headers ({ 'Content-Type': 'application/json;charset=UTF-8' });
@@ -32,34 +20,34 @@ export class FuncionarioService {
 
     
     /**CONSULTA TODAS AS PESSOAS CADASTRADAS */
-    getFuncionarios(){
+    getUsuarios(){
 
         return this.http.get(this.baseUrlService ).map(res => res.json());       
     }
 
     /**ADICIONA UMA NOVA PESSOA */
-    addFuncionario(usuario: Usuario){
+    addUsuario(usuario: Usuario){
         
         return this.http.post(this.baseUrlService, JSON.stringify(usuario),this.options)
         .map(res => res.json());
     }
 
     /**EXCLUI UMA PESSOA */
-    deleteFuncionario(codigo: number){
+    deleteUsuario(codigo: number){
 
         return this.http.delete(this.baseUrlService + '/' +  codigo).map(res => res.json());
     }
 
     /**CONSULTA UMA PESSOA PELO CÓDIGO */
-    getFuncionario(codigo: number){
+    getUsuario(codigo: number){
 
         return this.http.get(this.baseUrlService + '/' + codigo).map(res => res.json());
     }
   
     /**ATUALIZA INFORMAÇÕES DA PESSOA */
-    updateFuncionario(funcionario: Funcionario){
+    updateUsuario(usuario: Usuario){
        
-        return this.http.put(this.baseUrlService, JSON.stringify(funcionario),this.options)
+        return this.http.put(this.baseUrlService, JSON.stringify(usuario),this.options)
         .map(res => res.json());
     }
 }

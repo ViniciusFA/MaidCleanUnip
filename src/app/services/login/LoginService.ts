@@ -2,6 +2,8 @@ import { Login } from '../login/Login';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { ConfigService } from '../config.service';
 import { Injectable } from '@angular/core';
+import { Funcionario } from '../funcionario/funcionario';
+import { Usuario } from '../usuario';
 
 @Injectable()
 export class LoginService {
@@ -26,4 +28,11 @@ export class LoginService {
         return this.http.get(this.baseUrlService + "/usuario" + "/" + login.nm_usuario, this.options)
         .map(res => res.json());
     }
+
+    verificarLogin(login:String , senha:String){
+        return this.http.get(this.baseUrlService + "/usuario" + "/" + login 
+        + "/" + senha).map(res => res.json());
+    }
+
+
 }

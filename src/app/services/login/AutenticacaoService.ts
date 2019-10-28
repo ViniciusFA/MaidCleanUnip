@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Usuario } from '../usuario/usuario';
 import { Router } from '@angular/router';
+import { RoleEnum } from 'src/app/system-objects/role-enum';
 
 @Injectable({
     providedIn: 'root'
@@ -15,30 +15,51 @@ export class AutenticacaoService{
 
     }
 
-    fazerLogin(usuario:Usuario){
-        if(usuario.login == "Vini" &&
-          usuario.senha == "123"){
+  liberaPermissao(idRole: number) {
+    let permissoes: any;
 
-            let permissoes = {
-              acessaAnuncie:true,
-              acessaFuncionario: true,
-              acessaLegislacao: false,
-              acessaOportunidade: false,
-              acessacessaCadastro: false,
-              acessaEntrar: false,
-              acessaLogout:true
-            };
-
-            localStorage.setItem('permissoes', JSON.stringify(permissoes));
-
-            this.usuarioAutenticado = true;
-            this.mostrarMenuEmitter.emit(true);
-            this.router.navigate(['home'], { queryParams : { reload: true } });
-          }else{
-            this.usuarioAutenticado = false;
-            this.mostrarMenuEmitter.emit(false);
-          }
+    if (idRole === RoleEnum.Admin) {
+      permissoes = {
+        acessaAnuncie: true,
+        acessaFuncionario: true,
+        acessaLegislacao: true,
+        acessaOportunidade: true,
+        acessaCadastro: false,
+        acessaEntrar: false,
+        acessaLogout: true
       }
+    }
+
+    if (idRole === RoleEnum.Empregador) {
+      permissoes = {
+        acessaAnuncie: true,
+        acessaFuncionario: true,
+        acessaLegislacao: false,
+        acessaOportunidade: false,
+        acessaCadastro: false,
+        acessaEntrar: false,
+        acessaLogout: true
+      }
+    }
+
+    if (idRole === RoleEnum.Funcionario) {
+      permissoes = {
+        acessaAnuncie: false,
+        acessaFuncionario: false,
+        acessaLegislacao: true,
+        acessaOportunidade: true,
+        acessaCadastro: false,
+        acessaEntrar: false,
+        acessaLogout: true
+      }
+    }
+
+    localStorage.setItem('permissoes', JSON.stringify(permissoes));
+
+    this.usuarioAutenticado = true;
+    this.mostrarMenuEmitter.emit(true);
+    this.router.navigate(['home'], { queryParams: { reload: true } });
+  }
       
       usuarioEstaAutenticado(){
         return this.usuarioAutenticado;

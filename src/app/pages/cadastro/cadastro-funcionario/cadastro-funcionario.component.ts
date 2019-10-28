@@ -1,4 +1,7 @@
-﻿
+﻿import { RoleEnum } from './../../../system-objects/role-enum';
+import { UsuarioService } from './../../../services/usuario/usuario.service';
+import { Usuario } from './../../../system-objects/usuario-model';
+
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FuncionarioService } from '../../../services/funcionario/funcionario.service';
@@ -9,18 +12,18 @@ import { Estados } from 'src/app/util/estados';
 import { Sexo } from 'src/app/util/sexo';
 
 @Component({
-  selector: 'app-cadastro-empregado',
-  templateUrl: './cadastro-empregado.component.html'
+  selector: 'app-cadastro-funcionario',
+  templateUrl: './cadastro-funcionario.component.html'
 })
-export class CadastroEmpregadoComponent implements OnInit {
+export class CadastroFuncionarioComponent implements OnInit {
 
   private titulo: string;
   private subtitulo:string;
-  private funcionario:Funcionario = new Funcionario();
+  private usuario:Usuario = new Usuario();
   private formulario: FormGroup;
   private valorInteiro: Number = null;
 
-  constructor(private funcionarioService: FuncionarioService,
+  constructor(private UsuarioService: UsuarioService,
               private router: Router,
               private activatedRoute:ActivatedRoute,
               private formBuilder:FormBuilder) {
@@ -57,7 +60,7 @@ export class CadastroEmpregadoComponent implements OnInit {
       hasWhatsapp: new FormControl((false)),
       telefone: new FormControl('',Validators.maxLength(13)),
       profissao: new FormControl('',Validators.maxLength(80)),
-      cpf: new FormControl('',[Validators.minLength(11),Validators.maxLength(11)]),
+      cpf_cnpj: new FormControl('',[Validators.minLength(11),Validators.maxLength(11)]),
       endereco: new FormControl('',Validators.maxLength(100)),
       complemento: new FormControl('',Validators.maxLength(15)),
       cidade: new FormControl('',Validators.maxLength(15)),
@@ -70,16 +73,24 @@ export class CadastroEmpregadoComponent implements OnInit {
 
   salvar():void{
 
-    let funcionario = this.formulario.value as Funcionario;
+    let usuario = this.formulario.value as Usuario;
 
-    this.funcionarioService.addFuncionario(funcionario)
+    if(usuario.sexo = "Masculino"){
+      usuario.sexo = 'M';
+    }else {
+      usuario.sexo = 'F'
+    }
+    usuario.id_role = RoleEnum.Funcionario;
+
+    console.log(usuario);
+    this.UsuarioService.addUsuario(usuario)
       .subscribe(response => {
 
         let res: Response = <Response>response;
 
         if (res.codigo == 1) {
           alert(res.mensagem);
-          this.funcionario = new Funcionario();
+          this.usuario = new Usuario();
           this.formulario.reset();
           this.router.navigate(['pesquisar']);
         }

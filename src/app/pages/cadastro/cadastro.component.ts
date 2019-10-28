@@ -25,7 +25,7 @@ export class CadastroComponent implements OnInit {
    if(value == 'Empregador'){
       this.router.navigate(['/cadastro-empregador']);
    }else if(value == 'Empregado'){
-      this.router.navigate(['/cadastro-empregado']);
+      this.router.navigate(['/cadastro-funcionario']);
    }
 
   }

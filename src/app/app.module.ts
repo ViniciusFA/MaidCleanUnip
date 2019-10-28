@@ -1,3 +1,6 @@
+import { UsuarioService } from './services/usuario/usuario.service';
+import { LoaderProvider } from './providers/loader-provider';
+import { LoginModule } from './pages/login/login.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ROUTES } from './app.routes';
@@ -13,7 +16,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { ContatoComponent } from './pages/contato/contato.component';
 import { PesquisarComponent } from './pages/pesquisar/pesquisar.component';
-import { CadastroEmpregadoComponent } from './pages/cadastro/cadastro-empregado/cadastro-empregado.component';
+import { CadastroFuncionarioComponent } from './pages/cadastro/cadastro-funcionario/cadastro-funcionario.component';
 import { CadastroEmpregadorComponent } from './pages/cadastro/cadastro-empregador/cadastro-empregador.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { ConfiguracoesComponent } from './configuracoes/configuracoes.component';
@@ -55,7 +58,7 @@ export function getAuthServiceConfigs() {
     CadastroComponent,
     ContatoComponent,
     PesquisarComponent,
-    CadastroEmpregadoComponent,
+    CadastroFuncionarioComponent,
     CadastroEmpregadorComponent,
     OportunidadesComponent,
     PerfilComponent,
@@ -64,8 +67,7 @@ export function getAuthServiceConfigs() {
     LegislacaoComponent,
     FuncionarioDetalhesComponent,
     InfoFuncionarioComponent,
-    AnuncieComponent,
-    LoginComponent
+    AnuncieComponent
   ],
   imports: [
     BrowserModule,
@@ -75,10 +77,18 @@ export function getAuthServiceConfigs() {
     RouterModule.forRoot(ROUTES),
     HttpModule,
     HttpClientModule,
-    NgxSocialButtonModule
+    NgxSocialButtonModule,
+    LoginModule
   ],
-  providers: [ ConfigService, FuncionarioService, ContatoService,LoginService,
-              PesquisaFuncionarioService,VagaService,AutenticacaoService,AuthGuard,
+  providers: [ ConfigService, 
+               FuncionarioService, 
+               ContatoService,
+               PesquisaFuncionarioService,
+               VagaService,
+               AutenticacaoService,
+               AuthGuard,
+               LoaderProvider,
+               UsuarioService,
     {
       provide: SocialServiceConfig,
       useFactory: getAuthServiceConfigs,      

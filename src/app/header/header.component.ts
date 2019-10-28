@@ -5,7 +5,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { LoginService } from '../services/login/LoginService';
 import { Router } from '@angular/router';
 import { Login } from '../services/login/Login';
-import { Usuario } from '../services/usuario/usuario';
+import { Usuario } from './../system-objects/usuario-model';
 
 @Component({
   selector: 'app-header',
@@ -57,17 +57,20 @@ export class HeaderComponent implements OnInit {
       this.acessaCadastro = permissoes.acessaCadastro;
     }
 
-    console.log("mostrarMenu ngOnInit: " + this.mostrarMenu);
+    //console.log("mostrarMenu ngOnInit: " + this.mostrarMenu);
    }  
 
  
   receberParamLogin(mostrarMenu: boolean){
     this.mostrarMenu = mostrarMenu;
-    console.log("mostrarMenu ReceberParamLogin: " + this.mostrarMenu);
+    //console.log("mostrarMenu ReceberParamLogin: " + this.mostrarMenu);
   }
   
   logout() {
     localStorage.removeItem('permissoes');
-    this.router.navigate(['login'], { queryParams: { logout: true } });
+    this.router.navigate(['login'], { queryParams: { logout: true } })
+    .then(()=>{
+      window.location.reload();
+    });
   }
 }

@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.titulo="Home Page";
+    
   }
   cadastrar(){
     this.router.navigate(['cadastro']);

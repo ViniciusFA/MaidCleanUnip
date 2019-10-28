@@ -1,3 +1,4 @@
+import { Usuario } from './../../system-objects/usuario-model';
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
@@ -16,7 +17,7 @@ export class EmpregadorService {
         
     constructor(private http: Http,
                 private configService: ConfigService){
-                    this.baseUrlService = configService.getUrlService() + '/empregador';
+                    this.baseUrlService = configService.getUrlService() + '/usuario';
                     this.headers = new Headers ({ 'Content-Type': 'application/json;charset=UTF-8' });
                     this.options = new RequestOptions ({ headers : this.headers});
                 }
@@ -24,9 +25,9 @@ export class EmpregadorService {
     getEmpregador(id: number){
         return this.http.get('${this.baseUrl}/${id}');
     }
-    criarEmpregador(empregador: Empregador) {
+    criarEmpregador(usuario: Usuario) {
         
-        return this.http.post(this.baseUrlService, JSON.stringify(empregador),this.options)
+        return this.http.post(this.baseUrlService, JSON.stringify(usuario),this.options)
         .map(res=>res.json());
     }
     atualizarEmpregador(id: number){

@@ -4,7 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { ContatoComponent } from './pages/contato/contato.component';
 import { PesquisarComponent } from './pages/pesquisar/pesquisar.component';
-import { CadastroEmpregadoComponent } from './pages/cadastro/cadastro-empregado/cadastro-empregado.component';
+import { CadastroFuncionarioComponent } from './pages/cadastro/cadastro-funcionario/cadastro-funcionario.component';
 import { CadastroEmpregadorComponent } from './pages/cadastro/cadastro-empregador/cadastro-empregador.component';
 import { ConfiguracoesComponent } from './configuracoes/configuracoes.component';
 import { PerfilComponent } from './perfil/perfil.component';
@@ -23,15 +23,15 @@ export const ROUTES: Routes = [
     {path: 'login', component: LoginComponent },
     {path: 'contato', component: ContatoComponent},   
     {path: 'cadastro', component: CadastroComponent}, 
-    {path: 'cadastro-empregado', component: CadastroEmpregadoComponent},
+    {path: 'cadastro-funcionario', component: CadastroFuncionarioComponent},
     {path: 'cadastro-empregador', component: CadastroEmpregadorComponent},
-    {path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard]},   
-    {path: 'anuncie', component: AnuncieComponent, canActivate: [AuthGuard]},
-    {path: 'pesquisar', component: PesquisarComponent, canActivate: [AuthGuard]}, 
-    {path: 'legislacao', component: LegislacaoComponent, canActivate: [AuthGuard]}, 
-    {path: 'oportunidades', component: OportunidadesComponent, canActivate: [AuthGuard]},
-    {path: 'configuracoes', component: ConfiguracoesComponent, canActivate: [AuthGuard]},    
-    {path: 'detalhes', component: FuncionarioDetalhesComponent, canActivate: [AuthGuard]},   
-    {path: 'infoFuncionario', component: InfoFuncionarioComponent, canActivate: [AuthGuard]},
-    {path: 'configuracoesConta', component: ConfiguracoesContaComponent, canActivate: [AuthGuard]},        
+    {path: 'perfil', component: PerfilComponent}, //canActivate: [AuthGuard]},   
+    {path: 'anuncie', component: AnuncieComponent}, //canActivate: [AuthGuard]},
+    {path: 'pesquisar', component: PesquisarComponent}, 
+    {path: 'legislacao', component: LegislacaoComponent}, //canActivate: [AuthGuard]}, 
+    {path: 'oportunidades', component: OportunidadesComponent}, //canActivate: [AuthGuard]},
+    {path: 'configuracoes', component: ConfiguracoesComponent}, //canActivate: [AuthGuard]},    
+    {path: 'detalhes', component: FuncionarioDetalhesComponent}, //canActivate: [AuthGuard]},   
+    {path: 'infoFuncionario', component: InfoFuncionarioComponent}, //canActivate: [AuthGuard]},
+    {path: 'configuracoesConta', component: ConfiguracoesContaComponent}, //canActivate: [AuthGuard]},        
 ]
