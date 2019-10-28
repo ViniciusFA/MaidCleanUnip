@@ -16,15 +16,17 @@ export class AutenticacaoService{
     }
 
     fazerLogin(usuario:Usuario){
-        if(usuario.nome == "Vini" &&
+        if(usuario.login == "Vini" &&
           usuario.senha == "123"){
 
             let permissoes = {
-              acessaHome: true,
+              acessaAnuncie:true,
               acessaFuncionario: true,
-              acessaContato: false,
               acessaLegislacao: false,
               acessaOportunidade: false,
+              acessacessaCadastro: false,
+              acessaEntrar: false,
+              acessaLogout:true
             };
 
             localStorage.setItem('permissoes', JSON.stringify(permissoes));

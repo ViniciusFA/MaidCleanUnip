@@ -14,10 +14,12 @@ export class AuthGuard implements CanActivate{
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | boolean {
+            //se usuario estiver logado retorna true os menus permitidos
         if (this.authService.usuarioEstaAutenticado()) {
             return true;
         }
 
+        //se usuario não estiver logado, redirecione-o para página de login e retorne falso.
         this.router.navigate(['/login']);
         return false;
     }

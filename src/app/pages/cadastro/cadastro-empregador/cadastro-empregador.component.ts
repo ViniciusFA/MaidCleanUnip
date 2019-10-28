@@ -1,8 +1,8 @@
 import { Component, OnInit, ContentChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { EmpregadorService } from '../../services/empregador/empregador.service';
+import { EmpregadorService } from '../../../services/empregador/empregador.service';
 import { Empregador } from 'src/app/services/empregador/empregador';
-import { Response } from '../../services/response';
+import { Response } from '../../../services/response';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Sexo } from 'src/app/util/sexo';
 import { Estados } from 'src/app/util/estados';

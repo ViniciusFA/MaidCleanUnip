@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Funcionario } from '../services/funcionario/funcionario';
-import { FuncionarioService } from '../services/funcionario/funcionario.service';
+import { Funcionario } from '../../services/funcionario/funcionario';
+import { FuncionarioService } from '../../services/funcionario/funcionario.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Response } from '../services/response';
+import { Response } from '../../services/response';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({

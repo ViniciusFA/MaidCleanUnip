@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Estados } from '../util/estados';
+import { Estados } from '../../util/estados';
 
 @Component({
   selector: 'app-anuncie',

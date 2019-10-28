@@ -1,16 +1,16 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { FuncionarioService } from '../services/funcionario/funcionario.service';
-import { Funcionario } from '../services/funcionario/funcionario';
-import { Response } from '../services/response';
+import { FuncionarioService } from '../../services/funcionario/funcionario.service';
+import { Funcionario } from '../../services/funcionario/funcionario';
+import { Response } from '../../services/response';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Estados } from '../util/estados';
-import { Experiencia } from '../util/experiencia';
-import { Sexo } from '../util/sexo';
-import { PesquisaFuncionarioService } from '../services/Pesquisa/PesquisaFuncionarioService';
-import { PesquisaFuncionario } from '../services/Pesquisa/PesquisaFuncionario';
+import { Estados } from '../../util/estados';
+import { Experiencia } from '../../util/experiencia';
+import { Sexo } from '../../util/sexo';
+import { PesquisaFuncionarioService } from '../../services/Pesquisa/PesquisaFuncionarioService';
+import { PesquisaFuncionario } from '../../services/Pesquisa/PesquisaFuncionario';
 import { Http } from '@angular/http';
-import { InfoFuncionarioComponent } from '../pages/info-funcionario/info-funcionario.component';
+import { InfoFuncionarioComponent } from '../info-funcionario/info-funcionario.component';
 
 
 @Component({

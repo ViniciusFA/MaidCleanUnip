@@ -16,7 +16,7 @@
             <div class="form-group">
                 <!--Fazer reactive forms-->
               <label id="textoLabelPadrao"><b>Usuário</b></label>
-              <input type="email" class="form-control" formControlName="nome" ngDefaultControl id="exampleInputEmail1" form aria-describedby="emailHelp" placeholder="Insira o usuário">
+              <input type="email" class="form-control" formControlName="login" ngDefaultControl id="exampleInputEmail1" form aria-describedby="emailHelp" placeholder="Insira o usuário">
                </div>
             <div class="form-group">
                  <!--Fazer reactive forms-->
@@ -27,7 +27,7 @@
               <button id="btnEntrarLogin" type="submit" class="btn btn-secondary btn-sm" >Entrar</button>
             </div>
             <div id="esqueceuSenha">
-              <a [routerLink]="['']" id="textoLabelPadrao"><b>Esqueceu a sua senha?</b></a>
+              <a [routerLink]="['/home']" id="textoLabelPadrao"><b>Esqueceu a sua senha?</b></a>
             </div>
             <hr WIDTH=85%/> 
             <facebook-login-button  (socialUser)="getSocialUser($event)"></facebook-login-button>
@@ -36,7 +36,7 @@
             <div class="opcaoLoginCad" >
               <p style="margin-bottom: 0rem;">Não tem uma conta?</p>
               <div id="linkCadastroLogin">                      
-                      <a [routerLink]="['cadastro']" id="textoLabelPadrao" data-dismiss="modal" aria-hidden="true"><b>Cadastre-se aqui</b></a>          
+                      <a [routerLink]="['/cadastro']" id="textoLabelPadrao" data-dismiss="modal" aria-hidden="true"><b>Cadastre-se aqui</b></a>          
               </div>
             </div>
           </form>

@@ -21,12 +21,13 @@ export class HeaderComponent implements OnInit {
   private formulario:FormGroup;
   private usuario:Usuario;
   mostrarMenu:boolean = false;
-
-  acessaHome: Boolean = false;
+  acessaAnuncie: Boolean = false;
   acessaFuncionario: Boolean = false;
-  acessaContato: Boolean = false;
   acessaLegislacao: Boolean = false;
   acessaOportunidade: Boolean = false;
+  acessaCadastro: Boolean = false;
+  acessaEntrar: Boolean = false;
+  acessaLogout: Boolean = false;
 
   constructor(
     private router:Router,
@@ -39,17 +40,21 @@ export class HeaderComponent implements OnInit {
 
     let permissoes = JSON.parse(localStorage.getItem('permissoes'));
     if (permissoes === null || permissoes === undefined) {
-      this.acessaContato = false;
+      this.acessaAnuncie = false;
       this.acessaFuncionario = false;
-      this.acessaHome = false;
       this.acessaLegislacao = false;
       this.acessaOportunidade = false;
+      this.acessaLogout = false;
+      this.acessaEntrar = true;
+      this.acessaCadastro = true;
     } else {
-      this.acessaContato = permissoes.acessaContato;
+      this.acessaAnuncie = permissoes.acessaAnuncie;
       this.acessaFuncionario = permissoes.acessaFuncionario;
-      this.acessaHome = permissoes.acessaHome;
       this.acessaLegislacao = permissoes.acessaLegislacao;
       this.acessaOportunidade = permissoes.acessaOportunidade;
+      this.acessaLogout = permissoes.acessaLogout;
+      this.acessaEntrar = permissoes.acessaEntrar;
+      this.acessaCadastro = permissoes.acessaCadastro;
     }
 
     console.log("mostrarMenu ngOnInit: " + this.mostrarMenu);

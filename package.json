@@ -26,6 +26,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.10.1",
     "bootstrap": "^4.3.1",
     "dropdown-menu": "^0.1.1",
+    "firebase": ">= 5.5.7 <7",
     "http-headers": "^3.0.2",
     "jquery": "^3.4.1",
     "loader-utils": "^1.2.3",
@@ -36,8 +37,8 @@
     "rxjs": "~6.4.0",
     "rxjs-compat": "^6.5.2",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.1",
-    "firebase": ">= 5.5.7 <7"
+    "web-auth-token": "^1.0.6",
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.801.3",

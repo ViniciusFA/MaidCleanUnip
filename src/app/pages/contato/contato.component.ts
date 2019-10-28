@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Contato } from "../services/contato/contato.";
-import { Response } from '../services/response';
-import { ContatoService } from '../services/contato/contato.service';
+import { Contato } from "../../services/contato/contato.";
+import { Response } from '../../services/response';
+import { ContatoService } from '../../services/contato/contato.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MotivoMensagem } from '../util/motivoMensagem';
+import { MotivoMensagem } from '../../util/motivoMensagem';
 
 @Component({
   selector: 'app-contato',

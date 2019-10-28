@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Vaga } from '../services/vaga/vaga';
+import { Vaga } from '../../services/vaga/vaga';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { Estados } from '../util/estados';
-import { Residencia } from '../util/residencia';
-import { VagaService } from '../services/vaga/VagaService';
+import { Estados } from '../../util/estados';
+import { Residencia } from '../../util/residencia';
+import { VagaService } from '../../services/vaga/VagaService';
 
 @Component({
   selector: 'app-oportunidades',

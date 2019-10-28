@@ -1,9 +1,9 @@
 ﻿
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FuncionarioService } from '../../services/funcionario/funcionario.service';
-import { Funcionario } from '../../services/funcionario/funcionario';
-import { Response } from '../../services/response';
+import { FuncionarioService } from '../../../services/funcionario/funcionario.service';
+import { Funcionario } from '../../../services/funcionario/funcionario';
+import { Response } from '../../../services/response';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { Estados } from 'src/app/util/estados';
 import { Sexo } from 'src/app/util/sexo';

@@ -1,6 +1,6 @@
-import { Funcionario } from '../../services/funcionario/funcionario';
+import { Funcionario } from '../../../services/funcionario/funcionario';
 import { Component, OnInit, Input } from '@angular/core';
-import { FuncionarioService } from '../../services/funcionario/funcionario.service';
+import { FuncionarioService } from '../../../services/funcionario/funcionario.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
