@@ -1,3 +1,4 @@
+import { RoleEnum } from './../../system-objects/role-enum';
 import { PesquisaFuncionario } from './PesquisaFuncionario';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { ConfigService } from '../config.service';
@@ -16,15 +17,16 @@ export class PesquisaFuncionarioService{
     constructor(private http:Http,
                 private configService:ConfigService){
 
-                this.baseUrlService = configService.getUrlService() + '/funcionario';
+                this.baseUrlService = configService.getUrlService() + '/usuario';
 
                 this.headers = new Headers({'Content-Type' : 'application/json;charset=UTF-8'});
                 this.options =new RequestOptions({headers: this.headers})
                 }
 
-    buscar(pesquisaFuncionario:PesquisaFuncionario){
-       return this.http.get(this.baseUrlService + '/listaFuncionarios', {params: pesquisaFuncionario} 
-       ).map(res => res.json());
-                
+    buscar(pesquisaFuncionario: PesquisaFuncionario) {
+        pesquisaFuncionario.id_role = RoleEnum.Funcionario;
+        console.log(pesquisaFuncionario);
+        return this.http.get(this.baseUrlService + '/listaUsuarios', { params: pesquisaFuncionario }
+        ).map(res => res.json());
     }
 }

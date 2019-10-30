@@ -1,4 +1,3 @@
-import { Usuario } from '../usuario/usuario';
 
 export class Funcionario{
     id:number;

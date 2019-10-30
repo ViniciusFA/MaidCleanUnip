@@ -23,7 +23,7 @@ export class FuncionarioService {
                 private configService:ConfigService){
                  
                /**SETANDO A URL DO SERVIÇO REST QUE VAI SER ACESSADO */
-                this.baseUrlService = configService.getUrlService() + '/funcionario';
+                this.baseUrlService = configService.getUrlService() + '/usuario';
 
                /*ADICIONANDO O JSON NO HEADER */
                 this.headers = new Headers ({ 'Content-Type': 'application/json;charset=UTF-8' });

@@ -1,10 +1,13 @@
+import { RoleEnum } from './../../system-objects/role-enum';
 import { Usuario } from './../../system-objects/usuario-model';
 import { ConfigService } from './../config.service';
 import { RequestOptions, Http , Headers} from '@angular/http';
 export class UsuarioService{
+    
     private baseUrlService: string = '';
     private headers:Headers;
     private options:RequestOptions;
+    usuarioFuncionario:Usuario[] = new Array();
     
 
     constructor(private http:Http,
@@ -19,10 +22,13 @@ export class UsuarioService{
             }
 
     
-    /**CONSULTA TODAS AS PESSOAS CADASTRADAS */
+    /**CONSULTA TODAS OS USUÁRIOS CADASTRADAS */
     getUsuarios(){
+        return this.http.get(this.baseUrlService ).map(res =>res.json());       
+    }
 
-        return this.http.get(this.baseUrlService ).map(res => res.json());       
+    getUsuarioPorPerfil(id_role:Number){
+        return this.http.get(this.baseUrlService + '?idRole=' + id_role).map(res =>res.json()); 
     }
 
     /**ADICIONA UMA NOVA PESSOA */
@@ -31,6 +37,8 @@ export class UsuarioService{
         return this.http.post(this.baseUrlService, JSON.stringify(usuario),this.options)
         .map(res => res.json());
     }
+
+   
 
     /**EXCLUI UMA PESSOA */
     deleteUsuario(codigo: number){

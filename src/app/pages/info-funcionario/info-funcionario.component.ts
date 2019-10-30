@@ -1,3 +1,5 @@
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { Usuario } from './../../system-objects/usuario-model';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Funcionario } from '../../services/funcionario/funcionario';
 import { FuncionarioService } from '../../services/funcionario/funcionario.service';
@@ -11,17 +13,17 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 export class InfoFuncionarioComponent implements OnInit {
   private titulo:string;
-  private funcionarioInfo:Funcionario =new Funcionario();
+  private usuarioInfo:Usuario =new Usuario();
   private formulario:FormGroup;
   private edicao:Boolean = true;
-  private funcionarioInfoNovo:Funcionario = new Funcionario();
+  private usuarioInfoNovo:Usuario = new Usuario();
 
  
   @ViewChild('confirmExcluir',{static:false}) confirmExcluir:ElementRef;
   @ViewChild('btnEdicao', {static:false}) btnEdicao;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private funcionarioService:FuncionarioService,
+              private usuarioService:UsuarioService,
               private router:Router,
               private formBuilder:FormBuilder,){             
                this.configurarCampos();
@@ -47,7 +49,7 @@ export class InfoFuncionarioComponent implements OnInit {
       telefone:  new FormControl({value: '', disabled: true},[Validators.maxLength(13)]),
       profissao:  new FormControl({value: '', disabled: true},[Validators.maxLength(40)]),  
       experiencia:  new FormControl({value: '', disabled: true},[Validators.maxLength(35)]),
-      cpf: new FormControl({value: '', disabled: true},[Validators.maxLength(11)]),
+      cpf_cnpj: new FormControl({value: '', disabled: true},[Validators.maxLength(11)]),
       endereco: new FormControl({value: '', disabled: true},[Validators.maxLength(100)]),
       complemento: new FormControl({value: '', disabled: true},[Validators.maxLength(15)]),
       cidade: new FormControl({value: '', disabled: true},[Validators.maxLength(15)]),
@@ -61,60 +63,74 @@ export class InfoFuncionarioComponent implements OnInit {
    //método que captura o funcionário selecionado no badge info da página pesquiasr
    recebendoParamsFuncionario(){
    //recebendo os valores vindo da router através do queryParams
-   this.funcionarioInfo.id = this.activatedRoute.snapshot.queryParams.id;
-   this.funcionarioInfo.nome = this.activatedRoute.snapshot.queryParams.nome;
-   this.funcionarioInfo.sobrenome = this.activatedRoute.snapshot.queryParams.sobrenome;
-   this.funcionarioInfo.login = this.activatedRoute.snapshot.queryParams.login;
-   this.funcionarioInfo.senha = this.activatedRoute.snapshot.queryParams.senha;
-   this.funcionarioInfo.email = this.activatedRoute.snapshot.queryParams.email;
-   this.funcionarioInfo.cpf = this.activatedRoute.snapshot.queryParams.cpf;
-   this.funcionarioInfo.endereco = this.activatedRoute.snapshot.queryParams.endereco;
-   this.funcionarioInfo.complemento = this.activatedRoute.snapshot.queryParams.complemento;
-   this.funcionarioInfo.cidade = this.activatedRoute.snapshot.queryParams.cidade;
-   this.funcionarioInfo.estado = this.activatedRoute.snapshot.queryParams.estado;
-   this.funcionarioInfo.cep = this.activatedRoute.snapshot.queryParams.cep;
-   this.funcionarioInfo.sexo = this.activatedRoute.snapshot.queryParams.sexo;
-   this.funcionarioInfo.telefone = this.activatedRoute.snapshot.queryParams.telefone;
-   this.funcionarioInfo.profissao = this.activatedRoute.snapshot.queryParams.profissao;
+   this.usuarioInfo.id = this.activatedRoute.snapshot.queryParams.id_usuario;
+   console.log("Id: " +  this.usuarioInfo.id );
+   this.usuarioInfo.nome = this.activatedRoute.snapshot.queryParams.nome;
+   this.usuarioInfo.sobrenome = this.activatedRoute.snapshot.queryParams.sobrenome;
+   this.usuarioInfo.login = this.activatedRoute.snapshot.queryParams.login;
+   this.usuarioInfo.senha = this.activatedRoute.snapshot.queryParams.senha;
+   this.usuarioInfo.email = this.activatedRoute.snapshot.queryParams.email;
+   this.usuarioInfo.cpf_cnpj = this.activatedRoute.snapshot.queryParams.cpf_cnpj;
+   this.usuarioInfo.endereco = this.activatedRoute.snapshot.queryParams.endereco;
+   this.usuarioInfo.complemento = this.activatedRoute.snapshot.queryParams.complemento;
+   this.usuarioInfo.cidade = this.activatedRoute.snapshot.queryParams.cidade;
+   this.usuarioInfo.estado = this.activatedRoute.snapshot.queryParams.estado;
+   this.usuarioInfo.cep = this.activatedRoute.snapshot.queryParams.cep;
+   this.usuarioInfo.sexo = this.activatedRoute.snapshot.queryParams.sexo;
+   this.usuarioInfo.telefone = this.activatedRoute.snapshot.queryParams.telefone;
+  
    
    //se o campo urlFacebbok estiver null ou vazio receberá um texto personalizado
-   if(this.funcionarioInfo.urlFacebook == undefined ||
-     this.funcionarioInfo.urlFacebook == "" ||
-     this.funcionarioInfo.urlFacebook == null){
-     this.funcionarioInfo.urlFacebook =  "Não cadastrou facebook.";
+   if(this.usuarioInfo.urlFacebook == undefined ||
+     this.usuarioInfo.urlFacebook == "" ||
+     this.usuarioInfo.urlFacebook == null){
+     this.usuarioInfo.urlFacebook =  "Não cadastrou facebook.";
    }else{
-     this.funcionarioInfo.urlFacebook = this.activatedRoute.snapshot.queryParams.urlFacebook;
+     this.usuarioInfo.urlFacebook = this.activatedRoute.snapshot.queryParams.urlFacebook;
    }   
     //se o campo hasWhatsapp estiver null ou vazio receberá um texto personalizado
    if(this.activatedRoute.snapshot.queryParams.hasWhatsapp == undefined ||
      this.activatedRoute.snapshot.queryParams.hasWhatsapp == "" ||
      this.activatedRoute.snapshot.queryParams.hasWhatsapp == null){
-    this.funcionarioInfo.urlFacebook =  "Não cadastrou whatsapp.";
-   }else{
-    this.funcionarioInfo.hasWhatsapp = this.activatedRoute.snapshot.queryParams.hasWhatsapp;
+    this.usuarioInfo.urlFacebook =  "Não cadastrou whatsapp.";
+   }else{     
+    this.usuarioInfo.hasWhatsapp = this.activatedRoute.snapshot.queryParams.hasWhatsapp;
+      if(this.usuarioInfo.hasWhatsapp  == '1'){
+        this.usuarioInfo.hasWhatsapp = 'Sim';
+      }else{
+        this.usuarioInfo.hasWhatsapp = 'Não';
+      }
    }
     //se o campo experiencia estiver null ou vazio receberá um texto personalizado
    if(this.activatedRoute.snapshot.queryParams.experiencia == undefined ||
       this.activatedRoute.snapshot.queryParams.experiencia == "" ||
       this.activatedRoute.snapshot.queryParams.experiencia == null){
-        this.funcionarioInfo.experiencia = "Sem experiência.";
+        this.usuarioInfo.experiencia = "Sem experiência.";
     }else{
-      this.funcionarioInfo.experiencia = this.activatedRoute.snapshot.queryParams.experiencia;
+      this.usuarioInfo.experiencia = this.activatedRoute.snapshot.queryParams.experiencia;
     }  
    //se o campo avaliacao estiver null ou vazio receberá um texto personalizado
    if(this.activatedRoute.snapshot.queryParams.avaliacao == undefined ||
       this.activatedRoute.snapshot.queryParams.avaliacao == "" ||
       this.activatedRoute.snapshot.queryParams.avaliacao == null){
-      this.funcionarioInfo.avaliacao = "Ainda não possui avaliação.";
+      this.usuarioInfo.avaliacao = "Ainda não possui avaliação.";
    }else{
-     this.funcionarioInfo.avaliacao = this.activatedRoute.snapshot.queryParams.avaliacao;
+     this.usuarioInfo.avaliacao = this.activatedRoute.snapshot.queryParams.avaliacao;
    }  
+   //se o campo profissao estiver null ou vazio receberá um texto personalizado
+   if(this.activatedRoute.snapshot.queryParams.profissao == undefined ||
+    this.activatedRoute.snapshot.queryParams.profissao == "" ||
+    this.activatedRoute.snapshot.queryParams.profissao == null){
+      this.usuarioInfo.profissao = "Profissão não cadastrada.";
+  }else{
+    this.usuarioInfo.profissao = this.activatedRoute.snapshot.queryParams.profissao;
+  }  
 
   }
 
   //Exclui um funcionário ao clicar no botão excluir
-  excluir(funcionarioInfo:Funcionario){
-    this.funcionarioService.deleteFuncionario(funcionarioInfo.id)
+  excluir(usuarioInfo:Usuario){
+    this.usuarioService.deleteUsuario(this.usuarioInfo.id)
     .subscribe(response => {
       let res: Response = <Response>response;
       if(res.codigo == 1){
@@ -133,55 +149,55 @@ export class InfoFuncionarioComponent implements OnInit {
 
   //Habilitando edição dos campos após clicar no badge Editar
   habilitarEdicao(inputEscolhido: String){
-   if(inputEscolhido == this.funcionarioInfo.nome){
+   if(inputEscolhido == this.usuarioInfo.nome){
     this.formulario.controls['nome'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.sobrenome){
+   if(inputEscolhido == this.usuarioInfo.sobrenome){
     this.formulario.controls['sobrenome'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.senha){
+   if(inputEscolhido == this.usuarioInfo.senha){
     this.formulario.controls['senha'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.email){
+   if(inputEscolhido == this.usuarioInfo.email){
     this.formulario.controls['email'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.urlFacebook){
+   if(inputEscolhido == this.usuarioInfo.urlFacebook){
     this.formulario.controls['urlFacebook'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.hasWhatsapp){
+   if(inputEscolhido == this.usuarioInfo.hasWhatsapp){
     this.formulario.controls['hasWhatsapp'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.telefone){
+   if(inputEscolhido == this.usuarioInfo.telefone){
     this.formulario.controls['telefone'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.profissao){
+   if(inputEscolhido == this.usuarioInfo.profissao){
     this.formulario.controls['profissao'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.experiencia){
+   if(inputEscolhido == this.usuarioInfo.experiencia){
     this.formulario.controls['experiencia'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.cpf){
-    this.formulario.controls['cpf'].enable();
+   if(inputEscolhido == this.usuarioInfo.cpf_cnpj){
+    this.formulario.controls['cpf_cnpj'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.endereco){
+   if(inputEscolhido == this.usuarioInfo.endereco){
     this.formulario.controls['endereco'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.complemento){
+   if(inputEscolhido == this.usuarioInfo.complemento){
     this.formulario.controls['complemento'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.cidade){
+   if(inputEscolhido == this.usuarioInfo.cidade){
     this.formulario.controls['cidade'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.estado){
+   if(inputEscolhido == this.usuarioInfo.estado){
     this.formulario.controls['estado'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.cep){
+   if(inputEscolhido == this.usuarioInfo.cep){
     this.formulario.controls['cep'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.avaliacao){
+   if(inputEscolhido == this.usuarioInfo.avaliacao){
     this.formulario.controls['avaliacao'].enable();
    }
-   if(inputEscolhido == this.funcionarioInfo.sexo){
+   if(inputEscolhido == this.usuarioInfo.sexo){
     this.formulario.controls['sexo'].enable();
    }   
    //habilita o botão para alterar a informação do funcionário.
@@ -189,21 +205,21 @@ export class InfoFuncionarioComponent implements OnInit {
   }
 
  
-  atualizar(funcionarioInfoNovo: Funcionario){
+  atualizar(usuarioInfoNovo: Usuario){
       
-     funcionarioInfoNovo = this.formulario.value;
+    usuarioInfoNovo = this.formulario.value;
     
     //pegando o tamanho dos valores antigos e dos valores novos para utilizar nos for's
-     var tamanhoFuncIndiceAntigo:Object = Object.keys(this.funcionarioInfo).length;
-     var tamanhoFuncIndiceNovo:Object = Object.keys(funcionarioInfoNovo).length;
+     var tamanhoFuncIndiceAntigo:Object = Object.keys(this.usuarioInfo).length;
+     var tamanhoFuncIndiceNovo:Object = Object.keys(usuarioInfoNovo).length;
 
      //pegando os atributos do objeto antigo e do objeto novo
-    var objetoFuncNomeAtrAntigo:string[] =Object.getOwnPropertyNames(this.funcionarioInfo);
-    var objetoFuncNomeAtrNovo:string[] =Object.getOwnPropertyNames(funcionarioInfoNovo);
+    var objetoFuncNomeAtrAntigo:string[] =Object.getOwnPropertyNames(this.usuarioInfo);
+    var objetoFuncNomeAtrNovo:string[] =Object.getOwnPropertyNames(usuarioInfoNovo);
 
     //pegando os valores do objeto antigo e do objeto novo para atualiza-los
-    var objetoFuncValueAntigo = Object.values(this.funcionarioInfo);
-    var objetoFuncValueNovo = Object.values(funcionarioInfoNovo);
+    var objetoFuncValueAntigo = Object.values(this.usuarioInfo);
+    var objetoFuncValueNovo = Object.values(usuarioInfoNovo);
 
 
     for(var j = 0 ; j < tamanhoFuncIndiceNovo; j++){
@@ -217,32 +233,32 @@ export class InfoFuncionarioComponent implements OnInit {
       }
 
       //recebendo valores novos do objetoFUncValueAntigo
-      this.funcionarioInfo.id = objetoFuncValueAntigo[0];
-      this.funcionarioInfo.nome = objetoFuncValueAntigo[1];
-      this.funcionarioInfo.sobrenome = objetoFuncValueAntigo[2];
-      this.funcionarioInfo.login = objetoFuncValueAntigo[3];
-      this.funcionarioInfo.senha = objetoFuncValueAntigo[4];
-      this.funcionarioInfo.email = objetoFuncValueAntigo[5];
-      this.funcionarioInfo.cpf = objetoFuncValueAntigo[6];
-      this.funcionarioInfo.endereco = objetoFuncValueAntigo[7];
-      this.funcionarioInfo.complemento = objetoFuncValueAntigo[8];
-      this.funcionarioInfo.cidade = objetoFuncValueAntigo[9];
-      this.funcionarioInfo.estado = objetoFuncValueAntigo[10];
-      this.funcionarioInfo.cep = objetoFuncValueAntigo[11];
-      this.funcionarioInfo.sexo = objetoFuncValueAntigo[12];
-      this.funcionarioInfo.telefone = objetoFuncValueAntigo[13];
-      this.funcionarioInfo.profissao = objetoFuncValueAntigo[14];
-      this.funcionarioInfo.urlFacebook = objetoFuncValueAntigo[15];
-      this.funcionarioInfo.hasWhatsapp = objetoFuncValueAntigo[16];
-      this.funcionarioInfo.experiencia = objetoFuncValueAntigo[17];
-      this.funcionarioInfo.avaliacao = objetoFuncValueAntigo[18];
+      this.usuarioInfo.id = objetoFuncValueAntigo[0];
+      this.usuarioInfo.nome = objetoFuncValueAntigo[1];
+      this.usuarioInfo.sobrenome = objetoFuncValueAntigo[2];
+      this.usuarioInfo.login = objetoFuncValueAntigo[3];
+      this.usuarioInfo.senha = objetoFuncValueAntigo[4];
+      this.usuarioInfo.email = objetoFuncValueAntigo[5];
+      this.usuarioInfo.cpf_cnpj = objetoFuncValueAntigo[6];
+      this.usuarioInfo.endereco = objetoFuncValueAntigo[7];
+      this.usuarioInfo.complemento = objetoFuncValueAntigo[8];
+      this.usuarioInfo.cidade = objetoFuncValueAntigo[9];
+      this.usuarioInfo.estado = objetoFuncValueAntigo[10];
+      this.usuarioInfo.cep = objetoFuncValueAntigo[11];
+      this.usuarioInfo.sexo = objetoFuncValueAntigo[12];
+      this.usuarioInfo.telefone = objetoFuncValueAntigo[13];
+      this.usuarioInfo.profissao = objetoFuncValueAntigo[14];
+      this.usuarioInfo.urlFacebook = objetoFuncValueAntigo[15];
+      this.usuarioInfo.hasWhatsapp = objetoFuncValueAntigo[16];
+      this.usuarioInfo.experiencia = objetoFuncValueAntigo[17];
+      this.usuarioInfo.avaliacao = objetoFuncValueAntigo[18];
       
       
       console.log(objetoFuncValueAntigo);
 
       console.log(objetoFuncNomeAtrAntigo);
 
-      this.funcionarioService.updateFuncionario(this.funcionarioInfo)
+      this.usuarioService.updateUsuario(this.usuarioInfo)
       .subscribe(response => {
 
          //PEGA O RESPONSE DO RETORNO DO SERVIÇO

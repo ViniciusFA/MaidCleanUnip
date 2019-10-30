@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {  SocialService } from "ngx-social-button";
-import { AutenticacaoService } from '../services/login/AutenticacaoService';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { LoginService } from '../services/login/LoginService';
 import { Router } from '@angular/router';
-import { Login } from '../services/login/Login';
 import { Usuario } from './../system-objects/usuario-model';
 
 @Component({
