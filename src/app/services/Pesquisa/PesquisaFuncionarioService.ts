@@ -24,7 +24,6 @@ export class PesquisaFuncionarioService{
                 }
 
     buscar(pesquisaFuncionario: PesquisaFuncionario) {
-        pesquisaFuncionario.id_role = RoleEnum.Funcionario;
         console.log(pesquisaFuncionario);
         return this.http.get(this.baseUrlService + '/listaUsuarios', { params: pesquisaFuncionario }
         ).map(res => res.json());

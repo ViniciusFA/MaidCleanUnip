@@ -93,9 +93,14 @@ export class PesquisarComponent implements OnInit {
       .subscribe(response =>{
         if(response == 0 ){
           alert("Não há registros dessa pesquisa.");
-        }else{         
+          this.usuarioService.getUsuarioPorPerfil(RoleEnum.Funcionario).subscribe(res => {
+            this.usuarios = res;
+          }); 
+        }else{   
+          console.log(response);      
             //recebe a resposta do back end e atualiza a tabela de funcionários
             this.usuarios = response;
+            console.log(this.usuarios);   
         }      
     },
         (erro)=> {
