@@ -21,6 +21,7 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 export class PesquisarComponent implements OnInit {
     
   private usuarios: Usuario[] = new Array();
+  private parametrosPesquisa: String[] = new Array();
   private usuariosFuncionarios: Usuario[] = new Array();
   private titulo: string;
   private formulario: FormGroup;
@@ -53,11 +54,12 @@ export class PesquisarComponent implements OnInit {
     ];
 
     experiencias = [
-      new Experiencia(0, "Seleicone"),
+      new Experiencia(0, "Selecione"),
       new Experiencia(1, 'Sem Experiência'),
-      new Experiencia(1, ' 1 a 6 meses'),
-      new Experiencia(1, ' 6 a 12 meses'),
-      new Experiencia(1, ' 1 a 2 anos'),
+      new Experiencia(2, 'até 6 meses'),
+      new Experiencia(3, '6 a 12 meses'),
+      new Experiencia(4, '1 a 2 anos'),      
+      new Experiencia(5, '2 anos e meio'),
     ];
 
     sexos = [
@@ -87,15 +89,17 @@ export class PesquisarComponent implements OnInit {
     }
 
     pesquisar(){   
-     this.usuarioFuncionario = this.formulario.value ;
+      
 
+     this.usuarioFuncionario = this.formulario.value ;
+     
       this.pesquisaFuncionarioService.buscar(this.usuarioFuncionario)
       .subscribe(response =>{
         if(response == 0 ){
           alert("Não há registros dessa pesquisa.");
-          this.usuarioService.getUsuarioPorPerfil(RoleEnum.Funcionario).subscribe(res => {
-            this.usuarios = res;
-          }); 
+         // this.usuarioService.getUsuarioPorPerfil(RoleEnum.Funcionario).subscribe(res => {
+          //  this.usuarios = res;
+          //}); 
         }else{   
           console.log(response);      
             //recebe a resposta do back end e atualiza a tabela de funcionários
@@ -143,5 +147,6 @@ export class PesquisarComponent implements OnInit {
       console.log(funcionario);
       this.router.navigate(['infoFuncionario'],{queryParams: funcionario});
     }
+
     
 }
