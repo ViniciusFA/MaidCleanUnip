@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Vaga } from 'src/app/services/vaga/vaga';
 
 @Component({
@@ -11,19 +11,27 @@ export class OportunidadesModalComponent implements OnInit {
   private titulo:String = '';
   private vaga:Vaga = new Vaga();
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute,
+              private router:Router) { }
 
   ngOnInit() {
     this.titulo = 'Informações da Vaga';
     this.recebendoParamsFuncionario();
   }
 
-  recebendoParamsFuncionario(){
-   // this.vaga.id = this.activatedRoute.snapshot.queryParams.id;
-    this.vaga.nomeEmpregador = this.activatedRoute.snapshot.queryParams.nomeEmpregador;
+  recebendoParamsFuncionario(){    
+    //passando os parametros vindo da pagina anterior para os labels
+    this.vaga.id = this.activatedRoute.snapshot.queryParams.id_vaga;
     this.vaga.titulo = this.activatedRoute.snapshot.queryParams.titulo;
-    //console.log(this.vaga.id);
-    console.log(this.vaga.nomeEmpregador);
-    console.log(this.vaga.titulo);
+    this.vaga.subtitulo = this.activatedRoute.snapshot.queryParams.subtitulo;
+    this.vaga.nomeEmpregador = this.activatedRoute.snapshot.queryParams.nomeEmpregador;
+    this.vaga.estado = this.activatedRoute.snapshot.queryParams.estado;
+    this.vaga.cidade = this.activatedRoute.snapshot.queryParams.cidade;
+    this.vaga.descricao = this.activatedRoute.snapshot.queryParams.descricao;
+  }
+
+  Candidatar(){
+    alert("Candidatura enviada com sucesso.");
+    this.router.navigate(['/oportunidades']);
   }
 }

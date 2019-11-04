@@ -27,4 +27,10 @@ constructor(private http:Http,
         .map(res => res.json());
     }
 
+    
+    pesquisar(vaga:Vaga){
+       return this.http.get(this.baseUrlService + '/listaVagas', {params: vaga})
+       .map(res => res.json());
+    }
+
 }

@@ -9,20 +9,24 @@
                 <h3>{{titulo}}</h3>
             </div>
             <hr/>
-            <form class="form-inline" id="formPesquisaCampos" [formGroup]="formulario" (ngSubmit)="pesquisar()">
+            <form class="form-inline" id="formPesquisaCampos" [formGroup]="formulario" (ngSubmit)="pesquisarVaga()">
                 
                     <div class="form-row" id="camposFormPesquisa">                               
                             <div class="col-6" id="textoLabelPadrao">
-                                <b>Nome</b>
-                              <input type="text" class="form-control" id="campoNome"  formControlName="nomeVaga" name="nomeVaga" ngDefaultControl placeholder="Nome da Vaga">
+                                <b>Título</b>
+                              <input type="text" class="form-control" id="campoNome"  formControlName="titulo" name="titulo" ngDefaultControl placeholder="Título da Vaga">
                             </div>
                             <br>
                             <div class="col-6"  id="textoLabelPadrao">
-                              <b>Sobrenome</b>
-                              <input type="text" class="form-control" id="campoSobreNome"  formControlName="assunto" name="assunto" ngDefaultControl placeholder="Assunto da vaga">
+                              <b>Subtítulo</b>
+                              <input type="text" class="form-control" id="campoSobreNome"  formControlName="subtitulo" name="assunto" ngDefaultControl placeholder="Subtítulo da vaga">
                             </div>
                             <br>
-                            <div class="col-3"  id="textoLabelPadrao" formControlName="estado" name="ddlEstado" ngDefaultControl>
+                            <div class="col-4">
+                              <b>Nome Empregador</b>
+                              <input type="text"  id="textoLabelPadrao" class="form-control" placeholder="Nome" id="campoNome" formControlName="nomeEmpregador" name="nome" ngDefaultControl>
+                            </div>
+                            <div class="col-4"  id="textoLabelPadrao" formControlName="estado" name="ddlEstado" ngDefaultControl>
                               <b>Estado</b>
                                 <select class="form-control form-control-sm-3"  id="campoEstadoOportunidades" >
                                         <option *ngFor="let estado of estados" ngValue="estados.id">
@@ -30,27 +34,10 @@
                                         </option>
                                 </select>
                              </div>
-                            <div class="col-3">
+                            <div class="col-4">
                               <b>Cidade</b>
                               <input type="text"  id="textoLabelPadrao" class="form-control" placeholder="Cidade" id="campoCidade" formControlName="cidade" name="cidade" ngDefaultControl>
-                            </div>
-                            <div class="col-3"  id="textoLabelPadrao" formControlName="residencia" name="sexo" ngDefaultControl>
-                                    <b>Residência</b>
-                                    <select class="form-control form-control-sm-3" id="campoResidenciaOportunidades" >
-                                            <option *ngFor="let residencia of residencias" ngValue="residencias.id">
-                                            {{residencia.nome}}
-                                            </option>
-                                    </select>
-                            </div>
-                            <div class="col-3" id="textoLabelPadrao" formControlName="experiencia" name="experiencia" ngDefaultControl>
-                                <b>Experiência    </b>
-                                <select class="form-control form-control-sm-3" id="campoExperienciaOportunidades" >
-                                            <option *ngFor="let experiencia of experiencias " ngValue="experiencias.id">
-                                              {{experiencia.nome}}
-                                            </option>
-
-                                    </select>
-                            </div>
+                            </div>                      
                     </div>   
                       
                     <!--Botões limpar e pesquisar -->
@@ -61,28 +48,30 @@
                </form>
              </div>
              <div>
-                    <div class="container">
+                    <!--<div class="container">-->
                             <div class="row" id="conteudoGridsOportunidade">
                               <!--Card 01 linha 01-->
                               <div class="col-4 card" style="width: 18rem;" *ngFor="let vaga of vagas">
                                     <div class="card-body" >
                                       <h5 class="card-title" >                                      
-                                      {{vaga.titulo}}
+                                      <label class="conteudoGridVaga">{{vaga.titulo}}</label>
                                     </h5>
                                       <h6 class="card-subtitle mb-2 text-muted">
-                                          {{vaga.subtitulo}}
+                                          <label class="conteudoGridVaga"> {{vaga.subtitulo}} </label>
                                       </h6>
                                       <p class="card-text">
-                                        {{vaga.descricao}}
+                                          <label class="conteudoGridVaga"> {{vaga.descricao}}</label>
                                       </p>
-                                     <a class="card-link" id="saberMaisOportunidades" (click)="oportunidadeInfo(vaga)" ><b>Saber mais</b></a>
+                                     <a class="card-link" id="saberMaisOportunidades" (click)="oportunidadeInfo(vaga)" >
+                                       <label class="saberMaisOportunidades">Saber mais</label>
+                                    </a>
                                      <br>
                                     </div>                                  
                               </div> 
                             </div>                            
                             <br>
                             <br>
-                    </div>   
+                    <!--</div>-->   
              </div>
         </div>
     </div>   

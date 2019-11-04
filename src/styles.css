@@ -10913,7 +10913,7 @@ font-family: arial;
 }
 #campoEstadoOportunidades{
   width: 100%;
-  height: 68%;
+  height: 53%;
 }
 #campoResidenciaOportunidades{
   width: 100%;
@@ -11034,7 +11034,8 @@ margin-bottom: 1%;
 }
 #botoesOportunidadeModal{
   width: 75%;
-  margin-top: 18%;
+  margin-top: 10%;
+  margin-bottom: 2%;
 }
 #confirmCandidatura{
   margin-left: 2%;
@@ -11042,4 +11043,20 @@ margin-bottom: 1%;
 .contentInfoOportunity{
   margin-top:3%;
   margin-left: 1%;
+}
+.labelVagaModal{
+  color:blue;
+  font-weight: bold;
+}
+.conteudoInfoVagaModal{
+  color:black;
+  font-weight: bold;
+  margin: 0.5%;
+}
+.conteudoGridVaga{
+  font-weight: bold;
+}
+.saberMaisOportunidades{
+  color:blue;
+  font-weight: bold;
 }

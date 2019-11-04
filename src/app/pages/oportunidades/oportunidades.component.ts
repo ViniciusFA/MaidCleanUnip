@@ -5,6 +5,7 @@ import { Estados } from '../../util/estados';
 import { Residencia } from '../../util/residencia';
 import { VagaService } from '../../services/vaga/VagaService';
 import { Router } from '@angular/router';
+import { Response } from '../../services/response';
 
 @Component({
   selector: 'app-oportunidades',
@@ -15,6 +16,7 @@ export class OportunidadesComponent implements OnInit {
   private vagas: Vaga[] = new Array();
   private titulo:string;
   private formulario:FormGroup;  
+  private vaga:Vaga = new Vaga();
 
   constructor(private formBuilder:FormBuilder,
               private vagaService:VagaService,
@@ -49,12 +51,11 @@ export class OportunidadesComponent implements OnInit {
 
   configurarFormulario(){
     this.formulario = this.formBuilder.group({
-      nomeVaga:new FormControl(''),
-      assunto:new FormControl(''),
-      estado:new FormControl(''),
-      cidade:new FormControl(''),
-      residencia:new FormControl(''),
-      experiencia:new FormControl('')
+      titulo:new FormControl(''),
+      subtitulo:new FormControl(''),
+      nomeEmpregador:new FormControl(''),
+      estado :new FormControl(''),
+      cidade:new FormControl('')
     });
   }
 
@@ -66,10 +67,25 @@ export class OportunidadesComponent implements OnInit {
     (<HTMLSelectElement>document.getElementById('campoSexo')).value = "Residência"; 
     (<HTMLSelectElement>document.getElementById('campoExperiencia')).value = "Experiência";  
   }
-
  
   oportunidadeInfo(vaga:Vaga){
     this.router.navigate(['oportunidade-modal'],{queryParams: vaga});
+  }
+
+  pesquisarVaga(){
+    this.vaga = this.formulario.value;
+    this.vagaService.pesquisar(this.vaga)
+    .subscribe(response =>{
+      if(response == 0){
+        alert("Não há registros dessa pesquisa.");
+      }else{
+        this.vagas = response;
+        console.log(this.vagas);
+      }
+    },
+    (erro)=> {
+      alert(erro);
+  });
   }
 
 }
