@@ -16,6 +16,7 @@ import { InfoFuncionarioComponent } from './pages/info-funcionario/info-funciona
 import { AnuncieComponent } from './pages/anuncie/anuncie.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
+import { OportunidadesModalComponent } from './pages/oportunidades/oportunidades-modal/oportunidade-modal.component';
 
 export const ROUTES: Routes = [
     {path: '', component: HomeComponent},
@@ -33,5 +34,6 @@ export const ROUTES: Routes = [
     {path: 'configuracoes', component: ConfiguracoesComponent}, //canActivate: [AuthGuard]},    
     {path: 'detalhes', component: FuncionarioDetalhesComponent}, //canActivate: [AuthGuard]},   
     {path: 'infoFuncionario', component: InfoFuncionarioComponent}, //canActivate: [AuthGuard]},
-    {path: 'configuracoesConta', component: ConfiguracoesContaComponent}, //canActivate: [AuthGuard]},        
+    {path: 'configuracoesConta', component: ConfiguracoesContaComponent}, //canActivate: [AuthGuard]},
+    {path: 'oportunidade-modal', component: OportunidadesModalComponent},
 ]

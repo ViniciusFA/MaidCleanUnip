@@ -1,0 +1,26 @@
+
+<div class="tituloConteudoPaginas" id="tituloInfoOportunidade">
+    <h3>{{titulo}}</h3>
+</div>
+<hr>
+<div class="contentInfoOportunity">
+        <label><b>Título:</b>{{vaga.titulo}}</label>
+        <br>
+        <label><b>Subtítulo:</b></label> {{vaga.subtitulo}}
+        <br>          
+        <label><b>Nome do Empregador:</b></label>
+        <br>
+        <label><b>Estado:</b></label>
+        <br>
+        <label><b>Cidade:</b></label>
+        <br>
+        <label><b>Descrição:</b></label>
+        <br>
+</div>
+
+<div class="modal-footer">
+    <div id="botoesOportunidadeModal">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/oportunidades']">Voltar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmCandidatura" (click)="Candidatar()">Candidate-se</button>
+    </div>
+</div>

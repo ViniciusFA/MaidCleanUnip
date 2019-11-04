@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { ConfigService } from '../config.service';
+import { Vaga } from './vaga';
 
 @Injectable()
 export class VagaService{
@@ -19,6 +20,11 @@ constructor(private http:Http,
 
     getVagas(){
         return this.http.get(this.baseUrlService).map(res => res.json());
+    }
+
+    anunciarVagas(vaga:Vaga){
+        return this.http.post(this.baseUrlService,JSON.stringify(vaga),this.options)
+        .map(res => res.json());
     }
 
 }

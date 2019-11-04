@@ -24,6 +24,7 @@ export class AutenticacaoService{
         acessaFuncionario: true,
         acessaLegislacao: true,
         acessaOportunidade: true,
+        acessaOportunidadeModal:true,
         acessaCadastro: false,
         acessaEntrar: false,
         acessaLogout: true
@@ -36,6 +37,7 @@ export class AutenticacaoService{
         acessaFuncionario: true,
         acessaLegislacao: false,
         acessaOportunidade: false,
+        acessaOportunidadeModal:false,
         acessaCadastro: false,
         acessaEntrar: false,
         acessaLogout: true
@@ -48,6 +50,7 @@ export class AutenticacaoService{
         acessaFuncionario: false,
         acessaLegislacao: true,
         acessaOportunidade: true,
+        acessaOportunidadeModal:true,
         acessaCadastro: false,
         acessaEntrar: false,
         acessaLogout: true

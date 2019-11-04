@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   private usuario:Usuario;
   mostrarMenu:boolean = false;
   acessaAnuncie: Boolean = false;
+  acessaOportunidadeModal:Boolean=false;
   acessaFuncionario: Boolean = false;
   acessaLegislacao: Boolean = false;
   acessaOportunidade: Boolean = false;
@@ -40,6 +41,7 @@ export class HeaderComponent implements OnInit {
       this.acessaFuncionario = false;
       this.acessaLegislacao = false;
       this.acessaOportunidade = false;
+      this.acessaOportunidadeModal = false;
       this.acessaLogout = false;
       this.acessaEntrar = true;
       this.acessaCadastro = true;
@@ -48,6 +50,7 @@ export class HeaderComponent implements OnInit {
       this.acessaFuncionario = permissoes.acessaFuncionario;
       this.acessaLegislacao = permissoes.acessaLegislacao;
       this.acessaOportunidade = permissoes.acessaOportunidade;
+      this.acessaOportunidadeModal = permissoes
       this.acessaLogout = permissoes.acessaLogout;
       this.acessaEntrar = permissoes.acessaEntrar;
       this.acessaCadastro = permissoes.acessaCadastro;

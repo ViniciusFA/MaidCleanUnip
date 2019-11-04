@@ -32,29 +32,23 @@ export class UsuarioService{
     }
 
     /**ADICIONA UMA NOVA PESSOA */
-    addUsuario(usuario: Usuario){
-        
+    addUsuario(usuario: Usuario){        
         return this.http.post(this.baseUrlService, JSON.stringify(usuario),this.options)
         .map(res => res.json());
-    }
-
-   
+    }  
 
     /**EXCLUI UMA PESSOA */
     deleteUsuario(codigo: number){
-
         return this.http.delete(this.baseUrlService + '/' +  codigo).map(res => res.json());
     }
 
     /**CONSULTA UMA PESSOA PELO CÓDIGO */
     getUsuario(codigo: number){
-
         return this.http.get(this.baseUrlService + '/' + codigo).map(res => res.json());
     }
   
     /**ATUALIZA INFORMAÇÕES DA PESSOA */
-    updateUsuario(usuario: Usuario){
-       
+    updateUsuario(usuario: Usuario){       
         return this.http.put(this.baseUrlService, JSON.stringify(usuario),this.options)
         .map(res => res.json());
     }

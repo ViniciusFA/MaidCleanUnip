@@ -82,7 +82,6 @@ export class CadastroFuncionarioComponent implements OnInit {
     }
     usuario.id_role = RoleEnum.Funcionario;
 
-    console.log(usuario);
     this.UsuarioService.addUsuario(usuario)
       .subscribe(response => {
 

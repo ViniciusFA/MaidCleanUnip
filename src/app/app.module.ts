@@ -39,6 +39,7 @@ import { AnuncieComponent } from './pages/anuncie/anuncie.component';
 import { AutenticacaoService } from './services/login/AutenticacaoService';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
+import { OportunidadesModalComponent } from './pages/oportunidades/oportunidades-modal/oportunidade-modal.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -67,7 +68,8 @@ export function getAuthServiceConfigs() {
     LegislacaoComponent,
     FuncionarioDetalhesComponent,
     InfoFuncionarioComponent,
-    AnuncieComponent
+    AnuncieComponent,
+    OportunidadesModalComponent
   ],
   imports: [
     BrowserModule,

@@ -7,26 +7,26 @@
                     </div>   
                     <hr>
                     <div>
-                        <form class="form-inline" id="formPesquisaCampos">                                            
+                        <form class="form-inline" id="formPesquisaCampos" [formGroup]="formulario" (ngSubmit)="anunciar()">                                            
                             <div class="form-row" id="camposFormPesquisa">   
                                     <div class="col-4" id="textoLabelPadrao">
                                             <b>Nome</b>
-                                        <input type="text" class="form-control" id="campoAnuncieVagasEmpregador"  name="nome" ngDefaultControl placeholder="Nome do empregador">
+                                        <input type="text" class="form-control" id="campoAnuncieVagasEmpregador" formControlName="nomeEmpregador" name="nome" ngDefaultControl placeholder="Nome do empregador">
                                         <p>(Insira entre 3 a 40 caracteres)</p>
                                     </div>                            
                                     <div class="col-4" id="textoLabelPadrao">
                                         <b>Título</b>
-                                    <input type="text" class="form-control" id="campoAnuncievagaTitulo"   name="titulo" ngDefaultControl placeholder="Título">
+                                    <input type="text" class="form-control" id="campoAnuncievagaTitulo" formControlName="titulo"  name="titulo" ngDefaultControl placeholder="Título">
                                     <p>(Insira entre 3 a 15 caracteres)</p>
                                     </div>
                                     <br>
-                                    <div class="col-4" id="textoLabelPadrao">
+                                    <div class="col-4" id="textoLabelPadrao" >
                                         <b>Subtítulo</b>
-                                    <input type="text" class="form-control" id="campoAnuncioVagaSubtitulo"   name="subtitulo" ngDefaultControl placeholder="Subtítulo">
+                                    <input type="text" class="form-control" id="campoAnuncioVagaSubtitulo" formControlName="subtitulo"  name="subtitulo" ngDefaultControl placeholder="Subtítulo">
                                     <p>(Insira entre 3 a 40 caracteres)</p>
                                     </div>
                                     <br>                
-                                    <div class="col-3"  name="estado" ngDefaultControl id="textoLabelPadrao">
+                                    <div class="col-4"  name="estado" formControlName="estado" ngDefaultControl id="textoLabelPadrao">
                                         <b>Estado</b>
                                         <select class="form-control form-control-sm-3"  id="campoEstadoVagas" >
                                             <option *ngFor="let estado of estados" ngValue="estados.id">
@@ -34,15 +34,20 @@
                                             </option>
                                         </select>
                                      </div>
-                                    <div class="col-6" id="textoLabelPadrao">
+                                    <div class="col-4" id="textoLabelPadrao">
                                             <b>Cidade</b>
-                                        <input type="text" class="form-control" id="campoAnuncievagasCidade"  name="cidade" ngDefaultControl placeholder="Cidade">
+                                        <input type="text" class="form-control" id="campoAnuncievagasCidade" formControlName="cidade" name="cidade" ngDefaultControl placeholder="Cidade">
                                         <p>(Insira entre 3 a 40 caracteres)</p>
+                                    </div> 
+                                    <div class="col-4" id="textoLabelPadrao">
+                                        <b>Telefone</b>
+                                        <input type="text" class="form-control" id="campoAnuncievagastelefone" formControlName="telefone" name="telefone" ngDefaultControl placeholder="Telefone">
+                                        <p>(Insira até 11 caracteres)</p>
                                     </div>  
                                     <div class="col-12">
                                             <br>
                                             <label for="TextAreaMensagm" id="textoLabelAnuncieDesc">Descrição</label>                                            
-                                            <textarea class="form-control" id="TextAreaMensagm" rows="10" cols="170" ngDefaultControl></textarea>
+                                            <textarea class="form-control" id="TextAreaMensagm" rows="10" cols="170" formControlName="descricao" ngDefaultControl></textarea>
                                             <p>(Insira até 400 caracteres)</p>
                                     </div>
                             </div>    

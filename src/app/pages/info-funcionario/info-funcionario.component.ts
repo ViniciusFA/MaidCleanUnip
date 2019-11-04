@@ -25,7 +25,7 @@ export class InfoFuncionarioComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private usuarioService:UsuarioService,
               private router:Router,
-              private formBuilder:FormBuilder,){             
+              private formBuilder:FormBuilder){             
                this.configurarCampos();
 
               }
@@ -63,7 +63,7 @@ export class InfoFuncionarioComponent implements OnInit {
    //método que captura o funcionário selecionado no badge info da página pesquiasr
    recebendoParamsFuncionario(){
    //recebendo os valores vindo da router através do queryParams
-   this.usuarioInfo.id = this.activatedRoute.snapshot.queryParams.id_usuario;
+   this.usuarioInfo.id = this.activatedRoute.snapshot.queryParams.idUsuario;
    console.log("Id: " +  this.usuarioInfo.id );
    this.usuarioInfo.nome = this.activatedRoute.snapshot.queryParams.nome;
    this.usuarioInfo.sobrenome = this.activatedRoute.snapshot.queryParams.sobrenome;

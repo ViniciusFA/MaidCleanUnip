@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Estados } from '../../util/estados';
 import { Residencia } from '../../util/residencia';
 import { VagaService } from '../../services/vaga/VagaService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-oportunidades',
@@ -16,7 +17,8 @@ export class OportunidadesComponent implements OnInit {
   private formulario:FormGroup;  
 
   constructor(private formBuilder:FormBuilder,
-              private vagaService:VagaService) { 
+              private vagaService:VagaService,
+              private router:Router) { 
 
     this.configurarFormulario();
   }
@@ -63,6 +65,11 @@ export class OportunidadesComponent implements OnInit {
     (<HTMLSelectElement>document.getElementById('campoCidade')).value = ""; 
     (<HTMLSelectElement>document.getElementById('campoSexo')).value = "Residência"; 
     (<HTMLSelectElement>document.getElementById('campoExperiencia')).value = "Experiência";  
+  }
+
+ 
+  oportunidadeInfo(vaga:Vaga){
+    this.router.navigate(['oportunidade-modal'],{queryParams: vaga});
   }
 
 }
