@@ -3,6 +3,7 @@
           <h3>{{titulo}}</h3>                     
 </div>
  <hr/>
+ <br>
 <form [formGroup]="formulario">
   <div class="conteudoPageDetalhes">
     <div id="conteudoLabelsFuncInfo">
@@ -179,3 +180,19 @@
           </div>
         </div>
 </div>
+
+<!-- Criando um campo para colocar foto -->
+<div id="contauudoFotoPerfil">
+    <img src="../../../assets/img/funcionario/photo-here.jpg" alt="Smiley face" width="242" height="342">
+  <p class="linkOpcaoFoto" (click)="excluirFoto()"><a>Excluir foto</a></p>   
+  <p class="linkOpcaoFoto" (click)="alterarFoto()"><a>Inserir foto</a></p>   
+</div>
+<br>
+
+<!-- Criando um campo para visualizar o currículo-->
+<div id="contaudoCurriculoPerfil">
+
+   <p><b>Insira o currículo aqui</b></p>
+</div>
+<br>
+  

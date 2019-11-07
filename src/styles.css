@@ -11060,3 +11060,21 @@ margin-bottom: 1%;
   color:blue;
   font-weight: bold;
 }
+#contauudoFotoPerfil{
+  margin-left: 70%;
+  margin-top: -97%;
+
+}
+#contaudoCurriculoPerfil{
+  margin-left: 80%;
+  margin-top: 26%;
+}
+.linkOpcaoFoto a{
+text-decoration: gray underline;
+color:black;
+}
+.linkOpcaoFoto :hover{
+color:blue;
+text-decoration: none;
+cursor:pointer;
+}
