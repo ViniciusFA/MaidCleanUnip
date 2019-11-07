@@ -1,139 +1,129 @@
 <div class="tituloConteudoPaginas">
         <!--  <h3>Pesquisar Profissionais</h3>  -->
-          <h3>{{titulo}}</h3>                     
+          <h4>{{titulo}}</h4>                     
 </div>
  <hr/>
+ <br>
  <br>
 <form [formGroup]="formulario">
   <div class="conteudoPageDetalhes">
     <div id="conteudoLabelsFuncInfo">
-            <div>
+            <div id="ConteudoIdInputInfo">
               <div class="form-row">
+                <div class="conteudoDivColunaInfo inputInfoFunc inputInfoID">
                   <label><b> ID:</b></label>
-                  <input class="form-control" formControlName="nome" id="inputInfoFuncId" type="text" placeholder="{{usuarioInfo.id}}" >            
+                  {{usuarioInfo.id}}            
+                </div>
               </div>                          
             </div>
               <br>  
-              <div class="form-row">
-                <label><b> Nome:</b></label>
-                <input class="form-control" formControlName="nome" id="inputPadraoInfoFunc3" type="text" placeholder="{{usuarioInfo.nome}}" >         
-                &nbsp; <span class="badge badge-info" id="badgeAlterarFunc2"(click)="habilitarEdicao(usuarioInfo.nome)" >Alterar</span>
-              </div>
-            <br> 
-              <div class="form-row">
-                <label><b> sobrenome:</b></label>
-                <input class="form-control" formControlName="sobrenome" id="inputInfoFunc" type="text" placeholder="{{usuarioInfo.sobrenome}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.sobrenome)">Alterar</span>
-              </div>
-            <br> 
-              <div class="form-row">
-                <label><b> Login:</b></label>
-                <input class="form-control" formControlName="login" id="inputPadraoInfoFunc3" type="text" placeholder="{{usuarioInfo.login}}" >         
+            <div class="form-row" >
+                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                    <label><b> Nome:</b></label>
+                    <input class="form-control contaudoInputInfo" formControlName="nome"  type="text" placeholder="{{usuarioInfo.nome}}" >         
+                </div>
+                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                    <label><b> Sobrenome:</b></label>
+                    <input class="form-control contaudoInputInfo" formControlName="sobrenome" type="text" placeholder="{{usuarioInfo.sobrenome}}" >                           
                </div>
+            </div>
             <br> 
               <div class="form-row">
-                <label><b> Senha:</b></label>
-                <input class="form-control" formControlName="senha" id="inputPadraoInfoFunc3" type="text" placeholder="{{usuarioInfo.senha}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.senha)">Alterar</span>
-              </div>
-           <br> 
-              <div class="form-row">
-                <label><b> Email:</b></label>
-                <input class="form-control" formControlName="email" id="inputPadraoInfoFunc3" type="text" placeholder="{{usuarioInfo.email}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.email)">Alterar</span>
-              </div>
+                  <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                      <label><b> Login:</b></label>
+                      <input class="form-control contaudoInputInfo" formControlName="login"  type="text" placeholder="{{usuarioInfo.login}}" >         
+                  </div>
+                  <div class="col-3 conteudoDivColunaInfo inputInfoFunc" >
+                      <label><b> Senha:</b></label>
+                      <input class="form-control contaudoInputInfo" formControlName="senha"  type="text" placeholder="{{usuarioInfo.senha}}" >    
+                 </div>  
+             </div>
             <br> 
               <div class="form-row">
-                <label><b> Facebook:</b></label>
-                <input class="form-control" formControlName="facebook" id="inputPadraoInfoFunc4" type="text" placeholder="{{usuarioInfo.urlFacebook}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.urlFacebook)">Alterar</span>
-              </div>
+                  <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                      <label><b> Email:</b></label>
+                      <input class="form-control contaudoInputInfo" formControlName="email"  type="text" placeholder="{{usuarioInfo.email}}" >                           
+                  </div>
+                  <div class="col-3 conteudoDivColunaInfo  inputInfoFunc">
+                      <label><b> Facebook:</b></label>
+                      <input class="form-control contaudoInputInfo" formControlName="facebook"  type="text" placeholder="{{usuarioInfo.urlFacebook}}" >                           
+                  </div>
+              </div>         
             <br> 
               <div class="form-row">
-                <label><b> Whatsapp:</b></label>
-                <input class="form-control" formControlName="whatsapp" id="inputPadraoInfoFunc4" type="text" placeholder="{{usuarioInfo.hasWhatsapp}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.hasWhatsapp)">Alterar</span>
+                  <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                      <label><b> Whatsapp:</b></label>
+                      <input class="form-control contaudoInputInfo" formControlName="whatsapp"  type="text" placeholder="{{usuarioInfo.hasWhatsapp}}" >                           
+                 </div>
+                 <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                    <label><b> Telefone:</b></label>
+                    <input class="form-control contaudoInputInfo" formControlName="telefone" type="text" placeholder="{{usuarioInfo.telefone}}" >                           
+                </div>
               </div>
-            <br> 
+            <br>  
             <div class="form-row">
-                <label><b> Telefone:</b></label>
-                <input class="form-control" formControlName="telefone" id="inputPadraoInfoFunc2" type="text" placeholder="{{usuarioInfo.telefone}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.telefone)">Alterar</span>
-              </div>  
-            <br> 
+                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                  <label><b>Profissão::</b></label> 
+                  <input class="form-control contaudoInputInfo" formControlName="profissao"  type="text" placeholder="{{usuarioInfo.profissao}}" >                           
+                </div>
+                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                    <label><b>Experiência::</b></label> 
+                    <input class="form-control contaudoInputInfo" formControlName="experiencia" type="text" placeholder="{{usuarioInfo.experiencia}}" >                           
+               </div>
+            </div>  
+            <br>
+              <div class="form-row">
+                  <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                      <label><b>CPF:</b></label> 
+                      <input class="form-control contaudoInputInfo" formControlName="cpf_cnpj" type="text" placeholder="{{usuarioInfo.cpf_cnpj}}" >                           
+                 </div>
+                 <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                    <label><b>Endereço:</b></label> 
+                    <input class="form-control contaudoInputInfo" formControlName="endereco" type="text" placeholder="{{usuarioInfo.endereco}}" >                           
+                 </div>
+              </div>
+            <br>               
+              <div class="form-row">
+                  <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                    <label><b>Complemento:</b></label> 
+                    <input class="form-control" formControlName="complemento" type="text" placeholder="{{usuarioInfo.complemento}}" >                           
+                 </div>
+                 <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                    <label><b>Cidade:</b></label> 
+                    <input class="form-control contaudoInputInfo" formControlName="cidade" type="text" placeholder="{{usuarioInfo.cidade}}" >                           
+                 </div>
+              </div>
+            <br>              
             <div class="form-row">
-                <label><b>Profissão::</b></label> 
-                <input class="form-control" formControlName="profissao" id="inputPadraoInfoFunc4" type="text" placeholder="{{usuarioInfo.profissao}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.profissao)">Alterar</span>
-           </div>  
-            <br> 
-              <div class="form-row">
-                <label><b>Experiência::</b></label> 
-                <input class="form-control" formControlName="experiencia" id="inputInfoFunc" type="text" placeholder="{{usuarioInfo.experiencia}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.experiencia)">Alterar</span>
+                <div class="col-3 conteudoDivColunaInfo  inputInfoFunc">
+                    <label><b>Estado:</b></label> 
+                    <input class="form-control contaudoInputInfo" formControlName="estado"  type="text" placeholder="{{usuarioInfo.estado}}" >                           
+                </div>
+                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                    <label><b>CEP:</b></label> 
+                    <input class="form-control contaudoInputInfo" formControlName="cep"  type="text" placeholder="{{usuarioInfo.cep}}" >                           
+               </div>              
               </div>
             <br> 
               <div class="form-row">
-                <label><b>CPF:</b></label> 
-                <input class="form-control" formControlName="cpf_cnpj" id="inputInfoFuncCpf" type="text" placeholder="{{usuarioInfo.cpf_cnpj}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.cpf_cnpj)">Alterar</span>
+                  <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                    <label><b>Avaliação:</b></label> 
+                    <input class="form-control contaudoInputInfo" formControlName="avaliacao"  type="text" placeholder="{{usuarioInfo.avaliacao}}" >                           
+                </div>
+                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                    <label><b>Sexo:</b></label> 
+                    <input class="form-control contaudoInputInfo" formControlName="sexo" type="text" placeholder="{{usuarioInfo.sexo}}" >                           
+                </div>
               </div>
-            <br> 
-              <div class="form-row">
-                <label><b>Endereço:</b></label> 
-                <input class="form-control" formControlName="endereco" id="inputPadraoInfoFunc4" type="text" placeholder="{{usuarioInfo.endereco}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.endereco)">Alterar</span>
-              </div>
-            <br> 
-
-              <div class="form-row">
-                <label><b>Complemento:</b></label> 
-                <input class="form-control" formControlName="complemento" id="inputInfoFuncComplemento" type="text" placeholder="{{usuarioInfo.complemento}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(funcionarioInfo.complemento)">Alterar</span>
-              </div>
-            <br> 
-              <div class="form-row">
-                <label><b>Cidade:</b></label> 
-                <input class="form-control" formControlName="cidade" id="inputPadraoInfoFunc2" type="text" placeholder="{{usuarioInfo.cidade}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.cidade)">Alterar</span>
-              </div>
-            <br> 
-            <div class="form-row">
-                <label><b>Estado:</b></label> 
-                <input class="form-control" formControlName="estado" id="inputPadraoInfoFunc2" type="text" placeholder="{{usuarioInfo.estado}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.estado)">Alterar</span>
-              </div>
-            <br> 
-              <div class="form-row">
-                <label><b>CEP:</b></label> 
-                <input class="form-control" formControlName="cep" id="inputPadraoInfoFunc3" type="text" placeholder="{{usuarioInfo.cep}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.cep)">Alterar</span>
-              </div>
-            <br> 
-              <div class="form-row">
-                <label><b>Avaliação:</b></label> 
-                <input class="form-control" formControlName="avaliacao" id="inputInfoFunc" type="text" placeholder="{{usuarioInfo.avaliacao}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.avaliacao)">Alterar</span>
-              </div>
-            <br> 
-              <div class="form-row">
-                <label><b>Sexo:</b></label> 
-                <input class="form-control" formControlName="sexo" id="inputPadraoInfoFunc2" type="text" placeholder="{{usuarioInfo.sexo}}" >                           
-                <span class="badge badge-info" id="badgeAlterarFunc" (click)="habilitarEdicao(usuarioInfo.sexo)">Alterar</span>
-              </div>
-
-            <br> 
-            <br> 
-            <br> 
-
+            <br>    
+            <br>
+      <!--
       <div class="grupoBotoesDetalhes">
           <button  type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmExcluir" >Excluir </button>         
           <button type="submit"  [disabled]="edicao" class="btn btn-primary btn-sm" id="btnEditarDetalhes" data-toggle="modal" data-target="#editarFuncionario" >Editar </button>
          <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/pesquisar']" id="btnVoltarDetalhes">Voltar </button><br>
       </div>
-
-    <br>
-    <br>
+    -->
 
   </div>
 </div>
@@ -180,19 +170,25 @@
           </div>
         </div>
 </div>
+<br>
 
 <!-- Criando um campo para colocar foto -->
-<div id="contauudoFotoPerfil">
+<div id="conteudoFotoPerfil">
     <img src="../../../assets/img/funcionario/photo-here.jpg" alt="Smiley face" width="242" height="342">
-  <p class="linkOpcaoFoto" (click)="excluirFoto()"><a>Excluir foto</a></p>   
-  <p class="linkOpcaoFoto" (click)="alterarFoto()"><a>Inserir foto</a></p>   
-</div>
-<br>
-
-<!-- Criando um campo para visualizar o currículo-->
-<div id="contaudoCurriculoPerfil">
-
-   <p><b>Insira o currículo aqui</b></p>
-</div>
+  </div>
 <br>
   
+<!--Botões de integração do Patrão para o funcionário-->
+<div class="botoesInfoFunc">
+    <div id="botaoEnviarMensagemInfo">
+        <button type="button" class="btn btn-light">Envie uma Mensagem</button>
+    </div>
+    <div id="botaoVerCurriculoInfo">
+        <button type="button" class="btn btn-light">Ver currículo</button>
+    </div>
+    <div id="botaoVoltarInfo">
+        <button type="button" class="btn btn-light" [routerLink]="['/pesquisar']">Voltar</button>
+    </div>
+</div>
+<br>
+<br>

@@ -2195,6 +2195,7 @@
  .form-row > [class*="col-"] {
    padding-right: 5px;
    padding-left: 5px;
+   padding-bottom: 5px;
  }
  
  .form-check {
@@ -10434,8 +10435,9 @@
   margin-left: 10%;
 }
 #containerAllContato{
-  margin-left: 10%;
+  margin-left: 5%;
   margin-right: 10%;
+  width: 90%;
 }
 #botoesCadastro{
   margin-left: 35%;
@@ -10443,7 +10445,7 @@
   margin-bottom: 5%;
 }
 .botoesContato{
-  margin-left: 40%;
+  margin-left: 35%;
  }
  #btnLimpar{
   margin-left: 5%;
@@ -10624,7 +10626,7 @@ html {
   height: 265px;
 }
 #camposFormPesquisa{
-  margin-left: 1%;
+  margin-left: -5%;
 }
 
 #campoNome{
@@ -10653,11 +10655,13 @@ html {
   margin: 0 auto;
   margin-bottom: 2%;
   margin-top: 2%;
+  margin-left: 37%;
 }
 #tabelaProfissionais{
-  width: 100%;                    
+  width: 106%;
   height: 185px;
-  margin-top: 4%
+  margin-top: 4%;
+  margin-left: -5%;
 }
 #btnEnviarPesquisa{
   margin-left: 15px;
@@ -10870,7 +10874,7 @@ html {
 }
 #campoEstadoVagas{
   width: 100%;
-  height: 43%;
+  height: 45%;
 }
 #campoSexoVagas{
   width: 100%;
@@ -10880,7 +10884,25 @@ html {
   width: 100%;
   height: 55%;
 }
-#campoCidadeOportunidades{
+#campoCidadePesquisar{
+  width: 100%;
+  height: 55%;
+}
+#campoNomePesquisar{
+  width: 100%;
+}
+#campoSobreNomePesquisar{
+  width: 100%;
+}
+#campoEstadoPesquisar{
+  width: 100%;
+  height: 53%;
+}
+#campoSexoPesquisar{
+  width: 100%;
+  height: 55%;
+}
+#campoExperienciaPesquisar{
   width: 100%;
   height: 55%;
 }
@@ -10895,11 +10917,13 @@ html {
   font-family: arial;
 }
 #conteudoLabelsFuncInfo label{
-  color:blue;
+  color:black;
   margin-right: 2%;
 }
 #listaFuncionariotabela{
-  color:black;
+  font-size: 13px;
+  color: black;
+  font-weight: bold;
 }
 #textoRecomendacoesLegislacao{
   color:black;
@@ -10932,38 +10956,10 @@ font-family: arial;
   margin-top: 1%;
   margin-left: 2%;
 }
+.inputInfoFunc{
+  background-color:#d4dfea;
+}
 #inputInfoFunc{
-  width: 20%;
-  background-color:#d4dfea;
-  margin-left: 1%;
-}
-#inputPadraoInfoFunc2{
-  width: 20%;
-  background-color:#d4dfea;
-  margin-left: 3%;
-}
-#inputPadraoInfoFunc3{
-  width: 20%;
-  background-color:#d4dfea;
-  margin-left: 4%;
-}
-#inputPadraoInfoFunc4{
-  width: 20%;
-  background-color:#d4dfea;
-  margin-left: 2%;
-}
-#inputInfoFuncCpf{
-  width: 20%;
-  background-color:#d4dfea;   
-   margin-left: 5%;
-}
-#inputInfoFuncId{
-  width: 20%;
-  background-color:#d4dfea;
-  margin-left: 6%;
-}
-#inputInfoFuncComplemento{
-  width: 20%;
   background-color:#d4dfea;
 }
 #badgeAlterarFunc2{
@@ -11008,6 +11004,7 @@ margin-left: 35%;
 color:black;
 font-family: arial;
 margin-bottom: 1%;
+margin-left: -8%;
 }
 #btnEntrarHome{
   margin-left:1%;
@@ -11060,14 +11057,16 @@ margin-bottom: 1%;
   color:blue;
   font-weight: bold;
 }
-#contauudoFotoPerfil{
+#conteudoFotoPerfil{
   margin-left: 70%;
-  margin-top: -97%;
-
+  margin-top: -69%;
+  width: 18%;
+  border: 5px;
+  border-style: groove;
 }
-#contaudoCurriculoPerfil{
+#conteudoCurriculoPerfil{
   margin-left: 80%;
-  margin-top: 26%;
+  margin-top: 55%;
 }
 .linkOpcaoFoto a{
 text-decoration: gray underline;
@@ -11077,4 +11076,51 @@ color:black;
 color:blue;
 text-decoration: none;
 cursor:pointer;
+}
+#estiloAncoraCVPerfil{
+  text-decoration: underline;
+  cursor: pointer;
+  color: black;
+}
+.conteudoDivColunaInfo{
+  margin-left: 2%;
+}
+.contaudoInputInfo{
+  padding: 0%;
+}
+.inputInfoID{
+  width: 52%;
+}
+#botaoEnviarMensagemInfo{
+margin-top: 6%;
+}
+#botaoVoltarInfo{
+  margin-top: 6%;
+  margin-left: 13%;
+}
+#botaoVerCurriculoInfo{
+  margin-top: 6%;
+  margin-left: 7%;
+}
+.botoesInfoFunc{
+  margin-left: 73%;
+  margin-top: 8%;
+}
+.tabelaPesquisaFunc{
+  background-color:#99b0c7;
+  color:#444040;
+  height:50px;
+}
+.labelTabelaPesquisa{
+  color: #f3f0f0;
+  font-weight: bold;
+  font-family: arial;
+}
+.corpotabelaPesquisa{
+  background-color:  #e5e7f5;
+}
+.tituloConteudoContato{
+  margin: 1% auto;
+  margin-top: 2%;
+  width: 27%;
 }

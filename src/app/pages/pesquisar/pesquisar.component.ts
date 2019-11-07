@@ -28,6 +28,7 @@ export class PesquisarComponent implements OnInit {
   private pesquisaFuncionario: PesquisaFuncionario = new PesquisaFuncionario();
   private usuarioFuncionario: Usuario = new Usuario();
   private inforFuncionario: InfoFuncionarioComponent; 
+  private cracteresPermitidos:Number= 0;
  
   constructor(private usuarioService: UsuarioService,
               private formBuilder:FormBuilder,
@@ -80,16 +81,16 @@ export class PesquisarComponent implements OnInit {
     }
   
     limparCampos(){
-      (<HTMLSelectElement>document.getElementById('campoNomeVagas')).value = "";
-      (<HTMLSelectElement>document.getElementById('campoSobreNomeVagas')).value = "";
-      (<HTMLSelectElement>document.getElementById('campoEstadoVagas')).value = "Estado";
-      (<HTMLSelectElement>document.getElementById('campoCidadeVagas')).value = ""; 
-      (<HTMLSelectElement>document.getElementById('campoSexoVagas')).value = "Sexo"; 
-      (<HTMLSelectElement>document.getElementById('campoExperienciaVagas')).value = "Experiência";      
+      //limpa os textfield mas nao limpa os select
+      this.formulario.reset();
+      //limpa os campos select
+      (<HTMLSelectElement>document.getElementById('campoEstadoPesquisar')).value = "Selecione";      
+      (<HTMLSelectElement>document.getElementById('campoSexoPesquisar')).value = "Selecione"; 
+      (<HTMLSelectElement>document.getElementById('campoExperienciaPesquisar')).value = "Selecione";
+      
     }
 
-    pesquisar(){   
-      
+    pesquisar(){       
 
      this.usuarioFuncionario = this.formulario.value ;
      

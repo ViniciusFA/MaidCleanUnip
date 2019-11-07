@@ -1,8 +1,9 @@
-<div class="tituloConteudoPaginas">
+<div class="tituloConteudoContato">
     <h3>{{titulo}}</h3>
 </div>
+<hr>
 <form id="containerAllContato" [formGroup]="formulario" (ngSubmit)="enviar()">
-        <div class="form-row">
+        <div class="form-row" >
             <div class="form-group col-md-6"  >
                     <label for="inputNome" id="textoLabelContato">Nome</label>
                     <input type="text" class="form-control" id="inputNome" formControlName="nome"  ngDefaultControl placeholder="Insira o seu nome">
@@ -33,10 +34,10 @@
             <p>(Insira até 400 caracteres)</p>
           </div>
           <div class="botoesContato">
-              <button type="submit" class="btn btn-secondary" [disabled]="formulario.invalid">Enviar</button>
-              &nbsp;
               <button type="button" class="btn btn-secondary" id="btnLimpar" (click)="limparCampos()" >Limpar</button>
-            </div>
+              &nbsp;
+              <button type="submit" class="btn btn-secondary" [disabled]="formulario.invalid">Enviar</button>
+         </div>
         </form>
         <br>
         <br>

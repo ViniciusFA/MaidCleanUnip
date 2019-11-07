@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Estados } from '../../util/estados';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Vaga } from 'src/app/services/vaga/vaga';
 import { VagaService } from 'src/app/services/vaga/VagaService';
 import { Response } from '../../services/response';
@@ -11,13 +11,14 @@ import { Response } from '../../services/response';
 })
 export class AnuncieComponent implements OnInit {
 
-  private titulo:string = '';
-  private formulario:FormGroup;
-  private vaga:Vaga;
+  private titulo: string = '';
+  private formulario: FormGroup;
+  private vaga: Vaga;
+  private caracteresMaximo: number = 400;
 
 
-  constructor(private formBuilder:FormBuilder,
-              private vagaService:VagaService) { 
+  constructor(private formBuilder: FormBuilder,
+    private vagaService: VagaService) {
     this.configurarFormulario();
   }
 
@@ -31,36 +32,41 @@ export class AnuncieComponent implements OnInit {
     new Estados(2, 'São Paulo'),
   ];
 
-  configurarFormulario(){
+  configurarFormulario() {
     this.formulario = this.formBuilder.group({
-      nomeEmpregador: new FormControl(''),
-      titulo: new FormControl(''),
-      subtitulo: new FormControl(''),
-      cidade: new FormControl(''),
-      estado: new FormControl(''),
-      telefone: new FormControl(''),
-      descricao: new FormControl('')
+
+      nomeEmpregador: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]),
+      titulo: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+      subtitulo: new FormControl('', [Validators.minLength(3), Validators.maxLength(40)]),
+      cidade: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]),
+      estado: new FormControl('',Validators.required),
+      telefone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
+      descricao: new FormControl('', [Validators.required, Validators.maxLength(400)])
     });
-    console.log(this.formulario);
   }
 
-  anunciar(){
+  anunciar() {
     let vaga = this.formulario.value as Vaga;
 
     this.vagaService.anunciarVagas(vaga).subscribe(response => {
-
       let res: Response = <Response>response;
-
-      if(res.codigo == 1){
+      if (res.codigo == 1) {
         alert(res.mensagem);
         this.vaga = new Vaga();
         this.formulario.reset();
-      }else{
+      } else {
         alert(res.mensagem);
       }
-    },(erro) => {
+    }, (erro) => {
       alert(erro);
     });
   }
+
+
+  limparCampos() {
+
+  }
+
+
 
 }

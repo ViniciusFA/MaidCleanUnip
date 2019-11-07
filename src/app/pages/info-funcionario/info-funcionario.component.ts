@@ -39,6 +39,7 @@ export class InfoFuncionarioComponent implements OnInit {
   //recebe os dados no formulario inserido pelo usuário
   configurarCampos(){
     this.formulario = this.formBuilder.group({
+      id:new FormControl({value: '', disabled: true}),
       nome: new FormControl({value: '', disabled: true}, [Validators.required, Validators.minLength(3),Validators.maxLength(15)]),
       sobrenome: new FormControl({value: '', disabled: true}, [Validators.minLength(3),Validators.maxLength(40)]),
       email: new FormControl({value: '', disabled: true}, [Validators.email, Validators.maxLength(50)]),
@@ -63,8 +64,7 @@ export class InfoFuncionarioComponent implements OnInit {
    //método que captura o funcionário selecionado no badge info da página pesquiasr
    recebendoParamsFuncionario(){
    //recebendo os valores vindo da router através do queryParams
-   this.usuarioInfo.id = this.activatedRoute.snapshot.queryParams.idUsuario;
-   console.log("Id: " +  this.usuarioInfo.id );
+   this.usuarioInfo.id = this.activatedRoute.snapshot.queryParams.idUsuario;   
    this.usuarioInfo.nome = this.activatedRoute.snapshot.queryParams.nome;
    this.usuarioInfo.sobrenome = this.activatedRoute.snapshot.queryParams.sobrenome;
    this.usuarioInfo.login = this.activatedRoute.snapshot.queryParams.login;
@@ -253,10 +253,6 @@ export class InfoFuncionarioComponent implements OnInit {
       this.usuarioInfo.experiencia = objetoFuncValueAntigo[17];
       this.usuarioInfo.avaliacao = objetoFuncValueAntigo[18];
       
-      
-      console.log(objetoFuncValueAntigo);
-
-      console.log(objetoFuncNomeAtrAntigo);
 
       this.usuarioService.updateUsuario(this.usuarioInfo)
       .subscribe(response => {

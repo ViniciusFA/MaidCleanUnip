@@ -6,4 +6,5 @@ export class Vaga{
     nomeEmpregador:string;
     estado:string;
     cidade:string;
+    telefone:string;
 }

@@ -17,6 +17,7 @@ export class OportunidadesComponent implements OnInit {
   private titulo:string;
   private formulario:FormGroup;  
   private vaga:Vaga = new Vaga();
+  private listaParametros:String[] = new Array();
 
   constructor(private formBuilder:FormBuilder,
               private vagaService:VagaService,
@@ -74,6 +75,7 @@ export class OportunidadesComponent implements OnInit {
 
   pesquisarVaga(){
     this.vaga = this.formulario.value;
+    
     this.vagaService.pesquisar(this.vaga)
     .subscribe(response =>{
       if(response == 0){

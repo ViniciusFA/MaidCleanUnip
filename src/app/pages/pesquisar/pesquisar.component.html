@@ -13,32 +13,32 @@
                         <div class="form-row" id="camposFormPesquisa">                               
                                 <div class="col-6" id="textoLabelPadrao">
                                     <b>Nome</b>
-                                  <input type="text" class="form-control" id="campoNomeVagas"  formControlName="nome" name="nome" ngDefaultControl placeholder="Nome">
+                                  <input type="text" class="form-control" id="campoNomePesquisar"  formControlName="nome" name="nome" ngDefaultControl placeholder="Nome">
                                   <p>(Insira entre 3 a 15 caracteres)</p>
                                 </div>
                                 <br>
                                 <div class="col-6" id="textoLabelPadrao">
                                     <b>Sobrenome</b>
-                                  <input type="text" class="form-control" id="campoSobreNomeVagas"  formControlName="sobrenome" name="sobrenome" ngDefaultControl placeholder="Sobrenome">
+                                  <input type="text" class="form-control" id="campoSobreNomePesquisar"  formControlName="sobrenome" name="sobrenome" ngDefaultControl placeholder="Sobrenome">
                                   <p>(Insira entre 3 a 40 caracteres)</p>
                                 </div>
                                 <br>
                                 <div class="col-3" formControlName="estado" name="estado" ngDefaultControl id="textoLabelPadrao">
                                    <b>Estado</b>
-                                    <select class="form-control form-control-sm-3"  id="campoEstadoVagas" >
+                                    <select class="form-control form-control-sm-3"  id="campoEstadoPesquisar" >
                                             <option *ngFor="let estado of estados" ngValue="estados.id">
                                                 {{estado.nome}}
                                             </option>
                                     </select>
                                  </div>
-                                <div class="col-3" id="textoLabelPadrao">
+                                <div class="col-3" id="textoLabelPadrao" >
                                     <b>Cidade</b>
-                                  <input type="text" class="form-control" placeholder="Cidade" id="campoCidadeOportunidades" formControlName="cidade" name="cidade" ngDefaultControl>
+                                  <input type="text" class="form-control" placeholder="Cidade" id="campoCidadePesquisar" formControlName="cidade" name="cidade" ngDefaultControl>
                                   <p>(Insira até 15 caracteres)</p>
                                 </div>
                                 <div class="col-3" formControlName="sexo" name="sexo" id="textoLabelPadrao" ngDefaultControl>
                                         <b>Sexo</b>
-                                        <select class="form-control form-control-sm-3" id="campoSexoVagas" >
+                                        <select class="form-control form-control-sm-3" id="campoSexoPesquisar" >
                                                 <option *ngFor="let sexo of sexos" ngValue="sexo.id">
                                                 {{sexo.nome}}
                                                 </option>
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-3" formControlName="experiencia" id="textoLabelPadrao" name="experiencia" ngDefaultControl>
                                     <b>Experiencia</b>
-                                        <select class="form-control form-control-sm-3" id="campoExperienciaVagas" >
+                                        <select class="form-control form-control-sm-3" id="campoExperienciaPesquisar" >
                                                 <option *ngFor="let experiencia of experiencias" ngValue="experiencias.id">
                                                     {{experiencia.nome}}
                                                 </option>
@@ -64,17 +64,17 @@
             <div class="tabelaProfissionais" >
                 <table id="tabelaProfissionais">
                     <thead>
-                    <tr style="background-color:lightgrey; color:gray;height:50px;">
-                        <th scope="col"><strong>Nome</strong></th>
-                        <th scope="col"><strong>Sobrenom</strong></th>
-                        <th scope="col"><strong>Estado</strong></th>
-                        <th scope="col"><strong>Cidade</strong></th>
-                        <th scope="col"><strong>Sexo</strong></th>
-                        <th scope="col"><strong>Experiência</strong></th>
-                        <th scope="col"><strong>&nbsp;</strong></th>
+                    <tr class="tabelaPesquisaFunc">
+                        <th class="labelTabelaPesquisa" scope="col"><strong>Nome</strong></th>
+                        <th class="labelTabelaPesquisa" scope="col"><strong>Sobrenome</strong></th>
+                        <th class="labelTabelaPesquisa" scope="col"><strong>Estado</strong></th>
+                        <th class="labelTabelaPesquisa" scope="col"><strong>Cidade</strong></th>
+                        <th class="labelTabelaPesquisa" scope="col"><strong>Sexo</strong></th>
+                        <th class="labelTabelaPesquisa" scope="col"><strong>Experiência</strong></th>
+                        <th class="labelTabelaPesquisa" scope="col"><strong>&nbsp;</strong></th>
                     </tr>
                     </thead>
-                    <tbody >
+                    <tbody class="corpotabelaPesquisa">
                     <tr class="classTr" id="listaFuncionariotabela" *ngFor='let user of usuarios'>                        
                                 <td>{{user.nome}}</td>
                                 <td>{{user.sobrenome}}</td>
@@ -101,6 +101,7 @@
              </div>
 
             <!-- PAginação-->
+            <!--
             <div class="form-row">
                 <div class="form-group col-md-9">
                    <div class="col-md-6">
@@ -133,5 +134,6 @@
                           </div>
                         </div>
                 </div>   
-        </div>       
+        </div>    
+        -->   
     </div>

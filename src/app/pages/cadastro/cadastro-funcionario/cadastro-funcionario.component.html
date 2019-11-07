@@ -1,131 +1,145 @@
-
 <script src="../../../assets/css/bootstrap-4.3.1-dist/js/bootstrap.js"></script>
 
 <div class="containerAll" [(ngModel)]="cadFunc" name="cadunc" ngDefaultControl id="containerAllCadastro">
-   <div class="tituloConteudoPaginas" >
-       <h3>{{titulo}}</h3>
-       <h6>{{subtitulo}}</h6>
+    <div class="tituloConteudoPaginas">
+        <h3>{{titulo}}</h3>
+        <h6>{{subtitulo}}</h6>
     </div>
     <div class="containerFormContato">
         <div class="conteudoFormContato">
             <form [formGroup]="formulario" (ngSubmit)="salvar()">
                 <!-- Primeira Linha-->
-                    <div class="form-row" >
-                        <div class="form-group col-md-4">
-                            <label for="inputNome" id="textoLabelPadrao" ><b>Nome</b></label>
-                            <input type="text" class="form-control" id="inputNome" formControlName="nome" ngDefaultControl required placeholder="Seu Nome" />
-                            <p>(Insira entre 3 a 15 caracteres)</p>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputSobrenome" id="textoLabelPadrao"><b>Sobrenome</b></label>
-                            <input type="text" class="form-control" id="inputSobrenome" formControlName="sobrenome" ngDefaultControl required placeholder="Seu sobrenome">
-                            <p>(Insira entre 3 a 40 caracteres)</p>
-                        </div>
-                        <div class="form-group col-md-4">
-                                <label for="inputCPF" id="textoLabelPadrao"><b>CPF</b></label>
-                                <input type="text" class="form-control" id="inputCPF"  formControlName="cpf_cnpj"  ngDefaultControl required placeholder="00000000000">
-                                 <p>(Insira 11 caracteres)</p>   
-                        </div>
-                    </div>  
-                    <!-- Segunda Linha-->                
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="inputUsuario" id="textoLabelPadrao"><b>Usuário</b></label>
-                            <input type="text" class="form-control" id="inputUsuario" formControlName="login"  ngDefaultControl placeholder="Insira um usuário" >
-                            <p>(Insira entre 5 a 10 caracteres)</p>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="inputSenha" id="textoLabelPadrao"><b>Senha</b></label>
-                            <input type="password" class="form-control" id="inputSenha" autocomplete="username senha" formControlName="senha"  ngDefaultControl placeholder="Insira a senha">
-                            <p>(Insira entre 6 a 8 caracteres)</p>
-                        </div>  
-                        <div class="form-group col-md-3">
-                                <label for="inputEmail" id="textoLabelPadrao"><b>Email</b></label>
-                                <input type="email" class="form-control" id="inputEmail" autocomplete="username email" formControlName="email"  ngDefaultControl placeholder="email@seuemail.com.br">
-                                <p>(Insira até 50 caracteres)</p>
-                         </div>                      
-                        <div class="form-group col-md-3" formControlName="sexo" name="sexo" ngDefaultControl>
-                                    <label for="labelRadioGenero" id="textoLabelPadrao"><b>Sexo</b></label>
-                                    <select id="tipoSexo" class="form-control">
-                                            <option *ngFor="let sexo of sexos" ngValue="sexos.id">
-                                                    {{sexo.nome}}
-                                            </option>
-                                    </select>
-                        </div>
-                    </div>  
-                    <!-- Terceira Linha-->
-                    <div class="form-row">
-                        <div class="form-group col-md-8">
-                            <label for="inputEndereco" id="textoLabelPadrao"><b>Endereço</b></label>
-                            <input type="text" class="form-control" id="inputEndereco" formControlName="endereco"  ngDefaultControl placeholder="Endereço Residencial">
-                            <p>(Insira até 100 caracteres)</p>
-                        </div>
-                        <div class="form-group col-md-4">
-                                <label for="inputComplemento" id="textoLabelPadrao"><b>Complemento</b></label>
-                                <input type="text" class="form-control" id="inputComplemento" formControlName="complemento"  ngDefaultControl placeholder="Complemento">
-                                <p>(Insira até 15 caracteres)</p>
-                        </div>
-                    </div>                    
-                    <!-- Quarta Linha-->              
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputCity" id="textoLabelPadrao"><b>Cidade</b></label>
-                            <input type="text" class="form-control" id="inputCity" formControlName="cidade"  ngDefaultControl placeholder="São Paulo">
-                            <p>(Insira até 15 caracteres)</p>
-                        </div>
-                        <div class="form-group col-md-4" formControlName="estado"  name="estado" ngDefaultControl>
-                            <label for="inputEstado" id="textoLabelPadrao"><b>Estado</b></label>
-                            <select id="inputStateEmpregado" class="form-control" >
-                                <option *ngFor="let estado of estados" ngValue="estados.id">
-                                    {{estado.nome}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="inputCEP" id="textoLabelPadrao"><b>CEP</b></label>
-                            <input type="text" class="form-control" id="inputCEP" formControlName="cep"  ngDefaultControl placeholder="00000-000">
-                            <p>(Insira até 13 caracteres)</p>
-                        </div>
-                    </div> 
-                    <!-- Quinta Linha-->  
-                    <div class="form-group">
-                            <label for="inpuExperiencia" id="textoLabelPadrao"><b>Experiência</b></label>
-                            <input type="text" class="form-control" id="inputExperiencia" formControlName="experiencia"  ngDefaultControl placeholder="Experiência Profissional">
-                            <p>(Insira até 15 caracteres)</p>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputNome" id="textoLabelPadrao"><b>Nome</b></label>
+                        <input type="text" class="form-control" id="inputNome" formControlName="nome" ngDefaultControl
+                            required placeholder="Seu Nome" />
+                        <p>(Insira entre 3 a 15 caracteres)</p>
                     </div>
-                     <!-- Sexta Linha-->
-                     <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="inputTelefone" id="textoLabelPadrao"><b>Telefone</b></label>
-                            <input type="text" class="form-control" id="inputTelefone" formControlName="telefone"  ngDefaultControl placeholder="Telefone">
-                            <p>(Insira até 13 caracteres)</p>
-                        </div>
-                        <div class="form-group col-md-4" formControlName="hasWhatsapp" name="whatsapp" ngDefaultControl>
-                                <label for="inputEstado" id="textoLabelPadrao"><b>Tem Whatsapp?</b></label>
-                                <select id="inputWhatsapp" class="form-control" >
-                                    <option selected>Selecione</option>
-                                    <option value='1'>Sim</option>
-                                    <option value='0'>Não</option>
-                                </select>
-                       </div>
-                        <div class="form-group col-md-4">
-                                    <label for="inputProfissao" id="textoLabelPadrao"><b>Profissão</b></label>
-                                    <input type="text" class="form-control" id="inputProfissao" formControlName="profissao"  ngDefaultControl placeholder="Profissão">      
-                                    <p>(Insira até 80 caracteres)</p>
-                        </div>
-                    </div>  
-                     <!-- Sétima Linha-->  
-                    <div class="form-group">
-                            <label for="inputFacebook" id="textoLabelPadrao"><b>Facebook</b></label>
-                            <input type="text" class="form-control" id="inputFacebook" formControlName="urlFacebook"  ngDefaultControl placeholder="Insira o seu facebook">
-                            <p>(Insira até 80 caracteres)</p>
-                    </div> 
-                    
-                    <div id="botoesCadastro">            
-                        <button type="submit" class="btn btn-secondary" id="btnCadastrar" [disabled]="formulario.invalid" >Cadastrar</button>
-                        <button type="button" class="btn btn-secondary" id="btnLimpar" (click)="voltar()">Voltar</button>
+                    <div class="form-group col-md-4">
+                        <label for="inputSobrenome" id="textoLabelPadrao"><b>Sobrenome</b></label>
+                        <input type="text" class="form-control" id="inputSobrenome" formControlName="sobrenome"
+                            ngDefaultControl required placeholder="Seu sobrenome">
+                        <p>(Insira entre 3 a 40 caracteres)</p>
                     </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputCPF" id="textoLabelPadrao"><b>CPF</b></label>
+                        <input type="text" class="form-control" id="inputCPF" formControlName="cpf_cnpj"
+                            ngDefaultControl required placeholder="00000000000">
+                        <p>(Insira 11 caracteres)</p>
+                    </div>
+                </div>
+                <!-- Segunda Linha-->
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputUsuario" id="textoLabelPadrao"><b>Usuário</b></label>
+                        <input type="text" class="form-control" id="inputUsuario" formControlName="login"
+                            ngDefaultControl placeholder="Insira um usuário">
+                        <p>(Insira entre 5 a 10 caracteres)</p>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputSenha" id="textoLabelPadrao"><b>Senha</b></label>
+                        <input type="password" class="form-control" id="inputSenha" autocomplete="username senha"
+                            formControlName="senha" ngDefaultControl placeholder="Insira a senha">
+                        <p>(Insira entre 6 a 8 caracteres)</p>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputEmail" id="textoLabelPadrao"><b>Email</b></label>
+                        <input type="email" class="form-control" id="inputEmail" autocomplete="username email"
+                            formControlName="email" ngDefaultControl placeholder="email@seuemail.com.br">
+                        <p>(Insira até 50 caracteres)</p>
+                    </div>
+                    <div class="form-group col-md-3" formControlName="sexo" name="sexo" ngDefaultControl>
+                        <label for="labelRadioGenero" id="textoLabelPadrao"><b>Sexo</b></label>
+                        <select id="tipoSexo" class="form-control">
+                            <option *ngFor="let sexo of sexos" ngValue="sexos.id">
+                                {{sexo.nome}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Terceira Linha-->
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="inputEndereco" id="textoLabelPadrao"><b>Endereço</b></label>
+                        <input type="text" class="form-control" id="inputEndereco" formControlName="endereco"
+                            ngDefaultControl placeholder="Endereço Residencial">
+                        <p>(Insira até 100 caracteres)</p>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputComplemento" id="textoLabelPadrao"><b>Complemento</b></label>
+                        <input type="text" class="form-control" id="inputComplemento" formControlName="complemento"
+                            ngDefaultControl placeholder="Complemento">
+                        <p>(Insira até 15 caracteres)</p>
+                    </div>
+                </div>
+                <!-- Quarta Linha-->
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity" id="textoLabelPadrao"><b>Cidade</b></label>
+                        <input type="text" class="form-control" id="inputCity" formControlName="cidade" ngDefaultControl
+                            placeholder="São Paulo">
+                        <p>(Insira até 15 caracteres)</p>
+                    </div>
+                    <div class="form-group col-md-4" formControlName="estado" name="estado" ngDefaultControl>
+                        <label for="inputEstado" id="textoLabelPadrao"><b>Estado</b></label>
+                        <select id="inputStateEmpregado" class="form-control">
+                            <option *ngFor="let estado of estados" ngValue="estados.id">
+                                {{estado.nome}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputCEP" id="textoLabelPadrao"><b>CEP</b></label>
+                        <input type="text" class="form-control" id="inputCEP" formControlName="cep" ngDefaultControl
+                            placeholder="00000-000">
+                        <p>(Insira até 13 caracteres)</p>
+                    </div>
+                </div>
+                <!-- Quinta Linha-->
+                <div class="form-group">
+                    <label for="inpuExperiencia" id="textoLabelPadrao"><b>Experiência</b></label>
+                    <input type="text" class="form-control" id="inputExperiencia" formControlName="experiencia"
+                        ngDefaultControl placeholder="Experiência Profissional">
+                    <p>(Insira até 15 caracteres)</p>
+                </div>
+                <!-- Sexta Linha-->
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputTelefone" id="textoLabelPadrao"><b>Telefone</b></label>
+                        <input type="text" class="form-control" id="inputTelefone" formControlName="telefone"
+                            ngDefaultControl placeholder="Telefone">
+                        <p>(Insira até 13 caracteres)</p>
+                    </div>
+                    <div class="form-group col-md-4" formControlName="hasWhatsapp" name="whatsapp" ngDefaultControl>
+                        <label for="inputEstado" id="textoLabelPadrao"><b>Tem Whatsapp?</b></label>
+                        <select id="inputWhatsapp" class="form-control">
+                            <option selected>Selecione</option>
+                            <option value='1'>Sim</option>
+                            <option value='0'>Não</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputProfissao" id="textoLabelPadrao"><b>Profissão</b></label>
+                        <input type="text" class="form-control" id="inputProfissao" formControlName="profissao"
+                            ngDefaultControl placeholder="Profissão">
+                        <p>(Insira até 80 caracteres)</p>
+                    </div>
+                </div>
+                <!-- Sétima Linha-->
+                <div class="form-group">
+                    <label for="inputFacebook" id="textoLabelPadrao"><b>Facebook</b></label>
+                    <input type="text" class="form-control" id="inputFacebook" formControlName="urlFacebook"
+                        ngDefaultControl placeholder="Insira o seu facebook">
+                    <p>(Insira até 80 caracteres)</p>
+                </div>
+
+                <div id="botoesCadastro">
+                    <button type="submit" class="btn btn-secondary" id="btnCadastrar"
+                        [disabled]="formulario.invalid">Cadastrar</button>
+                    <button type="button" class="btn btn-secondary" id="btnLimpar" (click)="voltar()">Voltar</button>
+                </div>
             </form>
         </div>
     </div>
-</div> 
+</div>
