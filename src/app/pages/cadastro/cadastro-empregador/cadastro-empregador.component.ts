@@ -56,7 +56,7 @@ export class CadastroEmpregadorComponent implements OnInit {
       avaliacao: this.formBuilder.control('',[Validators.email,Validators.maxLength(50)]),
       sexo: this.formBuilder.control(''),
       email: this.formBuilder.control('',[Validators.email,Validators.maxLength(50)]),
-      telefone: this.formBuilder.control('',Validators.maxLength(13)),
+      telefone: this.formBuilder.control('',Validators.maxLength(11)),
       residencia: this.formBuilder.control(''),
       cpf_cnpj: this.formBuilder.control('',Validators.maxLength(20)),
       endereco: this.formBuilder.control('',Validators.maxLength(100)),
@@ -81,8 +81,9 @@ export class CadastroEmpregadorComponent implements OnInit {
       usuario.sexo = 'F';
     }
 
-    usuario.id_role = RoleEnum.Empregador;
-    usuario.profissao = '';
+    usuario.idRole = RoleEnum.Empregador;
+    usuario.profissao = "Empregador";
+    console.log("usuario.idRole: " + usuario.idRole);
 
     this.empregadorService.criarEmpregador(usuario)
                           .subscribe(response=> {
@@ -91,6 +92,7 @@ export class CadastroEmpregadorComponent implements OnInit {
       if(res.codigo == 1){
         alert(res.mensagem);
         this.formulario.reset();   
+        this.router.navigate(['login']);
       }else{
         alert(res.mensagem);
       }

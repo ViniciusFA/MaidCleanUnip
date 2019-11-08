@@ -66,8 +66,9 @@ export class LoginComponent implements OnInit {
         alert(res.mensagem);
         this.formulario.reset();
 
+        //this.authService.liberaPermissao(res.idRole);
         this.authService.liberaPermissao(res.id_role);
-       
+
        this.router.navigate(["home"])
        .then(()=> {
          window.location.reload();

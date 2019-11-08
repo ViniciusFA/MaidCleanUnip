@@ -75,7 +75,7 @@ export class OportunidadesComponent implements OnInit {
 
   pesquisarVaga(){
     this.vaga = this.formulario.value;
-    
+    ""
     this.vagaService.pesquisar(this.vaga)
     .subscribe(response =>{
       if(response == 0){

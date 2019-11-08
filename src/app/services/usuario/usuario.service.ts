@@ -27,8 +27,8 @@ export class UsuarioService{
         return this.http.get(this.baseUrlService ).map(res =>res.json());       
     }
 
-    getUsuarioPorPerfil(id_role:Number){
-        return this.http.get(this.baseUrlService + '?idRole=' + id_role).map(res =>res.json()); 
+    getUsuarioPorPerfil(idRole:Number){
+        return this.http.get(this.baseUrlService + '?idRole=' + idRole).map(res =>res.json()); 
     }
 
     /**ADICIONA UMA NOVA PESSOA */

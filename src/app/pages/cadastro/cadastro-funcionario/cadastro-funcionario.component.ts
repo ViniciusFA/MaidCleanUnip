@@ -58,7 +58,7 @@ export class CadastroFuncionarioComponent implements OnInit {
       email: new FormControl('', Validators.email),
       urlFacebook: new FormControl('', Validators.maxLength(80)),
       hasWhatsapp: new FormControl((false)),
-      telefone: new FormControl('', Validators.maxLength(13)),
+      telefone: new FormControl('', Validators.maxLength(11)),
       profissao: new FormControl('', Validators.maxLength(80)),
       cpf_cnpj: new FormControl('', [Validators.minLength(11), Validators.maxLength(11)]),
       endereco: new FormControl('', Validators.maxLength(100)),
@@ -66,7 +66,7 @@ export class CadastroFuncionarioComponent implements OnInit {
       cidade: new FormControl('', Validators.maxLength(15)),
       estado: new FormControl(''),
       experiencia: new FormControl('', Validators.maxLength(35)),
-      cep: new FormControl('', Validators.maxLength(13))
+      cep: new FormControl('', Validators.maxLength(8))
     });
   }
 
@@ -81,7 +81,7 @@ export class CadastroFuncionarioComponent implements OnInit {
       usuario.sexo = 'F'
     }
     
-    usuario.id_role = RoleEnum.Funcionario;
+    usuario.idRole = RoleEnum.Funcionario;
     this.UsuarioService.addUsuario(usuario)
       .subscribe(response => {
         let res: Response = <Response>response;

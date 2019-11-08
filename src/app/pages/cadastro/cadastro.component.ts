@@ -13,7 +13,7 @@ export class CadastroComponent implements OnInit {
   cadastros = [
     new OpcaoCadastro(0, 'Selecione'),
     new OpcaoCadastro(1, 'Empregador'),
-    new OpcaoCadastro(2, 'Empregado'),
+    new OpcaoCadastro(2, 'Funcionário'),
   ]; 
   
   ngOnInit() {    
@@ -24,7 +24,7 @@ export class CadastroComponent implements OnInit {
    
    if(value == 'Empregador'){
       this.router.navigate(['/cadastro-empregador']);
-   }else if(value == 'Empregado'){
+   }else if(value == 'Funcionário'){
       this.router.navigate(['/cadastro-funcionario']);
    }
 

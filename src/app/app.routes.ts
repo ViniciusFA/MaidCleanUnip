@@ -16,6 +16,7 @@ import { InfoFuncionarioComponent } from './pages/info-funcionario/info-funciona
 import { AnuncieComponent } from './pages/anuncie/anuncie.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
+import { CanActivate } from '@angular/router';
 import { OportunidadesModalComponent } from './pages/oportunidades/oportunidades-modal/oportunidade-modal.component';
 
 export const ROUTES: Routes = [
@@ -27,13 +28,13 @@ export const ROUTES: Routes = [
     {path: 'cadastro-funcionario', component: CadastroFuncionarioComponent},
     {path: 'cadastro-empregador', component: CadastroEmpregadorComponent},
     {path: 'perfil', component: PerfilComponent}, //canActivate: [AuthGuard]},   
-    {path: 'anuncie', component: AnuncieComponent}, //canActivate: [AuthGuard]},
-    {path: 'pesquisar', component: PesquisarComponent}, 
-    {path: 'legislacao', component: LegislacaoComponent}, //canActivate: [AuthGuard]}, 
-    {path: 'oportunidades', component: OportunidadesComponent}, //canActivate: [AuthGuard]},
-    {path: 'configuracoes', component: ConfiguracoesComponent}, //canActivate: [AuthGuard]},    
+    {path: 'anuncie', component: AnuncieComponent}, //canActivate: [AuthGuard]}, 
+    {path: 'pesquisar', component: PesquisarComponent},// canActivate: [AuthGuard]},  
+    {path: 'legislacao', component: LegislacaoComponent}, //canActivate: [AuthGuard]},   
+    {path: 'oportunidades', component: OportunidadesComponent}, //canActivate: [AuthGuard]},  
+    {path: 'configuracoes', component: ConfiguracoesComponent}, //canActivate: [AuthGuard]},      
     {path: 'detalhes', component: FuncionarioDetalhesComponent}, //canActivate: [AuthGuard]},   
-    {path: 'infoFuncionario', component: InfoFuncionarioComponent}, //canActivate: [AuthGuard]},
-    {path: 'configuracoesConta', component: ConfiguracoesContaComponent}, //canActivate: [AuthGuard]},
+    {path: 'infoFuncionario', component: InfoFuncionarioComponent}, //canActivate: [AuthGuard]},  
+    {path: 'configuracoesConta', component: ConfiguracoesContaComponent},// canActivate: [AuthGuard]},  
     {path: 'oportunidade-modal', component: OportunidadesModalComponent},
 ]

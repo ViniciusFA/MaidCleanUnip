@@ -24,7 +24,6 @@ export class PesquisaFuncionarioService{
                 }
 
     buscar(pesquisaFuncionario: PesquisaFuncionario) {
-        console.log(pesquisaFuncionario);
         return this.http.get(this.baseUrlService + '/listaUsuarios', { params: pesquisaFuncionario }
         ).map(res => res.json());
     }

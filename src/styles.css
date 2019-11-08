@@ -2631,7 +2631,7 @@
  
  .btn-primary {
    color: #fff;
-   background-color: #334c73;
+   background-color: #4e75b1;
    border-color: #334c73;
  }
  
@@ -2667,7 +2667,7 @@
  
  .btn-secondary {
    color: #1a1a1a;
-   background-color: lightgray;
+   background-color:#cedaec;
    border-color: #fff;
  }
  
@@ -10345,7 +10345,7 @@
   position:fixed;
   bottom:0;
   width:100%;
-  background-color:#334c73;
+  background-color:#4e75b1;
   text-align: center;
   height: 20px;
   color:white;
@@ -10428,7 +10428,7 @@
   border:0;
 }
 #navbarMenu{
-  background-color: #334c73 !important;
+  background-color: #4e75b1 !important;
   height: 10%;
 }
 #containerAllCadastro{
@@ -10794,7 +10794,7 @@ html {
   background-image: url("../src/img/limpezaMaterial.jpg");
 }
 .home2{
-  background-image: url("../src/img/limpezaBoneco.jpg");
+  background-image: url("assets/img/home/produtos_limpeza.jpg");
   border:2px inset #d8d8ff;
 }
 .hero {

@@ -21,5 +21,5 @@ export class Usuario {
     idFuncionario: number;
     residencia: string;
     cpf_cnpj: string;
-    id_role: number;
+    idRole: number;
 }

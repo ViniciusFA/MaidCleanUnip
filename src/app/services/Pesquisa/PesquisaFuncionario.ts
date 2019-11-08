@@ -6,5 +6,5 @@ export class PesquisaFuncionario {
     public cidade: string = "";
     public sexo: string = "";
     public experiencia: string = "";
-    public id_role: number;
+    public idRole: number;
 }
