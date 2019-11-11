@@ -7,17 +7,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  private titulo:string;
+  private titulo: string;
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) {
 
   }
 
   ngOnInit() {
-    this.titulo="Home Page";
-    
+    this.titulo = "Home Page";
+
   }
-  cadastrar(){
+  cadastrar() {
     this.router.navigate(['cadastro']);
   }
 }

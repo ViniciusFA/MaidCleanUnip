@@ -16,15 +16,13 @@ export class PesquisaFuncionarioService{
     
     constructor(private http:Http,
                 private configService:ConfigService){
-
                 this.baseUrlService = configService.getUrlService() + '/usuario';
-
                 this.headers = new Headers({'Content-Type' : 'application/json;charset=UTF-8'});
                 this.options =new RequestOptions({headers: this.headers})
                 }
 
     buscar(pesquisaFuncionario: PesquisaFuncionario) {
-        return this.http.get(this.baseUrlService + '/listaUsuarios', { params: pesquisaFuncionario }
-        ).map(res => res.json());
+        return this.http.get(this.baseUrlService + '/listaUsuarios', {params: pesquisaFuncionario})
+        .map(res => res.json());
     }
 }

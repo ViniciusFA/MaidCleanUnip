@@ -12,82 +12,103 @@ import { Response } from '../../services/response';
   templateUrl: './oportunidades.component.html'
 })
 export class OportunidadesComponent implements OnInit {
-  
-  private vagas: Vaga[] = new Array();
-  private titulo:string;
-  private formulario:FormGroup;  
-  private vaga:Vaga = new Vaga();
-  private listaParametros:String[] = new Array();
 
-  constructor(private formBuilder:FormBuilder,
-              private vagaService:VagaService,
-              private router:Router) { 
+  private vagas: Vaga[] = new Array();
+  private titulo: string;
+  private formulario: FormGroup;
+  private vaga: Vaga = new Vaga();
+  private listaParametros: String[] = new Array();
+
+  constructor(private formBuilder: FormBuilder,
+    private vagaService: VagaService,
+    private router: Router) {
 
     this.configurarFormulario();
   }
 
-  ngOnInit() {   
-    this.titulo = "Oportunidades";   
+  ngOnInit() {
+    this.titulo = "Oportunidades";
     this.vagaService.getVagas().subscribe(res => this.vagas = res);
   }
 
   estados = [
-    new Estados(0, 'Estado'),
+    new Estados(0, 'Selecione'),
     new Estados(1, 'Rio de Janeiro'),
     new Estados(2, 'São Paulo'),
+    new Estados(3, 'Bahia'),
   ];
 
   residencias = [
-    new Residencia(0, 'Residência'),
+    new Residencia(0, 'Selecione'),
     new Residencia(1, 'Apartamento'),
     new Residencia(2, 'Casa'),
   ];
 
   experiencias = [
-    new Residencia(0, 'Experiência'),
+    new Residencia(0, 'Selecione'),
     new Residencia(1, '+6 meses'),
     new Residencia(2, '+1 ano'),
   ];
 
 
-  configurarFormulario(){
+  configurarFormulario() {
     this.formulario = this.formBuilder.group({
-      titulo:new FormControl(''),
-      subtitulo:new FormControl(''),
-      nomeEmpregador:new FormControl(''),
-      estado :new FormControl(''),
-      cidade:new FormControl('')
+      titulo: new FormControl(''),
+      subtitulo: new FormControl(''),
+      nomeEmpregador: new FormControl(''),
+      estado: new FormControl(''),
+      cidade: new FormControl('')
     });
   }
 
-  limparCampos(){
+  limparCampos() {
+    (<HTMLSelectElement>document.getElementById('campoTitulo')).value = "";
+    (<HTMLSelectElement>document.getElementById('campoSubTitulo')).value = "";
     (<HTMLSelectElement>document.getElementById('campoNome')).value = "";
-    (<HTMLSelectElement>document.getElementById('campoSobreNome')).value = "";
-    (<HTMLSelectElement>document.getElementById('campoEstado')).value = "Estado";
-    (<HTMLSelectElement>document.getElementById('campoCidade')).value = ""; 
-    (<HTMLSelectElement>document.getElementById('campoSexo')).value = "Residência"; 
-    (<HTMLSelectElement>document.getElementById('campoExperiencia')).value = "Experiência";  
-  }
- 
-  oportunidadeInfo(vaga:Vaga){
-    this.router.navigate(['oportunidade-modal'],{queryParams: vaga});
+    (<HTMLSelectElement>document.getElementById('campoEstadoOportunidades')).value = "Selecione";
+    (<HTMLSelectElement>document.getElementById('campoCidade')).value = "";  
+    }
+
+  oportunidadeInfo(vaga: Vaga) {
+    this.router.navigate(['oportunidade-modal'], { queryParams: vaga });
   }
 
-  pesquisarVaga(){
+  pesquisarVaga() {
+
     this.vaga = this.formulario.value;
-    ""
+
+    let existeCamposVazios:Boolean = this.verificaCamposVazio(this.vaga);
+    
+    if(existeCamposVazios == true){      
+      alert("Preencha pelo menos um campo para pesquisar.");      
+    }else{
     this.vagaService.pesquisar(this.vaga)
-    .subscribe(response =>{
-      if(response == 0){
-        alert("Não há registros dessa pesquisa.");
-      }else{
-        this.vagas = response;
-        console.log(this.vagas);
+      .subscribe(response => {
+        if (response == 0) {
+          alert("Não há registros dessa pesquisa.");
+        } else {
+          this.vagas = response;
+        }
+      },
+        (erro) => {
+          alert(erro);
+        });
       }
-    },
-    (erro)=> {
-      alert(erro);
-  });
+  }
+
+  verificaCamposVazio(camposPesquisa:Vaga){
+    if(camposPesquisa.titulo !== "" || camposPesquisa.titulo !== null || camposPesquisa.titulo !==undefined 
+     && camposPesquisa.subtitulo !== "" || camposPesquisa.subtitulo !== null || camposPesquisa.subtitulo !== undefined
+    && camposPesquisa.nomeEmpregador !== "" || camposPesquisa.nomeEmpregador == null || camposPesquisa.nomeEmpregador !== undefined
+    && camposPesquisa.estado !== "" || camposPesquisa.estado !== null || camposPesquisa.estado !== undefined
+    && camposPesquisa.cidade !== "" || camposPesquisa.cidade !== null || camposPesquisa.cidade !== undefined
+    ){
+
+      return false;
+    }
+    else{
+      return true;
+    }
   }
 
 }

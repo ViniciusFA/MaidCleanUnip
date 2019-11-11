@@ -1,101 +1,126 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="conteudoLegislacao">
+                <!--Título da página -->
+                <div class="tituloConteudoPaginas" id="tituloLegislacao">
+                    <h3>{{titulo}}</h3>
+                </div>
+                <hr />
+                <div id="subTituloLegislacao">
+                    <h6>Informações e recomendações</h6>
+                </div>
+                <br>
+                <div id="textoRecomendacoesLegislacao">
+                    <p>
+                        Os serviços prestados por diarista que comparece para o trabalho,alguns dias na semana,
+                        não se confunde com o trabalho doméstico previsto na lei 5.859/72 ( revogada pela
+                        Lei Complementar nº 150).
+                        Abaixo estão as leis de cada profissão onde poderão ser acessadas direto do site do
+                        planalto ou baixadas clicando na opção Download.
+                    </p>
+                </div>
+                <hr width="100%">
+                <div class="textoSecundarioLegislacao" id="textoRecomendacoesLegislacao">
+                    <p>Clique no link abaixo para saber mais sobre a lei que rege a sua profissão ou faça o download se
+                        preferir:</p>
+                </div>
+                <br>
+                <div class="conteudoLinkLegislacao">
+                    <div class="form-row" id="legislacaoAncora">
+                        <div class="col-4">
+                                <ul style="list-style-type:square;">
+                                        <li>
+                                           <h6>Diarista</h6>
+                                        </li>
+                                    </ul>                            
+                            <div id="leisDiarista">
+                                <a class="downloadLegislacao" id="leisDiarista" style="text-decoration: underline"
+                                    href="http://www.planalto.gov.br/ccivil_03/_Ato2004-2006/2006/Lei/L11324.htm"
+                                    target="_blank">Lei nº 11.324 - Planalto
+                                </a>
+                            </div>
+                            <br>
 
-<div class="container">  
-        <div class="row">
-            <div class="col-md-12">
-                <div class="conteudoLegislacao">
-                        <!--Título da página -->
-                            <div class="tituloConteudoPaginas" id="tituloLegislacao">
-                                    <h3>{{titulo}}</h3>                                    
-                            </div>
-                            <hr/>
-                            <div id="subTituloLegislacao">
-                                    <h6>Informações e recomendações</h6>
-                            </div>  
-                            <br>
-                            <div id="textoRecomendacoesLegislacao">
-                                <p >
-                                Os serviços prestados por diarista que comparece para o trabalho,alguns dias na semana,
-                                não se confunde com o trabalho doméstico previsto na lei 5.859/72 ( revogada pela
-                                Lei Complementar nº 150).
-                                Abaixo estão as leis de cada profissão onde poderão ser acessadas direto do site do 
-                                planalto ou baixadas clicando na opção Download.
-                                </p>
-                            </div>    
-                            <hr width="100%">
-                            <div class="textoSecundarioLegislacao" id="textoRecomendacoesLegislacao">
-                                <p>Clique no link abaixo para saber mais sobre a lei que rege a sua profissão ou faça o download se preferir:</p>
+                        </div>
+                        <div class="col-5">
+                            <ul style="list-style-type:square;">
+                                <li>
+                                    <h6>Empregada Doméstica</h6>
+                                </li>
+                            </ul>
+                           <div id="leisEmpregDom">
+                                <a class="downloadLegislacao" style="text-decoration: underline"
+                                    href="http://www.planalto.gov.br/ccivil_03/leis/lcp/lcp150.htm" target="_blank">Lei
+                                    Complementar nº 150 - Planalto
+                                </a>
                             </div>
                             <br>
-                            <div class="conteudoLinkLegislacao">
-                                <div class="form-row" id="legislacaoAncora">
-                                   <div class="col-4" id="leisDiarista">
-                                       <h6>Diarista</h6>                                       
-                                        <a id="downloadLegislacao" style="text-decoration: underline" href="http://www.planalto.gov.br/ccivil_03/_Ato2004-2006/2006/Lei/L11324.htm" target="_blank">Lei nº 11.324 - Planalto
-                                            </a>
-                                        <br>    
-                                        
-                                    </div>
-                                    <div class="col-4" id="leisEmpregDom">  
-                                        <h6>Empregada Doméstica</h6>                                      
-                                        <a id="downloadLegislacao" style="text-decoration: underline" href="http://www.planalto.gov.br/ccivil_03/leis/lcp/lcp150.htm" target="_blank">Lei Complementar nº 150 - Planalto
-                                            </a>
-                                        <br>
-                                        
-                                    </div>                                    
-                                 </div>
-                            </div>
-                            <br>
-                            <br>
-                            <hr width="100%">
-                 <form id="formGridLegislacao"> 
-                   <div class="tituloRecomendLegislacao">
-                         <h5>Recomendações</h5>  
-                   </div>         
-                   <br>
-                   <div class="conteudoGrids">       
-                      <div class="form-row" >
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <hr width="100%">
+                <form id="formGridLegislacao">
+                    <div class="tituloRecomendLegislacao">
+                        <h6>Recomendações</h6>
+                    </div>
+                    <br>
+                    <div class="conteudoGrids">
+                        <div class="form-row">
                             <!--card-->
                             <div class="col-4">
                                 <div class="card" id="cardProcon">
                                     <div class="card-body">
                                         <h5 class="card-title">Procon</h5>
-                                        <p class="card-text" id="textoRecomendacoesLegislacao">
-                                                <p>Programa de Proteção e Defesa do Consumidor</p>
-                                               <p> Responsável por ajudar a mediar os conflitos entre os consumidores e os fornecedores de produtos 
-                                                e serviços.</p>
-                                                <p>Verifique a lista completa dos Procons no Brasil</p>
-                                        <a href="http://culturadigital.br/amarelasinternet/2011/12/13/lista-completa-com-enderecos-e-sites-dos-procons-do-brasil/" target="_blank" class="btn btn-primary">Lista de Sites Procon</a>
+                                        <p id="textoRecomendacoesLegislacao" class="card-text">
+                                            Programa de Proteção e Defesa do Consumidor
+                                            Responsável por ajudar a mediar os conflitos entre os consumidores e os
+                                            fornecedores de produtos
+                                            e serviços.</p>
+                                        <p>Verifique a lista completa dos Procons no Brasil</p>
+                                        <a href="http://culturadigital.br/amarelasinternet/2011/12/13/lista-completa-com-enderecos-e-sites-dos-procons-do-brasil/"
+                                            target="_blank" class="btn btn-primary">Lista de Sites Procon</a>
                                     </div>
                                 </div>
                             </div>
-                           <!--card-->
-                           <div class="col-4">
-                            <div class="card" id="cardDefensoria">
-                                <div class="card-body">
+                            <!--card-->
+                            <div class="col-4">
+                                <div class="card" id="cardDefensoria">
+                                    <div class="card-body">
                                         <h5 class="card-title">Defensoria </h5>
-                                        <p id="textoRecomendacoesLegislacao" class="card-text">instituição pública que oferece aos cidadãos e cidadãs vulneráveis, de forma integral e gratuita,
-                                                a orientação jurídica, a promoção dos direitos humanos e a defesa,judicial e extrajudicialmente. .</p>
-                                                <p>Verifique a defensoria do seu estado.</p>
-                                        <a href="http://www.ipea.gov.br/sites/images/downloads/mapa_defensoria_publica_no_brasil_19_03.pdf" target="_blank" class="btn btn-primary">Mapa da Defensoria</a>
+                                        <p id="textoRecomendacoesLegislacao" class="card-text">instituição pública que
+                                            oferece aos cidadãos e cidadãs vulneráveis, de forma integral e gratuita,
+                                            a orientação jurídica, a promoção dos direitos humanos e a defesa,judicial e
+                                            extrajudicialmente. .</p>
+                                        <p>Verifique a defensoria do seu estado.</p>
+                                        <a href="http://www.ipea.gov.br/sites/images/downloads/mapa_defensoria_publica_no_brasil_19_03.pdf"
+                                            target="_blank" class="btn btn-primary">Mapa da Defensoria</a>
                                     </div>
-                            </div>
-                           </div>
-                           &nbsp;
-                           <!--card-->
-                            <div class="col-3">
-                                <div class="card" id="cardJusBrasil" ><div class="card-body">
-                                            <h5 class="card-title">JusBrasil</h5>
-                                            <p id="textoRecomendacoesLegislacao" class="card-text">Um site que reúne ,de forma organizada, toda a informação jurídica brasileira.
-                                            São bilhões de documentos, que vão desde decisões dos tribunais, passando por atos normativos, até artigos informativos e doutrinários</p>
-                                            <p>Basta inserir o número do processo para pesquisá-lo.</p>
-                                            <a href="https://www.jusbrasil.com.br/home" target="_blank" class="btn btn-primary">Site JusBrasil</a>
-                                        </div>
                                 </div>
-                            </div>                           
+                            </div>
+                            &nbsp;
+                            <!--card-->
+                            <div class="col-3">
+                                <div class="card" id="cardJusBrasil">
+                                    <div class="card-body">
+                                        <h5 class="card-title">JusBrasil</h5>
+                                        <p id="textoRecomendacoesLegislacao" class="card-text">Um site que reúne ,de
+                                            forma organizada, toda a informação jurídica brasileira.
+                                            São bilhões de documentos, que vão desde decisões dos tribunais, passando
+                                            por atos normativos, até artigos informativos e doutrinários</p>
+                                        <p>Basta inserir o número do processo para pesquisá-lo.</p>
+                                        <a href="https://www.jusbrasil.com.br/home" target="_blank"
+                                            class="btn btn-primary">Site JusBrasil</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>  
-                </form>         
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 </div>

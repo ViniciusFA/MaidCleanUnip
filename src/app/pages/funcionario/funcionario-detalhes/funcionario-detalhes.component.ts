@@ -9,12 +9,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class FuncionarioDetalhesComponent implements OnInit {
 
-  id:number;
-  funcionario:Funcionario;
+  id: number;
+  funcionario: Funcionario;
 
   constructor(private route: ActivatedRoute,
-              private router: Router,
-              private funcionarioService: FuncionarioService) { }
+    private router: Router,
+    private funcionarioService: FuncionarioService) { }
 
   ngOnInit() {
     this.funcionario = new Funcionario();
@@ -22,9 +22,9 @@ export class FuncionarioDetalhesComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
 
     this.funcionarioService.getFuncionario(this.id)
-    .subscribe(data => {
-      console.log(data)
-      this.funcionario = data;
-    }, error => console.log(error));
+      .subscribe(data => {
+        console.log(data)
+        this.funcionario = data;
+      }, error => console.log(error));
   }
 }

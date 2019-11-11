@@ -3,17 +3,14 @@ import { Router } from '@angular/router';
 import { RoleEnum } from 'src/app/system-objects/role-enum';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-export class AutenticacaoService{
+export class AutenticacaoService {
 
-    private usuarioAutenticado:boolean = false;
-    //variavel pública
-    mostrarMenuEmitter = new EventEmitter<boolean>();
+  private usuarioAutenticado: boolean = false;
+  mostrarMenuEmitter = new EventEmitter<boolean>();
 
-    constructor(private router:Router){
-
-    }
+  constructor(private router: Router) { }
 
   liberaPermissao(idRole: number) {
     let permissoes: any;
@@ -24,7 +21,7 @@ export class AutenticacaoService{
         acessaFuncionario: true,
         acessaLegislacao: true,
         acessaOportunidade: true,
-        acessaOportunidadeModal:true,
+        acessaOportunidadeModal: true,
         acessaCadastro: false,
         acessaEntrar: false,
         acessaLogout: true
@@ -37,7 +34,7 @@ export class AutenticacaoService{
         acessaFuncionario: true,
         acessaLegislacao: false,
         acessaOportunidade: false,
-        acessaOportunidadeModal:false,
+        acessaOportunidadeModal: false,
         acessaCadastro: false,
         acessaEntrar: false,
         acessaLogout: true
@@ -50,7 +47,7 @@ export class AutenticacaoService{
         acessaFuncionario: false,
         acessaLegislacao: true,
         acessaOportunidade: true,
-        acessaOportunidadeModal:true,
+        acessaOportunidadeModal: true,
         acessaCadastro: false,
         acessaEntrar: false,
         acessaLogout: true
@@ -58,13 +55,12 @@ export class AutenticacaoService{
     }
 
     localStorage.setItem('permissoes', JSON.stringify(permissoes));
-
     this.usuarioAutenticado = true;
     this.mostrarMenuEmitter.emit(true);
     this.router.navigate(['home'], { queryParams: { reload: true } });
   }
-      
-      usuarioEstaAutenticado(){
-        return this.usuarioAutenticado;
-      }
-    }
+
+  usuarioEstaAutenticado() {
+    return this.usuarioAutenticado;
+  }
+}

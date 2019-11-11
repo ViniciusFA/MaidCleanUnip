@@ -8,17 +8,17 @@ import { Usuario } from './../system-objects/usuario-model';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
- 
+
   shareObj = {
-      href: "FACEBOOK-SHARE-LINK",
-      hashtag:"#FACEBOOK-SHARE-HASGTAG"
+    href: "FACEBOOK-SHARE-LINK",
+    hashtag: "#FACEBOOK-SHARE-HASGTAG"
   };
 
-  private formulario:FormGroup;
-  private usuario:Usuario;
-  mostrarMenu:boolean = false;
+  private formulario: FormGroup;
+  private usuario: Usuario;
+  mostrarMenu: boolean = false;
   acessaAnuncie: Boolean = false;
-  acessaOportunidadeModal:Boolean=false;
+  acessaOportunidadeModal: Boolean = false;
   acessaFuncionario: Boolean = false;
   acessaLegislacao: Boolean = false;
   acessaOportunidade: Boolean = false;
@@ -26,15 +26,9 @@ export class HeaderComponent implements OnInit {
   acessaEntrar: Boolean = false;
   acessaLogout: Boolean = false;
 
-  constructor(
-    private router:Router,
-  ) {
-    
-  }
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    //this.mostrarMenu;
-
     let permissoes = JSON.parse(localStorage.getItem('permissoes'));
     if (permissoes === null || permissoes === undefined) {
       this.acessaAnuncie = false;
@@ -55,21 +49,18 @@ export class HeaderComponent implements OnInit {
       this.acessaEntrar = permissoes.acessaEntrar;
       this.acessaCadastro = permissoes.acessaCadastro;
     }
-
-    //console.log("mostrarMenu ngOnInit: " + this.mostrarMenu);
-   }  
-
- 
-  receberParamLogin(mostrarMenu: boolean){
-    this.mostrarMenu = mostrarMenu;
-    //console.log("mostrarMenu ReceberParamLogin: " + this.mostrarMenu);
   }
-  
+
+
+  receberParamLogin(mostrarMenu: boolean) {
+    this.mostrarMenu = mostrarMenu;
+  }
+
   logout() {
     localStorage.removeItem('permissoes');
     this.router.navigate(['login'], { queryParams: { logout: true } })
-    .then(()=>{
-      window.location.reload();
-    });
+      .then(() => {
+        window.location.reload();
+      });
   }
 }

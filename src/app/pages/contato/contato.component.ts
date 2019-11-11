@@ -12,17 +12,17 @@ import { MotivoMensagem } from '../../util/motivoMensagem';
 })
 export class ContatoComponent implements OnInit {
 
-  private contato:Contato = new Contato();
-  private titulo:string;
-  private formulario:FormGroup;
+  private contato: Contato = new Contato();
+  private titulo: string;
+  private formulario: FormGroup;
 
-  constructor(private contatoService:ContatoService,
-              private router:Router,
-              private activatedRoute:ActivatedRoute,
-              private formBuilder:FormBuilder) { }
+  constructor(private contatoService: ContatoService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.titulo="Fale Conosco";
+    this.titulo = "Fale Conosco";
     this.configurarFormulario();
   }
 
@@ -35,42 +35,42 @@ export class ContatoComponent implements OnInit {
     new MotivoMensagem(5, "Sugestão"),
   ]
 
-  limparCampos():void{
+  limparCampos(): void {
     (<HTMLSelectElement>document.getElementById('inputNome')).value = "";
     (<HTMLSelectElement>document.getElementById('inputSobreNome')).value = "";
     (<HTMLSelectElement>document.getElementById('selectEmail')).value = "";
-    (<HTMLSelectElement>document.getElementById('selectMotivo')).value = "Selecione"; 
-    (<HTMLSelectElement>document.getElementById('TextAreaMensagm')).value = ""; 
+    (<HTMLSelectElement>document.getElementById('selectMotivo')).value = "Selecione";
+    (<HTMLSelectElement>document.getElementById('TextAreaMensagm')).value = "";
   }
 
-    configurarFormulario(){
-      this.formulario = this.formBuilder.group({
+  configurarFormulario() {
+    this.formulario = this.formBuilder.group({
 
-        nome:this.formBuilder.control('',[Validators.required, Validators.minLength(3),Validators.maxLength(30)]),
-        sobrenome: this.formBuilder.control('',[Validators.required, Validators.minLength(3),Validators.maxLength(40)]),
-        email: this.formBuilder.control('',[Validators.required, Validators.email, Validators.maxLength(70)]),      
-        motivo: this.formBuilder.control('',Validators.required),
-        mensagem: this.formBuilder.control('',[Validators.required,Validators.maxLength(400)])        
-      });
-    }
+      nome: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+      sobrenome: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]),
+      email: this.formBuilder.control('', [Validators.required, Validators.email, Validators.maxLength(70)]),
+      motivo: this.formBuilder.control('', Validators.required),
+      mensagem: this.formBuilder.control('', [Validators.required, Validators.maxLength(400)])
+    });
+  }
 
-  enviar(){
+  enviar() {
     this.contato = this.formulario.value;
 
     this.contatoService.sendMessage(this.contato)
-    .subscribe(response => {
+      .subscribe(response => {
 
-      let res:Response = <Response>response;
+        let res: Response = <Response>response;
 
-      if(res.codigo == 1){
-        alert(res.mensagem);
-        this.formulario.reset();
-      }else{
-        alert(res.mensagem);
-      }
-    },
-    (erro) =>{
-      alert(erro);
-    });   
+        if (res.codigo == 1) {
+          alert(res.mensagem);
+          this.formulario.reset();
+        } else {
+          alert(res.mensagem);
+        }
+      },
+        (erro) => {
+          alert(erro);
+        });
   }
 }

@@ -1,4 +1,3 @@
-
 <script src="../../assets/css/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 <script src="../../assets/js/js/src/abrirCadastro.js"></script>
 
@@ -6,26 +5,28 @@
 <div class="container" id="containerCadPrincipal">
   <div class="row">
     <div class="col-md-12">
-    <div class="tituloConteudoPaginas" id="tituloCadstroIndex">
-            <h3>Cadastro</h3>
-    </div>
-   
-    <div class="escolhaProfissional">    
-        <div class="dropdown" id="ddlEscolhaCadastro" [(ngModel)]="selectedOption" name="selectedOption" ngDefaultControl >      
-        <select #cadastro  class="form-control" id="opcaoCadastro" >
-            <option *ngFor="let cad of cadastros" ngValue="cadastros.id">
-                {{cad.nome}}
-              </option>            
-        </select>
-        </div>  
-      <br>
-      <div class="textoOpcaoCadastro" id="textoLabelPadrao">
-          <p><b>Seleciona uma das opções</b></p>
+      <div class="tituloConteudoPaginas" id="tituloCadastroIndex">
+        <h3>{{titulo}}</h3>
       </div>
-        <button type="button" class="btn btn-outline-secondary" id="enviarEscolhaCadastro" (click)="abrirOpcao()">Enviar</button>
+      <hr />
+      <br>
+      <div class="escolhaProfissional">
+        <div class="textoOpcaoCadastro" id="textoLabelPadrao">
+          <p><b>Seleciona uma opção</b></p>
+        </div>
+        <div class="dropdown" id="ddlEscolhaCadastro" [(ngModel)]="selectedOption" name="selectedOption"
+          ngDefaultControl>
+          <select #cadastro class="form-control" id="opcaoCadastro">
+            <option *ngFor="let cad of cadastros" ngValue="cadastros.id">
+              {{cad.nome}}
+            </option>
+          </select>
+        </div>
+        <br>
+
+        <button type="button" class="btn btn-outline-secondary btnEscolhaCad" id="enviarEscolhaCadastro"
+          (click)="abrirOpcao()">Enviar</button>
       </div>
     </div>
   </div>
 </div>
-
-

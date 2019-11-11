@@ -1,35 +1,36 @@
-
 <div class="tituloConteudoPaginas" id="tituloInfoOportunidade">
     <h3>{{titulo}}</h3>
 </div>
 <hr>
 <div class="contentInfoOportunity">
-        <label class="labelVagaModal">Id Vaga:</label>
-        <label class="conteudoInfoVagaModal">{{vaga.id}}</label>
-        <br>
-        <label class="labelVagaModal">Título:</label>
-        <label class="conteudoInfoVagaModal">{{vaga.titulo}}</label>
-        <br>
-        <label class="labelVagaModal">Subtítulo:</label> 
-        <label class="conteudoInfoVagaModal">{{vaga.subtitulo}}</label>
-        <br>          
-        <label class="labelVagaModal">Nome do Empregador:</label> 
-        <label class="conteudoInfoVagaModal">{{vaga.nomeEmpregador}}</label>
-        <br>
-        <label class="labelVagaModal">Estado:</label>
-        <label class="conteudoInfoVagaModal">{{vaga.estado}}</label>
-        <br>
-        <label class="labelVagaModal">Cidade:</label> 
-        <label class="conteudoInfoVagaModal">{{vaga.cidade}}</label>
-        <br>
-        <label class="labelVagaModal">Descrição:</label> 
-        <label class="conteudoInfoVagaModal">{{vaga.descricao}}</label>
-        <br>
+    <label class="labelVagaModal">Id Vaga:</label>
+    <label class="conteudoInfoVagaModal">{{vaga.id}}</label>
+    <br>
+    <label class="labelVagaModal">Título:</label>
+    <label class="conteudoInfoVagaModal">{{vaga.titulo}}</label>
+    <br>
+    <label class="labelVagaModal">Subtítulo:</label>
+    <label class="conteudoInfoVagaModal">{{vaga.subtitulo}}</label>
+    <br>
+    <label class="labelVagaModal">Nome do Empregador:</label>
+    <label class="conteudoInfoVagaModal">{{vaga.nomeEmpregador}}</label>
+    <br>
+    <label class="labelVagaModal">Estado:</label>
+    <label class="conteudoInfoVagaModal">{{vaga.estado}}</label>
+    <br>
+    <label class="labelVagaModal">Cidade:</label>
+    <label class="conteudoInfoVagaModal">{{vaga.cidade}}</label>
+    <br>
+    <label class="labelVagaModal">Descrição:</label>
+    <label class="conteudoInfoVagaModal">{{vaga.descricao}}</label>
+    <br>
 </div>
 
 <div class="modal-footer">
     <div id="botoesOportunidadeModal">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/oportunidades']">Voltar</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmCandidatura" (click)="Candidatar()">Candidate-se</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+            [routerLink]="['/oportunidades']">Voltar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmCandidatura"
+            (click)="Candidatar()">Candidate-se</button>
     </div>
 </div>

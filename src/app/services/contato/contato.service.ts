@@ -12,13 +12,8 @@ export class ContatoService {
     private options:RequestOptions;
 
     constructor(private http:Http,
-                //private router: Router,
-                private configService:ConfigService){
-                 
-               /**SETANDO A URL DO SERVIÇO REST QUE VAI SER ACESSADO */
+                private configService:ConfigService){                 
                 this.baseUrlService = configService.getUrlService() + '/contato';
-
-               /*ADICIONANDO O JSON NO HEADER */
                 this.headers = new Headers ({ 'Content-Type': 'application/json;charset=UTF-8' });
                 this.options = new RequestOptions ({ headers : this.headers});
             }

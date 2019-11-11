@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { EmpregadorService } from '../../../services/empregador/empregador.service';
 import { Empregador } from 'src/app/services/empregador/empregador';
 import { Response } from '../../../services/response';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Sexo } from 'src/app/util/sexo';
 import { Estados } from 'src/app/util/estados';
 import { Residencia } from 'src/app/util/residencia';
@@ -21,13 +21,13 @@ export class CadastroEmpregadorComponent implements OnInit {
   private valorInteiro: Number = null;
 
   constructor(private empregadorService: EmpregadorService,
-              private router: Router,
-              private formBuilder:FormBuilder) { }
+    private router: Router,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.configurarFormulario(); 
+    this.configurarFormulario();
   }
-  
+
   estados = [
     new Estados(0, 'Estados'),
     new Estados(1, 'Rio de Janeiro'),
@@ -46,38 +46,38 @@ export class CadastroEmpregadorComponent implements OnInit {
     new Residencia(2, 'Casa'),
   ];
 
-  configurarFormulario(){
+  configurarFormulario() {
     this.formulario = this.formBuilder.group({
 
-      nome:this.formBuilder.control('',[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
-      sobrenome: this.formBuilder.control('',[Validators.minLength(3),Validators.maxLength(40)]),
-      login: this.formBuilder.control('',[Validators.required, Validators.minLength(3),Validators.maxLength(10)]),
-      senha: this.formBuilder.control('',[Validators.required, Validators.minLength(6),Validators.maxLength(8)]),
-      avaliacao: this.formBuilder.control('',[Validators.email,Validators.maxLength(50)]),
+      nome: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+      sobrenome: this.formBuilder.control('', [Validators.minLength(3), Validators.maxLength(40)]),
+      login: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+      senha: this.formBuilder.control('', [Validators.required, Validators.minLength(6), Validators.maxLength(8)]),
+      avaliacao: this.formBuilder.control('', [Validators.email, Validators.maxLength(50)]),
       sexo: this.formBuilder.control(''),
-      email: this.formBuilder.control('',[Validators.email,Validators.maxLength(50)]),
-      telefone: this.formBuilder.control('',Validators.maxLength(11)),
+      email: this.formBuilder.control('', [Validators.email, Validators.maxLength(50)]),
+      telefone: this.formBuilder.control('', Validators.maxLength(11)),
       residencia: this.formBuilder.control(''),
-      cpf_cnpj: this.formBuilder.control('',Validators.maxLength(20)),
-      endereco: this.formBuilder.control('',Validators.maxLength(100)),
-      complemento: this.formBuilder.control('',Validators.maxLength(40)),
-      cidade: this.formBuilder.control('',Validators.maxLength(30)),
+      cpf_cnpj: this.formBuilder.control('', Validators.maxLength(20)),
+      endereco: this.formBuilder.control('', Validators.maxLength(100)),
+      complemento: this.formBuilder.control('', Validators.maxLength(40)),
+      cidade: this.formBuilder.control('', Validators.maxLength(30)),
       estado: this.formBuilder.control(''),
-      cep: this.formBuilder.control('',Validators.maxLength(8))
+      cep: this.formBuilder.control('', Validators.maxLength(8))
     });
   }
 
-  cadastrar():void{
+  cadastrar(): void {
     this.empregador = new Empregador();
   }
 
-  salvar(){
+  salvar() {
 
     let usuario = this.formulario.value as Usuario;
 
-    if(usuario.sexo == "Masculino"){
+    if (usuario.sexo == "Masculino") {
       usuario.sexo = 'M';
-    }else{
+    } else {
       usuario.sexo = 'F';
     }
 
@@ -86,23 +86,23 @@ export class CadastroEmpregadorComponent implements OnInit {
     console.log("usuario.idRole: " + usuario.idRole);
 
     this.empregadorService.criarEmpregador(usuario)
-                          .subscribe(response=> {
-      let res:Response = <Response>response;
-      
-      if(res.codigo == 1){
-        alert(res.mensagem);
-        this.formulario.reset();   
-        this.router.navigate(['login']);
-      }else{
-        alert(res.mensagem);
+      .subscribe(response => {
+        let res: Response = <Response>response;
+
+        if (res.codigo == 1) {
+          alert(res.mensagem);
+          this.formulario.reset();
+          this.router.navigate(['login']);
+        } else {
+          alert(res.mensagem);
+        }
       }
-    }
-    ,(erro) =>{
-      alert(erro);  
-    });      
+        , (erro) => {
+          alert(erro);
+        });
   }
 
-  voltar():void{
+  voltar(): void {
     this.router.navigate(['/cadastro']);
   }
 

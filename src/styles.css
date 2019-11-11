@@ -4664,7 +4664,7 @@
    word-wrap: break-word;
    background-color: #fff;
    background-clip: border-box;
-   border: 1px solid rgba(0, 0, 0, 0.125);
+   border: 3px solid #d7d7ea;
  }
  
  .card > hr {
@@ -10381,8 +10381,9 @@
    height: 30%;
    margin-left:40%;
  }
-#tituloCadstroIndex{
-  margin-left: 40%;
+#tituloCadastroIndex{
+  margin-left: 43%;
+  margin-top: -3%;
 }
 #tituloFuncCadastrados{
   width: 30%;
@@ -10390,6 +10391,7 @@
  #enviarEscolhaCadastro{
   margin-left: 37%;
   width: 50%;
+  margin-top: 5%;
  }
  #tabelaRanking{
   margin-left: 10%;
@@ -10432,7 +10434,9 @@
   height: 10%;
 }
 #containerAllCadastro{
-  margin-left: 10%;
+  margin-left: 6%;
+  margin-right: 10%;
+  width: 88%;
 }
 #containerAllContato{
   margin-left: 5%;
@@ -10446,6 +10450,7 @@
 }
 .botoesContato{
   margin-left: 35%;
+  margin-bottom: 4%;
  }
  #btnLimpar{
   margin-left: 5%;
@@ -10623,7 +10628,9 @@ html {
   margin-left: 40%;
 }
 #formPesquisaCampos{  
+  margin-left: -6%;
   height: 265px;
+  width: 117%;
 }
 #camposFormPesquisa{
   margin-left: -5%;
@@ -10632,9 +10639,16 @@ html {
 #campoNome{
   width: 100%;
   margin-bottom: 7%;
+  height: 53%;
 }
-#campoSobreNome{
+#campoTitulo{
   width: 100%;
+  margin-bottom: 7%;
+  height: 48%;
+}
+#campoSubTitulo{
+  width: 100%;
+  height: 48%;
 }
 #campoEstado{
   width: 100%;
@@ -10642,6 +10656,7 @@ html {
 }
 #campoCidade{
   width: 100%;
+  height: 53%;
 }
 #campoSexo{
   width: 100%;
@@ -10655,13 +10670,13 @@ html {
   margin: 0 auto;
   margin-bottom: 2%;
   margin-top: 2%;
-  margin-left: 37%;
+  margin-left: 38%;
 }
 #tabelaProfissionais{
-  width: 106%;
+  width: 123%;
   height: 185px;
   margin-top: 4%;
-  margin-left: -5%;
+  margin-left: -12%;
 }
 #btnEnviarPesquisa{
   margin-left: 15px;
@@ -10673,6 +10688,8 @@ html {
 }
 .tabelaProfissionais{
   margin-bottom: 5%;
+  width: 102%;
+  margin-left: -2%;
 }
 .conteudoGrids{
   margin-bottom: 5%;
@@ -10695,14 +10712,13 @@ html {
   height: 170px;
 }
 #cardProcon{
-  width: 16rem;
+  width: 19rem;
 }
 #cardDefensoria{
-  width: 16rem;
+  width: 19rem;
 }
 #cardJusBrasil{
-  width: 16rem;
-  height: 99%;
+  width: 22rem;
 }
 #cardJusTrab{
   width: 16rem;
@@ -10714,13 +10730,30 @@ html {
   margin-left: 27%;
 }
 .tituloRecomendLegislacao{
-  margin:0 auto;
+  margin: 0 auto;
   margin-top: 34px;
-  width: 13%;
-  font-family: h
+  width: 20%;
+  font-family: arial;
+  background-color: #d7d7ff;
+  text-align: center;
 }
-#legislacaoAncora > div a:hover{
-  color: blue;
+#leisDiarista{
+  font-family: Arial;
+  font-size: 15px;
+}
+#leisDiarista :hover{
+  color: lightskyblue;
+  font-weight: bold;
+  font-size: 18px;
+}
+#leisEmpregDom{
+  font-family: Arial;
+  font-size: 15px;
+}
+#leisEmpregDom :hover{
+  color: lightskyblue;
+  font-weight: bold;
+  font-size: 18px;
 }
 .opcaoLoginCad{
   margin-left: 30%;
@@ -10731,17 +10764,23 @@ html {
 .textoOpcaoCadastro{
   text-align: center;
   margin-left: 30%;
+  font-family: Arial;
+  font-size: 18px;
 }
 #containerCadPrincipal{
   margin-top: 80px;
 }
 #opcaoCadastro{
   height: 49px;
+  margin-top: 14%;
 }
 #subTituloLegislacao{
-  width: 30%;
+  width: 34%;
   margin: 0 auto;
   margin-top: 3%;
+  font-family: Arial, sans-serif;
+  background-color: #d8d8fd;
+  text-align: center;
 }
 .textoPrincipalLegislacao > p{
   text-align: center;
@@ -10830,7 +10869,7 @@ html {
   margin-bottom: 7%;
 }
 #tituloVagasCadastradas{
-  width: 45%;
+  width: 79%;
 }
 #tituloVagasCadastradas h3{
   margin-left: 35%
@@ -10926,7 +10965,9 @@ html {
   font-weight: bold;
 }
 #textoRecomendacoesLegislacao{
-  color:black;
+  color: black;
+  font-family: Arial;
+  font-size: 16px;
 }
 #textoLabelContato{
 color:black;
@@ -10947,8 +10988,13 @@ font-family: arial;
   width: 100%;
   height: 68%;
 }
-#downloadLegislacao{
-  color:blue;
+.downloadLegislacao{
+  color:lightslategrey;
+  cursor:pointer;
+}
+.downloadLegislacao :hover{
+  color: lightskyblue;
+  font-weight: bold;
 }
 #badgeAlterarFunc{
   cursor: pointer;
@@ -10980,9 +11026,6 @@ margin-left: 35%;
 }
 #btnCadastrarHome{
   margin-left: 1%;
-}
-#downloadLegislacao{
-  cursor:pointer;
 }
 #campoAnuncievagaTitulo{
   width: 100%;
@@ -11017,13 +11060,18 @@ margin-left: -8%;
 .botoesPesquisarOportunidades{
   margin: 0 auto;
   margin-bottom: 2%;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 #conteudoGridsOportunidade{
-  margin-top: 4%;
+  margin-top: 7%;
+  margin-left: -3%;
+  margin-right: 1%;
+  width: 120%;
+  margin-left: -10%;
 }
 #tituloLegislacao{
   width: 41%;
+  text-align: center;
 }
 #saberMaisOportunidades{
   color:blue;
@@ -11059,8 +11107,8 @@ margin-left: -8%;
 }
 #conteudoFotoPerfil{
   margin-left: 70%;
-  margin-top: -69%;
-  width: 18%;
+  margin-top: -61%;
+  width: 16%;
   border: 5px;
   border-style: groove;
 }
@@ -11103,8 +11151,8 @@ margin-top: 6%;
   margin-left: 7%;
 }
 .botoesInfoFunc{
-  margin-left: 73%;
-  margin-top: 8%;
+  margin-left: 72%;
+  margin-top: 4%;
 }
 .tabelaPesquisaFunc{
   background-color:#99b0c7;
@@ -11124,3 +11172,21 @@ margin-top: 6%;
   margin-top: 2%;
   width: 27%;
 }
+.conteudoFormularioPesquisar{
+  width: 120%;
+  margin-left: -9%;
+}
+.conteudoFormAnuncio{
+  width: 118%;
+  margin-left: -8%;
+}
+.btnEscolhaCad{
+ background-color:  #cfe0f9;
+}
+.btnEscolhaCad :hover{
+  background-color:  white;
+ }
+ .conteudoLegislacao{
+  width: 125%;
+  margin-left: -12%;
+ }

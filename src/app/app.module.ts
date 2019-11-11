@@ -31,13 +31,11 @@ import { OportunidadesComponent } from './pages/oportunidades/oportunidades.comp
 import { FormsModule, ReactiveFormsModule}   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ContatoService } from './services/contato/contato.service';
-import { LoginService } from './services/login/LoginService';
 import { PesquisaFuncionarioService } from './services/Pesquisa/PesquisaFuncionarioService';
 import { InfoFuncionarioComponent } from './pages/info-funcionario/info-funcionario.component';
 import { VagaService } from './services/vaga/VagaService';
 import { AnuncieComponent } from './pages/anuncie/anuncie.component';
 import { AutenticacaoService } from './services/login/AutenticacaoService';
-import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { OportunidadesModalComponent } from './pages/oportunidades/oportunidades-modal/oportunidade-modal.component';
 

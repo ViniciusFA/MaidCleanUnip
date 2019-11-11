@@ -16,7 +16,6 @@ export class AnuncieComponent implements OnInit {
   private vaga: Vaga;
   private caracteresMaximo: number = 400;
 
-
   constructor(private formBuilder: FormBuilder,
     private vagaService: VagaService) {
     this.configurarFormulario();
@@ -27,19 +26,19 @@ export class AnuncieComponent implements OnInit {
   }
 
   estados = [
-    new Estados(0, 'Estado'),
-    new Estados(1, 'Rio de Janeiro'),
-    new Estados(2, 'São Paulo'),
+    new Estados(0, 'Selecione'),
+    new Estados(1, 'Estado'),
+    new Estados(2, 'Rio de Janeiro'),
+    new Estados(3, 'São Paulo'),
   ];
 
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
-
       nomeEmpregador: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]),
       titulo: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
       subtitulo: new FormControl('', [Validators.minLength(3), Validators.maxLength(40)]),
       cidade: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]),
-      estado: new FormControl('',Validators.required),
+      estado: new FormControl('', Validators.required),
       telefone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
       descricao: new FormControl('', [Validators.required, Validators.maxLength(400)])
     });
@@ -62,11 +61,14 @@ export class AnuncieComponent implements OnInit {
     });
   }
 
-
   limparCampos() {
-
+  (<HTMLSelectElement>document.getElementById('campoAnuncieVagasEmpregador')).value = "";
+  (<HTMLSelectElement>document.getElementById('campoAnuncievagaTitulo')).value = "";
+  (<HTMLSelectElement>document.getElementById('campoAnuncioVagaSubtitulo')).value = "";
+  (<HTMLSelectElement>document.getElementById('campoEstadoVagas')).value = "Selecione";
+  (<HTMLSelectElement>document.getElementById('campoAnuncievagasCidade')).value = "";
+  (<HTMLSelectElement>document.getElementById('campoAnuncievagastelefone')).value = "";
+  (<HTMLSelectElement>document.getElementById('textoLabelAnuncieDesc')).value = "";
   }
-
-
 
 }

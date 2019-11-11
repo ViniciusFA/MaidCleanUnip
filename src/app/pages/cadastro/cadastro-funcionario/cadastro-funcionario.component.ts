@@ -72,15 +72,13 @@ export class CadastroFuncionarioComponent implements OnInit {
 
 
   salvar(): void {
-
     let usuario = this.formulario.value as Usuario;
     
     if (usuario.sexo = "Masculino") {
       usuario.sexo = 'M';
     } else {
       usuario.sexo = 'F'
-    }
-    
+    }    
     usuario.idRole = RoleEnum.Funcionario;
     this.UsuarioService.addUsuario(usuario)
       .subscribe(response => {

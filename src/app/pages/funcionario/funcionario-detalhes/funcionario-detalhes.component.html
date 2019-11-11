@@ -1,23 +1,23 @@
-  <!--Título da página / formulário-->
-  <div class="tituloConteudoPaginas" id="tituloFuncCadastrados">
-      <h3>Detalhes do Funcionário</h3>
+<!--Título da página / formulário-->
+<div class="tituloConteudoPaginas" id="tituloFuncCadastrados">
+    <h3>Detalhes do Funcionário</h3>
 </div>
 <h4>Aqui será um modal - PopUp</h4>
-<hr/>
-<div *ngIf="funcionario">  
+<hr />
+<div *ngIf="funcionario">
     <div class="conteudoPageDetalhes">
         <div>
             <label> <b>Id:</b> </label>{{funcionario.Id}}
         </div>
-        <div>    
+        <div>
             <label><b> Nome:</b></label> {{funcionario.nome}}
         </div>
         <div>
             <label><b>Sobrenome:</b></label> {{funcionario.sobrenome}}
-        </div> 
+        </div>
         <div>
             <label><b>Email:</b></label> {{funcionario.email}}
-        </div>  
+        </div>
         <div>
             <label><b>Facebook:</b></label> {{funcionario.facebook}}
         </div>
@@ -62,8 +62,8 @@
 
 <br>
 <br>
-<hr/>
+<hr />
 <div class="grupoBotoesDetalhes">
-  <button   class="btn btn-secondary">Atualizar </button>
-  <button  [routerLink]="['/oportunidades']" class="btn btn-secondary" id="btnVoltarDetalhes">Voltar </button><br>
+    <button class="btn btn-secondary">Atualizar </button>
+    <button [routerLink]="['/oportunidades']" class="btn btn-secondary" id="btnVoltarDetalhes">Voltar </button><br>
 </div>

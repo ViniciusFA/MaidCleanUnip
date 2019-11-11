@@ -1,78 +1,80 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tituloConteudoPaginas" id="tituloVagasCadastradas">
+        <!--<h3>Profissionais Cadastrados</h3>-->
+        <h3>{{titulo}}</h3>
+      </div>
+      <hr />
+      <form class="form-inline" id="formPesquisaCampos" [formGroup]="formulario" (ngSubmit)="pesquisarVaga()">
 
-
-
-<div class="container">  
-    <div class="row">
-        <div class="col-md-12">
-            <div class="tituloConteudoPaginas" id="tituloVagasCadastradas">
-                <!--<h3>Profissionais Cadastrados</h3>-->
-                <h3>{{titulo}}</h3>
-            </div>
-            <hr/>
-            <form class="form-inline" id="formPesquisaCampos" [formGroup]="formulario" (ngSubmit)="pesquisarVaga()">
-                
-                    <div class="form-row" id="camposFormPesquisa">                               
-                            <div class="col-6" id="textoLabelPadrao">
-                                <b>Título</b>
-                              <input type="text" class="form-control" id="campoNome"  formControlName="titulo" name="titulo" ngDefaultControl placeholder="Título da Vaga">
-                            </div>
-                            <br>
-                            <div class="col-6"  id="textoLabelPadrao">
-                              <b>Subtítulo</b>
-                              <input type="text" class="form-control" id="campoSobreNome"  formControlName="subtitulo" name="assunto" ngDefaultControl placeholder="Subtítulo da vaga">
-                            </div>
-                            <br>
-                            <div class="col-4">
-                              <b>Nome Empregador</b>
-                              <input type="text"  id="textoLabelPadrao" class="form-control" placeholder="Nome" id="campoNome" formControlName="nomeEmpregador" name="nome" ngDefaultControl>
-                            </div>
-                            <div class="col-4"  id="textoLabelPadrao" formControlName="estado" name="ddlEstado" ngDefaultControl>
-                              <b>Estado</b>
-                                <select class="form-control form-control-sm-3"  id="campoEstadoOportunidades" >
-                                        <option *ngFor="let estado of estados" ngValue="estados.id">
-                                            {{estado.nome}}
-                                        </option>
-                                </select>
-                             </div>
-                            <div class="col-4">
-                              <b>Cidade</b>
-                              <input type="text"  id="textoLabelPadrao" class="form-control" placeholder="Cidade" id="campoCidade" formControlName="cidade" name="cidade" ngDefaultControl>
-                            </div>                      
-                    </div>   
-                      
-                    <!--Botões limpar e pesquisar -->
-                    <div class="botoesPesquisarOportunidades">   
-                            <button type="button" class="btn btn-secondary" id="btnLimparPesquisa" (click)="limparCampos()" >Limpar</button>
-                            <button type="submit" class="btn btn-secondary" id="btnEnviarPesquisa">Pesquisar</button>
-                   </div>
-               </form>
-             </div>
-             <div>
-                    <!--<div class="container">-->
-                            <div class="row" id="conteudoGridsOportunidade">
-                              <!--Card 01 linha 01-->
-                              <div class="col-4 card" style="width: 18rem;" *ngFor="let vaga of vagas">
-                                    <div class="card-body" >
-                                      <h5 class="card-title" >                                      
-                                      <label class="conteudoGridVaga">{{vaga.titulo}}</label>
-                                    </h5>
-                                      <h6 class="card-subtitle mb-2 text-muted">
-                                          <label class="conteudoGridVaga"> {{vaga.subtitulo}} </label>
-                                      </h6>
-                                      <p class="card-text">
-                                          <label class="conteudoGridVaga"> {{vaga.descricao}}</label>
-                                      </p>
-                                     <a class="card-link" id="saberMaisOportunidades" (click)="oportunidadeInfo(vaga)" >
-                                       <label class="saberMaisOportunidades">Saber mais</label>
-                                    </a>
-                                     <br>
-                                    </div>                                  
-                              </div> 
-                            </div>                            
-                            <br>
-                            <br>
-                    <!--</div>-->   
-             </div>
+        <div class="form-row" id="camposFormPesquisa">
+          <div class="col-6" id="textoLabelPadrao">
+            <b>Título</b>
+            <input type="text" class="form-control" id="campoTitulo" formControlName="titulo" name="titulo"
+              ngDefaultControl placeholder="Título da Vaga">
+          </div>
+          <br>
+          <div class="col-6" id="textoLabelPadrao">
+            <b>Subtítulo</b>
+            <input type="text" class="form-control" id="campoSubTitulo" formControlName="subtitulo" name="assunto"
+              ngDefaultControl placeholder="Subtítulo da vaga">
+          </div>
+          <br>
+          <div class="col-4" id="textoLabelPadrao">
+            <b>Nome Empregador</b>
+            <input type="text" id="textoLabelPadrao" class="form-control" placeholder="Nome" id="campoNome"
+              formControlName="nomeEmpregador" name="nome" ngDefaultControl>
+          </div>
+          <div class="col-4" id="textoLabelPadrao" formControlName="estado" name="ddlEstado" ngDefaultControl>
+            <b>Estado</b>
+            <select class="form-control form-control-sm-3" id="campoEstadoOportunidades">
+              <option *ngFor="let estado of estados" ngValue="estados.id">
+                {{estado.nome}}
+              </option>
+            </select>
+          </div>
+          <div class="col-4" id="textoLabelPadrao">
+            <b>Cidade</b>
+            <input type="text" id="textoLabelPadrao" class="form-control" placeholder="Cidade" id="campoCidade"
+              formControlName="cidade" name="cidade" ngDefaultControl>
+          </div>
         </div>
-    </div>   
-    
+
+        <!--Botões limpar e pesquisar -->
+        <div class="botoesPesquisarOportunidades">
+          <button type="button" class="btn btn-secondary" id="btnLimparPesquisa"
+            (click)="limparCampos()">Limpar</button>
+          <button type="submit" class="btn btn-secondary" id="btnEnviarPesquisa">Pesquisar</button>
+        </div>
+      </form>
+    </div>
+    <div>
+      <!--<div class="container">-->
+      <div class="row" id="conteudoGridsOportunidade">
+        <!--Card 01 linha 01-->
+        <div class="col-4 card" style="width: 18rem;" *ngFor="let vaga of vagas">
+          <div class="card-body">
+            <h5 class="card-title">
+              <label class="conteudoGridVaga">{{vaga.titulo}}</label>
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              <label class="conteudoGridVaga"> {{vaga.subtitulo}} </label>
+            </h6>
+            <p class="card-text">
+              <label class="conteudoGridVaga"> {{vaga.descricao}}</label>
+            </p>
+            <a class="card-link" id="saberMaisOportunidades" (click)="oportunidadeInfo(vaga)">
+              <label class="saberMaisOportunidades">Saber mais</label>
+            </a>
+            <br>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      
+    </div>
+  </div>
+</div>
+<br>

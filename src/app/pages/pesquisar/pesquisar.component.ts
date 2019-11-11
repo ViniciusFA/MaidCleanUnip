@@ -29,7 +29,7 @@ export class PesquisarComponent implements OnInit {
   private usuarioFuncionario: Usuario = new Usuario();
   private inforFuncionario: InfoFuncionarioComponent;
   private cracteresPermitidos: Number = 0;
-  private resultadoVerificacao:Number = 0;
+  private resultadoVerificacao: Number = 0;
 
   constructor(private usuarioService: UsuarioService,
     private formBuilder: FormBuilder,
@@ -52,6 +52,7 @@ export class PesquisarComponent implements OnInit {
     new Estados(0, "Selecione"),
     new Estados(1, 'Rio de Janeiro'),
     new Estados(2, 'São Paulo'),
+    new Estados(3, 'Bahia'),
   ];
 
   experiencias = [
@@ -81,38 +82,35 @@ export class PesquisarComponent implements OnInit {
   }
 
   limparCampos() {
-    //limpa os textfield mas nao limpa os select
-    this.formulario.reset();
-    //limpa os campos select
+    (<HTMLSelectElement>document.getElementById('campoNomePesquisar')).value = "";
+    (<HTMLSelectElement>document.getElementById('campoSobreNomePesquisar')).value = "";
     (<HTMLSelectElement>document.getElementById('campoEstadoPesquisar')).value = "Selecione";
+    (<HTMLSelectElement>document.getElementById('campoCidadePesquisar')).value = "";
     (<HTMLSelectElement>document.getElementById('campoSexoPesquisar')).value = "Selecione";
     (<HTMLSelectElement>document.getElementById('campoExperienciaPesquisar')).value = "Selecione";
   }
 
   pesquisar() {
+
     this.usuarioFuncionario = this.formulario.value;
     
-    //this.resultadoVerificacao = this.verificaCamposVazios(this.usuarioFuncionario);
-    
-    //verifica se o resultadoVerificação é diferente de 0 = se há algum campo preenchido
-   // if(this.resultadoVerificacao == 1){
-      this.pesquisaFuncionarioService.buscar(this.usuarioFuncionario)
+    this.verificarCamposVazios( this.usuarioFuncionario);
+
+    this.pesquisaFuncionarioService.buscar(this.usuarioFuncionario)
       .subscribe(response => {
-        //se a responde trouxer um índice do array Usuarios igual ou maior que zero = encontrou
-        if (response >= 0) {
+        if (response == 0) {
           alert("Não há registros dessa pesquisa.");
-          this.formulario.reset();
+          this.limparCampos();
         } else {
           this.usuarios = response;
-          this.formulario.reset();
+          this.limparCampos();
         }
       },
         (erro) => {
           alert(erro);
         });
-    //}    
-    
-   
+
+
   }
 
   excluir(codigo: number, index: number): void {
@@ -140,23 +138,27 @@ export class PesquisarComponent implements OnInit {
 
   verificaCamposVazios(usuario: Usuario) {
     if (
-      usuario.cidade == "" || usuario.cidade == undefined || usuario.cidade == null 
+      usuario.cidade == "" || usuario.cidade == undefined || usuario.cidade == null
       && usuario.estado == "" || usuario.estado == undefined || usuario.estado == null || usuario.estado == "Selecione"
-      && usuario.experiencia == "" || usuario.experiencia == undefined || usuario.experiencia == null 
-      && usuario.nome == "" || usuario.nome == undefined || usuario.nome == null 
+      && usuario.experiencia == "" || usuario.experiencia == undefined || usuario.experiencia == null
+      && usuario.nome == "" || usuario.nome == undefined || usuario.nome == null
       && usuario.sexo == "" || usuario.sexo == undefined || usuario.sexo == null || usuario.sexo == "Selecione"
       && usuario.sobrenome == "" || usuario.sobrenome == undefined || usuario.sobrenome == null || usuario.experiencia == "Selecione"
-     
-     ) {
-      alert("Prrencha algum campo para pesquisar.");  
-      console.log(usuario);  
+
+    ) {
+      alert("Prrencha algum campo para pesquisar.");
+      console.log(usuario);
       //busca todas as pessoas registradas na tabela ao iniciar a página.
       this.usuarioService.getUsuarioPorPerfil(RoleEnum.Funcionario).subscribe(res => {
         this.usuarios = res;
       });
       return 0;
-    }else{
+    } else {
       return 1;
     }
+  }
+
+  verificarCamposVazios(camposPesquisa:Usuario){
+
   }
 }

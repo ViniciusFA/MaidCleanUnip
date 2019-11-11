@@ -15,51 +15,42 @@ import { ConfigService } from '../../services/config.service';
 export class FuncionarioService {
 
     private baseUrlService: string = '';
-    private headers:Headers;
-    private options:RequestOptions;
-    
+    private headers: Headers;
+    private options: RequestOptions;
 
-    constructor(private http:Http,
-                private configService:ConfigService){
-                 
-               /**SETANDO A URL DO SERVIÇO REST QUE VAI SER ACESSADO */
-                this.baseUrlService = configService.getUrlService() + '/usuario';
 
-               /*ADICIONANDO O JSON NO HEADER */
-                this.headers = new Headers ({ 'Content-Type': 'application/json;charset=UTF-8' });
-                this.options = new RequestOptions ({ headers : this.headers});
-            }
+    constructor(private http: Http,
+        private configService: ConfigService) {
+        this.baseUrlService = configService.getUrlService() + '/usuario';
+        this.headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8' });
+        this.options = new RequestOptions({ headers: this.headers });
+    }
 
-    
+
     /**CONSULTA TODAS AS PESSOAS CADASTRADAS */
-    getFuncionarios(){
-
-        return this.http.get(this.baseUrlService ).map(res => res.json());       
+    getFuncionarios() {
+        return this.http.get(this.baseUrlService).map(res => res.json());
     }
 
     /**ADICIONA UMA NOVA PESSOA */
-    addFuncionario(usuario: Usuario){
-        
-        return this.http.post(this.baseUrlService, JSON.stringify(usuario),this.options)
-        .map(res => res.json());
+    addFuncionario(usuario: Usuario) {
+        return this.http.post(this.baseUrlService, JSON.stringify(usuario), this.options)
+            .map(res => res.json());
     }
 
     /**EXCLUI UMA PESSOA */
-    deleteFuncionario(codigo: number){
-
-        return this.http.delete(this.baseUrlService + '/' +  codigo).map(res => res.json());
+    deleteFuncionario(codigo: number) {
+        return this.http.delete(this.baseUrlService + '/' + codigo).map(res => res.json());
     }
 
     /**CONSULTA UMA PESSOA PELO CÓDIGO */
-    getFuncionario(codigo: number){
-
+    getFuncionario(codigo: number) {
         return this.http.get(this.baseUrlService + '/' + codigo).map(res => res.json());
     }
-  
+
     /**ATUALIZA INFORMAÇÕES DA PESSOA */
-    updateFuncionario(funcionario: Funcionario){
-       
-        return this.http.put(this.baseUrlService, JSON.stringify(funcionario),this.options)
-        .map(res => res.json());
+    updateFuncionario(funcionario: Funcionario) {
+        return this.http.put(this.baseUrlService, JSON.stringify(funcionario), this.options)
+            .map(res => res.json());
     }
 }
