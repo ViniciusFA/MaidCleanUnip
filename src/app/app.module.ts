@@ -38,6 +38,7 @@ import { AnuncieComponent } from './pages/anuncie/anuncie.component';
 import { AutenticacaoService } from './services/login/AutenticacaoService';
 import { AuthGuard } from './guards/auth.guard';
 import { OportunidadesModalComponent } from './pages/oportunidades/oportunidades-modal/oportunidade-modal.component';
+import { AgmCoreModule} from '@agm/core';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -78,7 +79,10 @@ export function getAuthServiceConfigs() {
     HttpModule,
     HttpClientModule,
     NgxSocialButtonModule,
-    LoginModule
+    LoginModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBz-1pNqOyCTlYTrR-cCQDorugLxnAoo5A'
+    })
   ],
   providers: [ ConfigService, 
                FuncionarioService, 

@@ -28,20 +28,44 @@
             <button id="btnEntrarLogin" type="submit" class="btn btn-secondary btn-sm">Entrar</button>
           </div>
           <div id="esqueceuSenha">
-            <a [routerLink]="['/home']" id="textoLabelPadrao"><b>Esqueceu a sua senha?</b></a>
+            <a id="textoLabelPadrao" data-toggle="modal" data-target="#senhaEsquecida"><b>Esqueceu a sua senha?</b></a>
           </div>
-          <hr WIDTH=85% />
+          <hr width=85% />
           <facebook-login-button (socialUser)="getSocialUser($event)"></facebook-login-button>
           <google-login-button (socialUser)="getSocialUser($event)"></google-login-button>
-          <hr WIDTH=85% />
+          <hr width=85% />
           <div class="opcaoLoginCad">
             <p style="margin-bottom: 0rem;">Não tem uma conta?</p>
             <div id="linkCadastroLogin">
-              <a [routerLink]="['/cadastro']" id="textoLabelPadrao" data-dismiss="modal"
-                aria-hidden="true"><b>Cadastre-se aqui</b></a>
+              <a [routerLink]="['/cadastro']" id="textoLabelPadrao" aria-hidden="true"><b>Cadastre-se aqui</b></a>
             </div>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal de redefinição de senha-->
+<!-- Modal -->
+<div class="modal fade" id="senhaEsquecida" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content modalLoginEsqueceuSenha">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado">Redefinir senha</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body modalBodyLoginEsqueceuSenha">
+        <p>Digite o seu email cadastrado</p>
+        <input type="email" class="form-control" #email ngDefaultControl id="emailEsquecido"
+          placeholder="email@email.com">
+      </div>
+      <div class="modal-footer modalFooterLoginEsqueceuSenha">
+        <button type="button" class="btn btn-secondary btnFecharEsqueceuSenha" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary btnEnviarEsqueceuSenha" (click)="redefinirSenha(email.value)">Redefinir senha</button>
       </div>
     </div>
   </div>

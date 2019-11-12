@@ -11,24 +11,24 @@
                     <div class="conteudoFormAnuncio">
                         <form class="form-inline" id="formPesquisaCampos" [formGroup]="formulario"
                             (ngSubmit)="anunciar()">
-                            <div class="form-row" id="camposFormPesquisa">
+                            <div class="form-row" id="camposFormAnuncie">
                                 <div class="col-4" id="textoLabelPadrao">
                                     <b>Nome</b>
-                                    <input type="text" class="form-control" id="campoAnuncieVagasEmpregador"
+                                    <input type="text" class="form-control estiloCampos" id="campoAnuncieVagasEmpregador"
                                         formControlName="nomeEmpregador" name="nome" ngDefaultControl
                                         placeholder="Nome do empregador">
                                     <p>(Insira entre 3 a 40 caracteres)</p>
                                 </div>
                                 <div class="col-4" id="textoLabelPadrao">
                                     <b>Título</b>
-                                    <input type="text" class="form-control" id="campoAnuncievagaTitulo"
+                                    <input type="text" class="form-control estiloCampos" id="campoAnuncievagaTitulo"
                                         formControlName="titulo" name="titulo" ngDefaultControl placeholder="Título">
                                     <p>(Insira entre 3 a 15 caracteres)</p>
                                 </div>
                                 <br>
                                 <div class="col-4" id="textoLabelPadrao">
                                     <b>Subtítulo</b>
-                                    <input type="text" class="form-control" id="campoAnuncioVagaSubtitulo"
+                                    <input type="text" class="form-control estiloCampos" id="campoAnuncioVagaSubtitulo"
                                         formControlName="subtitulo" name="subtitulo" ngDefaultControl
                                         placeholder="Subtítulo">
                                     <p>(Insira entre 3 a 40 caracteres)</p>
@@ -37,7 +37,7 @@
                                 <div class="col-4" name="estado" formControlName="estado" ngDefaultControl
                                     id="textoLabelPadrao">
                                     <b>Estado</b>
-                                    <select class="form-control form-control-sm-3" id="campoEstadoVagas">
+                                    <select class="form-control form-control-sm-3 estiloCampos" id="campoEstadoVagas">
                                         <option *ngFor="let estado of estados" ngValue="estados.id">
                                             {{estado.nome}}
                                         </option>
@@ -45,13 +45,13 @@
                                 </div>
                                 <div class="col-4" id="textoLabelPadrao">
                                     <b>Cidade</b>
-                                    <input type="text" class="form-control" id="campoAnuncievagasCidade"
+                                    <input type="text" class="form-control estiloCampos" id="campoAnuncievagasCidade"
                                         formControlName="cidade" name="cidade" ngDefaultControl placeholder="Cidade">
                                     <p>(Insira entre 3 a 40 caracteres)</p>
                                 </div>
                                 <div class="col-4" id="textoLabelPadrao">
                                     <b>Telefone</b>
-                                    <input type="text" class="form-control" id="campoAnuncievagastelefone"
+                                    <input type="text" class="form-control estiloCampos" id="campoAnuncievagastelefone"
                                         formControlName="telefone" name="telefone" ngDefaultControl
                                         placeholder="Telefone">
                                     <p>(Insira até 11 caracteres)</p>
@@ -59,13 +59,13 @@
                                 <div class="col-12">
                                     <br>
                                     <label for="TextAreaMensagm" id="textoLabelAnuncieDesc">Descrição</label>
-                                    <textarea class="form-control" #box (keyup)="0" id="TextAreaMensagm" rows="10"
+                                    <textarea class="form-control estiloCampos" #box (keyup)="0" id="TextAreaMensagm" rows="10"
                                         cols="200" formControlName="descricao" ngDefaultControl></textarea>
                                     <p>(Insira até {{caracteresMaximo - box.value.length}} caracteres)</p>
                                 </div>
                             </div>
                             <!--Botões limpar e pesquisar -->
-                            <div class="botoesPesquisar">
+                            <div class="botoesAnunciar">
                                 <button type="button" class="btn btn-secondary" id="btnLimparPesquisa"
                                     (click)="limparCampos()">Limpar</button>
                                 <button type="submit" class="btn btn-secondary" id="btnEnviarPesquisa"

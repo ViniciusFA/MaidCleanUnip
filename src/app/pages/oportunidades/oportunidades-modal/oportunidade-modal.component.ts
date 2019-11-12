@@ -10,6 +10,11 @@ export class OportunidadesModalComponent implements OnInit {
 
   private titulo:String = '';
   private vaga:Vaga = new Vaga();
+  //Configurando Google Maps
+  textoGoogleMaps : string = 'Localidade da vaga'; 
+  lat: number = -23.8779431;
+  lng: number = -49.8046873;
+  zoom: number = 15;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router:Router) { }

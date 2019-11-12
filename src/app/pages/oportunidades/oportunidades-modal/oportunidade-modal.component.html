@@ -1,28 +1,43 @@
 <div class="tituloConteudoPaginas" id="tituloInfoOportunidade">
     <h3>{{titulo}}</h3>
 </div>
-<hr>
+<hr class="line3">
 <div class="contentInfoOportunity">
-    <label class="labelVagaModal">Id Vaga:</label>
-    <label class="conteudoInfoVagaModal">{{vaga.id}}</label>
+    <div>
+        <label class="labelVagaModal">Id Vaga:</label>
+        <label class="conteudoInfoVagaModal conteudoInputInfoOport">{{vaga.id}}</label>
+    </div>
+    &nbsp;
+    <div>
+        <label class="labelVagaModal">Título:</label>
+        <label class="conteudoInfoVagaModal conteudoInputInfoOport">{{vaga.titulo}}</label>
+    </div>
     <br>
-    <label class="labelVagaModal">Título:</label>
-    <label class="conteudoInfoVagaModal">{{vaga.titulo}}</label>
+
+    <div>
+        <label class="labelVagaModal">Subtítulo:</label>
+        <label class="conteudoInfoVagaModal conteudoInputInfoOport">{{vaga.subtitulo}}</label>
+    </div>
+    &nbsp;
+    <div>
+        <label class="labelVagaModal">Nome do Empregador:</label>
+        <label class="conteudoInfoVagaModal conteudoInputInfoOport">{{vaga.nomeEmpregador}}</label>
+    </div>
     <br>
-    <label class="labelVagaModal">Subtítulo:</label>
-    <label class="conteudoInfoVagaModal">{{vaga.subtitulo}}</label>
+    <div>
+        <label class="labelVagaModal">Estado:</label>
+        <label class="conteudoInfoVagaModal conteudoInputInfoOport">{{vaga.estado}}</label>
+    </div>
+    &nbsp;
+    <div>
+        <label class="labelVagaModal">Cidade:</label>
+        <label class="conteudoInfoVagaModal conteudoInputInfoOport">{{vaga.cidade}}</label>
+    </div>
     <br>
-    <label class="labelVagaModal">Nome do Empregador:</label>
-    <label class="conteudoInfoVagaModal">{{vaga.nomeEmpregador}}</label>
-    <br>
-    <label class="labelVagaModal">Estado:</label>
-    <label class="conteudoInfoVagaModal">{{vaga.estado}}</label>
-    <br>
-    <label class="labelVagaModal">Cidade:</label>
-    <label class="conteudoInfoVagaModal">{{vaga.cidade}}</label>
-    <br>
-    <label class="labelVagaModal">Descrição:</label>
-    <label class="conteudoInfoVagaModal">{{vaga.descricao}}</label>
+    <div>
+        <label class="labelVagaModal">Descrição:</label>
+        <label class="conteudoInfoVagaModal conteudoInputInfoOport">{{vaga.descricao}}</label>
+    </div>
     <br>
 </div>
 
@@ -33,4 +48,12 @@
         <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmCandidatura"
             (click)="Candidatar()">Candidate-se</button>
     </div>
+</div>
+
+<!--Google Maps-->
+<div class="googleMapsOportunidades">
+    <h4>Localidade: {{vaga.nomeEmpregador}}</h4>
+    <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
 </div>

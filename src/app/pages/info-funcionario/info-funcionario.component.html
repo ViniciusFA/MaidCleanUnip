@@ -2,7 +2,7 @@
         <!--  <h3>Pesquisar Profissionais</h3>  -->
           <h4>{{titulo}}</h4>                     
 </div>
- <hr/>
+ <hr class="line3"/>
  <br>
  <br>
 <form [formGroup]="formulario">
@@ -86,7 +86,7 @@
               <div class="form-row">
                   <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
                     <label><b>Complemento:</b></label> 
-                    <input class="form-control" formControlName="complemento" type="text" placeholder="{{usuarioInfo.complemento}}" >                           
+                    <input class="form-control contaudoInputInfo" formControlName="complemento" type="text" placeholder="{{usuarioInfo.complemento}}" >                           
                  </div>
                  <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
                     <label><b>Cidade:</b></label> 
@@ -95,7 +95,7 @@
               </div>
             <br>              
             <div class="form-row">
-                <div class="col-3 conteudoDivColunaInfo  inputInfoFunc">
+                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
                     <label><b>Estado:</b></label> 
                     <input class="form-control contaudoInputInfo" formControlName="estado"  type="text" placeholder="{{usuarioInfo.estado}}" >                           
                 </div>

@@ -32,6 +32,7 @@ export class CadastroFuncionarioComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.titulo = "Cadastro";
     this.subtitulo = "Funcionário";
   }
 

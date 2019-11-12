@@ -121,6 +121,7 @@
  p {
    margin-top: 0;
    margin-bottom: 1rem;
+   color:black ;
  }
  
  abbr[title],
@@ -4664,7 +4665,8 @@
    word-wrap: break-word;
    background-color: #fff;
    background-clip: border-box;
-   border: 3px solid #d7d7ea;
+   border: 3px solid #d0dae0;
+   padding: 1%;
  }
  
  .card > hr {
@@ -10371,6 +10373,7 @@
 }
  .containerFormContato{
   width:90%;
+  margin-left: 4%;
  }
  #tipoSexo{
    margin:0 auto;
@@ -10435,6 +10438,11 @@
 }
 #containerAllCadastro{
   margin-left: 6%;
+  margin-right: 10%;
+  width: 88%;
+}
+#containerAllCadastroFunc{
+  margin-left: 10%;
   margin-right: 10%;
   width: 88%;
 }
@@ -10635,28 +10643,38 @@ html {
 #camposFormPesquisa{
   margin-left: -5%;
 }
-
+#camposFormAnuncie{
+  margin-left: -5%;
+}
+#camposFormOportunidades{
+  margin-left: -5%;
+}
 #campoNome{
   width: 100%;
   margin-bottom: 7%;
   height: 53%;
+  border: 1px solid lightblue;
 }
 #campoTitulo{
   width: 100%;
   margin-bottom: 7%;
   height: 48%;
+  border: 1px solid lightblue;
 }
 #campoSubTitulo{
   width: 100%;
   height: 48%;
+  border: 1px solid lightblue;
 }
 #campoEstado{
   width: 100%;
   height: 100%;
+  border: 1px solid lightblue;
 }
 #campoCidade{
   width: 100%;
   height: 53%;
+  border: 1px solid lightblue;
 }
 #campoSexo{
   width: 100%;
@@ -10667,6 +10685,11 @@ html {
   height: 100%;
 }
 .botoesPesquisar{
+  margin: 0 auto;
+  margin-bottom: 3%;
+  margin-left: 38%;
+}
+.botoesAnunciar{
   margin: 0 auto;
   margin-bottom: 2%;
   margin-top: 2%;
@@ -10737,6 +10760,9 @@ html {
   background-color: #d7d7ff;
   text-align: center;
 }
+.tituloRecomendLegislacao h6{
+  color:#692ae6;
+}
 #leisDiarista{
   font-family: Arial;
   font-size: 15px;
@@ -10779,8 +10805,11 @@ html {
   margin: 0 auto;
   margin-top: 3%;
   font-family: Arial, sans-serif;
-  background-color: #d8d8fd;
+  background-color: #d7d7ff;;
   text-align: center;
+}
+#subTituloLegislacao h6{
+  color:#692ae6;
 }
 .textoPrincipalLegislacao > p{
   text-align: center;
@@ -10979,6 +11008,7 @@ font-family: arial;
 #campoEstadoOportunidades{
   width: 100%;
   height: 53%;
+  border: 1px solid lightblue;
 }
 #campoResidenciaOportunidades{
   width: 100%;
@@ -11059,11 +11089,10 @@ margin-left: -8%;
 
 .botoesPesquisarOportunidades{
   margin: 0 auto;
-  margin-bottom: 2%;
-  margin-top: 2%;
+  margin-top: 1%;
 }
 #conteudoGridsOportunidade{
-  margin-top: 7%;
+  margin-top: 6%;
   margin-left: -3%;
   margin-right: 1%;
   width: 120%;
@@ -11079,7 +11108,7 @@ margin-left: -8%;
 }
 #botoesOportunidadeModal{
   width: 75%;
-  margin-top: 10%;
+  margin-top: 1%;
   margin-bottom: 2%;
 }
 #confirmCandidatura{
@@ -11087,10 +11116,10 @@ margin-left: -8%;
 }
 .contentInfoOportunity{
   margin-top:3%;
-  margin-left: 1%;
+  margin-left: 2%;
 }
 .labelVagaModal{
-  color:blue;
+  color: #7674ca;
   font-weight: bold;
 }
 .conteudoInfoVagaModal{
@@ -11102,8 +11131,9 @@ margin-left: -8%;
   font-weight: bold;
 }
 .saberMaisOportunidades{
-  color:blue;
+      color: #3d8cef;
   font-weight: bold;
+  cursor:pointer;
 }
 #conteudoFotoPerfil{
   margin-left: 70%;
@@ -11135,6 +11165,11 @@ cursor:pointer;
 }
 .contaudoInputInfo{
   padding: 0%;
+  font-family: arial;
+}
+.conteudoInputInfoOport{
+  padding: 0%;
+  font-family: arial;
 }
 .inputInfoID{
   width: 52%;
@@ -11171,14 +11206,15 @@ margin-top: 6%;
   margin: 1% auto;
   margin-top: 2%;
   width: 27%;
+  margin-left: 40%;
 }
 .conteudoFormularioPesquisar{
-  width: 120%;
-  margin-left: -9%;
+  width: 103%;
+  margin-left: -3%;
 }
 .conteudoFormAnuncio{
-  width: 118%;
-  margin-left: -8%;
+  width: 103%;
+  margin-left: -3%;
 }
 .btnEscolhaCad{
  background-color:  #cfe0f9;
@@ -11190,3 +11226,68 @@ margin-top: 6%;
   width: 125%;
   margin-left: -12%;
  }
+ hr.line1{
+  border-top: 2px dotted lightblue;
+  width: 100%;
+ }
+ hr.line2{
+  border-top: 1px solid rgb(132, 169, 251);
+  width: 100%;
+ }
+ hr.line3{
+  border-top: 1px solid rgb(132, 169, 251);
+  width: 122%;
+  margin-left: -11%;
+ }
+ .googleMapsOportunidades{
+    margin-top: -33%;
+    margin-left: 58%;
+    width: 40%;
+    border: 3px solid #bdb4b4;
+    background-color: #d8dee0;
+ }
+ .googleMapsOportunidades h4{
+   text-align: center;
+   font-family: Arial;
+ }
+ agm-map {
+  height: 300px;
+ }
+.estiloCampos{
+  border: 1px solid lightblue;  
+}
+.contaudoInputInfo ::placeholder{
+  color:black;
+}
+#campoMotivoContato{
+  height: 2%;
+}
+#esqueceuSenha{
+  cursor:pointer;
+}
+#esqueceuSenha :hover{
+  color:blue;
+}
+.modalLoginEsqueceuSenha{
+  width: 520px !important;
+  height: 228px !important;
+}
+#modal-body p{
+  color:black !important;
+}
+.modalBodyLoginEsqueceuSenha{
+color:black;
+}
+.modalBodyLoginEsqueceuSenha p{
+  color: black; 
+  font-size: 15px;
+}
+.modalFooterLoginEsqueceuSenha{
+border-top: 0px !important;
+}
+.btnFecharEsqueceuSenha{
+  margin: 2%;
+}
+.btnEnviarEsqueceuSenha{
+
+}

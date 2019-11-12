@@ -1,6 +1,6 @@
 import { HomeComponent } from './../home/home.component';
 import { LoaderProvider } from './../../providers/loader-provider';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Usuario } from '../../system-objects/usuario-model';
 import { AutenticacaoService } from '../../services/login/AutenticacaoService';
@@ -12,11 +12,12 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',  
 })
 export class LoginComponent implements OnInit {
 
   private formulario: FormGroup;
+  private formularioEsqueceuSenha: FormGroup;
   private usuario: Usuario;
   mostrarMenu: boolean = false;
   private resposta: Boolean = false;
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private loginService: LoginService,
     private router: Router,
-    private loaderProvider: LoaderProvider) {
+    private loaderProvider: LoaderProvider,
+    private elRef: ElementRef) {
     this.configurarFormularioLogin();
   }
 
@@ -35,11 +37,6 @@ export class LoginComponent implements OnInit {
     this.authService.mostrarMenuEmitter.subscribe(
       mostrar => this.mostrarMenu = mostrar
     );
-
-  }
-
-  get f() {
-    return this.formulario.controls;
   }
 
   configurarFormularioLogin() {
@@ -47,8 +44,7 @@ export class LoginComponent implements OnInit {
       login: new FormControl(''),
       senha: new FormControl(''),
     });
-  }
-
+  }  
 
   logar() {
     if (this.formulario.invalid) {
@@ -81,6 +77,11 @@ export class LoginComponent implements OnInit {
     if (this.loadingPage) {
       this.loadingPage.unsubscribe();
     }
+  }
+
+  redefinirSenha(email:String){    
+   console.log(email);
+    alert("Verifique o link que foi enviado para o seu email.");
   }
 
 }

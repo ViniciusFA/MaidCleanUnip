@@ -14,14 +14,14 @@
                     <div class="form-row" id="camposFormPesquisa">
                         <div class="col-6" id="textoLabelPadrao">
                             <b>Nome</b>
-                            <input type="text" class="form-control" id="campoNomePesquisar" formControlName="nome"
+                            <input type="text" class="form-control estiloCampos" id="campoNomePesquisar" formControlName="nome"
                                 name="nome" ngDefaultControl placeholder="Nome">
                             <p>(Insira entre 3 a 15 caracteres)</p>
                         </div>
                         <br>
                         <div class="col-6" id="textoLabelPadrao">
                             <b>Sobrenome</b>
-                            <input type="text" class="form-control" id="campoSobreNomePesquisar"
+                            <input type="text" class="form-control estiloCampos" id="campoSobreNomePesquisar"
                                 formControlName="sobrenome" name="sobrenome" ngDefaultControl placeholder="Sobrenome">
                             <p>(Insira entre 3 a 40 caracteres)</p>
                         </div>
@@ -29,7 +29,7 @@
                         <div class="col-3" formControlName="estado" name="estado" ngDefaultControl
                             id="textoLabelPadrao">
                             <b>Estado</b>
-                            <select class="form-control form-control-sm-3" id="campoEstadoPesquisar">
+                            <select class="form-control form-control-sm-3 estiloCampos" id="campoEstadoPesquisar">
                                 <option *ngFor="let estado of estados" ngValue="estados.id">
                                     {{estado.nome}}
                                 </option>
@@ -37,13 +37,13 @@
                         </div>
                         <div class="col-3" id="textoLabelPadrao">
                             <b>Cidade</b>
-                            <input type="text" class="form-control" placeholder="Cidade" id="campoCidadePesquisar"
+                            <input type="text" class="form-control estiloCampos" placeholder="Cidade" id="campoCidadePesquisar"
                                 formControlName="cidade" name="cidade" ngDefaultControl>
                             <p>(Insira até 15 caracteres)</p>
                         </div>
                         <div class="col-3" formControlName="sexo" name="sexo" id="textoLabelPadrao" ngDefaultControl>
                             <b>Sexo</b>
-                            <select class="form-control form-control-sm-3" id="campoSexoPesquisar">
+                            <select class="form-control form-control-sm-3 estiloCampos" id="campoSexoPesquisar">
                                 <option *ngFor="let sexo of sexos" ngValue="sexo.id">
                                     {{sexo.nome}}
                                 </option>
@@ -52,7 +52,7 @@
                         <div class="col-3" formControlName="experiencia" id="textoLabelPadrao" name="experiencia"
                             ngDefaultControl>
                             <b>Experiencia</b>
-                            <select class="form-control form-control-sm-3" id="campoExperienciaPesquisar">
+                            <select class="form-control form-control-sm-3 estiloCampos" id="campoExperienciaPesquisar">
                                 <option *ngFor="let experiencia of experiencias" ngValue="experiencias.id">
                                     {{experiencia.nome}}
                                 </option>

@@ -5,10 +5,11 @@
         <!--<h3>Profissionais Cadastrados</h3>-->
         <h3>{{titulo}}</h3>
       </div>
-      <hr />
+      <hr class="line3">
+      <br>
       <form class="form-inline" id="formPesquisaCampos" [formGroup]="formulario" (ngSubmit)="pesquisarVaga()">
 
-        <div class="form-row" id="camposFormPesquisa">
+        <div class="form-row" id="camposFormOportunidades">
           <div class="col-6" id="textoLabelPadrao">
             <b>Título</b>
             <input type="text" class="form-control" id="campoTitulo" formControlName="titulo" name="titulo"
@@ -50,6 +51,7 @@
       </form>
     </div>
     <div>
+      <br />
       <!--<div class="container">-->
       <div class="row" id="conteudoGridsOportunidade">
         <!--Card 01 linha 01-->
@@ -73,7 +75,6 @@
       </div>
       <br>
       <br>
-      
     </div>
   </div>
 </div>
