@@ -80,8 +80,23 @@ export class LoginComponent implements OnInit {
   }
 
   redefinirSenha(email:String){    
-   console.log(email);
-    alert("Verifique o link que foi enviado para o seu email.");
+    this.loginService.verificarEmail(email)
+    .subscribe(response =>{
+      let res: Response = <Response>response;      
+     if(res.codigo == 1){
+        //enviar email para a pessoa
+        this.loginService.enviarEmail(email)
+        .subscribe(response =>{
+          console.log(response);
+        })
+       alert(res.mensagem);      
+     }else{        
+        alert(res.mensagem);      
+     }
+    },(erro)=>{
+      console.log(erro);
+    });
+
   }
 
 }

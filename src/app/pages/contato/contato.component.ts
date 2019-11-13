@@ -59,9 +59,7 @@ export class ContatoComponent implements OnInit {
 
     this.contatoService.sendMessage(this.contato)
       .subscribe(response => {
-
         let res: Response = <Response>response;
-
         if (res.codigo == 1) {
           alert(res.mensagem);
           this.formulario.reset();

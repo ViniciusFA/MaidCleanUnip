@@ -27,6 +27,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.10.1",
     "bootstrap": "^4.3.1",
     "dropdown-menu": "^0.1.1",
+    "emailjs": "^2.2.0",
     "firebase": ">= 5.5.7 <7",
     "http-headers": "^3.0.2",
     "jquery": "^3.4.1",
