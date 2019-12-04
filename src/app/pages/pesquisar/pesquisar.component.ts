@@ -93,24 +93,25 @@ export class PesquisarComponent implements OnInit {
   pesquisar() {
 
     this.usuarioFuncionario = this.formulario.value;
-    
-    this.verificarCamposVazios( this.usuarioFuncionario);
 
-    this.pesquisaFuncionarioService.buscar(this.usuarioFuncionario)
-      .subscribe(response => {
-        if (response == 0) {
-          alert("Não há registros dessa pesquisa.");
-          this.limparCampos();
-        } else {
-          this.usuarios = response;
-          this.limparCampos();
-        }
-      },
-        (erro) => {
-          alert(erro);
-        });
-
-
+    let todosCamposVazios: Boolean = this.verificarCamposVazios(this.usuarioFuncionario);
+    if (todosCamposVazios == true) {
+      alert("Preencha pelo menos um campo para pesquisar.");
+    } else {
+      this.pesquisaFuncionarioService.buscar(this.usuarioFuncionario)
+        .subscribe(response => {
+          if (response == 0) {
+            alert("Não há registros dessa pesquisa.");
+            this.limparCampos();
+          } else {
+            this.usuarios = response;
+            this.limparCampos();
+          }
+        },
+          (erro) => {
+            alert(erro);
+          });
+    }
   }
 
   excluir(codigo: number, index: number): void {
@@ -158,7 +159,17 @@ export class PesquisarComponent implements OnInit {
     }
   }
 
-  verificarCamposVazios(camposPesquisa:Usuario){
-
+  verificarCamposVazios(camposPesquisa: Usuario) {
+    if (camposPesquisa.nome.length == 0
+      && camposPesquisa.sobrenome.length == 0
+      && camposPesquisa.estado.length == 0
+      && camposPesquisa.cidade.length == 0
+      && camposPesquisa.sexo.length == 0
+      && camposPesquisa.experiencia.length == 0
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

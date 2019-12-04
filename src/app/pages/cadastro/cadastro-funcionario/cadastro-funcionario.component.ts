@@ -1,4 +1,5 @@
-﻿import { RoleEnum } from './../../../system-objects/role-enum';
+﻿import { Observable } from 'rxjs';
+import { RoleEnum } from './../../../system-objects/role-enum';
 import { UsuarioService } from './../../../services/usuario/usuario.service';
 import { Usuario } from './../../../system-objects/usuario-model';
 
@@ -71,7 +72,6 @@ export class CadastroFuncionarioComponent implements OnInit {
     });
   }
 
-
   salvar(): void {
     let usuario = this.formulario.value as Usuario;
     
@@ -80,10 +80,13 @@ export class CadastroFuncionarioComponent implements OnInit {
     } else {
       usuario.sexo = 'F'
     }    
-    usuario.idRole = RoleEnum.Funcionario;
+    usuario.idRole = RoleEnum.Funcionario; 
+
     this.UsuarioService.addUsuario(usuario)
       .subscribe(response => {
+        
         let res: Response = <Response>response;
+
         if (res.codigo == 1) {
           alert(res.mensagem);
           this.usuario = new Usuario();
@@ -96,6 +99,6 @@ export class CadastroFuncionarioComponent implements OnInit {
       },
         (erro) => {
           alert(erro);
-        });
+        });        
   }
 }

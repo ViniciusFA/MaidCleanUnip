@@ -26,12 +26,20 @@ export class UsuarioService {
     getUsuarioPorPerfil(idRole: Number) {
         return this.http.get(this.baseUrlService + '?idRole=' + idRole).map(res => res.json());
     }
-
-    /**ADICIONA UMA NOVA PESSOA */
-    addUsuario(usuario: Usuario) {
+     /*
+    //ADICIONA UMA NOVA PESSOA 
+    async addUsuario(usuario: Usuario) {
+        return await this.http.post(this.baseUrlService, JSON.stringify(usuario), this.options)
+            .toPromise();
+    }
+    */
+   
+     //ADICIONA UMA NOVA PESSOA 
+     addUsuario(usuario: Usuario) {
         return this.http.post(this.baseUrlService, JSON.stringify(usuario), this.options)
             .map(res => res.json());
     }
+    
 
     /**EXCLUI UMA PESSOA */
     deleteUsuario(codigo: number) {

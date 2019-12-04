@@ -77,9 +77,9 @@ export class OportunidadesComponent implements OnInit {
 
     this.vaga = this.formulario.value;
 
-    let existeCamposVazios:Boolean = this.verificaCamposVazio(this.vaga);
+    let todosCamposVazios:Boolean = this.verificaCamposVazio(this.vaga);
     
-    if(existeCamposVazios == true){      
+    if(todosCamposVazios == true){      
       alert("Preencha pelo menos um campo para pesquisar.");      
     }else{
     this.vagaService.pesquisar(this.vaga)
@@ -97,17 +97,17 @@ export class OportunidadesComponent implements OnInit {
   }
 
   verificaCamposVazio(camposPesquisa:Vaga){
-    if(camposPesquisa.titulo !== "" || camposPesquisa.titulo !== null || camposPesquisa.titulo !==undefined 
-     && camposPesquisa.subtitulo !== "" || camposPesquisa.subtitulo !== null || camposPesquisa.subtitulo !== undefined
-    && camposPesquisa.nomeEmpregador !== "" || camposPesquisa.nomeEmpregador == null || camposPesquisa.nomeEmpregador !== undefined
-    && camposPesquisa.estado !== "" || camposPesquisa.estado !== null || camposPesquisa.estado !== undefined
-    && camposPesquisa.cidade !== "" || camposPesquisa.cidade !== null || camposPesquisa.cidade !== undefined
+    console.log();
+    if(camposPesquisa.titulo.length == 0  
+    && camposPesquisa.subtitulo.length == 0 
+    && camposPesquisa.nomeEmpregador.length == 0 
+    && camposPesquisa.estado.length == 0
+    && camposPesquisa.cidade.length == 0 
     ){
-
-      return false;
+      return true;
     }
     else{
-      return true;
+      return false;
     }
   }
 
