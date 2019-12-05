@@ -2530,6 +2530,13 @@ fieldset:disabled a.btn {
   border-color: #005cbf;
 }
 
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle.perfil {
+  color: #fff;
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
@@ -3295,7 +3302,10 @@ tbody.collapse.show {
 
 .dropdown-menu.show {
   display: block;
+  margin-left: -105%;
 }
+
+
 
 .dropdown-header {
   display: block;

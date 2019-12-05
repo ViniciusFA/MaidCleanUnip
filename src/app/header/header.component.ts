@@ -63,4 +63,13 @@ export class HeaderComponent implements OnInit {
         window.location.reload();
       });
   }
+
+  editarPerfil(){
+    alert("EditarPerfil");
+    console.log(this.mostrarMenu);
+  }
+
+  mensagens(){
+    alert("MensagensPerfil");
+  }
 }

@@ -166,14 +166,14 @@
 
 <!-- Criando um campo para colocar foto -->
 <div id="conteudoFotoPerfil">
-    <img src="../../../assets/img/funcionario/photo-here.jpg" alt="Smiley face" width="242" height="342">
+    <img src="../../../assets/img/funcionario/photo-here.jpg" alt="Smiley face" width="180" height="250">
   </div>
 <br>
   
 <!--Botões de integração do Patrão para o funcionário-->
 <div class="botoesInfoFunc">
     <div id="botaoEnviarMensagemInfo">
-        <button type="button" class="btn btn-light">Envie uma Mensagem</button>
+        <button type="button" class="btn btn-light" (click)="sendMessageChat()">Envie uma Mensagem</button>
     </div>
     <div id="botaoVerCurriculoInfo">
         <button type="button" class="btn btn-light">Ver currículo</button>
@@ -184,3 +184,10 @@
 </div>
 <br>
 <br>
+<div class="chatMessageWindow" *ngIf="chatActivated">
+    <app-chat-message></app-chat-message>
+</div>
+<br>
+<br>
+
+

@@ -1,3 +1,4 @@
+import { ChatMessageComponent } from './pages/info-funcionario/chat-message/chat-message.component';
 import { Routes } from '@angular/router'
 
 import { HomeComponent } from './pages/home/home.component';
@@ -37,4 +38,6 @@ export const ROUTES: Routes = [
     { path: 'infoFuncionario', component: InfoFuncionarioComponent }, //canActivate: [AuthGuard]},  
     { path: 'configuracoesConta', component: ConfiguracoesContaComponent },// canActivate: [AuthGuard]},  
     { path: 'oportunidade-modal', component: OportunidadesModalComponent },
+    { path: 'chatMessage', component: ChatMessageComponent },
+
 ]

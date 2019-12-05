@@ -59,18 +59,18 @@ export class LoginComponent implements OnInit {
         if (res.codigo == 1) {
           alert(res.mensagem);
           this.formulario.reset();
+          localStorage.setItem("Usuario", JSON.stringify(this.usuario));
           //this.authService.liberaPermissao(res.idRole);
           this.authService.liberaPermissao(res.id_role);
           this.router.navigate(["home"])
             .then(() => {
               window.location.reload();
-            });
-
+            }); 
         } else {
           alert(res.mensagem);
         }
       })
-
+      
   }
 
   ngOnDestroy() {

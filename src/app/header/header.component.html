@@ -50,8 +50,18 @@
         [routerLink]="['/cadastro']">Cadastre-se</button>
     </div>
     <!-- Menu estará ativo depois que o usuario estiver logado-->
-    <div *ngIf="acessaLogout">
-      <button type="button" class="btn btn-primary" id="btnCadastrarHeader" (click)="logout()">Logout</button>
+    <div class="ddlPerfil" *ngIf="acessaLogout">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle btnperfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Perfil
+            </button>
+            <div class="dropdown-menu perfil">
+              <a class="dropdown-item perfil" (click)="editarPerfil()" [routerLink]="">Editar</a>
+              <a class="dropdown-item perfil" (click)="mensagens()" [routerLink]="">Mensagens</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item perfil" id="logoutMenu" (click)="logout()">Sair</a>
+            </div>
+          </div>         
     </div>
   </div>
 </nav>
