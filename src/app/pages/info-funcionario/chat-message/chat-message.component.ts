@@ -1,4 +1,3 @@
-import { ActivatedRoute } from '@angular/router';
 import { Usuario } from './../../../system-objects/usuario-model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
@@ -21,9 +20,7 @@ export class ChatMessageComponent implements OnInit{
   private sobreNomeChat:String = '';
   private elementRef: ElementRef;
 
-  constructor(private formBuilder: FormBuilder
-              //,private activatedRoute: ActivatedRoute
-              ) { 
+  constructor(private formBuilder: FormBuilder) { 
     this.configurarFormulario();
   }
 
@@ -38,26 +35,27 @@ configurarFormulario(){
   })
 }
 
-recebendoParametros(){
-  //this.nomeChat = this.activatedRoute.snapshot.queryParams.nome;
-  //this.sobreNomeChat = this.activatedRoute.snapshot.queryParams.sobrenome;
-  //console.log(this.nomeChat);
-  //console.log(this.sobreNomeChat);
-}
+initializeWebSocketConnection(){
+  let ws = new SockJS(this.serverURL);
+  this.stompClient = Stomp.over(ws);
+  let that = this;
+  this.stompClient.connect({},function(frame){
+    that.stompClient.subscribe("/chat", (message) => {
+       //pega o ususario logado e cadastrado no local storage
+       var nomeUsuario = JSON.parse(localStorage.getItem('Usuario'));
+       this.usuarioLogado = nomeUsuario.login;
 
-  initializeWebSocketConnection(){
-    let ws = new SockJS(this.serverURL);
-    this.stompClient = Stomp.over(ws);
-    let that = this;
-    this.stompClient.connect({},function(frame){
-      that.stompClient.subscribe("/chat", (message) => {
-        if(message.body){
-          $(".chat").append("<div class='message'>"+message.body+"</div>");
-          console.log(message.body);
-        }
-      })
+      //escreve no topo do body do chat
+      $(".chat").append("<div class='tituloMessageChat'>" + this.usuarioLogado + "</div");
+      //cada vez qaue envia mensagem entra nesse if
+      if(message.body){          
+          $(".chat").append("<div class='message'>" + message.body + "</div>");
+          console.log("Message:");
+          console.log(message);
+      }
     })
-  }
+  })
+}
 
   sendMessage(message){
     console.log(message);

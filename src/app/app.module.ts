@@ -40,6 +40,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { OportunidadesModalComponent } from './pages/oportunidades/oportunidades-modal/oportunidade-modal.component';
 import { AgmCoreModule} from '@agm/core';
 import { ChatMessageComponent } from './pages/info-funcionario/chat-message/chat-message.component';
+import { ChatMessageOportunityComponent } from './pages/oportunidades/oportunidades-modal/chat-message-oportunity/chat-message-oportunity.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -70,7 +71,8 @@ export function getAuthServiceConfigs() {
     InfoFuncionarioComponent,
     AnuncieComponent,
     OportunidadesModalComponent,
-    ChatMessageComponent
+    ChatMessageComponent,
+    ChatMessageOportunityComponent
   ],
   imports: [
     BrowserModule,
@@ -95,6 +97,7 @@ export function getAuthServiceConfigs() {
                AuthGuard,
                LoaderProvider,
                UsuarioService,
+               OportunidadesModalComponent,
     {
       provide: SocialServiceConfig,
       useFactory: getAuthServiceConfigs,      

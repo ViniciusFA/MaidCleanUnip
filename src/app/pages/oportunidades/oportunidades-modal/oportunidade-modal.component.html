@@ -47,6 +47,8 @@
             [routerLink]="['/oportunidades']">Voltar</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmCandidatura"
             (click)="Candidatar()">Candidate-se</button>
+         <button type="button" class="btn btn-primary" data-dismiss="modal" id="enviaMsgChat"
+            (click)="enviaMsgChat()">Envie uma mensagem</button>    
     </div>
 </div>
 
@@ -57,3 +59,9 @@
         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
     </agm-map>
 </div>
+<br>
+<div class="chatMessageWindowOportunity" *ngIf="chatActivated">
+    <app-chat-message-oportunity></app-chat-message-oportunity>
+</div>
+<br>
+<br>

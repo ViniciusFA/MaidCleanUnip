@@ -11133,13 +11133,18 @@ margin-left: -8%;
   cursor:pointer;
 }
 #botoesOportunidadeModal{
-  width: 75%;
+  width: 100%;
   margin-top: 1%;
   margin-bottom: 2%;
 }
 #confirmCandidatura{
-  margin-left: 2%;
+  margin-left: 1%;
 }
+
+#enviaMsgChat{
+  margin-left: 1%;
+}
+
 .contentInfoOportunity{
   margin-top:3%;
   margin-left: 2%;
@@ -11213,7 +11218,6 @@ margin-top: 6%;
 }
 .botoesInfoFunc{
   margin-left: 70%;
-  margin-top: 2%;
 }
 .tabelaPesquisaFunc{
   background-color:#99b0c7;
@@ -11325,6 +11329,13 @@ border-top: 0px !important;
   margin-bottom: -1.5%;
 }
 
+.chatMessageWindowOportunity{
+  margin-left: 33%;
+  margin-bottom: -1.5%;
+  margin-top: -12%;
+  width: 423px;
+}
+
 /* Chat Message Style*/
 
 .chat
@@ -11360,6 +11371,13 @@ border-top: 0px !important;
 {
     overflow-y: scroll;
     height: 250px;
+    background-color: #f5f2f2;
+}
+.panel-body-oportunity
+{
+  overflow-y: scroll;
+  height: 250px;
+  background-color: #f5f2f2;
 }
 ::-webkit-scrollbar-track
 {
@@ -11379,10 +11397,14 @@ border-top: 0px !important;
 .panel-heading{
   background-color: #4cb961;
   color: white;
+  cursor: pointer;
 }
 
-.iconeDDLChat{
+#iconeDDLChat{
   color:white;
+}
+#iconeDDLChat:hover{
+  color:black;
 }
 #btnAtualizarChatMessage{
   color:black;
@@ -11419,8 +11441,28 @@ border-top: 0px !important;
   text-decoration: underline;
   cursor: pointer;
 }
-.panel-primary{
-
+.message{
+  color: black;
+  font-family: arial;
 }
 
-
+.tituloMessageChat{
+  color: #6262b9;
+  font-family: arial;
+  font-weight: bold;
+}
+.img_avaliations{
+  background-image: url("assets/img/avaliations/avg_1.5_small.jpg");  
+  border: 4px inset #d8d8ff;
+  background-repeat: no-repeat;
+  background-size: 208px 33px;
+  padding: 16px;
+}
+.contentCells{
+  font-size: 15px;
+  font-family: sans-serif;
+}
+#botaoAvaliacaoInfo{
+  margin-top: 6%;
+  margin-left: 9%;
+}

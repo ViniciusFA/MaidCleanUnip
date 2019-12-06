@@ -1,6 +1,8 @@
+import { ChatMessageOportunityComponent } from './chat-message-oportunity/chat-message-oportunity.component';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Vaga } from 'src/app/services/vaga/vaga';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-oportunidade-modal',
@@ -15,7 +17,8 @@ export class OportunidadesModalComponent implements OnInit {
   lat: number = -23.8779431;
   lng: number = -49.8046873;
   zoom: number = 15;
-
+  private chatActivated = false;
+  
   constructor(private activatedRoute: ActivatedRoute,
               private router:Router) { }
 
@@ -38,5 +41,13 @@ export class OportunidadesModalComponent implements OnInit {
   Candidatar(){
     alert("Candidatura enviada com sucesso.");
     this.router.navigate(['/oportunidades']);
+  }
+
+  enviarParamChatMessage():String{
+    return this.vaga.nomeEmpregador;    
+  }
+ 
+  enviaMsgChat(){
+   this.chatActivated = true;
   }
 }

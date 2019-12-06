@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="panel panel-primary">
+                <div class="panel-heading" id="id-panel-heading">
+                    <span class="glyphicon glyphicon-comment"></span> 
+                    &nbsp; Chat - {{nomeEmpregador}} 
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" id="iconeDDLChat">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                        <ul class="dropdown-menu slidedown">
+                            <li><a id="btnAtualizarChatMessage" (click)="atualizarChat()"><span class="glyphicon glyphicon-refresh">
+                            </span>Atualizar</a></li>
+                            <li><a id="btnDisponivelChatMessage" (click)="disponivel()"><span class="glyphicon glyphicon-ok-sign">
+                            </span>Disponível</a></li>
+                            <li><a id="btnOcupadoChatMessage" (click)="ocupado()"><span class="glyphicon glyphicon-remove">
+                            </span>Ocupado</a></li>
+                            <li><a id="btnAusenteChatMessage" (click)="ausente()"><span class="glyphicon glyphicon-time"></span>
+                                Ausente</a></li>
+                            <li class="divider"></li>
+                            <li><a id="btnFecharChatMessage" (click)="fecharMessageChat()"><span class="glyphicon glyphicon-off" ></span>
+                                Sair</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body-oportunity">
+                    
+
+                   
+                    <ul class="chat">
+                        
+                        <!--
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+                                </div >
+                                <p [innerHTML]="chat">
+                                    Mensagem 03
+                                </p>
+                            </div>
+                        </li>
+                       
+
+                        <li class="right clearfix"><span class="chat-img pull-right">
+                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                     <br/>
+                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
+                                   
+                                </div>
+                                <p>
+                                    teste
+                                </p>
+                            </div>
+                        </li>   
+                         -->                         
+                    </ul>                         
+                </div>
+                <div class="panel-footer" >
+                    <div class="input-group" [formGroup]="formulario">
+                        <input id="btn-input" type="text" class="form-control input-sm" formControlName="message" [(ngModel)]="mensagem" maxlength="22"placeholder="22 caracteres por vez..." />
+                        <span class="input-group-btn">
+                            <button [disabled]="formulario.invalid" class="btn btn-warning btn-sm" id="btn-chat" (click)="sendMessage(mensagem)">
+                                Enviar</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
