@@ -34,6 +34,11 @@ export class UsuarioService {
     }
     */
    
+    getUsuarioPorLogin(login: String){
+        return this.http.get(this.baseUrlService + "/login" + "/" + login)
+        .map(res => res.json());
+    }
+
      //ADICIONA UMA NOVA PESSOA 
      addUsuario(usuario: Usuario) {
         return this.http.post(this.baseUrlService, JSON.stringify(usuario), this.options)

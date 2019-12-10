@@ -1,3 +1,4 @@
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,6 +17,12 @@ export class HeaderComponent implements OnInit {
 
   private formulario: FormGroup;
   private usuario: Usuario;
+  private usuarioLoginInfo:String;
+  private objectUser:Object;
+  private objectUser2:Usuario[] = new Array();
+
+  private usuarioInfo:Usuario = new Usuario();
+
   mostrarMenu: boolean = false;
   acessaAnuncie: Boolean = false;
   acessaOportunidadeModal: Boolean = false;
@@ -26,7 +33,8 @@ export class HeaderComponent implements OnInit {
   acessaEntrar: Boolean = false;
   acessaLogout: Boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private usuarioService: UsuarioService) {}
 
   ngOnInit() {
     let permissoes = JSON.parse(localStorage.getItem('permissoes'));
@@ -64,12 +72,49 @@ export class HeaderComponent implements OnInit {
       });
   }
 
-  editarPerfil(){
-    alert("EditarPerfil");
-    console.log(this.mostrarMenu);
+ 
+  mensagens(){
   }
 
-  mensagens(){
-    alert("MensagensPerfil");
+  infoPerfilUsuario(){
+    var objectUsuario = JSON.parse(localStorage.getItem('Usuario'));
+    this.usuarioLoginInfo = objectUsuario.login;
+    this.usuarioService.getUsuarioPorLogin(this.usuarioLoginInfo).subscribe(res =>{
+      var resposta = res; 
+
+      console.log(resposta);
+      this.usuarioInfo = resposta;
+      this.usuarioInfo.id = resposta.idUsuario;
+      this.usuarioInfo.nome = resposta.nome;
+      this.usuarioInfo.sobrenome = resposta.sobrenome;
+      this.usuarioInfo.login = resposta.login;
+      this.usuarioInfo.senha = resposta.senha;
+      this.usuarioInfo.email = resposta.email;
+      this.usuarioInfo.urlFacebook = resposta.facebook;
+      this.usuarioInfo.hasWhatsapp = resposta.hasWhatsapp;
+      this.usuarioInfo.telefone = resposta.telefone;
+      this.usuarioInfo.profissao = resposta.profissao;
+      this.usuarioInfo.experiencia = resposta.experiencia;
+      this.usuarioInfo.cpf_cnpj = resposta.cpf_cnpj;      
+      this.usuarioInfo.endereco = resposta.endereco;
+      this.usuarioInfo.complemento = resposta.complemento;
+      this.usuarioInfo.cidade = resposta.cidade;
+      this.usuarioInfo.estado = resposta.estado;
+      this.usuarioInfo.cep = resposta.cep;
+      this.usuarioInfo.avaliacao = resposta.avaliacao;
+      console.log(this.usuarioInfo.avaliacao);
+      this.usuarioInfo.sexo = resposta.sexo;
+      this.usuarioInfo.idRole = resposta.idRole;
+      this.enviarParametrosUsuario(this.usuarioInfo);
+      //queryparams jogar na pagina d eperfil
+    })
   }
+
+  enviarParametrosUsuario(usuarioInfo:Usuario){
+    console.log(this.usuarioInfo);
+    this.router.navigate(['/perfil'], { queryParams: this.usuarioInfo })
+    // this.router.navigate(['infoFuncionario'], { queryParams: funcionario });
+  }
+  
+
 }

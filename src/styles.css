@@ -11168,7 +11168,7 @@ margin-left: -8%;
 }
 #conteudoFotoPerfil{
   margin-left: 70%;
-  margin-top: -61%;
+  margin-top: -62%;
   width: 12%;
   border: 5px;
   border-style: groove;
@@ -11206,17 +11206,35 @@ cursor:pointer;
   width: 52%;
 }
 #botaoEnviarMensagemInfo{
-margin-top: 6%;
+margin-top: 4%;
 }
+#botaoEditarPerfil{
+  margin-top: 4%;
+  }
 #botaoVoltarInfo{
+  margin-top: 4%;
+}
+#botaoSalvarAlteracao{
+  margin-top: 4%;
+}
+#botaoCancelarAlteracao{
   margin-top: 6%;
-  margin-left: 13%;
 }
 #botaoVerCurriculoInfo{
-  margin-top: 6%;
+  margin-top: 4%;
   margin-left: 7%;
 }
+#botaoHistoricoPerfil{
+  margin-top: 4%;
+}
 .botoesInfoFunc{
+  margin-left: 70%;
+}
+.botoesInfoPerfil{
+  margin-left: 67%;
+  margin-top:17%;
+}
+.botoesEditarPerfil{
   margin-left: 70%;
 }
 .tabelaPesquisaFunc{
@@ -11465,4 +11483,21 @@ border-top: 0px !important;
 #botaoAvaliacaoInfo{
   margin-top: 6%;
   margin-left: 9%;
+}
+#botaoAvaliacaoPerfil{
+  margin-top: 6%;
+}
+.editarFotoPerfil{
+  margin-left: 73%;
+}
+.editarFotoPerfil:hover{
+  color:blue;
+  cursor:pointer; 
+}
+.avaliacoesPerfil{
+  margin-left: 67%;
+  margin-top: -38%;
+  border: solid 1px;
+  width: 18%;
+  font-family: arial;
 }

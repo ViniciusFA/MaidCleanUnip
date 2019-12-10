@@ -133,7 +133,6 @@ export class PesquisarComponent implements OnInit {
   }
 
   infoFuncionario(funcionario: Funcionario) {
-    console.log(funcionario);
     this.router.navigate(['infoFuncionario'], { queryParams: funcionario });
   }
 

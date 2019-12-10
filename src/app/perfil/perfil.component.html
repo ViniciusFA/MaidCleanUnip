@@ -1,3 +1,254 @@
 <div class="tituloConteudoPaginas" id="tituloFuncCadastrados">
-        <h3>Perfil</h3>
+        <h4>Perfil</h4>
 </div>
+
+<hr class="line3" />
+<br>
+<br>
+<form [formGroup]="formulario">
+        <div class="conteudoPageDetalhes">
+                <div id="conteudoLabelsFuncInfo">
+                        <div id="ConteudoIdInputInfo">
+                                <div class="form-row">
+                                        <div class="conteudoDivColunaInfo inputInfoFunc inputInfoID">
+                                                <label><b> ID:</b> {{usuarioInfo.id}}</label>
+
+                                        </div>
+                                </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b> Nome:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="nome" type="text"
+                                        placeholder="{{usuarioInfo.nome}}">                                            
+                                       
+                                </div>
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b> Sobrenome:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="sobrenome"
+                                                type="text" placeholder="{{usuarioInfo.sobrenome}}">
+                                </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b> Login:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="login"
+                                                type="text" placeholder="{{usuarioInfo.login}}">
+                                </div>
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b> Senha:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="senha"
+                                                type="text" placeholder="{{usuarioInfo.senha}}">
+                                </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b> Email:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="email"
+                                                type="text" placeholder="{{usuarioInfo.email}}">
+                                </div>
+                                <div class="col-3 conteudoDivColunaInfo  inputInfoFunc">
+                                        <label><b> Facebook:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="facebook"
+                                                type="text" placeholder="{{usuarioInfo.urlFacebook}}">
+                                </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b> Whatsapp:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="whatsapp"
+                                                type="text" placeholder="{{usuarioInfo.hasWhatsapp}}">
+                                </div>
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b> Telefone:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="telefone"
+                                                type="text" placeholder="{{usuarioInfo.telefone}}">
+                                </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b>Profissão::</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="profissao"
+                                                type="text" placeholder="{{usuarioInfo.profissao}}">
+                                </div>
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b>Experiência::</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="experiencia"
+                                                type="text" placeholder="{{usuarioInfo.experiencia}}">
+                                </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b>CPF:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="cpf_cnpj"
+                                                type="text" placeholder="{{usuarioInfo.cpf_cnpj}}">
+                                </div>
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b>Endereço:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="endereco"
+                                                type="text" placeholder="{{usuarioInfo.endereco}}">
+                                </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b>Complemento:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="complemento"
+                                                type="text" placeholder="{{usuarioInfo.complemento}}">
+                                </div>
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b>Cidade:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="cidade"
+                                                type="text" placeholder="{{usuarioInfo.cidade}}">
+                                </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b>Estado:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="estado"
+                                                type="text" placeholder="{{usuarioInfo.estado}}">
+                                </div>
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b>CEP:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="cep" type="text"
+                                                placeholder="{{usuarioInfo.cep}}">
+                                </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b>Avaliação:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="avaliacao"
+                                                type="text" placeholder="{{usuarioInfo.avaliacao}}">
+                                </div>
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                        <label><b>Sexo:</b></label>
+                                        <input class="form-control contaudoInputInfo" formControlName="sexo" type="text"
+                                                placeholder="{{usuarioInfo.sexo}}">
+                                </div>
+                        </div>
+                        <br>
+                        <br>
+                </div>
+        </div>
+</form>
+
+<!-- Modal para confirmar a EXCLUSÃO de funcionário-->
+<div class="modal" tabindex="-1" role="dialog" id="confirmExcluir">
+        <div class="modal-dialog" role="document">
+                <div class="modal-content" id="modalBodyInfoExcluir">
+                        <div class="modal-header">
+                                <h5 class="modal-title">Excluir Funcionário</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                                <p>Tem certeza que deseja excluir esse funcionário?</p>
+                        </div>
+                        <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmExcluir"
+                                        (click)="excluir(funcionarioInfo)">Excluir</button>
+                        </div>
+                </div>
+        </div>
+</div>
+
+<!-- Modal para a EDIÇÂO de funcionário-->
+<div class="modal" tabindex="-1" role="dialog" id="editarFuncionario">
+        <div class="modal-dialog" role="document">
+                <div class="modal-content" id="modalBodyInfoAtualizar">
+                        <div class="modal-header">
+                                <h5 class="modal-title">Atualizar Funcionário</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                                <p>Tem certeza que deseja atualizar esse funcionário?</p>
+                        </div>
+                        <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                <button type="button" class="btn btn-primary" (click)="atualizar()">Atualizar</button>
+                        </div>
+                </div>
+        </div>
+</div>
+<br>
+
+<!-- Criando um campo para colocar foto -->
+<div id="conteudoFotoPerfil">
+        <img src="../../../assets/img/funcionario/photo-here.jpg" alt="Smiley face" width="180" height="250">
+</div>
+<span class="editarFotoPerfil"><a>Editar foto</a></span>
+<!--
+<input type="file" (change)="onFileSelected($event)">
+-->
+<br>
+
+<!--Botões de integração do Patrão para o funcionário-->
+<div class="botoesInfoPerfil">
+        <div id="botaoEditarPerfil">
+                <button type="button" class="btn btn-outline-info" *ngIf="editingFields" (click)="editarCamposPerfil()">
+                        Editar Perfil</button>
+        </div>
+        <div id="botaoHistoricoPerfil">
+                <button type="button" class="btn btn-outline-info" *ngIf="editingFields">Histórico profissional</button>
+        </div>
+        <div id="botaoAvaliacaoPerfil">
+                <button type="button" class="btn btn-outline-info" *ngIf="editingFields"> Avaliação</button>
+        </div>
+
+        <div id="botaoSalvarAlteracao">
+                <button type="button" class="btn btn-outline-info" *ngIf="!editingFields" (click)="salvarAlteracao()"> Salvar
+                        Altetração</button>
+        </div>
+        <div id="botaoCancelarAlteracao">
+                <button type="button" class="btn btn-outline-info" *ngIf="!editingFields" (click)="cancelarAlteracaoPerfil()">
+                        Cancelar Alteração</button>
+        </div>
+        <div id="botaoVoltarInfo">
+                <button type="button" class="btn btn-outline-info" [routerLink]="['/home']">Voltar</button>
+        </div>
+        <div id="botaoVoltarInfo">
+                <button type="button" class="btn btn-outline-info" [routerLink]="['/home']">Excluir conta</button>
+
+        </div>
+</div>
+
+<div class="botoesEditarPerfil">
+        <!--
+        <div id="botaoSalvarAlteracao">
+                <button type="button" class="btn btn-light"> Salvar Altetração</button>
+        </div>
+        <div id="botaoCancelarAlteracao">
+                <button type="button" class="btn btn-light"> Cancelar Altetração</button>
+        </div>
+        -->
+</div>
+
+<div class="avaliacoesPerfil">
+        
+        <p>Compromisso:</p>
+        <p>Organização:</p>
+        <p>Compromisso:</p>
+        <p>Compromisso:</p>
+        <p>Media:</p>
+</div>
+
+
+<br>
+<br>
+<div class="chatMessageWindow" *ngIf="chatActivated">
+        <app-chat-message></app-chat-message>
+</div>
+<br>
+<br>

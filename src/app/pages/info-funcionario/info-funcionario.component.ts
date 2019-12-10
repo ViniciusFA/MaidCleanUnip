@@ -13,13 +13,14 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
   templateUrl: './info-funcionario.component.html'
 })
 export class InfoFuncionarioComponent implements OnInit {
+  
   private titulo: string;
   private usuarioInfo: Usuario = new Usuario();
   private formulario: FormGroup;
   private edicao: Boolean = true;
   private usuarioInfoNovo: Usuario = new Usuario();
   private chatActivated = false;
-  
+
 
   @ViewChild('confirmExcluir', { static: false }) confirmExcluir: ElementRef;
   @ViewChild('btnEdicao', { static: false }) btnEdicao;
@@ -28,14 +29,12 @@ export class InfoFuncionarioComponent implements OnInit {
     private usuarioService: UsuarioService,
     private router: Router,
     private formBuilder: FormBuilder) {
-    this.configurarCampos();   
+    this.configurarCampos();
   }
 
   ngOnInit() {
     this.titulo = "Informação Funcionário";
     this.recebendoParamsFuncionario();
-    //console.log(this.usuarioInfo.nome);
-    //console.log(this.usuarioInfo.sobrenome);
   }
 
   //recebe os dados no formulario inserido pelo usuário
@@ -268,18 +267,19 @@ export class InfoFuncionarioComponent implements OnInit {
       },
         (erro) => {
           alert(erro);
-        });  }
+        });
+  }
 
-  sendMessageChat(){
+  sendMessageChat() {
     localStorage.setItem("nomeChat", this.usuarioInfo.nome);
-    localStorage.setItem("sobrenomeChat", this.usuarioInfo.sobrenome );
-    
-    this.chatActivated = true; 
+    localStorage.setItem("sobrenomeChat", this.usuarioInfo.sobrenome);
+
+    this.chatActivated = true;
     //armazenando o nome e sobrenome do funcionario escolhido no local storage
-    
+
 
   }
-  fecharMessageChat(){
+  fecharMessageChat() {
     this.chatActivated = false;
     alert(this.chatActivated);
   }

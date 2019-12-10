@@ -33,6 +33,7 @@
     "jquery": "^3.4.1",
     "loader-utils": "^1.2.3",
     "net": "^1.0.2",
+    "ng-filedialog": "^1.0.0",
     "ngx-bootstrap": "^5.1.1",
     "ngx-social-button": "^1.0.4",
     "node-sass": "^4.12.0",
