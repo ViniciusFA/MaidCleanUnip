@@ -11248,7 +11248,7 @@ margin-top: 4%;
   font-family: arial;
 }
 .corpotabelaPesquisa{
-  background-color:  #e5e7f5;
+  background-color: #f9f9f9;
 }
 .tituloConteudoContato{
   margin: 1% auto;
@@ -11470,10 +11470,9 @@ border-top: 0px !important;
   font-weight: bold;
 }
 .img_avaliations{
-  background-image: url("assets/img/avaliations/avg_1.5_small.jpg");  
-  border: 4px inset #d8d8ff;
+  background-image: url("assets/img/avaliations/avg_0.5.jpg");  
   background-repeat: no-repeat;
-  background-size: 208px 33px;
+  background-size: 210px 21px;
   padding: 16px;
 }
 .contentCells{

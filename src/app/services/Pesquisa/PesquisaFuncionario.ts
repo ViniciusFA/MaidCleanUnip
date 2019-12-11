@@ -4,7 +4,7 @@ export class PesquisaFuncionario {
     public sobrenome: string = "";
     public estado: string = "";
     public cidade: string = "";
-    public sexo: string = "";
+    public avaliacao: string = "";
     public experiencia: string = "";
     public idRole: number;
 }

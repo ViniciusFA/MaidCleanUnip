@@ -1,4 +1,5 @@
-﻿import { Usuario } from './../../system-objects/usuario-model';
+﻿import { Avaliacoes } from './../../util/avaliacoes';
+import { Usuario } from './../../system-objects/usuario-model';
 import { RoleEnum } from './../../system-objects/role-enum';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,42 +11,33 @@ import { Experiencia } from '../../util/experiencia';
 import { Sexo } from '../../util/sexo';
 import { PesquisaFuncionarioService } from '../../services/Pesquisa/PesquisaFuncionarioService';
 import { PesquisaFuncionario } from '../../services/Pesquisa/PesquisaFuncionario';
-import { InfoFuncionarioComponent } from '../info-funcionario/info-funcionario.component';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
-
 
 @Component({
   selector: 'app-pesquisar',
-  templateUrl: './pesquisar.component.html'
+  templateUrl: './pesquisar.component.html',
 })
 export class PesquisarComponent implements OnInit {
 
   private usuarios: Usuario[] = new Array();
-  private parametrosPesquisa: String[] = new Array();
-  private usuariosFuncionarios: Usuario[] = new Array();
   private titulo: string;
   private formulario: FormGroup;
   private pesquisaFuncionario: PesquisaFuncionario = new PesquisaFuncionario();
   private usuarioFuncionario: Usuario = new Usuario();
-  private inforFuncionario: InfoFuncionarioComponent;
-  private cracteresPermitidos: Number = 0;
-  private resultadoVerificacao: Number = 0;
+
+  currentRate = 6;
 
   constructor(private usuarioService: UsuarioService,
     private formBuilder: FormBuilder,
     private pesquisaFuncionarioService: PesquisaFuncionarioService,
-    private router: Router
-  ) {
-
+    private router: Router) {
     this.configurarFormulario();
   }
 
   ngOnInit() {
     this.titulo = "Pesquisar Funcionários";
-    //busca todas as pessoas registradas na tabela ao iniciar a página.
-    this.usuarioService.getUsuarioPorPerfil(RoleEnum.Funcionario).subscribe(res => {
-      this.usuarios = res;
-    });
+    this.pegarUsuariosPorPerfil();
+    this.configurarAvaliacao();
   }
 
   estados = [
@@ -64,10 +56,13 @@ export class PesquisarComponent implements OnInit {
     new Experiencia(5, '2 anos e meio'),
   ];
 
-  sexos = [
-    new Sexo(0, "Selecione"),
-    new Sexo(1, 'Feminino'),
-    new Sexo(2, 'Masculino'),
+  avaliacoes = [
+    new Avaliacoes(0, "Selecione"),
+    new Avaliacoes(1, "1"),
+    new Avaliacoes(2, "2"),
+    new Avaliacoes(3, "3"),
+    new Avaliacoes(4, "4"),
+    new Avaliacoes(5, "5"),
   ];
 
   configurarFormulario() {
@@ -76,8 +71,14 @@ export class PesquisarComponent implements OnInit {
       sobrenome: new FormControl('', [Validators.minLength(3), Validators.maxLength(40)]),
       estado: new FormControl(''),
       cidade: new FormControl('', Validators.maxLength(15)),
-      sexo: new FormControl(''),
+      avaliacao: new FormControl(''),
       experiencia: new FormControl('')
+    });
+  }
+
+  pegarUsuariosPorPerfil() {
+    this.usuarioService.getUsuariosPorPerfil(RoleEnum.Funcionario).subscribe(res => {
+      this.usuarios = res;
     });
   }
 
@@ -136,6 +137,7 @@ export class PesquisarComponent implements OnInit {
     this.router.navigate(['infoFuncionario'], { queryParams: funcionario });
   }
 
+  /*
   verificaCamposVazios(usuario: Usuario) {
     if (
       usuario.cidade == "" || usuario.cidade == undefined || usuario.cidade == null
@@ -157,13 +159,14 @@ export class PesquisarComponent implements OnInit {
       return 1;
     }
   }
+  */
 
   verificarCamposVazios(camposPesquisa: Usuario) {
     if (camposPesquisa.nome.length == 0
       && camposPesquisa.sobrenome.length == 0
       && camposPesquisa.estado.length == 0
       && camposPesquisa.cidade.length == 0
-      && camposPesquisa.sexo.length == 0
+      && camposPesquisa.avaliacao.length == 0
       && camposPesquisa.experiencia.length == 0
     ) {
       return true;
@@ -171,4 +174,11 @@ export class PesquisarComponent implements OnInit {
       return false;
     }
   }
+
+  configurarAvaliacao() {
+    console.log("Avaliação:");
+    console.log(this.usuarios);
+    console.log(this.usuarioFuncionario);
+  }
+
 }

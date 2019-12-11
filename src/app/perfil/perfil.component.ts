@@ -10,16 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class PerfilComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
-              private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute) {
     this.configurarFormulario();
   }
 
   private formulario: FormGroup;
-  private editingFields:boolean = true;
+  private editingFields: boolean = true;
   private usuarioInfo: Usuario = new Usuario();
   //private selectedFile:File = null;
 
-  ngOnInit() { 
+  ngOnInit() {
     this.recebendoParametroInfoUsuario();
   }
 
@@ -47,27 +47,27 @@ export class PerfilComponent implements OnInit {
     })
   }
 
-  editarCamposPerfil(){
-   this.habilitaCamposFormulario();
+  editarCamposPerfil() {
+    this.habilitaCamposFormulario();
     this.toggleShowBtnEdit();
-  }v
+  } v
 
-  toggleShowBtnEdit(){
-    this.editingFields =  !this.editingFields;
+  toggleShowBtnEdit() {
+    this.editingFields = !this.editingFields;
   }
 
-  cancelarAlteracaoPerfil(){
-   this.desabilitaCamposFormulario();
+  cancelarAlteracaoPerfil() {
+    this.desabilitaCamposFormulario();
     this.toggleShowBtnEdit();
   }
 
-  salvarAlteracao(){
+  salvarAlteracao() {
     alert("Salvo com sucesso");
     this.desabilitaCamposFormulario();
     this.toggleShowBtnEdit();
   }
 
-  habilitaCamposFormulario(){
+  habilitaCamposFormulario() {
     this.formulario.controls.nome.enable();
     this.formulario.controls.sobrenome.enable();
     this.formulario.controls.senha.enable();
@@ -87,7 +87,7 @@ export class PerfilComponent implements OnInit {
     this.formulario.controls.sexo.enable();
   }
 
-  desabilitaCamposFormulario(){
+  desabilitaCamposFormulario() {
     this.formulario.controls.nome.disable();
     this.formulario.controls.sobrenome.disable();
     this.formulario.controls.senha.disable();
@@ -107,58 +107,59 @@ export class PerfilComponent implements OnInit {
     this.formulario.controls.sexo.disable();
   }
 
-  onFileSelected(event){
-   // this.selectedFile = <File>event.target.files[0];
+  onFileSelected(event) {
+    // this.selectedFile = <File>event.target.files[0];
     //const fd = new FormData();
-   // fd.append('iamge',this.selectedFile,this.selectedFile.name);
+    // fd.append('iamge',this.selectedFile,this.selectedFile.name);
   }
 
-  recebendoParametroInfoUsuario(){
+  recebendoParametroInfoUsuario() {
     this.usuarioInfo.idRole = this.activatedRoute.snapshot.queryParams.idRole;
-    console.log(this.usuarioInfo.idRole);
     this.usuarioInfo.id = this.activatedRoute.snapshot.queryParams.idUsuario;
-    this.usuarioInfo.nome = this.activatedRoute.snapshot.queryParams.nome;   
+    this.usuarioInfo.nome = this.activatedRoute.snapshot.queryParams.nome;
     this.usuarioInfo.sobrenome = this.activatedRoute.snapshot.queryParams.sobrenome;
-    this.usuarioInfo.login = this.activatedRoute.snapshot.queryParams.login;   
+    this.usuarioInfo.login = this.activatedRoute.snapshot.queryParams.login;
     this.usuarioInfo.senha = this.activatedRoute.snapshot.queryParams.senha;
-    this.usuarioInfo.email = this.activatedRoute.snapshot.queryParams.email;   
-    
-    if(this.usuarioInfo.urlFacebook == null || this.usuarioInfo.urlFacebook == ""){
-      this.usuarioInfo.urlFacebook = "Facebook não cadastrado.";
-    }else{
-      this.usuarioInfo.urlFacebook = this.activatedRoute.snapshot.queryParams.urlFacebook;
-    }
-    if(this.usuarioInfo.hasWhatsapp == null || this.usuarioInfo.hasWhatsapp == ""){
-      this.usuarioInfo.hasWhatsapp = "Whatsapp não cadastrado.";
-    }else{
-      this.usuarioInfo.hasWhatsapp = this.activatedRoute.snapshot.queryParams.hasWhatsapp;
-    }
-    this.usuarioInfo.telefone = this.activatedRoute.snapshot.queryParams.telefone;   
-    this.usuarioInfo.profissao = this.activatedRoute.snapshot.queryParams.profissao;    
-    if(this.usuarioInfo.idRole == 3 ){
-      this.usuarioInfo.experiencia ="Empregador";
-    }else if(this.usuarioInfo.idRole == 2){
-      if(this.usuarioInfo.experiencia == null || this.usuarioInfo.experiencia == ""){
-        this.usuarioInfo.experiencia = "Sem experiência.";
-      }else{  
-        this.usuarioInfo.experiencia = this.activatedRoute.snapshot.queryParams.experiencia;
-      }     
-    }    
-    console.log(this.usuarioInfo.experiencia);
+    this.usuarioInfo.email = this.activatedRoute.snapshot.queryParams.email;
     this.usuarioInfo.cpf_cnpj = this.activatedRoute.snapshot.queryParams.cpf_cnpj;
-    this.usuarioInfo.endereco = this.activatedRoute.snapshot.queryParams.endereco;  
+    this.usuarioInfo.endereco = this.activatedRoute.snapshot.queryParams.endereco;
     this.usuarioInfo.complemento = this.activatedRoute.snapshot.queryParams.complemento;
     this.usuarioInfo.cidade = this.activatedRoute.snapshot.queryParams.cidade;
     this.usuarioInfo.estado = this.activatedRoute.snapshot.queryParams.estado;
-    this.usuarioInfo.cep = this.activatedRoute.snapshot.queryParams.cep;   
-    if(this.usuarioInfo.avaliacao == null || this.usuarioInfo.avaliacao == ""){
-      this.usuarioInfo.avaliacao = "Sem avaliação recebida.";
-    }else{
-      this.usuarioInfo.avaliacao = this.activatedRoute.snapshot.queryParams.avaliacao;
-    }    
-    this.usuarioInfo.sexo = this.activatedRoute.snapshot.queryParams.sexo;   
+    this.usuarioInfo.cep = this.activatedRoute.snapshot.queryParams.cep;
+    this.usuarioInfo.telefone = this.activatedRoute.snapshot.queryParams.telefone;
+    this.usuarioInfo.profissao = this.activatedRoute.snapshot.queryParams.profissao;
 
+    if (this.usuarioInfo.urlFacebook == null || this.usuarioInfo.urlFacebook == "") {
+      this.usuarioInfo.urlFacebook = "Facebook não cadastrado.";
+    } else {
+      this.usuarioInfo.urlFacebook = this.activatedRoute.snapshot.queryParams.urlFacebook;
+    }
+    if (this.usuarioInfo.hasWhatsapp == null || this.usuarioInfo.hasWhatsapp == "") {
+      this.usuarioInfo.hasWhatsapp = "Whatsapp não cadastrado.";
+    } else {
+      this.usuarioInfo.hasWhatsapp = this.activatedRoute.snapshot.queryParams.hasWhatsapp;
+    }
+
+    if (this.usuarioInfo.idRole == 3) {
+      this.usuarioInfo.experiencia = "Empregador";
+    } else if (this.usuarioInfo.idRole == 2) {
+      if (this.usuarioInfo.experiencia == null || this.usuarioInfo.experiencia == "") {
+        this.usuarioInfo.experiencia = "Sem experiência.";
+      } else {
+        this.usuarioInfo.experiencia = this.activatedRoute.snapshot.queryParams.experiencia;
+      }
+    }
+
+    if (this.usuarioInfo.avaliacao == null || this.usuarioInfo.avaliacao == "") {
+      this.usuarioInfo.avaliacao = "Sem avaliação recebida.";
+    } else {
+      this.usuarioInfo.avaliacao = this.activatedRoute.snapshot.queryParams.avaliacao;
+    }
+    this.usuarioInfo.sexo = this.activatedRoute.snapshot.queryParams.sexo;
   }
 
-
+  excluirConta(){
+    alert("Conta excluída com sucesso.");
+  }
 }

@@ -41,6 +41,8 @@ import { OportunidadesModalComponent } from './pages/oportunidades/oportunidades
 import { AgmCoreModule} from '@agm/core';
 import { ChatMessageComponent } from './pages/info-funcionario/chat-message/chat-message.component';
 import { ChatMessageOportunityComponent } from './pages/oportunidades/oportunidades-modal/chat-message-oportunity/chat-message-oportunity.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdRatingTemplate } from './pages/rating-template/rating-template.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -72,7 +74,8 @@ export function getAuthServiceConfigs() {
     AnuncieComponent,
     OportunidadesModalComponent,
     ChatMessageComponent,
-    ChatMessageOportunityComponent
+    ChatMessageOportunityComponent,
+    NgbdRatingTemplate
   ],
   imports: [
     BrowserModule,
@@ -83,11 +86,13 @@ export function getAuthServiceConfigs() {
     HttpModule,
     HttpClientModule,
     NgxSocialButtonModule,
-    LoginModule,
+    NgbModule,
+    LoginModule,   
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBz-1pNqOyCTlYTrR-cCQDorugLxnAoo5A'
     })
   ],
+  exports:[NgbdRatingTemplate],
   providers: [ ConfigService, 
                FuncionarioService, 
                ContatoService,
@@ -105,7 +110,8 @@ export function getAuthServiceConfigs() {
   ],
   bootstrap: [  
     AppComponent,  
-    HeaderComponent
+    HeaderComponent,
+    NgbdRatingTemplate
   ]
 })
 export class AppModule { }

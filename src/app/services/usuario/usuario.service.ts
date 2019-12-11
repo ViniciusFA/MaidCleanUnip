@@ -23,7 +23,7 @@ export class UsuarioService {
         return this.http.get(this.baseUrlService).map(res => res.json());
     }
 
-    getUsuarioPorPerfil(idRole: Number) {
+    getUsuariosPorPerfil(idRole: Number) {
         return this.http.get(this.baseUrlService + '?idRole=' + idRole).map(res => res.json());
     }
      /*
