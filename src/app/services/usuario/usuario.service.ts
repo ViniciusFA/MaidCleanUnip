@@ -26,13 +26,6 @@ export class UsuarioService {
     getUsuariosPorPerfil(idRole: Number) {
         return this.http.get(this.baseUrlService + '?idRole=' + idRole).map(res => res.json());
     }
-     /*
-    //ADICIONA UMA NOVA PESSOA 
-    async addUsuario(usuario: Usuario) {
-        return await this.http.post(this.baseUrlService, JSON.stringify(usuario), this.options)
-            .toPromise();
-    }
-    */
    
     getUsuarioPorLogin(login: String){
         return this.http.get(this.baseUrlService + "/login" + "/" + login)
@@ -60,5 +53,13 @@ export class UsuarioService {
     updateUsuario(usuario: Usuario) {
         return this.http.put(this.baseUrlService, JSON.stringify(usuario), this.options)
             .map(res => res.json());
+    }
+
+    /*Pega Avaliação do usuario no banco */
+    getAvaliationsUser(id_usuario:Number){
+        //http://localhost:8090/api/usuario/avaliacoes/191
+        return this.http.get(this.baseUrlService + '/avaliacoes/' + id_usuario)
+            .map(res => res.json());
+
     }
 }

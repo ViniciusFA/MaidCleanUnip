@@ -1,37 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-/*!
- * Bootswatch v4.3.1
- * Homepage: https://bootswatch.com
- * Copyright 2012-2019 Thomas Park
- * Licensed under MIT
- * Based on Bootstrap
-*/
-/*!
- * Bootstrap v4.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
 
-  */
-   /*
-@import 'assets/css/bootstrap-4.0.0/css/bootstrap.min.css' ;
-
-
- @import 'assets/css/bootstrap-4.0.0/js/bootstrap.min.js';
-
- @import 'assets/js/jquery/dist/jquery.min.js'; 
- @import 'assets/css/bootstrap-4.3.1-dist/js/bootstrap.js'; 
- @import 'assets/js/js/dist/index.js'; 
- @import 'assets/js/js/dist/dropdown.js';
- @import 'assets/js/js/dist/carousel.js';
- @import 'assets/js/popper.js/dist/popper.js';
-
-
-@font-face {
-  font-family: Arciform;
-  src: url(assets/fonts/arciform/Arciform.otf) format("opentype");
-}
-*/
 @font-face {
   font-family: Philosopher;
   src: url(assets/fonts/philosopher/Philosopher-Regular.ttf) format("opentype");
@@ -5881,7 +5848,6 @@
    outline: 0;
    height: 590px;
  }
- 
  .modal-backdrop {
    position: fixed;
    top: 0;
@@ -11213,6 +11179,10 @@ margin-top: 4%;
   }
 #botaoVoltarInfo{
   margin-top: 4%;
+  margin-left: 11%;
+}
+.botaoVoltarInfoPerfil{
+  margin-top: 4%; 
 }
 #botaoSalvarAlteracao{
   margin-top: 4%;
@@ -11499,4 +11469,15 @@ border-top: 0px !important;
   border: solid 1px;
   width: 18%;
   font-family: arial;
+}
+.elementoGeralAvaliacao{
+  margin-top: 37px;
+}
+.itensAvaliacao{
+  margin-top: 5%;
+  font-size: 16px;
+  font-family: arial;
+}
+#modalRating{
+  height: 600px;
 }

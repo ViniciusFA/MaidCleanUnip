@@ -24,4 +24,6 @@ import { Component} from '@angular/core';
 })
 export class NgbdRatingTemplate {
   currentRate = 5;
+
+ 
 }

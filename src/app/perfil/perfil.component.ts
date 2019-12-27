@@ -1,4 +1,6 @@
+import { UsuarioService } from './../services/usuario/usuario.service';
 import { Usuario } from './../system-objects/usuario-model';
+import { Avaliacoes } from './../system-objects/avaliacoes-model';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -10,17 +12,20 @@ import { Component, OnInit } from '@angular/core';
 export class PerfilComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private usuarioService:UsuarioService) {
     this.configurarFormulario();
   }
 
   private formulario: FormGroup;
   private editingFields: boolean = true;
   private usuarioInfo: Usuario = new Usuario();
+  private avaliacoes: Avaliacoes = new Avaliacoes();
   //private selectedFile:File = null;
 
   ngOnInit() {
     this.recebendoParametroInfoUsuario();
+    this.getRatingUser(this.usuarioInfo.id);
   }
 
   configurarFormulario() {
@@ -47,6 +52,14 @@ export class PerfilComponent implements OnInit {
     })
   }
 
+  percorrerFormulario(){ 
+   var UserArray = Object.entries(this.formulario.controls);
+   UserArray.forEach(element => {
+     console.log(element[1].value);
+   });
+   console.log(UserArray);
+  }
+
   editarCamposPerfil() {
     this.habilitaCamposFormulario();
     this.toggleShowBtnEdit();
@@ -59,6 +72,7 @@ export class PerfilComponent implements OnInit {
   cancelarAlteracaoPerfil() {
     this.desabilitaCamposFormulario();
     this.toggleShowBtnEdit();
+    this.percorrerFormulario();
   }
 
   salvarAlteracao() {
@@ -162,4 +176,11 @@ export class PerfilComponent implements OnInit {
   excluirConta(){
     alert("Conta excluída com sucesso.");
   }
+
+  getRatingUser(id_user: Number){
+    this.usuarioService.getAvaliationsUser(id_user) .subscribe(response => {
+      console.log(response);
+    });
+  }
+
 }

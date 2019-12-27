@@ -82,7 +82,7 @@ export class HeaderComponent implements OnInit {
     this.usuarioService.getUsuarioPorLogin(this.usuarioLoginInfo).subscribe(res =>{
       var resposta = res; 
 
-      console.log(resposta);
+      //pega informacoes do usuario para enviar para a page perfil  
       this.usuarioInfo = resposta;
       this.usuarioInfo.id = resposta.idUsuario;
       this.usuarioInfo.nome = resposta.nome;
@@ -102,7 +102,6 @@ export class HeaderComponent implements OnInit {
       this.usuarioInfo.estado = resposta.estado;
       this.usuarioInfo.cep = resposta.cep;
       this.usuarioInfo.avaliacao = resposta.avaliacao;
-      console.log(this.usuarioInfo.avaliacao);
       this.usuarioInfo.sexo = resposta.sexo;
       this.usuarioInfo.idRole = resposta.idRole;
       this.enviarParametrosUsuario(this.usuarioInfo);

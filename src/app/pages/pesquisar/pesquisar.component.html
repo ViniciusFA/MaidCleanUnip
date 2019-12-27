@@ -93,8 +93,9 @@
                                 <td class="contentCells">{{user.estado}}</td>
                                 <td class="contentCells">{{user.cidade}}</td>
                                 <td class="contentCells">{{user.sexo}}</td>
-                                <td>
-                                    <app-rating-template></app-rating-template>
+                                <td data-toggle="modal" data-target="#modalRating">
+                                    <app-rating-template>                                        
+                                    </app-rating-template>
 
                                 </td>
                                 <td>&nbsp; &nbsp; 1</td>
@@ -150,6 +151,39 @@
                           </div>
                         </div>
                 </div>   
-        </div>    
-        -->
+            </div>    
+     -->
+
+        <!-- abrindo modal de rating-->        
+        <div class="modal" tabindex="-1" role="dialog" id="modalRating">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content" id="modalRating">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="titleModalAvaliation">Avaliação</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Média:4</h5>
+                  <ul class="elementoGeralAvaliacao">
+                      <li class="itensAvaliacao">Compromisso:</li>
+                      <li class="itensAvaliacao">Organização:</li>
+                      <li class="itensAvaliacao">Disciplina:</li>
+                      <li class="itensAvaliacao">Limpeza:</li>                      
+                  </ul>
+                  <hr>
+                  <p>A média é avaliada da seguinte fórmula:</p>
+                  <p>(notaComp + notaOrg + notaDis + notaLimp) / 4, onde:</p>
+                  <p>notaComp = Nota no ítem Compromisso</p>
+                  <p>notaOrg = Nota no ítem Organização</p>
+                  <p>notaDis = Nota no ítem Disciplina</p>
+                  <p>notaLimp = Nota no ítem Limpeza</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+               </div>
+              </div>
+            </div>
+          </div>
 </div>

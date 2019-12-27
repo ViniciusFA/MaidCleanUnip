@@ -1,14 +1,13 @@
 ﻿import { Avaliacoes } from './../../util/avaliacoes';
 import { Usuario } from './../../system-objects/usuario-model';
 import { RoleEnum } from './../../system-objects/role-enum';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Funcionario } from '../../services/funcionario/funcionario';
 import { Response } from '../../services/response';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Estados } from '../../util/estados';
 import { Experiencia } from '../../util/experiencia';
-import { Sexo } from '../../util/sexo';
 import { PesquisaFuncionarioService } from '../../services/Pesquisa/PesquisaFuncionarioService';
 import { PesquisaFuncionario } from '../../services/Pesquisa/PesquisaFuncionario';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
@@ -92,7 +91,6 @@ export class PesquisarComponent implements OnInit {
   }
 
   pesquisar() {
-
     this.usuarioFuncionario = this.formulario.value;
 
     let todosCamposVazios: Boolean = this.verificarCamposVazios(this.usuarioFuncionario);
@@ -137,30 +135,6 @@ export class PesquisarComponent implements OnInit {
     this.router.navigate(['infoFuncionario'], { queryParams: funcionario });
   }
 
-  /*
-  verificaCamposVazios(usuario: Usuario) {
-    if (
-      usuario.cidade == "" || usuario.cidade == undefined || usuario.cidade == null
-      && usuario.estado == "" || usuario.estado == undefined || usuario.estado == null || usuario.estado == "Selecione"
-      && usuario.experiencia == "" || usuario.experiencia == undefined || usuario.experiencia == null
-      && usuario.nome == "" || usuario.nome == undefined || usuario.nome == null
-      && usuario.sexo == "" || usuario.sexo == undefined || usuario.sexo == null || usuario.sexo == "Selecione"
-      && usuario.sobrenome == "" || usuario.sobrenome == undefined || usuario.sobrenome == null || usuario.experiencia == "Selecione"
-
-    ) {
-      alert("Prrencha algum campo para pesquisar.");
-      console.log(usuario);
-      //busca todas as pessoas registradas na tabela ao iniciar a página.
-      this.usuarioService.getUsuarioPorPerfil(RoleEnum.Funcionario).subscribe(res => {
-        this.usuarios = res;
-      });
-      return 0;
-    } else {
-      return 1;
-    }
-  }
-  */
-
   verificarCamposVazios(camposPesquisa: Usuario) {
     if (camposPesquisa.nome.length == 0
       && camposPesquisa.sobrenome.length == 0
@@ -176,9 +150,6 @@ export class PesquisarComponent implements OnInit {
   }
 
   configurarAvaliacao() {
-    console.log("Avaliação:");
-    console.log(this.usuarios);
-    console.log(this.usuarioFuncionario);
   }
 
 }

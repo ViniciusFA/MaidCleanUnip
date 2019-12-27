@@ -109,9 +109,10 @@ export function getAuthServiceConfigs() {
     }   
   ],
   bootstrap: [  
-    AppComponent,  
-    HeaderComponent,
-    NgbdRatingTemplate
+    AppComponent
+    //,  
+    //HeaderComponent,
+    //NgbdRatingTemplate
   ]
 })
 export class AppModule { }
