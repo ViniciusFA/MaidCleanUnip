@@ -1,3 +1,4 @@
+import { AvaliacoesService } from './services/avaliacoes/avaliacoes.service';
 import { UsuarioService } from './services/usuario/usuario.service';
 import { LoaderProvider } from './providers/loader-provider';
 import { LoginModule } from './pages/login/login.module';
@@ -102,6 +103,7 @@ export function getAuthServiceConfigs() {
                AuthGuard,
                LoaderProvider,
                UsuarioService,
+               AvaliacoesService,
                OportunidadesModalComponent,
     {
       provide: SocialServiceConfig,

@@ -55,11 +55,5 @@ export class UsuarioService {
             .map(res => res.json());
     }
 
-    /*Pega Avaliação do usuario no banco */
-    getAvaliationsUser(id_usuario:Number){
-        //http://localhost:8090/api/usuario/avaliacoes/191
-        return this.http.get(this.baseUrlService + '/avaliacoes/' + id_usuario)
-            .map(res => res.json());
-
-    }
+    
 }

@@ -1,3 +1,4 @@
+import { AvaliacoesService } from './../services/avaliacoes/avaliacoes.service';
 import { UsuarioService } from './../services/usuario/usuario.service';
 import { Usuario } from './../system-objects/usuario-model';
 import { Avaliacoes } from './../system-objects/avaliacoes-model';
@@ -13,7 +14,7 @@ export class PerfilComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private activatedRoute: ActivatedRoute,
-              private usuarioService:UsuarioService) {
+              private avaliacoesService:AvaliacoesService) {
     this.configurarFormulario();
   }
 
@@ -21,6 +22,7 @@ export class PerfilComponent implements OnInit {
   private editingFields: boolean = true;
   private usuarioInfo: Usuario = new Usuario();
   private avaliacoes: Avaliacoes = new Avaliacoes();
+  private media:number = 0.0;
   //private selectedFile:File = null;
 
   ngOnInit() {
@@ -178,9 +180,16 @@ export class PerfilComponent implements OnInit {
   }
 
   getRatingUser(id_user: Number){
-    this.usuarioService.getAvaliationsUser(id_user) .subscribe(response => {
-      console.log(response);
-    });
+    this.avaliacoesService.getAvaliationsUser(id_user) .subscribe(response => {
+      this.avaliacoes = response;
+      this.getAverageAvaliation(this.avaliacoes);
+    });    
+  }
+
+  getAverageAvaliation(avaliacoes:Avaliacoes){
+    this.media = (avaliacoes.compromisso + avaliacoes.disciplina + 
+                  avaliacoes.organizacao + avaliacoes.limpeza) / 4;
+    this.media = parseFloat(this.media.toFixed(2));
   }
 
 }

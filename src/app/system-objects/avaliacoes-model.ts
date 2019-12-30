@@ -1,7 +1,7 @@
 export class Avaliacoes{
-    idUsuario:Number;
-    compromisso:Number;
-    organizacao:Number;
-    disciplina:Number;
-    limpeza:Number;
+    idUsuario:number;
+    compromisso:number;
+    organizacao:number;
+    disciplina:number;
+    limpeza:number;
 }
