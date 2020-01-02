@@ -1,6 +1,8 @@
 import { ConfigService } from './../config.service';
 import { Http, RequestOptions, Headers } from '@angular/http';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class AvaliacoesService{
 
     private baseUrlService: string = '';

@@ -1,7 +1,10 @@
+import { Injectable } from '@angular/core';
 import { RoleEnum } from './../../system-objects/role-enum';
 import { Usuario } from './../../system-objects/usuario-model';
 import { ConfigService } from './../config.service';
 import { RequestOptions, Http, Headers } from '@angular/http';
+
+@Injectable()
 export class UsuarioService {
 
     private baseUrlService: string = '';
