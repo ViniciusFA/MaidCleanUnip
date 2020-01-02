@@ -12,7 +12,7 @@
         <div class="form-row">
           <div class="conteudoDivColunaInfo inputInfoFunc inputInfoID">
             <label><b> ID:</b></label>
-            {{usuarioInfo.id}}
+            {{usuarioInfo.idUsuario}}
           </div>
         </div>
       </div>
@@ -189,22 +189,35 @@
 </div>
 <br>
 
-<!--Botões de integração do Patrão para o funcionário-->
-<div class="botoesInfoFunc">
-  <div id="botaoEnviarMensagemInfo">
-    <button type="button" class="btn btn-light" (click)="sendMessageChat()">Envie uma Mensagem</button>
-  </div>
-  <div id="botaoVerCurriculoInfo">
-    <button type="button" class="btn btn-light">Ver currículo</button>
-  </div>
-  <div id="botaoAvaliacaoInfo">
-    <button type="button" class="btn btn-light"> Avaliação</button>
-  </div>
-  <div id="botaoVoltarInfo">
-    <button type="button" class="btn btn-light" [routerLink]="['/pesquisar']">Voltar</button>
-  </div>
-</div>
+<div class="conteudoBotoesAvaliacao">
 
+  <!--Botões de integração do Patrão para o funcionário-->
+  <div class="botoesInfoFunc">
+    <div id="botaoEnviarMensagemInfo">
+      <button type="button" class="btn btn-light" (click)="sendMessageChat()">Envie uma Mensagem</button>
+    </div>
+    <div id="botaoVerCurriculoInfo">
+      <button type="button" class="btn btn-light">Ver currículo</button>
+    </div>
+    <div id="botaoAvaliacaoInfo">
+      <button type="button" class="btn btn-light"> Avaliação</button>
+    </div>
+    <div id="botaoVoltarInfo">
+      <button type="button" class="btn btn-light" [routerLink]="['/pesquisar']">Voltar</button>
+    </div>
+  </div>
+  <br>
+
+  <!--Janela de avalação do funcionário-->
+  <div class="avaliacaoInfo">        
+    <p>Compromisso: {{avaliacoes.compromisso}}</p>
+    <p>Organização: {{avaliacoes.organizacao}}</p>
+    <p>Disciplina: {{avaliacoes.disciplina}}</p>
+    <p>Limpeza: {{avaliacoes.limpeza}}</p>
+    <p>Media: {{media}}</p>
+  </div>
+
+</div>
 
 <br>
 <br>

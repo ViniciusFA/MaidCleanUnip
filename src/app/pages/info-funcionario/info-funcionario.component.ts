@@ -1,3 +1,5 @@
+import { Avaliacoes } from './../../system-objects/avaliacoes-model';
+import { AvaliacoesService } from './../../services/avaliacoes/avaliacoes.service';
 import { ChatMessageComponent } from './chat-message/chat-message.component';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { Usuario } from './../../system-objects/usuario-model';
@@ -19,7 +21,10 @@ export class InfoFuncionarioComponent implements OnInit {
   private formulario: FormGroup;
   private edicao: Boolean = true;
   private usuarioInfoNovo: Usuario = new Usuario();
+  private avaliacoes: Avaliacoes = new Avaliacoes();
   private chatActivated = false;
+  private media:number = 0.0;
+  
 
 
   @ViewChild('confirmExcluir', { static: false }) confirmExcluir: ElementRef;
@@ -27,6 +32,7 @@ export class InfoFuncionarioComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private usuarioService: UsuarioService,
+    private avaliacoesService: AvaliacoesService, 
     private router: Router,
     private formBuilder: FormBuilder) {
     this.configurarCampos();
@@ -35,6 +41,7 @@ export class InfoFuncionarioComponent implements OnInit {
   ngOnInit() {
     this.titulo = "Informação Funcionário";
     this.recebendoParamsFuncionario();
+    this.getAvaliations();
   }
 
   //recebe os dados no formulario inserido pelo usuário
@@ -65,7 +72,7 @@ export class InfoFuncionarioComponent implements OnInit {
   //método que captura o funcionário selecionado no badge info da página pesquiasr
   recebendoParamsFuncionario() {
     //recebendo os valores vindo da router através do queryParams
-    this.usuarioInfo.id = this.activatedRoute.snapshot.queryParams.idUsuario;
+    this.usuarioInfo.idUsuario = this.activatedRoute.snapshot.queryParams.idUsuario;
     this.usuarioInfo.nome = this.activatedRoute.snapshot.queryParams.nome;
     this.usuarioInfo.sobrenome = this.activatedRoute.snapshot.queryParams.sobrenome;
     this.usuarioInfo.login = this.activatedRoute.snapshot.queryParams.login;
@@ -130,7 +137,7 @@ export class InfoFuncionarioComponent implements OnInit {
 
   //Exclui um funcionário ao clicar no botão excluir
   excluir(usuarioInfo: Usuario) {
-    this.usuarioService.deleteUsuario(this.usuarioInfo.id)
+    this.usuarioService.deleteUsuario(this.usuarioInfo.idUsuario)
       .subscribe(response => {
         let res: Response = <Response>response;
         if (res.codigo == 1) {
@@ -231,7 +238,7 @@ export class InfoFuncionarioComponent implements OnInit {
     }
 
     //recebendo valores novos do objetoFUncValueAntigo
-    this.usuarioInfo.id = objetoFuncValueAntigo[0];
+    this.usuarioInfo.idUsuario = objetoFuncValueAntigo[0];
     this.usuarioInfo.nome = objetoFuncValueAntigo[1];
     this.usuarioInfo.sobrenome = objetoFuncValueAntigo[2];
     this.usuarioInfo.login = objetoFuncValueAntigo[3];
@@ -283,6 +290,22 @@ export class InfoFuncionarioComponent implements OnInit {
     this.chatActivated = false;
     alert(this.chatActivated);
   }
+
+  getAvaliations(){
+    this.avaliacoesService.getAvaliationsUser(this.usuarioInfo.idUsuario).subscribe(res => {
+      this.avaliacoes = res;
+      this.getAverageAvaliation(this.avaliacoes);
+    });   
+  }
+
+  getAverageAvaliation(avaliations:Avaliacoes){
+    this.media = (this.avaliacoes.compromisso + this.avaliacoes.disciplina 
+                  + this.avaliacoes.limpeza + this.avaliacoes.organizacao)/4;
+    this.media = (parseFloat(this.media.toFixed(2)));
+    }
+
 }
+
+
 
 

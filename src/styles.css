@@ -11481,3 +11481,13 @@ border-top: 0px !important;
 #modalRating{
   height: 600px;
 }
+.avaliacaoInfo{
+  margin-left: 67%;
+  margin-top: -31%;
+  border: solid 1px;
+  width: 18%;
+  font-family: arial;  
+}
+.conteudoBotoesAvaliacao{
+  margin-top: 14%;
+}
