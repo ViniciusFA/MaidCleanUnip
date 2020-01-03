@@ -27,7 +27,7 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit() {
     this.recebendoParametroInfoUsuario();
-    this.getRatingUser(this.usuarioInfo.id);
+    this.getRatingUser(this.usuarioInfo.idUsuario);
   }
 
   configurarFormulario() {
@@ -131,7 +131,7 @@ export class PerfilComponent implements OnInit {
 
   recebendoParametroInfoUsuario() {
     this.usuarioInfo.idRole = this.activatedRoute.snapshot.queryParams.idRole;
-    this.usuarioInfo.id = this.activatedRoute.snapshot.queryParams.idUsuario;
+    this.usuarioInfo.idUsuario = this.activatedRoute.snapshot.queryParams.idUsuario;
     this.usuarioInfo.nome = this.activatedRoute.snapshot.queryParams.nome;
     this.usuarioInfo.sobrenome = this.activatedRoute.snapshot.queryParams.sobrenome;
     this.usuarioInfo.login = this.activatedRoute.snapshot.queryParams.login;

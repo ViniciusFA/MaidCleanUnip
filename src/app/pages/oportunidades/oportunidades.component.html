@@ -54,8 +54,8 @@
       <br />
       <!--<div class="container">-->
       <div class="row" id="conteudoGridsOportunidade">
-        <!--Card 01 linha 01-->
-        <div class="col-4 card" style="width: 18rem;" *ngFor="let vaga of vagas">
+        <!--Cards sendo iterados-->
+        <div class="col-4 card" style="width: 18rem;" *ngFor="let vaga of pageOfItems">
           <div class="card-body">
             <h5 class="card-title">
               <label class="conteudoGridVaga">{{vaga.titulo}}</label>
@@ -73,8 +73,14 @@
           </div>
         </div>
       </div>
+
       <br>
       <br>
+
+      <div class="paginacaoVagas">
+        <jw-pagination [items]="vagas" (changePage)="onChangePage($event)"></jw-pagination>
+     </div>
+
     </div>
   </div>
 </div>

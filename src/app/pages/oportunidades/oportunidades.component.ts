@@ -18,6 +18,8 @@ export class OportunidadesComponent implements OnInit {
   private formulario: FormGroup;
   private vaga: Vaga = new Vaga();
   private listaParametros: String[] = new Array();
+  pageOfItems:Array<any>;
+
 
   constructor(private formBuilder: FormBuilder,
     private vagaService: VagaService,
@@ -59,6 +61,11 @@ export class OportunidadesComponent implements OnInit {
       estado: new FormControl(''),
       cidade: new FormControl('')
     });
+  }
+
+  onChangePage(pageOfItems: Array<any>){
+    //atualiza pagina de itens atual
+    this.pageOfItems = pageOfItems;
   }
 
   limparCampos() {

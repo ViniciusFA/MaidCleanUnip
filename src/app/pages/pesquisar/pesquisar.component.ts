@@ -1,4 +1,5 @@
-﻿import { Avaliacoes } from './../../util/avaliacoes';
+﻿import { NgbdRatingTemplate } from './../rating-template/rating-template.component';
+import { Avaliacoes } from './../../util/avaliacoes';
 import { Usuario } from './../../system-objects/usuario-model';
 import { RoleEnum } from './../../system-objects/role-enum';
 import { Component, OnInit, Input } from '@angular/core';
@@ -18,13 +19,13 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 })
 export class PesquisarComponent implements OnInit {
 
-  private usuarios: Usuario[] = new Array();
   private titulo: string;
   private formulario: FormGroup;
   private pesquisaFuncionario: PesquisaFuncionario = new PesquisaFuncionario();
   private usuarioFuncionario: Usuario = new Usuario();
-
-  currentRate = 6;
+  private rating:NgbdRatingTemplate;
+  private usuarios: Array<any>;
+  pageOfItems:Array<any>;
 
   constructor(private usuarioService: UsuarioService,
     private formBuilder: FormBuilder,
@@ -34,9 +35,8 @@ export class PesquisarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.titulo = "Pesquisar Funcionários";
-    this.pegarUsuariosPorPerfil();
-    this.configurarAvaliacao();
+    this.titulo = "Pesquisar Funcionários";       
+    this.pegarUsuariosPorPerfil();           
   }
 
   estados = [
@@ -64,6 +64,7 @@ export class PesquisarComponent implements OnInit {
     new Avaliacoes(5, "5"),
   ];
 
+  
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
       nome: new FormControl('', [Validators.minLength(3), Validators.maxLength(15)]),
@@ -77,8 +78,13 @@ export class PesquisarComponent implements OnInit {
 
   pegarUsuariosPorPerfil() {
     this.usuarioService.getUsuariosPorPerfil(RoleEnum.Funcionario).subscribe(res => {
-      this.usuarios = res;
+      this.usuarios = res;      
     });
+  }
+
+  onChangePage(pageOfItems: Array<any>){
+    //atualiza pagina de itens atual
+    this.pageOfItems = pageOfItems;
   }
 
   limparCampos() {
@@ -148,8 +154,6 @@ export class PesquisarComponent implements OnInit {
       return false;
     }
   }
-
-  configurarAvaliacao() {
-  }
+  
 
 }

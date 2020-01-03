@@ -4657,8 +4657,8 @@
    word-wrap: break-word;
    background-color: #fff;
    background-clip: border-box;
-   border: 3px solid #d0dae0;
-   padding: 1%;
+   border: 2px solid #d0dae0;
+   padding: 2%;
  }
  
  .card > hr {
@@ -4893,6 +4893,8 @@
    display: flex;
    padding-left: 0;
    list-style: none;
+   margin-left: 23%;
+   margin-bottom: 2%;
  }
  
  .page-link {
@@ -4928,8 +4930,8 @@
  .page-item.active .page-link {
    z-index: 1;
    color: white;
-   background-color: #1a1a1a;
-   border-color: #1a1a1a;
+   background-color: #1b2fec;
+    border-color: #35a1bb;
  }
  
  .page-item.disabled .page-link {
@@ -11084,7 +11086,7 @@ margin-left: -8%;
   margin-top: 1%;
 }
 #conteudoGridsOportunidade{
-  margin-top: 6%;
+  margin-top: 4%;
   margin-left: -3%;
   margin-right: 1%;
   width: 120%;
@@ -11490,4 +11492,14 @@ border-top: 0px !important;
 }
 .conteudoBotoesAvaliacao{
   margin-top: 14%;
+}
+.paginacaoPesquisar{
+  margin-bottom: 9%;
+  margin-top: -4%;
+  margin-left: 13%;
+}
+
+.paginacaoVagas{
+  margin-bottom: 6%;
+  margin-left: 13%;
 }

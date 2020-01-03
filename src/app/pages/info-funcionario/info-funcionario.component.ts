@@ -133,6 +133,7 @@ export class InfoFuncionarioComponent implements OnInit {
       this.usuarioInfo.profissao = this.activatedRoute.snapshot.queryParams.profissao;
     }
 
+    
   }
 
   //Exclui um funcionário ao clicar no botão excluir

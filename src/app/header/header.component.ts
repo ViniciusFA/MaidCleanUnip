@@ -84,7 +84,7 @@ export class HeaderComponent implements OnInit {
 
       //pega informacoes do usuario para enviar para a page perfil  
       this.usuarioInfo = resposta;
-      this.usuarioInfo.id = resposta.idUsuario;
+      this.usuarioInfo.idUsuario = resposta.idUsuario;
       this.usuarioInfo.nome = resposta.nome;
       this.usuarioInfo.sobrenome = resposta.sobrenome;
       this.usuarioInfo.login = resposta.login;
