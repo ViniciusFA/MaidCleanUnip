@@ -15,6 +15,8 @@ export class AnuncieComponent implements OnInit {
   private formulario: FormGroup;
   private vaga: Vaga;
   private caracteresMaximo: number = 400;
+  private nameField:string = '';
+  private id:number = 0;
 
   constructor(private formBuilder: FormBuilder,
     private vagaService: VagaService) {
@@ -23,6 +25,7 @@ export class AnuncieComponent implements OnInit {
 
   ngOnInit() {
     this.titulo = 'Anunciar Vagas';
+    //this.getNameUser();
   }
 
   estados = [
@@ -34,7 +37,7 @@ export class AnuncieComponent implements OnInit {
 
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
-      nomeEmpregador: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]),
+      nomeEmpregador: new FormControl(''),
       titulo: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
       subtitulo: new FormControl('', [Validators.minLength(3), Validators.maxLength(40)]),
       cidade: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]),
@@ -42,6 +45,13 @@ export class AnuncieComponent implements OnInit {
       telefone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
       descricao: new FormControl('', [Validators.required, Validators.maxLength(400)])
     });
+  }
+
+  getIdAndNameUser(){
+   this.nameField = localStorage.getItem('nomeChat');
+  //get and send login and password to back - database to get ID
+
+
   }
 
   anunciar() {

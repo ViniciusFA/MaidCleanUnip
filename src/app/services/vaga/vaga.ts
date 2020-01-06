@@ -1,3 +1,4 @@
+import { Usuario } from './../../system-objects/usuario-model';
 export class Vaga {
     id: string;
     titulo: string;
@@ -7,4 +8,6 @@ export class Vaga {
     estado: string;
     cidade: string;
     telefone: string;
+    idUsuario:Usuario;
+    idEmpregador:number;
 }

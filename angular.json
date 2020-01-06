@@ -33,7 +33,8 @@
               "src/assets/js/js/dist/alert.js",
               "src/assets/js/js/dist/carousel.js",
               "src/assets/js/js/dist/dropdown.js",
-              "src/assets/js/popper.js/dist/popper.min.js"
+              "src/assets/js/popper.js/dist/popper.min.js",
+              "src/assets/js/js/src/calendar.js"
             ]
           },
           "configurations": {
@@ -95,7 +96,7 @@
                           
             ],
             "scripts": [
-              
+              "src/assets/js/js/src/calendar.js"
             ]
           }
         },

@@ -77,7 +77,17 @@ export class OportunidadesComponent implements OnInit {
     }
 
   oportunidadeInfo(vaga: Vaga) {
-    this.router.navigate(['oportunidade-modal'], { queryParams: vaga });
+    this.vaga.id = vaga.id;
+    this.vaga.idEmpregador = vaga.idUsuario.idUsuario;
+    this.vaga.nomeEmpregador = vaga.idUsuario.nome;
+    this.vaga.telefone = vaga.idUsuario.telefone;
+    this.vaga.subtitulo = vaga.subtitulo;
+    this.vaga.titulo = vaga.titulo;    
+    this.vaga.estado = vaga.estado;
+    this.vaga.cidade = vaga.cidade;
+    this.vaga.descricao = vaga.descricao;
+
+    this.router.navigate(['oportunidade-modal'], { queryParams: this.vaga });
   }
 
   pesquisarVaga() {

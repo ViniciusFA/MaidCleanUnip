@@ -13,11 +13,10 @@
                             (ngSubmit)="anunciar()">
                             <div class="form-row" id="camposFormAnuncie">
                                 <div class="col-4" id="textoLabelPadrao">
-                                    <b>Nome</b>
-                                    <input type="text" class="form-control estiloCampos" id="campoAnuncieVagasEmpregador"
+                                    <b> ID - Nome</b>
+                                    <input [readonly]="true" type="text" class="form-control estiloCampos" id="campoAnuncieVagasEmpregador"
                                         formControlName="nomeEmpregador" name="nome" ngDefaultControl
-                                        placeholder="Nome do empregador">
-                                    <p>(Insira entre 3 a 40 caracteres)</p>
+                                        placeholder="{{id}} - {{nameField}}">
                                 </div>
                                 <div class="col-4" id="textoLabelPadrao">
                                     <b>Título</b>

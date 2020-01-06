@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
     this.loginService.verificarLogin(this.usuario.login, this.usuario.senha)
       .subscribe(response => {
         let res: Response = <Response>response;
-        if (res.codigo == 1) {
+        if (res.codigo == 1) {          
           alert(res.mensagem);
           this.formulario.reset();
           localStorage.setItem("Usuario", JSON.stringify(this.usuario));
@@ -69,8 +69,7 @@ export class LoginComponent implements OnInit {
         } else {
           alert(res.mensagem);
         }
-      })
-      
+      })      
   }
 
   ngOnDestroy() {
@@ -96,7 +95,6 @@ export class LoginComponent implements OnInit {
     },(erro)=>{
       console.log(erro);
     });
-
   }
 
 }

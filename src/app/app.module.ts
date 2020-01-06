@@ -46,6 +46,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdRatingTemplate } from './pages/rating-template/rating-template.component';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { PaginationComponent } from './components/pagination/pagination/pagination.component';
+import { CalendarComponent } from './components/calendar/calendar/calendar.component';
 
 
 // Configs
@@ -81,7 +82,8 @@ export function getAuthServiceConfigs() {
     ChatMessageOportunityComponent,
     NgbdRatingTemplate,
     //JwPaginationComponent,
-    PaginationComponent
+    PaginationComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
