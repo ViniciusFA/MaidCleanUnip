@@ -11780,3 +11780,12 @@ td > span:active{
 .cabecalho-modal{
   padding: 1rem 1rem;
 }
+.modalCurriculo{
+  width: 27%;
+  height: 65%;  
+  margin-top: -17%; 
+  margin-left: 32%;
+  border: 1px solid;
+  position: relative;
+  background-color: white;
+}

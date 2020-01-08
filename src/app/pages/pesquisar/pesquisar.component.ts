@@ -26,6 +26,7 @@ export class PesquisarComponent implements OnInit {
   private rating:NgbdRatingTemplate;
   private usuarios: Array<any>;
   pageOfItems:Array<any>;
+  private todosCamposVazios: Boolean = false;
 
   constructor(private usuarioService: UsuarioService,
     private formBuilder: FormBuilder,
@@ -88,26 +89,28 @@ export class PesquisarComponent implements OnInit {
   }
 
   limparCampos() {
-    (<HTMLSelectElement>document.getElementById('campoNomePesquisar')).value = "";
-    (<HTMLSelectElement>document.getElementById('campoSobreNomePesquisar')).value = "";
+    this.formulario.reset();
+    console.log(this.formulario.value);
     (<HTMLSelectElement>document.getElementById('campoEstadoPesquisar')).value = "Selecione";
-    (<HTMLSelectElement>document.getElementById('campoCidadePesquisar')).value = "";
     (<HTMLSelectElement>document.getElementById('campoSexoPesquisar')).value = "Selecione";
     (<HTMLSelectElement>document.getElementById('campoExperienciaPesquisar')).value = "Selecione";
+    console.log(this.formulario.value);
   }
 
   pesquisar() {
     this.usuarioFuncionario = this.formulario.value;
-
-    let todosCamposVazios: Boolean = this.verificarCamposVazios(this.usuarioFuncionario);
-    if (todosCamposVazios == true) {
+    console.log(this.formulario.value);
+    this.todosCamposVazios = this.verificarCamposVazios(this.usuarioFuncionario);
+    if (this.todosCamposVazios) {
       alert("Preencha pelo menos um campo para pesquisar.");
-    } else {
+      this.pegarUsuariosPorPerfil();
+    }else {
       this.pesquisaFuncionarioService.buscar(this.usuarioFuncionario)
         .subscribe(response => {
           if (response == 0) {
             alert("Não há registros dessa pesquisa.");
             this.limparCampos();
+            this.todosCamposVazios = true;
           } else {
             this.usuarios = response;
             this.limparCampos();
@@ -142,16 +145,20 @@ export class PesquisarComponent implements OnInit {
   }
 
   verificarCamposVazios(camposPesquisa: Usuario) {
-    if (camposPesquisa.nome.length == 0
-      && camposPesquisa.sobrenome.length == 0
-      && camposPesquisa.estado.length == 0
-      && camposPesquisa.cidade.length == 0
-      && camposPesquisa.avaliacao.length == 0
-      && camposPesquisa.experiencia.length == 0
+    if ((camposPesquisa.nome == null || camposPesquisa.nome == "")
+      && (camposPesquisa.sobrenome == null || camposPesquisa.sobrenome  == "")
+      && (camposPesquisa.estado == null || camposPesquisa.estado == "" )
+      && (camposPesquisa.cidade == null || camposPesquisa.cidade == "")
+      //&& camposPesquisa.avaliacao.length == 0
+      //&& camposPesquisa.experiencia.length == 0
+      && (camposPesquisa.avaliacao == null || camposPesquisa.avaliacao == "")
+      && (camposPesquisa.experiencia == null || camposPesquisa.experiencia == "")
     ) {
-      return true;
+      this.todosCamposVazios = true;
+      return this.todosCamposVazios;
     } else {
-      return false;
+      this.todosCamposVazios = false;
+      return this.todosCamposVazios;
     }
   }
   
