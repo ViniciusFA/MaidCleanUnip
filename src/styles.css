@@ -11792,3 +11792,6 @@ td > span:active{
 .modalExcluirFunc{
   height: 6%;
 }
+.containerChatMessage{
+  margin-top: 3%;
+}

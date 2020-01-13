@@ -20,7 +20,7 @@
                         <div class="form-row">
                                 <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
                                         <label><b> Nome:</b></label>
-                                        <input class="form-control contaudoInputInfo" formControlName="nome" type="text"
+                                        <input class="form-control contaudoInputInfo" name="nome" formControlName="nome" type="text"
                                                 value="{{usuarioInfo.nome}}">
 
                                 </div>
@@ -252,7 +252,9 @@
 <br>
 <br>
 <div class="chatMessageWindow" *ngIf="chatActivated">
-        <app-chat-message></app-chat-message>
+        <div (click)="teste()">        
+                <app-chat-message></app-chat-message>
+        </div>
 </div>
 <br>
 <br>

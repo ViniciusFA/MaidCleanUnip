@@ -9,61 +9,85 @@ import $ from 'jquery';
   selector: 'app-chat-message',
   templateUrl: './chat-message.component.html'
 })
-export class ChatMessageComponent implements OnInit{
+export class ChatMessageComponent implements OnInit {
 
   private serverURL = 'http://localhost:8090/socket';
   private title = 'WebScokets chat';
   private stompClient;
-  private formulario:FormGroup;
-  private usuario:Usuario = new Usuario();
-  private nomeChat:String = '';
-  private sobreNomeChat:String = '';
+  private formulario: FormGroup;
+  private usuario: Usuario = new Usuario();
+  private nomeChat: String = '';
+  private sobreNomeChat: String = '';
   private elementRef: ElementRef;
+  id = 'containerChat';
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(private formBuilder: FormBuilder) {
     this.configurarFormulario();
   }
 
-  ngOnInit():void {
-    this.initializeWebSocketConnection();  
+  ngOnInit(): void {
+    this.initializeWebSocketConnection();
     this.abrirChatMessage();
   }
 
-configurarFormulario(){
-  this.formulario = this.formBuilder.group({
-    message: new FormControl('',[Validators.required,Validators.minLength(1)])
-  })
-}
+  configurarFormulario() {
+    this.formulario = this.formBuilder.group({
+      message: new FormControl('', [Validators.required, Validators.minLength(1)])
+    })
+  }
 
-initializeWebSocketConnection(){
-  let ws = new SockJS(this.serverURL);
-  this.stompClient = Stomp.over(ws);
-  let that = this;
-  this.stompClient.connect({},function(frame){
-    that.stompClient.subscribe("/chat", (message) => {
-       //pega o ususario logado e cadastrado no local storage
-       var nomeUsuario = JSON.parse(localStorage.getItem('Usuario'));
-       this.usuarioLogado = nomeUsuario.login;
+  initializeWebSocketConnection() {
+    let ws = new SockJS(this.serverURL);
+    this.stompClient = Stomp.over(ws);
+    let that = this;
+    this.stompClient.connect({}, function (frame) {
+      that.stompClient.subscribe("/chat", (message) => {
+        //pega o ususario logado e cadastrado no local storage
+        var nomeUsuario = JSON.parse(localStorage.getItem('Usuario'));
+        this.usuarioLogado = nomeUsuario.login;
 
-      //escreve no topo do body do chat
-      $(".chat").append("<div class='tituloMessageChat'>" + this.usuarioLogado + "</div");
-      //cada vez qaue envia mensagem entra nesse if
-      if(message.body){          
+        //escreve no topo do body do chat
+        $(".chat").append("<div class='tituloMessageChat'>" + this.usuarioLogado + "</div");
+        //cada vez qaue envia mensagem entra nesse if
+        if (message.body) {
           $(".chat").append("<div class='message'>" + message.body + "</div>");
           console.log("Message:");
           console.log(message);
-      }
+        }
+      })
     })
-  })
-}
+  }
 
-  sendMessage(message){
+  teste(){
+    alert("testando");
+  }
+
+  hideShowPainel() {
+    let panelHeading = document.getElementById('id-panel-heading');
+    let painelBody = document.getElementById('panel-body');
+    let painelFooter = document.getElementById('panel-footer');
+    let painelBodyActive: boolean = painelBody.hidden;
+    let painelFooterActive: boolean = painelFooter.hidden;
+
+    if (painelBodyActive && painelFooterActive) {
+      painelBody.hidden = false;
+      painelFooter.hidden = false;
+      panelHeading.style['marginTop'] = "0px";
+    } else {
+      painelBody.hidden = true;
+      painelFooter.hidden = true;
+      panelHeading.style['marginTop'] = "300px";
+    }
+
+  }
+
+  sendMessage(message) {
     console.log(message);
-    this.stompClient.send("/app/send/message" , {}, message);
+    this.stompClient.send("/app/send/message", {}, message);
     this.formulario.reset();
   }
 
-  abrirChatMessage(){  
+  abrirChatMessage() {
     //pega funcionario do localstorage para inserir nome e sobrenome no topo do chat
     var jsonNomeChat = localStorage.getItem('nomeChat');
     var jsonSobreNomeChat = localStorage.getItem('sobrenomeChat');
@@ -71,25 +95,25 @@ initializeWebSocketConnection(){
     this.sobreNomeChat = jsonSobreNomeChat;
   }
 
-  atualizarChat(){
+  atualizarChat() {
   }
 
-  disponivel(){
+  disponivel() {
     const elementPanelHeading = document.getElementById('id-panel-heading');
     elementPanelHeading.style.backgroundColor = '#4cb961';
-  }s
+  } s
 
-  ocupado(){
+  ocupado() {
     const elementPanelHeading = document.getElementById('id-panel-heading');
     elementPanelHeading.style.backgroundColor = '#e66666';
   }
 
-  ausente(){
+  ausente() {
     const elementPanelHeading = document.getElementById('id-panel-heading');
     elementPanelHeading.style.backgroundColor = '#b6bd66';
   }
 
-  fecharMessageChat(){
+  fecharMessageChat() {
     const elementPanelHeading = document.getElementById('id-panel-heading');
     elementPanelHeading.style.backgroundColor = '#babada';
   }

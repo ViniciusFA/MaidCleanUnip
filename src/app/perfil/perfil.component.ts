@@ -5,7 +5,7 @@ import { Usuario } from './../system-objects/usuario-model';
 import { Avaliacoes } from './../system-objects/avaliacoes-model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 
 
@@ -60,13 +60,6 @@ export class PerfilComponent implements OnInit {
     })
   }
 
-  percorrerFormulario() {
-    var UserArray = Object.entries(this.formulario.controls);
-    UserArray.forEach(element => {
-      console.log(element[1].value);
-    });
-    console.log(UserArray);
-  }
 
   editarCamposPerfil() {
     this.habilitaCamposFormulario();
@@ -77,21 +70,24 @@ export class PerfilComponent implements OnInit {
     this.editingFields = !this.editingFields;
   }
 
-  cancelarAlteracaoPerfil() {
+  cancelarAlteracaoPerfil() {   
     this.desabilitaCamposFormulario();
     this.toggleShowBtnEdit();
-    this.percorrerFormulario();
+  }
+  
+  teste(){
+    console.log("testando");
+    alert("teste");
   }
 
   salvarAlteracao(newUserInfo: FormBuilder) {
-
-    let oldsuarioInfo:Usuario = this.usuarioInfo;
+    let oldsuarioInfo: Usuario = this.usuarioInfo;
     this.newUsuarioInfo = this.formulario.value;
 
     //size = 20
-    let sizeOldUsuarioInfo:number = Object.keys(oldsuarioInfo).length;
+    let sizeOldUsuarioInfo: number = Object.keys(oldsuarioInfo).length;
     //size = 17
-    let sizeNewUsuarioInfo:number = Object.keys(newUserInfo).length;
+    let sizeNewUsuarioInfo: number = Object.keys(newUserInfo).length;
 
     //getting keys of this.usuarioInfo/Old and newUserInfo
     let keysOldUserInfo = Object.keys(this.usuarioInfo);
@@ -104,23 +100,23 @@ export class PerfilComponent implements OnInit {
     //getting values old to variable new
     this.newUsuarioInfo = oldsuarioInfo;
 
-    for(let i=0; i<sizeOldUsuarioInfo; i++){
-      for(let j=0; j<sizeNewUsuarioInfo; j++){
-        if(keysOldUserInfo[i] == keysNewUserInfo[j]){
-          if(valuesNewUserInfo[j] != '' && valuesNewUserInfo[j] != null 
-              && valuesNewUserInfo[j] != undefined && valuesNewUserInfo[j] != valuesOldUserInfo[i]){
-                this.newUsuarioInfo[keysNewUserInfo[j]] = valuesNewUserInfo[j]
-              }
+    for (let i = 0; i < sizeOldUsuarioInfo; i++) {
+      for (let j = 0; j < sizeNewUsuarioInfo; j++) {
+        if (keysOldUserInfo[i] == keysNewUserInfo[j]) {
+          if (valuesNewUserInfo[j] != '' && valuesNewUserInfo[j] != null
+            && valuesNewUserInfo[j] != undefined && valuesNewUserInfo[j] != valuesOldUserInfo[i]) {
+            this.newUsuarioInfo[keysNewUserInfo[j]] = valuesNewUserInfo[j]
+          }
         }
       }
     }
     this.usuarioService.addUsuario(this.newUsuarioInfo).subscribe(response => {
-      let res:Response = <Response>response;
-      if(res.codigo == 1){
+      let res: Response = <Response>response;
+      if (res.codigo == 1) {
         alert("Perfil atualizado com sucesso.");
         //update ngModel of components
         this.usuarioInfo = this.newUsuarioInfo;
-      }else{
+      } else {
         alert(res.mensagem);
       }
     });
