@@ -73,8 +73,6 @@ export class HeaderComponent implements OnInit {
   }
 
  
-  mensagens(){
-  }
 
   infoPerfilUsuario(){
     var objectUsuario = JSON.parse(localStorage.getItem('Usuario'));

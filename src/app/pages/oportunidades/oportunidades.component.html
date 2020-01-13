@@ -22,11 +22,13 @@
               ngDefaultControl placeholder="Subtítulo da vaga">
           </div>
           <br>
+         
           <div class="col-4" id="textoLabelPadrao">
-            <b>Nome Empregador</b>
-            <input type="text" id="textoLabelPadrao" class="form-control" placeholder="Nome" id="campoNome"
+            <b>Campo Vazio </b>
+            <input type="text" id="textoLabelPadrao" class="form-control" placeholder="Campo vazio" id="campoNome"
               formControlName="nomeEmpregador" name="nome" ngDefaultControl>
           </div>
+          
           <div class="col-4" id="textoLabelPadrao" formControlName="estado" name="ddlEstado" ngDefaultControl>
             <b>Estado</b>
             <select class="form-control form-control-sm-3" id="campoEstadoOportunidades">
@@ -57,6 +59,9 @@
         <!--Cards sendo iterados-->
         <div class="col-4 card" style="width: 18rem;" *ngFor="let vaga of pageOfItems">
           <div class="card-body">
+            <p class="card-text">
+              <label class="conteudoGridVaga"> ID Vaga: {{vaga.id}}</label>
+            </p>
             <h5 class="card-title">
               <label class="conteudoGridVaga">{{vaga.titulo}}</label>
             </h5>
@@ -66,6 +71,10 @@
             <p class="card-text">
               <label class="conteudoGridVaga"> {{vaga.descricao}}</label>
             </p>
+            <p class="card-text">
+                {{vaga.estado}} - {{vaga.cidade}}
+            </p>
+            
             <a class="card-link" id="saberMaisOportunidades" (click)="oportunidadeInfo(vaga)">
               <label class="saberMaisOportunidades">Saber mais</label>
             </a>

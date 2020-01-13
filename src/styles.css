@@ -11789,3 +11789,6 @@ td > span:active{
   position: relative;
   background-color: white;
 }
+.modalExcluirFunc{
+  height: 6%;
+}

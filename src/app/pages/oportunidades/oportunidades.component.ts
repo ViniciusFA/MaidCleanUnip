@@ -19,6 +19,7 @@ export class OportunidadesComponent implements OnInit {
   private vaga: Vaga = new Vaga();
   private listaParametros: String[] = new Array();
   pageOfItems:Array<any>;
+  private todosCamposVazios:Boolean = false;
 
 
   constructor(private formBuilder: FormBuilder,
@@ -30,14 +31,14 @@ export class OportunidadesComponent implements OnInit {
 
   ngOnInit() {
     this.titulo = "Oportunidades";
-    this.vagaService.getVagas().subscribe(res => this.vagas = res);
+    this.getAllOportunity();
   }
 
   estados = [
     new Estados(0, 'Selecione'),
-    new Estados(1, 'Rio de Janeiro'),
-    new Estados(2, 'São Paulo'),
-    new Estados(3, 'Bahia'),
+    new Estados(1, 'RJ'),
+    new Estados(2, 'SP'),
+    new Estados(3, 'BA'),
   ];
 
   residencias = [
@@ -57,7 +58,7 @@ export class OportunidadesComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       titulo: new FormControl(''),
       subtitulo: new FormControl(''),
-      nomeEmpregador: new FormControl(''),
+      nomeEmpregador: new FormControl({value:'',disabled: true}),
       estado: new FormControl(''),
       cidade: new FormControl('')
     });
@@ -68,18 +69,23 @@ export class OportunidadesComponent implements OnInit {
     this.pageOfItems = pageOfItems;
   }
 
+  getAllOportunity(){
+    this.vagaService.getVagas().subscribe(res => this.vagas = res);
+  }
+
   limparCampos() {
-    (<HTMLSelectElement>document.getElementById('campoTitulo')).value = "";
-    (<HTMLSelectElement>document.getElementById('campoSubTitulo')).value = "";
-    (<HTMLSelectElement>document.getElementById('campoNome')).value = "";
+    this.formulario.controls['titulo'].setValue("");
+    this.formulario.controls['subtitulo'].setValue("");
+   // this.formulario.controls['nomeEmpregador'].setValue("");
+    this.formulario.controls['estado'].setValue("");
+    this.formulario.controls['cidade'].setValue("");
     (<HTMLSelectElement>document.getElementById('campoEstadoOportunidades')).value = "Selecione";
-    (<HTMLSelectElement>document.getElementById('campoCidade')).value = "";  
-    }
+   }
 
   oportunidadeInfo(vaga: Vaga) {
     this.vaga.id = vaga.id;
     this.vaga.idEmpregador = vaga.idUsuario.idUsuario;
-    this.vaga.nomeEmpregador = vaga.idUsuario.nome;
+    this.vaga.id = vaga.id;
     this.vaga.telefone = vaga.idUsuario.telefone;
     this.vaga.subtitulo = vaga.subtitulo;
     this.vaga.titulo = vaga.titulo;    
@@ -94,10 +100,11 @@ export class OportunidadesComponent implements OnInit {
 
     this.vaga = this.formulario.value;
 
-    let todosCamposVazios:Boolean = this.verificaCamposVazio(this.vaga);
+    this.todosCamposVazios = this.verificaCamposVazio(this.vaga);
     
-    if(todosCamposVazios == true){      
-      alert("Preencha pelo menos um campo para pesquisar.");      
+    if(this.todosCamposVazios){      
+      alert("Preencha pelo menos um campo para pesquisar.");   
+      this.getAllOportunity();
     }else{
     this.vagaService.pesquisar(this.vaga)
       .subscribe(response => {
@@ -114,18 +121,15 @@ export class OportunidadesComponent implements OnInit {
   }
 
   verificaCamposVazio(camposPesquisa:Vaga){
-    console.log();
-    if(camposPesquisa.titulo.length == 0  
-    && camposPesquisa.subtitulo.length == 0 
-    && camposPesquisa.nomeEmpregador.length == 0 
-    && camposPesquisa.estado.length == 0
-    && camposPesquisa.cidade.length == 0 
-    ){
-      return true;
-    }
-    else{
+
+    if((camposPesquisa.titulo == "" || camposPesquisa.titulo == null)
+    && (camposPesquisa.subtitulo == "" || camposPesquisa.subtitulo == null) 
+    //&& (camposPesquisa.nomeEmpregador == "" || camposPesquisa.nomeEmpregador == null )
+    && (camposPesquisa.estado == "" || camposPesquisa.estado == null)
+    && (camposPesquisa.cidade == "" || camposPesquisa.cidade == null))    
+      return true
+    else
       return false;
-    }
   }
 
 }

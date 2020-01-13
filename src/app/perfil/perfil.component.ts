@@ -1,10 +1,13 @@
+import { Response } from './../services/response';
 import { AvaliacoesService } from './../services/avaliacoes/avaliacoes.service';
 import { UsuarioService } from './../services/usuario/usuario.service';
 import { Usuario } from './../system-objects/usuario-model';
 import { Avaliacoes } from './../system-objects/avaliacoes-model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
+
 
 @Component({
   selector: 'app-perfil',
@@ -13,8 +16,10 @@ import { Component, OnInit } from '@angular/core';
 export class PerfilComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
-              private activatedRoute: ActivatedRoute,
-              private avaliacoesService:AvaliacoesService) {
+    private activatedRoute: ActivatedRoute,
+    private avaliacoesService: AvaliacoesService,
+    private usuarioService: UsuarioService,
+    private router: Router) {
     this.configurarFormulario();
   }
 
@@ -22,8 +27,9 @@ export class PerfilComponent implements OnInit {
   private editingFields: boolean = true;
   private usuarioInfo: Usuario = new Usuario();
   private avaliacoes: Avaliacoes = new Avaliacoes();
-  private media:number = 0.0;
+  private media: number = 0.0;
   //private selectedFile:File = null;
+  private newUsuarioInfo: Usuario = new Usuario();
 
   ngOnInit() {
     this.recebendoParametroInfoUsuario();
@@ -54,12 +60,12 @@ export class PerfilComponent implements OnInit {
     })
   }
 
-  percorrerFormulario(){ 
-   var UserArray = Object.entries(this.formulario.controls);
-   UserArray.forEach(element => {
-     console.log(element[1].value);
-   });
-   console.log(UserArray);
+  percorrerFormulario() {
+    var UserArray = Object.entries(this.formulario.controls);
+    UserArray.forEach(element => {
+      console.log(element[1].value);
+    });
+    console.log(UserArray);
   }
 
   editarCamposPerfil() {
@@ -77,8 +83,48 @@ export class PerfilComponent implements OnInit {
     this.percorrerFormulario();
   }
 
-  salvarAlteracao() {
-    alert("Salvo com sucesso");
+  salvarAlteracao(newUserInfo: FormBuilder) {
+
+    let oldsuarioInfo:Usuario = this.usuarioInfo;
+    this.newUsuarioInfo = this.formulario.value;
+
+    //size = 20
+    let sizeOldUsuarioInfo:number = Object.keys(oldsuarioInfo).length;
+    //size = 17
+    let sizeNewUsuarioInfo:number = Object.keys(newUserInfo).length;
+
+    //getting keys of this.usuarioInfo/Old and newUserInfo
+    let keysOldUserInfo = Object.keys(this.usuarioInfo);
+    let keysNewUserInfo = Object.keys(newUserInfo);
+
+    //getting  values of NewUserInfo and OldUserInfo
+    let valuesOldUserInfo = Object.values(this.usuarioInfo);
+    let valuesNewUserInfo = Object.values(newUserInfo);
+
+    //getting values old to variable new
+    this.newUsuarioInfo = oldsuarioInfo;
+
+    for(let i=0; i<sizeOldUsuarioInfo; i++){
+      for(let j=0; j<sizeNewUsuarioInfo; j++){
+        if(keysOldUserInfo[i] == keysNewUserInfo[j]){
+          if(valuesNewUserInfo[j] != '' && valuesNewUserInfo[j] != null 
+              && valuesNewUserInfo[j] != undefined && valuesNewUserInfo[j] != valuesOldUserInfo[i]){
+                this.newUsuarioInfo[keysNewUserInfo[j]] = valuesNewUserInfo[j]
+              }
+        }
+      }
+    }
+    this.usuarioService.addUsuario(this.newUsuarioInfo).subscribe(response => {
+      let res:Response = <Response>response;
+      if(res.codigo == 1){
+        alert("Perfil atualizado com sucesso.");
+        //update ngModel of components
+        this.usuarioInfo = this.newUsuarioInfo;
+      }else{
+        alert(res.mensagem);
+      }
+    });
+
     this.desabilitaCamposFormulario();
     this.toggleShowBtnEdit();
   }
@@ -175,20 +221,44 @@ export class PerfilComponent implements OnInit {
     this.usuarioInfo.sexo = this.activatedRoute.snapshot.queryParams.sexo;
   }
 
-  excluirConta(){
-    alert("Conta excluída com sucesso.");
+  excluirConta(id: number) {
+    console.log(id);
+    this.usuarioService.deleteUsuario(id).subscribe(response => {
+      let res: Response = <Response>response;
+      if (res.codigo == 1) {
+        alert(res.mensagem);
+        //apagando os registros do localstorage
+        this.logout();
+        //
+
+        this.router.navigate(['/login']);
+      } else {
+        alert(res.mensagem)
+      }
+    })
   }
 
-  getRatingUser(id_user: Number){
-    this.avaliacoesService.getAvaliationsUser(id_user) .subscribe(response => {
+  logout() {
+    localStorage.removeItem('Usuario');
+    localStorage.removeItem('permissoes');
+    localStorage.removeItem('nomeChat');
+    localStorage.removeItem('sobrenomeChat');
+    this.router.navigate(['login'], { queryParams: { logout: true } })
+      .then(() => {
+        window.location.reload();
+      });
+  }
+
+  getRatingUser(id_user: Number) {
+    this.avaliacoesService.getAvaliationsUser(id_user).subscribe(response => {
       this.avaliacoes = response;
       this.getAverageAvaliation(this.avaliacoes);
-    });    
+    });
   }
 
-  getAverageAvaliation(avaliacoes:Avaliacoes){
-    this.media = (avaliacoes.compromisso + avaliacoes.disciplina + 
-                  avaliacoes.organizacao + avaliacoes.limpeza) / 4;
+  getAverageAvaliation(avaliacoes: Avaliacoes) {
+    this.media = (avaliacoes.compromisso + avaliacoes.disciplina +
+      avaliacoes.organizacao + avaliacoes.limpeza) / 4;
     this.media = parseFloat(this.media.toFixed(2));
   }
 

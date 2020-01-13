@@ -89,17 +89,19 @@ export class PesquisarComponent implements OnInit {
   }
 
   limparCampos() {
-    this.formulario.reset();
-    console.log(this.formulario.value);
+    this.formulario.controls['nome'].setValue("");
+    this.formulario.controls['sobrenome'].setValue("");
+    this.formulario.controls['estado'].setValue("");
+    this.formulario.controls['cidade'].setValue("");
+    this.formulario.controls['avaliacao'].setValue("");
+    this.formulario.controls['experiencia'].setValue("");
     (<HTMLSelectElement>document.getElementById('campoEstadoPesquisar')).value = "Selecione";
     (<HTMLSelectElement>document.getElementById('campoSexoPesquisar')).value = "Selecione";
     (<HTMLSelectElement>document.getElementById('campoExperienciaPesquisar')).value = "Selecione";
-    console.log(this.formulario.value);
   }
 
   pesquisar() {
     this.usuarioFuncionario = this.formulario.value;
-    console.log(this.formulario.value);
     this.todosCamposVazios = this.verificarCamposVazios(this.usuarioFuncionario);
     if (this.todosCamposVazios) {
       alert("Preencha pelo menos um campo para pesquisar.");
@@ -109,11 +111,8 @@ export class PesquisarComponent implements OnInit {
         .subscribe(response => {
           if (response == 0) {
             alert("Não há registros dessa pesquisa.");
-            this.limparCampos();
-            this.todosCamposVazios = true;
           } else {
             this.usuarios = response;
-            this.limparCampos();
           }
         },
           (erro) => {
@@ -149,18 +148,11 @@ export class PesquisarComponent implements OnInit {
       && (camposPesquisa.sobrenome == null || camposPesquisa.sobrenome  == "")
       && (camposPesquisa.estado == null || camposPesquisa.estado == "" )
       && (camposPesquisa.cidade == null || camposPesquisa.cidade == "")
-      //&& camposPesquisa.avaliacao.length == 0
-      //&& camposPesquisa.experiencia.length == 0
       && (camposPesquisa.avaliacao == null || camposPesquisa.avaliacao == "")
-      && (camposPesquisa.experiencia == null || camposPesquisa.experiencia == "")
-    ) {
-      this.todosCamposVazios = true;
-      return this.todosCamposVazios;
-    } else {
-      this.todosCamposVazios = false;
-      return this.todosCamposVazios;
-    }
-  }
-  
+      && (camposPesquisa.experiencia == null || camposPesquisa.experiencia == ""))
+        return true;
+     else 
+        return false;    
+  }  
 
 }
