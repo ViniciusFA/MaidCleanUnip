@@ -1,3 +1,5 @@
+import { MensagensComponent } from './pages/mensagens/mensagens.component';
+import { HistoricoComponent } from './pages/historico/historico.component';
 import { ChatMessageComponent } from './pages/info-funcionario/chat-message/chat-message.component';
 import { Routes } from '@angular/router'
 
@@ -38,6 +40,8 @@ export const ROUTES: Routes = [
     { path: 'infoFuncionario', component: InfoFuncionarioComponent }, //canActivate: [AuthGuard]},  
     { path: 'configuracoesConta', component: ConfiguracoesContaComponent },// canActivate: [AuthGuard]},  
     { path: 'oportunidade-modal', component: OportunidadesModalComponent },
-    { path: 'chatMessage', component: ChatMessageComponent }
+    { path: 'chatMessage', component: ChatMessageComponent },
+    { path: 'historico', component: HistoricoComponent },
+    { path: 'mensagem', component: MensagensComponent }
 
 ]

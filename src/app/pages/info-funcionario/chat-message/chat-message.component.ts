@@ -58,9 +58,6 @@ export class ChatMessageComponent implements OnInit {
     })
   }
 
-  teste(){
-    alert("testando");
-  }
 
   hideShowPainel() {
     let panelHeading = document.getElementById('id-panel-heading');

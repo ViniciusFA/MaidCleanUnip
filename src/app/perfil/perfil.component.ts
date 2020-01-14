@@ -30,10 +30,12 @@ export class PerfilComponent implements OnInit {
   private media: number = 0.0;
   //private selectedFile:File = null;
   private newUsuarioInfo: Usuario = new Usuario();
+  private oldsuarioInfo: Usuario = new Usuario();
 
   ngOnInit() {
     this.recebendoParametroInfoUsuario();
     this.getRatingUser(this.usuarioInfo.idUsuario);
+    this.getIdNameUser();
   }
 
   configurarFormulario() {
@@ -81,11 +83,11 @@ export class PerfilComponent implements OnInit {
   }
 
   salvarAlteracao(newUserInfo: FormBuilder) {
-    let oldsuarioInfo: Usuario = this.usuarioInfo;
+    this.oldsuarioInfo = this.usuarioInfo;
     this.newUsuarioInfo = this.formulario.value;
 
     //size = 20
-    let sizeOldUsuarioInfo: number = Object.keys(oldsuarioInfo).length;
+    let sizeOldUsuarioInfo: number = Object.keys(this.oldsuarioInfo).length;
     //size = 17
     let sizeNewUsuarioInfo: number = Object.keys(newUserInfo).length;
 
@@ -98,7 +100,7 @@ export class PerfilComponent implements OnInit {
     let valuesNewUserInfo = Object.values(newUserInfo);
 
     //getting values old to variable new
-    this.newUsuarioInfo = oldsuarioInfo;
+    this.newUsuarioInfo = this.oldsuarioInfo;
 
     for (let i = 0; i < sizeOldUsuarioInfo; i++) {
       for (let j = 0; j < sizeNewUsuarioInfo; j++) {
@@ -110,6 +112,7 @@ export class PerfilComponent implements OnInit {
         }
       }
     }
+    
     this.usuarioService.addUsuario(this.newUsuarioInfo).subscribe(response => {
       let res: Response = <Response>response;
       if (res.codigo == 1) {
@@ -234,11 +237,18 @@ export class PerfilComponent implements OnInit {
     })
   }
 
+  getIdNameUser(){
+    localStorage.setItem("IdUser", JSON.stringify(this.usuarioInfo.idUsuario))
+    localStorage.setItem("NameUser", JSON.stringify(this.usuarioInfo.nome));
+  }
+
   logout() {
     localStorage.removeItem('Usuario');
     localStorage.removeItem('permissoes');
     localStorage.removeItem('nomeChat');
     localStorage.removeItem('sobrenomeChat');
+    localStorage.removeItem('NameUser');
+    localStorage.removeItem('IdUser');
     this.router.navigate(['login'], { queryParams: { logout: true } })
       .then(() => {
         window.location.reload();

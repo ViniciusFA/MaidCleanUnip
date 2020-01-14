@@ -251,10 +251,8 @@
 
 <br>
 <br>
-<div class="chatMessageWindow" *ngIf="chatActivated">
-        <div (click)="teste()">        
-                <app-chat-message></app-chat-message>
-        </div>
+<div class="chatMessageWindow" *ngIf="chatActivated" (click)="teste()">
+        <app-chat-message></app-chat-message>
 </div>
 <br>
 <br>

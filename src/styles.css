@@ -11795,3 +11795,23 @@ td > span:active{
 .containerChatMessage{
   margin-top: 3%;
 }
+.vagasAnuncHistorico{
+  margin-left: 30%;
+  margin-top: 6%;
+}
+.vagasCadHistorico{
+  margin-left: 30%;
+  margin-top: 4%;
+}
+.botaoVoltarHistorico{
+  margin-left: 37%;
+  margin-top: 4%;
+}
+.botaoApagarHistorico{
+  margin-left: 33%;
+  margin-top: 4%;
+}
+.mensagemUsuario{
+  margin-left: 30%;
+  margin-top: 4%;
+}

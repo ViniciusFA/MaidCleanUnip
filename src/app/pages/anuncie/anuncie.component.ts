@@ -26,6 +26,7 @@ export class AnuncieComponent implements OnInit {
   ngOnInit() {
     this.titulo = 'Anunciar Vagas';
     //this.getNameUser();
+    this.fillFieldIdName();
   }
 
   estados = [
@@ -34,6 +35,11 @@ export class AnuncieComponent implements OnInit {
     new Estados(2, 'Rio de Janeiro'),
     new Estados(3, 'São Paulo'),
   ];
+
+  fillFieldIdName(){
+    this.id = JSON.parse(localStorage.getItem('IdUser'));
+    this.nameField = localStorage.getItem('NameUser');
+  }
 
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
@@ -47,16 +53,15 @@ export class AnuncieComponent implements OnInit {
     });
   }
 
-  getIdAndNameUser(){
-   this.nameField = localStorage.getItem('nomeChat');
-  //get and send login and password to back - database to get ID
-
-
-  }
 
   anunciar() {
     let vaga = this.formulario.value as Vaga;
 
+    vaga.idEmpregador = JSON.parse(localStorage.getItem('IdUser'));
+    vaga.nomeEmpregador = localStorage.getItem("NomeUser");
+
+    console.log(vaga.nomeEmpregador);
+    
     this.vagaService.anunciarVagas(vaga).subscribe(response => {
       let res: Response = <Response>response;
       if (res.codigo == 1) {

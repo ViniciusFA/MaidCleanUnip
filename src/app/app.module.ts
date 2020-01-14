@@ -47,6 +47,8 @@ import { NgbdRatingTemplate } from './pages/rating-template/rating-template.comp
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { PaginationComponent } from './components/pagination/pagination/pagination.component';
 import { CalendarComponent } from './components/calendar/calendar/calendar.component';
+import { HistoricoComponent } from './pages/historico/historico.component';
+import { MensagensComponent } from './pages/mensagens/mensagens.component';
 
 
 // Configs
@@ -83,7 +85,9 @@ export function getAuthServiceConfigs() {
     NgbdRatingTemplate,
     //JwPaginationComponent,
     PaginationComponent,
-    CalendarComponent
+    CalendarComponent,
+    HistoricoComponent,
+    MensagensComponent
   ],
   imports: [
     BrowserModule,

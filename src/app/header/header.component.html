@@ -57,7 +57,8 @@
             </button>
             <div class="dropdown-menu perfil">
               <a class="dropdown-item perfil" (click)="infoPerfilUsuario()" >Perfil</a>
-              <a class="dropdown-item perfil" (click)="mensagens()" [routerLink]="">Mensagens</a>
+              <a class="dropdown-item perfil" (click)="mensagens()" [routerLink]="['/mensagem']">Mensagens</a>
+              <a class="dropdown-item perfil" (click)="historico()" [routerLink]="['/historico']">Histórico</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item perfil" id="logoutMenu" (click)="logout()">Sair</a>
             </div>
