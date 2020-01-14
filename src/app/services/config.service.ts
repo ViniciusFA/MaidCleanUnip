@@ -1,6 +1,6 @@
 export class ConfigService {
 
-    private urlService: string;
+    private urlService: string ="";
 
     constructor() {
         this.urlService = "http://localhost:8090/api";

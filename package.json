@@ -26,6 +26,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
     "@fortawesome/free-solid-svg-icons": "^5.10.1",
     "@ng-bootstrap/ng-bootstrap": "^5.1.4",
+    "@syncfusion/ej2-angular-dropdowns": "^17.4.43",
+    "@syncfusion/ej2-data": "^17.4.43",
     "angular-6-social-login": "^1.1.1",
     "bootstrap": "^4.3.1",
     "dropdown-menu": "^0.1.1",

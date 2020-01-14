@@ -1,4 +1,7 @@
-﻿import { NgbdRatingTemplate } from './../rating-template/rating-template.component';
+﻿import { Estado } from './../../system-objects/estado-model';
+import { Cidade } from './../../system-objects/cidade-model';
+import { LocalidadeService } from './../../services/localidade/localidade.service';
+import { NgbdRatingTemplate } from './../rating-template/rating-template.component';
 import { Avaliacoes } from './../../util/avaliacoes';
 import { Usuario } from './../../system-objects/usuario-model';
 import { RoleEnum } from './../../system-objects/role-enum';
@@ -23,29 +26,27 @@ export class PesquisarComponent implements OnInit {
   private formulario: FormGroup;
   private pesquisaFuncionario: PesquisaFuncionario = new PesquisaFuncionario();
   private usuarioFuncionario: Usuario = new Usuario();
-  private rating:NgbdRatingTemplate;
+  private rating: NgbdRatingTemplate;
   private usuarios: Array<any>;
-  pageOfItems:Array<any>;
+  pageOfItems: Array<any>;
   private todosCamposVazios: Boolean = false;
+  private cities: Array<Cidade>;
+  private states: Array<Estado>;
 
   constructor(private usuarioService: UsuarioService,
     private formBuilder: FormBuilder,
     private pesquisaFuncionarioService: PesquisaFuncionarioService,
-    private router: Router) {
+    private router: Router,
+    private localidadeService: LocalidadeService) {
     this.configurarFormulario();
   }
 
   ngOnInit() {
-    this.titulo = "Pesquisar Funcionários";       
-    this.pegarUsuariosPorPerfil();           
+    this.titulo = "Pesquisar Funcionários";
+    this.pegarUsuariosPorPerfil();
+    this.getStates();
   }
 
-  estados = [
-    new Estados(0, "Selecione"),
-    new Estados(1, 'Rio de Janeiro'),
-    new Estados(2, 'São Paulo'),
-    new Estados(3, 'Bahia'),
-  ];
 
   experiencias = [
     new Experiencia(0, "Selecione"),
@@ -65,7 +66,7 @@ export class PesquisarComponent implements OnInit {
     new Avaliacoes(5, "5"),
   ];
 
-  
+
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
       nome: new FormControl('', [Validators.minLength(3), Validators.maxLength(15)]),
@@ -79,11 +80,11 @@ export class PesquisarComponent implements OnInit {
 
   pegarUsuariosPorPerfil() {
     this.usuarioService.getUsuariosPorPerfil(RoleEnum.Funcionario).subscribe(res => {
-      this.usuarios = res;      
+      this.usuarios = res;
     });
   }
 
-  onChangePage(pageOfItems: Array<any>){
+  onChangePage(pageOfItems: Array<any>) {
     //atualiza pagina de itens atual
     this.pageOfItems = pageOfItems;
   }
@@ -106,7 +107,7 @@ export class PesquisarComponent implements OnInit {
     if (this.todosCamposVazios) {
       alert("Preencha pelo menos um campo para pesquisar.");
       this.pegarUsuariosPorPerfil();
-    }else {
+    } else {
       this.pesquisaFuncionarioService.buscar(this.usuarioFuncionario)
         .subscribe(response => {
           if (response == 0) {
@@ -145,14 +146,26 @@ export class PesquisarComponent implements OnInit {
 
   verificarCamposVazios(camposPesquisa: Usuario) {
     if ((camposPesquisa.nome == null || camposPesquisa.nome == "")
-      && (camposPesquisa.sobrenome == null || camposPesquisa.sobrenome  == "")
-      && (camposPesquisa.estado == null || camposPesquisa.estado == "" )
+      && (camposPesquisa.sobrenome == null || camposPesquisa.sobrenome == "")
+      && (camposPesquisa.estado == null || camposPesquisa.estado == "")
       && (camposPesquisa.cidade == null || camposPesquisa.cidade == "")
       && (camposPesquisa.avaliacao == null || camposPesquisa.avaliacao == "")
       && (camposPesquisa.experiencia == null || camposPesquisa.experiencia == ""))
-        return true;
-     else 
-        return false;    
-  }  
+      return true;
+    else
+      return false;
+  }
+
+  getCities(id_estado: number) {
+    this.localidadeService.getCitys(id_estado).subscribe(data => {
+      this.cities = data;
+    });
+  }
+
+  getStates() {
+    this.localidadeService.getStates().subscribe(data => {
+      this.states = data;
+    })
+  }
 
 }

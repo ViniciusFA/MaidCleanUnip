@@ -14,9 +14,9 @@
                             <div class="form-row" id="camposFormAnuncie">
                                 <div class="col-4" id="textoLabelPadrao">
                                     <b> ID - Nome</b>
-                                    <input [readonly]="true" type="text" class="form-control estiloCampos" id="campoAnuncieVagasEmpregador"
-                                        formControlName="nomeEmpregador" name="nome" ngDefaultControl
-                                        placeholder="{{id}} - {{nameField}}">
+                                    <input [readonly]="true" type="text" class="form-control estiloCampos"
+                                        id="campoAnuncieVagasEmpregador" formControlName="nomeEmpregador" name="nome"
+                                        ngDefaultControl placeholder="{{id}} - {{nameField}}">
                                 </div>
                                 <div class="col-4" id="textoLabelPadrao">
                                     <b>Título</b>
@@ -36,18 +36,29 @@
                                 <div class="col-4" name="estado" formControlName="estado" ngDefaultControl
                                     id="textoLabelPadrao">
                                     <b>Estado</b>
-                                    <select class="form-control form-control-sm-3 estiloCampos" id="campoEstadoVagas">
-                                        <option *ngFor="let estado of estados" ngValue="estados.id">
-                                            {{estado.nome}}
+                                    <select class="form-control form-control-sm-3 estiloCampos" #state
+                                        (change)="getCities($event.target.value)" id="campoEstadoVagas">
+                                        <option>Selecione</option>
+                                        <option *ngFor="let estado of states" [value]="estado.id_estado">
+                                            {{estado.nome_estado}}
                                         </option>
                                     </select>
+                                    <p>* Campo Obrigatório</p>
                                 </div>
-                                <div class="col-4" id="textoLabelPadrao">
+
+                                <div class="col-4" name="cidade" formControlName="cidade" ngDefaultControl
+                                    id="textoLabelPadrao">
                                     <b>Cidade</b>
-                                    <input type="text" class="form-control estiloCampos" id="campoAnuncievagasCidade"
-                                        formControlName="cidade" name="cidade" ngDefaultControl placeholder="Cidade">
-                                    <p>(Insira entre 3 a 40 caracteres)</p>
+                                    <select class="form-control form-control-sm-3 estiloCampos" #city
+                                        id="campoCidadeVagas">
+                                        <option>Selecione</option>
+                                        <option *ngFor="let cidade of cities" [value]="cidade.id_cidade">
+                                            {{cidade.nome_cidade}}
+                                        </option>
+                                    </select>
+                                    <p>* Campo Obrigatório</p>
                                 </div>
+
                                 <div class="col-4" id="textoLabelPadrao">
                                     <b>Telefone</b>
                                     <input type="text" class="form-control estiloCampos" id="campoAnuncievagastelefone"
@@ -58,8 +69,8 @@
                                 <div class="col-12">
                                     <br>
                                     <label for="TextAreaMensagm" id="textoLabelAnuncieDesc">Descrição</label>
-                                    <textarea class="form-control estiloCampos" #box (keyup)="0" id="TextAreaMensagm" rows="10"
-                                        cols="200" formControlName="descricao" ngDefaultControl></textarea>
+                                    <textarea class="form-control estiloCampos" #box (keyup)="0" id="TextAreaMensagm"
+                                        rows="10" cols="200" formControlName="descricao" ngDefaultControl></textarea>
                                     <p>(Insira até {{caracteresMaximo - box.value.length}} caracteres)</p>
                                 </div>
                             </div>

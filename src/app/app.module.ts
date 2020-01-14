@@ -1,3 +1,4 @@
+import { LocalidadeService } from './services/localidade/localidade.service';
 import { AvaliacoesService } from './services/avaliacoes/avaliacoes.service';
 import { UsuarioService } from './services/usuario/usuario.service';
 import { LoaderProvider } from './providers/loader-provider';
@@ -49,6 +50,7 @@ import { PaginationComponent } from './components/pagination/pagination/paginati
 import { CalendarComponent } from './components/calendar/calendar/calendar.component';
 import { HistoricoComponent } from './pages/historico/historico.component';
 import { MensagensComponent } from './pages/mensagens/mensagens.component';
+import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 
 
 // Configs
@@ -87,7 +89,8 @@ export function getAuthServiceConfigs() {
     PaginationComponent,
     CalendarComponent,
     HistoricoComponent,
-    MensagensComponent
+    MensagensComponent,
+    DropDownListComponent
   ],
   imports: [
     BrowserModule,
@@ -115,6 +118,7 @@ export function getAuthServiceConfigs() {
                LoaderProvider,
                UsuarioService,
                AvaliacoesService,
+               LocalidadeService,
                OportunidadesModalComponent,
     {
       provide: SocialServiceConfig,

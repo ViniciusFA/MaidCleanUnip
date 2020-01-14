@@ -10939,6 +10939,10 @@ html {
   width: 100%;
   height: 45%;
 }
+#campoCidadeVagas{
+  width: 100%;
+  height: 45%;
+}
 #campoSexoVagas{
   width: 100%;
   height: 55%;
@@ -10958,6 +10962,10 @@ html {
   width: 100%;
 }
 #campoEstadoPesquisar{
+  width: 100%;
+  height: 53%;
+}
+#campoCidadePesquisar{
   width: 100%;
   height: 53%;
 }

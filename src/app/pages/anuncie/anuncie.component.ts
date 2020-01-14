@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Cidade } from './../../system-objects/cidade-model';
+import { LocalidadeService } from './../../services/localidade/localidade.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Estados } from '../../util/estados';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Vaga } from 'src/app/services/vaga/vaga';
 import { VagaService } from 'src/app/services/vaga/VagaService';
 import { Response } from '../../services/response';
+import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
+import { Query, DataManager } from '@syncfusion/ej2-data';
 
 @Component({
   selector: 'app-anuncie',
@@ -15,11 +19,14 @@ export class AnuncieComponent implements OnInit {
   private formulario: FormGroup;
   private vaga: Vaga;
   private caracteresMaximo: number = 400;
-  private nameField:string = '';
-  private id:number = 0;
+  private nameField: string = '';
+  private id: number = 0;
+  private cities: Array<Cidade>;
+  private states: Array<Estados>;
 
   constructor(private formBuilder: FormBuilder,
-    private vagaService: VagaService) {
+    private vagaService: VagaService,
+    private localidadeService: LocalidadeService) {
     this.configurarFormulario();
   }
 
@@ -27,16 +34,10 @@ export class AnuncieComponent implements OnInit {
     this.titulo = 'Anunciar Vagas';
     //this.getNameUser();
     this.fillFieldIdName();
+    this.getStates();
   }
 
-  estados = [
-    new Estados(0, 'Selecione'),
-    new Estados(1, 'Estado'),
-    new Estados(2, 'Rio de Janeiro'),
-    new Estados(3, 'São Paulo'),
-  ];
-
-  fillFieldIdName(){
+  fillFieldIdName() {
     this.id = JSON.parse(localStorage.getItem('IdUser'));
     this.nameField = localStorage.getItem('NameUser');
   }
@@ -61,7 +62,7 @@ export class AnuncieComponent implements OnInit {
     vaga.nomeEmpregador = localStorage.getItem("NomeUser");
 
     console.log(vaga.nomeEmpregador);
-    
+
     this.vagaService.anunciarVagas(vaga).subscribe(response => {
       let res: Response = <Response>response;
       if (res.codigo == 1) {
@@ -77,13 +78,25 @@ export class AnuncieComponent implements OnInit {
   }
 
   limparCampos() {
-  (<HTMLSelectElement>document.getElementById('campoAnuncieVagasEmpregador')).value = "";
-  (<HTMLSelectElement>document.getElementById('campoAnuncievagaTitulo')).value = "";
-  (<HTMLSelectElement>document.getElementById('campoAnuncioVagaSubtitulo')).value = "";
-  (<HTMLSelectElement>document.getElementById('campoEstadoVagas')).value = "Selecione";
-  (<HTMLSelectElement>document.getElementById('campoAnuncievagasCidade')).value = "";
-  (<HTMLSelectElement>document.getElementById('campoAnuncievagastelefone')).value = "";
-  (<HTMLSelectElement>document.getElementById('textoLabelAnuncieDesc')).value = "";
+    (<HTMLSelectElement>document.getElementById('campoAnuncieVagasEmpregador')).value = "";
+    (<HTMLSelectElement>document.getElementById('campoAnuncievagaTitulo')).value = "";
+    (<HTMLSelectElement>document.getElementById('campoAnuncioVagaSubtitulo')).value = "";
+    (<HTMLSelectElement>document.getElementById('campoEstadoVagas')).value = "Selecione";
+    (<HTMLSelectElement>document.getElementById('campoAnuncievagasCidade')).value = "";
+    (<HTMLSelectElement>document.getElementById('campoAnuncievagastelefone')).value = "";
+    (<HTMLSelectElement>document.getElementById('textoLabelAnuncieDesc')).value = "";
+  }
+
+  getCities(id_estado: any) {
+    this.localidadeService.getCitys(id_estado).subscribe(data => {
+      this.cities = data;
+    });
+  }
+
+  getStates() {
+    this.localidadeService.getStates().subscribe(data => {
+      this.states = data;
+    })
   }
 
 }

@@ -30,17 +30,24 @@
                             <div class="col-3" formControlName="estado" name="estado" ngDefaultControl
                                 id="textoLabelPadrao">
                                 <b>Estado</b>
-                                <select class="form-control form-control-sm-3 estiloCampos" id="campoEstadoPesquisar">
-                                    <option *ngFor="let estado of estados" ngValue="estados.id">
-                                        {{estado.nome}}
+                                <select class="form-control form-control-sm-3 estiloCampos"
+                                    (change)="getCities($event.target.value)" id="campoEstadoPesquisar">
+                                    <option>Selecione</option>
+                                    <option *ngFor="let estado of states" [value]="estado.id_estado">
+                                        {{estado.nome_estado}}
                                     </option>
                                 </select>
+                                <p>* Campo Obrigatório</p>
                             </div>
                             <div class="col-3" id="textoLabelPadrao">
                                 <b>Cidade</b>
-                                <input type="text" class="form-control estiloCampos" placeholder="Cidade"
-                                    id="campoCidadePesquisar" formControlName="cidade" name="cidade" ngDefaultControl>
-                                <p>(Insira até 15 caracteres)</p>
+                                <select class="form-control form-control-sm-3 estiloCampos" id="campoCidadePesquisar">
+                                    <option>Selecione</option>
+                                    <option *ngFor="let cidade of cities" [value]="cidade.id_cidade">
+                                        {{cidade.nome_cidade}}
+                                    </option>
+                                </select>
+                                <p>* Campo Obrigatório</p>
                             </div>
                             <div class="col-3" formControlName="experiencia" id="textoLabelPadrao" name="experiencia"
                                 ngDefaultControl>
@@ -94,7 +101,7 @@
                                 <td class="contentCells">{{user.cidade}}</td>
                                 <td class="contentCells">{{user.sexo}}</td>
                                 <td data-toggle="modal" data-target="#modalRating">
-                                    <app-rating-template>                                        
+                                    <app-rating-template>
                                     </app-rating-template>
 
                                 </td>
@@ -115,7 +122,7 @@
         </div>
     </div>
 
-     <!-- Paginação-->
+    <!-- Paginação-->
     <div class="paginacaoPesquisar">
         <jw-pagination [items]="usuarios" (changePage)="onChangePage($event)"></jw-pagination>
     </div>
