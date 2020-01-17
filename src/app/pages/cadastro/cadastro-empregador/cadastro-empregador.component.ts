@@ -1,3 +1,6 @@
+import { Estado } from './../../../system-objects/estado-model';
+import { Cidade } from './../../../system-objects/cidade-model';
+import { LocalidadeService } from './../../../services/localidade/localidade.service';
 import { RoleEnum } from './../../../system-objects/role-enum';
 import { Usuario } from './../../../system-objects/usuario-model';
 import { Component, OnInit, ContentChild } from '@angular/core';
@@ -5,7 +8,7 @@ import { Router } from '@angular/router';
 import { EmpregadorService } from '../../../services/empregador/empregador.service';
 import { Empregador } from 'src/app/services/empregador/empregador';
 import { Response } from '../../../services/response';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl ,FormBuilder, Validators } from '@angular/forms';
 import { Sexo } from 'src/app/util/sexo';
 import { Estados } from 'src/app/util/estados';
 import { Residencia } from 'src/app/util/residencia';
@@ -19,13 +22,17 @@ export class CadastroEmpregadorComponent implements OnInit {
   empregador: Empregador = new Empregador();
   formulario: FormGroup;
   private valorInteiro: Number = null;
+  private cities: Array<Cidade>;
+  private states: Array<Estado>;
 
   constructor(private empregadorService: EmpregadorService,
     private router: Router,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private localidadeService: LocalidadeService) { }
 
   ngOnInit() {
     this.configurarFormulario();
+    this.getStates();
   }
 
   estados = [
@@ -49,21 +56,21 @@ export class CadastroEmpregadorComponent implements OnInit {
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
 
-      nome: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
-      sobrenome: this.formBuilder.control('', [Validators.minLength(3), Validators.maxLength(40)]),
-      login: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
-      senha: this.formBuilder.control('', [Validators.required, Validators.minLength(6), Validators.maxLength(8)]),
-      avaliacao: this.formBuilder.control('', [Validators.email, Validators.maxLength(50)]),
-      sexo: this.formBuilder.control(''),
-      email: this.formBuilder.control('', [Validators.email, Validators.maxLength(50)]),
-      telefone: this.formBuilder.control('', Validators.maxLength(11)),
-      residencia: this.formBuilder.control(''),
-      cpf_cnpj: this.formBuilder.control('', Validators.maxLength(20)),
-      endereco: this.formBuilder.control('', Validators.maxLength(100)),
-      complemento: this.formBuilder.control('', Validators.maxLength(40)),
-      cidade: this.formBuilder.control('', Validators.maxLength(30)),
-      estado: this.formBuilder.control(''),
-      cep: this.formBuilder.control('', Validators.maxLength(8))
+      nome: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+      sobrenome: new FormControl('', [Validators.minLength(3), Validators.maxLength(40)]),
+      login: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+      senha: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(8)]),
+      avaliacao: new FormControl('', [Validators.email, Validators.maxLength(50)]),
+      sexo: new FormControl(''),
+      email: new FormControl('', [Validators.email, Validators.maxLength(50)]),
+      telefone: new FormControl('', Validators.maxLength(11)),
+      residencia: new FormControl(''),
+      cpf_cnpj: new FormControl('', Validators.maxLength(20)),
+      endereco: new FormControl('', Validators.maxLength(100)),
+      complemento: new FormControl('', Validators.maxLength(40)),
+      cidade: new FormControl({ value: '', disabled: true }, Validators.maxLength(30)),
+      estado: new FormControl(''),
+      cep: new FormControl('', Validators.maxLength(8))
     });
   }
 
@@ -104,6 +111,26 @@ export class CadastroEmpregadorComponent implements OnInit {
 
   voltar(): void {
     this.router.navigate(['/cadastro']);
+  }
+
+  getCities(id_estado: any) {
+    if (id_estado == "Selecione") {
+      this.cities = undefined;
+      this.formulario.controls['cidade'].setValue("Selecione");
+      this.formulario.controls['cidade'].disable();
+    } else {
+      this.localidadeService.getCitys(id_estado).subscribe(data => {
+        this.cities = data;
+      });
+      this.formulario.controls['cidade'].setValue("Selecione");
+      this.formulario.controls['cidade'].enable();
+    }
+  }
+
+  getStates() {
+    this.localidadeService.getStates().subscribe(data => {
+      this.states = data;
+    })
   }
 
 }

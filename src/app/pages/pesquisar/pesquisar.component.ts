@@ -5,7 +5,7 @@ import { NgbdRatingTemplate } from './../rating-template/rating-template.compone
 import { Avaliacoes } from './../../util/avaliacoes';
 import { Usuario } from './../../system-objects/usuario-model';
 import { RoleEnum } from './../../system-objects/role-enum';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Funcionario } from '../../services/funcionario/funcionario';
 import { Response } from '../../services/response';
@@ -32,6 +32,8 @@ export class PesquisarComponent implements OnInit {
   private todosCamposVazios: Boolean = false;
   private cities: Array<Cidade>;
   private states: Array<Estado>;
+
+  @ViewChild('cidade', { static: false }) cidadeInput: ElementRef;
 
   constructor(private usuarioService: UsuarioService,
     private formBuilder: FormBuilder,
@@ -72,7 +74,7 @@ export class PesquisarComponent implements OnInit {
       nome: new FormControl('', [Validators.minLength(3), Validators.maxLength(15)]),
       sobrenome: new FormControl('', [Validators.minLength(3), Validators.maxLength(40)]),
       estado: new FormControl(''),
-      cidade: new FormControl('', Validators.maxLength(15)),
+      cidade: new FormControl({ value: '', disabled: true }),
       avaliacao: new FormControl(''),
       experiencia: new FormControl('')
     });
@@ -156,10 +158,18 @@ export class PesquisarComponent implements OnInit {
       return false;
   }
 
-  getCities(id_estado: number) {
-    this.localidadeService.getCitys(id_estado).subscribe(data => {
-      this.cities = data;
-    });
+  getCities(id_estado: any) {
+    if (id_estado == "Selecione") {
+      this.cities = undefined;
+      this.formulario.controls['cidade'].setValue("Selecione");
+      this.formulario.controls['cidade'].disable();
+    } else {
+      this.localidadeService.getCitys(id_estado).subscribe(data => {
+        this.cities = data;
+      });
+      this.formulario.controls['cidade'].setValue("Selecione");
+      this.formulario.controls['cidade'].enable();
+    }
   }
 
   getStates() {

@@ -24,11 +24,8 @@ export class InfoFuncionarioComponent implements OnInit {
   private avaliacoes: Avaliacoes = new Avaliacoes();
   private chatActivated = false;
   private media:number = 0.0;
-  
-
 
   @ViewChild('confirmExcluir', { static: false }) confirmExcluir: ElementRef;
-  @ViewChild('btnEdicao', { static: false }) btnEdicao;
 
   constructor(private activatedRoute: ActivatedRoute,
     private usuarioService: UsuarioService,
@@ -131,9 +128,7 @@ export class InfoFuncionarioComponent implements OnInit {
       this.usuarioInfo.profissao = "Profissão não cadastrada.";
     } else {
       this.usuarioInfo.profissao = this.activatedRoute.snapshot.queryParams.profissao;
-    }
-
-    
+    }    
   }
 
   //Exclui um funcionário ao clicar no botão excluir
@@ -155,62 +150,6 @@ export class InfoFuncionarioComponent implements OnInit {
         });
   }
 
-  //Habilitando edição dos campos após clicar no badge Editar
-  habilitarEdicao(inputEscolhido: String) {
-    if (inputEscolhido == this.usuarioInfo.nome) {
-      this.formulario.controls['nome'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.sobrenome) {
-      this.formulario.controls['sobrenome'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.senha) {
-      this.formulario.controls['senha'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.email) {
-      this.formulario.controls['email'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.urlFacebook) {
-      this.formulario.controls['urlFacebook'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.hasWhatsapp) {
-      this.formulario.controls['hasWhatsapp'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.telefone) {
-      this.formulario.controls['telefone'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.profissao) {
-      this.formulario.controls['profissao'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.experiencia) {
-      this.formulario.controls['experiencia'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.cpf_cnpj) {
-      this.formulario.controls['cpf_cnpj'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.endereco) {
-      this.formulario.controls['endereco'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.complemento) {
-      this.formulario.controls['complemento'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.cidade) {
-      this.formulario.controls['cidade'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.estado) {
-      this.formulario.controls['estado'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.cep) {
-      this.formulario.controls['cep'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.avaliacao) {
-      this.formulario.controls['avaliacao'].enable();
-    }
-    if (inputEscolhido == this.usuarioInfo.sexo) {
-      this.formulario.controls['sexo'].enable();
-    }
-    //habilita o botão para alterar a informação do funcionário.
-    this.edicao = false;
-  }
 
   atualizar(usuarioInfoNovo: Usuario) {
     usuarioInfoNovo = this.formulario.value;
@@ -284,7 +223,6 @@ export class InfoFuncionarioComponent implements OnInit {
 
     this.chatActivated = true;
     //armazenando o nome e sobrenome do funcionario escolhido no local storage
-
 
   }
   fecharMessageChat() {

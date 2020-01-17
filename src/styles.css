@@ -11210,6 +11210,7 @@ margin-top: 4%;
 }
 .botoesInfoFunc{
   margin-left: 70%;
+  position: relative;
 }
 .botoesInfoPerfil{
   margin-left: 67%;
@@ -11822,4 +11823,10 @@ td > span:active{
 .mensagemUsuario{
   margin-left: 30%;
   margin-top: 4%;
+}
+#contentChatMessage{
+  width: 66%;
+  position:relative;
+  z-index:-1;
+  
 }

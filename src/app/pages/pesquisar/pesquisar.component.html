@@ -39,10 +39,11 @@
                                 </select>
                                 <p>* Campo Obrigatório</p>
                             </div>
-                            <div class="col-3" id="textoLabelPadrao">
+                            <div class="col-3" id="textoLabelPadrao" >
                                 <b>Cidade</b>
-                                <select class="form-control form-control-sm-3 estiloCampos" id="campoCidadePesquisar">
-                                    <option>Selecione</option>
+                                <select  formControlName="cidade" name="cidade" ngDefaultControl 
+                                    class="form-control form-control-sm-3 estiloCampos" id="campoCidadePesquisar">
+                                    <option value="Selecione" [selected]="'Selecione'">Selecione</option>
                                     <option *ngFor="let cidade of cities" [value]="cidade.id_cidade">
                                         {{cidade.nome_cidade}}
                                     </option>

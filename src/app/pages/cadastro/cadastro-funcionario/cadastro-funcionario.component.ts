@@ -1,4 +1,7 @@
-﻿import { Observable } from 'rxjs';
+﻿import { LocalidadeService } from './../../../services/localidade/localidade.service';
+import { Estado } from './../../../system-objects/estado-model';
+import { Cidade } from './../../../system-objects/cidade-model';
+import { Observable } from 'rxjs';
 import { RoleEnum } from './../../../system-objects/role-enum';
 import { UsuarioService } from './../../../services/usuario/usuario.service';
 import { Usuario } from './../../../system-objects/usuario-model';
@@ -23,11 +26,14 @@ export class CadastroFuncionarioComponent implements OnInit {
   private usuario: Usuario = new Usuario();
   private formulario: FormGroup;
   private valorInteiro: Number = null;
+  private cities:Array<Cidade>
+  private states:Array<Estado>
 
   constructor(private UsuarioService: UsuarioService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private localidadeService:LocalidadeService) {
 
     this.configurarFormulario();
   }
@@ -35,6 +41,7 @@ export class CadastroFuncionarioComponent implements OnInit {
   ngOnInit() {
     this.titulo = "Cadastro";
     this.subtitulo = "Funcionário";
+    this.getStates();
   }
 
   estados = [
@@ -65,7 +72,7 @@ export class CadastroFuncionarioComponent implements OnInit {
       cpf_cnpj: new FormControl('', [Validators.minLength(11), Validators.maxLength(11)]),
       endereco: new FormControl('', Validators.maxLength(100)),
       complemento: new FormControl('', Validators.maxLength(15)),
-      cidade: new FormControl('', Validators.maxLength(15)),
+      cidade: new FormControl({value:'', disabled:true}, Validators.maxLength(15)),
       estado: new FormControl(''),
       experiencia: new FormControl('', Validators.maxLength(35)),
       cep: new FormControl('', Validators.maxLength(8))
@@ -74,17 +81,17 @@ export class CadastroFuncionarioComponent implements OnInit {
 
   salvar(): void {
     let usuario = this.formulario.value as Usuario;
-    
+
     if (usuario.sexo = "Masculino") {
       usuario.sexo = 'M';
     } else {
       usuario.sexo = 'F'
-    }    
-    usuario.idRole = RoleEnum.Funcionario; 
+    }
+    usuario.idRole = RoleEnum.Funcionario;
 
     this.UsuarioService.addUsuario(usuario)
       .subscribe(response => {
-        
+
         let res: Response = <Response>response;
 
         if (res.codigo == 1) {
@@ -99,6 +106,27 @@ export class CadastroFuncionarioComponent implements OnInit {
       },
         (erro) => {
           alert(erro);
-        });        
+        });
   }
+
+  getCities(id_estado: any) {
+    if (id_estado == "Selecione") {
+      this.cities = undefined;
+      this.formulario.controls['cidade'].setValue("Selecione");
+      this.formulario.controls['cidade'].disable();
+    } else {
+      this.localidadeService.getCitys(id_estado).subscribe(data => {
+        this.cities = data;
+      });
+      this.formulario.controls['cidade'].setValue("Selecione");
+      this.formulario.controls['cidade'].enable();
+    }
+  }
+
+  getStates() {
+    this.localidadeService.getStates().subscribe(data => {
+      this.states = data;
+    })
+  }
+
 }

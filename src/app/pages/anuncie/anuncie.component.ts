@@ -47,7 +47,7 @@ export class AnuncieComponent implements OnInit {
       nomeEmpregador: new FormControl(''),
       titulo: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
       subtitulo: new FormControl('', [Validators.minLength(3), Validators.maxLength(40)]),
-      cidade: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]),
+      cidade: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(3), Validators.maxLength(40)]),
       estado: new FormControl('', Validators.required),
       telefone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
       descricao: new FormControl('', [Validators.required, Validators.maxLength(400)])
@@ -88,9 +88,17 @@ export class AnuncieComponent implements OnInit {
   }
 
   getCities(id_estado: any) {
-    this.localidadeService.getCitys(id_estado).subscribe(data => {
-      this.cities = data;
-    });
+    if (id_estado == "Selecione") {
+      this.cities = undefined;
+      this.formulario.controls['cidade'].setValue("Selecione");
+      this.formulario.controls['cidade'].disable();
+    } else {
+      this.localidadeService.getCitys(id_estado).subscribe(data => {
+        this.cities = data;
+      });
+      this.formulario.controls['cidade'].setValue("Selecione");
+      this.formulario.controls['cidade'].enable();
+    }
   }
 
   getStates() {
