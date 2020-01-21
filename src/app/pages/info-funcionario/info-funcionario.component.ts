@@ -117,9 +117,9 @@ export class InfoFuncionarioComponent implements OnInit {
     if (this.activatedRoute.snapshot.queryParams.avaliacao == undefined ||
       this.activatedRoute.snapshot.queryParams.avaliacao == "" ||
       this.activatedRoute.snapshot.queryParams.avaliacao == null) {
-      this.usuarioInfo.avaliacao = "Ainda não possui avaliação.";
+      this.usuarioInfo.id_usuario = 0;
     } else {
-      this.usuarioInfo.avaliacao = this.activatedRoute.snapshot.queryParams.avaliacao;
+      this.usuarioInfo.id_usuario = this.activatedRoute.snapshot.queryParams.avaliacao;
     }
     //se o campo profissao estiver null ou vazio receberá um texto personalizado
     if (this.activatedRoute.snapshot.queryParams.profissao == undefined ||
@@ -196,7 +196,7 @@ export class InfoFuncionarioComponent implements OnInit {
     this.usuarioInfo.urlFacebook = objetoFuncValueAntigo[15];
     this.usuarioInfo.hasWhatsapp = objetoFuncValueAntigo[16];
     this.usuarioInfo.experiencia = objetoFuncValueAntigo[17];
-    this.usuarioInfo.avaliacao = objetoFuncValueAntigo[18];
+    //this.usuarioInfo.id_avaliacao = objetoFuncValueAntigo[18];
 
 
     this.usuarioService.updateUsuario(this.usuarioInfo)

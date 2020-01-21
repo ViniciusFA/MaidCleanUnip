@@ -1,8 +1,10 @@
-﻿import { Estado } from './../../system-objects/estado-model';
+﻿import { Avaliacoes } from './../../system-objects/avaliacoes-model';
+import { AvaliacoesService } from './../../services/avaliacoes/avaliacoes.service';
+import { Estado } from './../../system-objects/estado-model';
 import { Cidade } from './../../system-objects/cidade-model';
 import { LocalidadeService } from './../../services/localidade/localidade.service';
-import { NgbdRatingTemplate } from './../rating-template/rating-template.component';
-import { Avaliacoes } from './../../util/avaliacoes';
+import { NgbdRatingTemplate } from '../../components/rating-template/rating-template.component';
+
 import { Usuario } from './../../system-objects/usuario-model';
 import { RoleEnum } from './../../system-objects/role-enum';
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
@@ -18,20 +20,20 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 
 @Component({
   selector: 'app-pesquisar',
-  templateUrl: './pesquisar.component.html',
+  templateUrl: './pesquisar.component.html'
 })
-export class PesquisarComponent implements OnInit {
 
+export class PesquisarComponent implements OnInit {
   private titulo: string;
   private formulario: FormGroup;
-  private pesquisaFuncionario: PesquisaFuncionario = new PesquisaFuncionario();
   private usuarioFuncionario: Usuario = new Usuario();
-  private rating: NgbdRatingTemplate;
   private usuarios: Array<any>;
-  pageOfItems: Array<any>;
+  private pageOfItems: Array<any>;
   private todosCamposVazios: Boolean = false;
   private cities: Array<Cidade>;
   private states: Array<Estado>;
+  private mediaArray: Array<number> = new Array;
+  private allAvaliations: Array<Avaliacoes> = new Array;
 
   @ViewChild('cidade', { static: false }) cidadeInput: ElementRef;
 
@@ -39,16 +41,17 @@ export class PesquisarComponent implements OnInit {
     private formBuilder: FormBuilder,
     private pesquisaFuncionarioService: PesquisaFuncionarioService,
     private router: Router,
-    private localidadeService: LocalidadeService) {
+    private localidadeService: LocalidadeService,
+    private avaliacoesAservice: AvaliacoesService) {
     this.configurarFormulario();
   }
 
   ngOnInit() {
     this.titulo = "Pesquisar Funcionários";
     this.pegarUsuariosPorPerfil();
+    this.getAllAvaliation();
     this.getStates();
   }
-
 
   experiencias = [
     new Experiencia(0, "Selecione"),
@@ -58,16 +61,6 @@ export class PesquisarComponent implements OnInit {
     new Experiencia(4, '1 a 2 anos'),
     new Experiencia(5, '2 anos e meio'),
   ];
-
-  avaliacoes = [
-    new Avaliacoes(0, "Selecione"),
-    new Avaliacoes(1, "1"),
-    new Avaliacoes(2, "2"),
-    new Avaliacoes(3, "3"),
-    new Avaliacoes(4, "4"),
-    new Avaliacoes(5, "5"),
-  ];
-
 
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
@@ -151,7 +144,7 @@ export class PesquisarComponent implements OnInit {
       && (camposPesquisa.sobrenome == null || camposPesquisa.sobrenome == "")
       && (camposPesquisa.estado == null || camposPesquisa.estado == "")
       && (camposPesquisa.cidade == null || camposPesquisa.cidade == "")
-      && (camposPesquisa.avaliacao == null || camposPesquisa.avaliacao == "")
+      && (camposPesquisa.id_avaliacao == null || camposPesquisa.id_avaliacao == undefined)
       && (camposPesquisa.experiencia == null || camposPesquisa.experiencia == ""))
       return true;
     else
@@ -177,5 +170,20 @@ export class PesquisarComponent implements OnInit {
       this.states = data;
     })
   }
+
+  getAllAvaliation() {
+    this.avaliacoesAservice.getAllAvaliations().subscribe(res => {
+      this.allAvaliations = res;
+    })
+    this.getAverageAvaliation();
+  }
+
+  getAverageAvaliation() {
+    this.avaliacoesAservice.getAverage().subscribe(res => {
+      this.mediaArray = res;
+    })
+  }
+
+
 
 }

@@ -102,9 +102,12 @@
                                 <td class="contentCells">{{user.cidade}}</td>
                                 <td class="contentCells">{{user.sexo}}</td>
                                 <td data-toggle="modal" data-target="#modalRating">
-                                    <app-rating-template>
-                                    </app-rating-template>
-
+                                    <ngb-rating [(rate)]="user.avaliacao.star" max="5">
+                                        <ng-template let-fill="fill" let-index="index">
+                                        <span class="starPesquisa" [class.filledPesquisa]="fill === 100" >&#9733; </span>
+                                        </ng-template>
+                                    </ngb-rating>
+                                    <pre>Média: <b>{{user.avaliacao.mediaAvaliacao}}</b></pre>
                                 </td>
                                 <td>&nbsp; &nbsp; 1</td>
                                 <td>

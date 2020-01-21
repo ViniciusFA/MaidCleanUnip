@@ -2,7 +2,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Avaliacoes } from './../../system-objects/avaliacoes-model';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { RoleEnum } from './../../system-objects/role-enum';
-import { PesquisarComponent } from './../pesquisar/pesquisar.component';
 import { Usuario } from './../../system-objects/usuario-model';
 import { AvaliacoesService } from './../../services/avaliacoes/avaliacoes.service';
 import { Component, OnInit } from '@angular/core';
@@ -30,10 +29,8 @@ import { Component, OnInit } from '@angular/core';
   `]
 })
 export class NgbdRatingTemplate implements OnInit{
-  currentRate = 5;
   media:number = 0.0;
   private users:Usuario[] = new Array;
-  private pesquisar:PesquisarComponent ;
   private avaliations: Avaliacoes = new Avaliacoes();
   private idUser:number=0;
 
@@ -45,11 +42,6 @@ export class NgbdRatingTemplate implements OnInit{
   ngOnInit(){
    
   } 
-
-
-  getUsers(){
-    
-  }
 
 
   getAvaliation(idUser:number){

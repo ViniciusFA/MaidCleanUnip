@@ -212,10 +212,10 @@ export class PerfilComponent implements OnInit {
       }
     }
 
-    if (this.usuarioInfo.avaliacao == null || this.usuarioInfo.avaliacao == "") {
-      this.usuarioInfo.avaliacao = "Sem avaliação recebida.";
+    if (this.usuarioInfo.id_avaliacao == null || this.usuarioInfo.id_avaliacao == 0) {
+      this.usuarioInfo.id_avaliacao = 0;
     } else {
-      this.usuarioInfo.avaliacao = this.activatedRoute.snapshot.queryParams.avaliacao;
+      this.usuarioInfo.id_avaliacao = this.activatedRoute.snapshot.queryParams.avaliacao;
     }
     this.usuarioInfo.sexo = this.activatedRoute.snapshot.queryParams.sexo;
   }

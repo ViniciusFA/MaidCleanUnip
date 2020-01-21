@@ -1,3 +1,4 @@
+import { Avaliacoes } from './../../system-objects/avaliacoes-model';
 import { ConfigService } from './../config.service';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -22,5 +23,16 @@ export class AvaliacoesService{
         return this.http.get(this.baseUrlService + '/' + id_usuario)
             .map(res => res.json());
 
+    }
+
+    getAllAvaliations(){
+        return this.http.get(this.baseUrlService)
+            .map(res => res.json());
+    }
+   
+
+    getAverage(){
+        return this.http.get(this.baseUrlService+ '/media')
+            .map(res => res.json());
     }
 }

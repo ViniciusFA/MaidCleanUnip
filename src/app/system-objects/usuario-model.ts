@@ -1,3 +1,4 @@
+import { Avaliacoes } from './avaliacoes-model';
 export class Usuario {
     idUsuario: number;
     nome: string;
@@ -17,9 +18,10 @@ export class Usuario {
     sexo: string;
     sobrenome: string;
     id_usuario: Number;
-    avaliacao: string;
+    id_avaliacao: Avaliacoes;
     idFuncionario: number;
     residencia: string;
     cpf_cnpj: string;
     idRole: number;
+    mediaAvaliacao:number;
 }

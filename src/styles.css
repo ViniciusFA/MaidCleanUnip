@@ -11228,6 +11228,7 @@ margin-top: 4%;
   color: #f3f0f0;
   font-weight: bold;
   font-family: arial;
+  text-align: center;
 }
 .corpotabelaPesquisa{
   background-color: #f9f9f9;
@@ -11827,6 +11828,12 @@ td > span:active{
 #contentChatMessage{
   width: 66%;
   position:relative;
-  z-index:-1;
-  
+  z-index:-1;  
+}
+.starPesquisa{
+  font-size: 1.5rem;
+  color: #d1d2d4;
+}
+.filledPesquisa {
+  color: #ccc61a;
 }

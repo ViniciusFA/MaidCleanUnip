@@ -44,7 +44,7 @@ import { AgmCoreModule} from '@agm/core';
 import { ChatMessageComponent } from './pages/info-funcionario/chat-message/chat-message.component';
 import { ChatMessageOportunityComponent } from './pages/oportunidades/oportunidades-modal/chat-message-oportunity/chat-message-oportunity.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbdRatingTemplate } from './pages/rating-template/rating-template.component';
+import { NgbdRatingTemplate } from './components/rating-template/rating-template.component';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { PaginationComponent } from './components/pagination/pagination/pagination.component';
 import { CalendarComponent } from './components/calendar/calendar/calendar.component';
