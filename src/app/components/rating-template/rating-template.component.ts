@@ -28,7 +28,8 @@ import { Component, OnInit } from '@angular/core';
     }
   `]
 })
-export class NgbdRatingTemplate implements OnInit{
+export class NgbdRatingTemplate {//implements OnInit{
+  /*
   media:number = 0.0;
   private users:Usuario[] = new Array;
   private avaliations: Avaliacoes = new Avaliacoes();
@@ -63,4 +64,5 @@ export class NgbdRatingTemplate implements OnInit{
           this.media = (parseFloat(this.media.toFixed(2)));
       }    
     } 
+    */
 }

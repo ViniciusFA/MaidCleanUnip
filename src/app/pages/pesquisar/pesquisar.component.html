@@ -49,26 +49,28 @@
                                     </option>
                                 </select>
                                 <p>* Campo Obrigatório</p>
+                            </div>                          
+                            <div class="col-3" formControlName="star" name="avaliacao" id="textoLabelPadrao"
+                                ngDefaultControl>
+                                <b>Avaliação / Estrelas</b>
+                                <select class="form-control form-control-sm-3 estiloCampos" id="campoAvaliacaoPesquisar">
+                                    <option>Selecione</option>
+                                    <option *ngFor="let star of allStars" ngValue="star.id_star">
+                                        {{star.valor_star}} - {{ star.nome_star}}
+                                    </option>
+                                </select>
                             </div>
                             <div class="col-3" formControlName="experiencia" id="textoLabelPadrao" name="experiencia"
-                                ngDefaultControl>
-                                <b>Experiencia</b>
-                                <select class="form-control form-control-sm-3 estiloCampos"
-                                    id="campoExperienciaPesquisar">
-                                    <option *ngFor="let experiencia of experiencias" ngValue="experiencias.id">
-                                        {{experiencia.nome}}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col-3" formControlName="avaliacao" name="avaliacao" id="textoLabelPadrao"
-                                ngDefaultControl>
-                                <b>Avaliacao</b>
-                                <select class="form-control form-control-sm-3 estiloCampos" id="campoSexoPesquisar">
-                                    <option *ngFor="let avaliacao of avaliacoes" ngValue="sexo.id">
-                                        {{avaliacao.nome}}
-                                    </option>
-                                </select>
-                            </div>
+                            ngDefaultControl>
+                            <b>Experiencia</b>
+                            <select class="form-control form-control-sm-3 estiloCampos"
+                                id="campoExperienciaPesquisar">
+                                <option>Selecione</option>
+                                <option *ngFor="let experiencia of experiencias" ngValue="experiencia.tempo">
+                                    {{experiencia.tempo}}
+                                </option>
+                            </select>
+                        </div>
                         </div>
                         <!--Botões limpar e pesquisar -->
                         <div class="botoesPesquisar">
@@ -90,7 +92,7 @@
                                 <th class="labelTabelaPesquisa" scope="col"><strong>Cidade</strong></th>
                                 <th class="labelTabelaPesquisa" scope="col"><strong>Sexo</strong></th>
                                 <th class="labelTabelaPesquisa" scope="col"><strong>Avaliação</strong></th>
-                                <th class="labelTabelaPesquisa" scope="col"><strong>Ranking</strong></th>
+                                <th class="labelTabelaPesquisa" scope="col"><strong>Experiência</strong></th>
                                 <th class="labelTabelaPesquisa" scope="col"><strong>&nbsp;</strong></th>
                             </tr>
                         </thead>
@@ -98,18 +100,18 @@
                             <tr class="classTr" id="listaFuncionariotabela" *ngFor='let user of pageOfItems'>
                                 <td class="contentCells">{{user.nome}}</td>
                                 <td class="contentCells">{{user.sobrenome}}</td>
-                                <td class="contentCells">{{user.estado}}</td>
-                                <td class="contentCells">{{user.cidade}}</td>
-                                <td class="contentCells">{{user.sexo}}</td>
+                                <td class="contentCells">{{user.estado.nome_estado}}</td>
+                                <td class="contentCells">{{user.cidade.nome_cidade}}</td>
+                                <td class="contentCells">{{user.sexo}} </td>
                                 <td data-toggle="modal" data-target="#modalRating">
-                                    <ngb-rating [(rate)]="user.avaliacao.star" max="5">
+                                    <ngb-rating [(rate)]="user.stars.valor_star" max="5">
                                         <ng-template let-fill="fill" let-index="index">
                                         <span class="starPesquisa" [class.filledPesquisa]="fill === 100" >&#9733; </span>
                                         </ng-template>
                                     </ngb-rating>
                                     <pre>Média: <b>{{user.avaliacao.mediaAvaliacao}}</b></pre>
                                 </td>
-                                <td>&nbsp; &nbsp; 1</td>
+                                <td>{{user.experiencia.tempo}}</td>
                                 <td>
                                     <a id="btnInfoFuncionario" (click)="infoFuncionario(user)">
                                         <span class="badge badge-info">

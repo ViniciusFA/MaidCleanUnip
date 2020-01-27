@@ -1,3 +1,4 @@
+import { Stars } from './stars-model';
 export class Avaliacoes{
     idAvaliacao:number;
     idUsuario:number;
@@ -6,5 +7,8 @@ export class Avaliacoes{
     disciplina:number;
     limpeza:number;
     media:number;
-    stars:number;
+    stars:Stars = new Stars();    
+
+    constructor(public id:number, public star:number){}
+
 }

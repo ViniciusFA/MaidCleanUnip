@@ -99,7 +99,7 @@ export class HeaderComponent implements OnInit {
       this.usuarioInfo.cidade = resposta.cidade;
       this.usuarioInfo.estado = resposta.estado;
       this.usuarioInfo.cep = resposta.cep;
-      this.usuarioInfo.id_avaliacao = resposta.avaliacao;
+      this.usuarioInfo.avaliacao = resposta.avaliacao;
       this.usuarioInfo.sexo = resposta.sexo;
       this.usuarioInfo.idRole = resposta.idRole;
      // this.usuarioInfo.mediaAvaliacao = resposta.

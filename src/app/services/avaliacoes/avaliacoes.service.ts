@@ -12,7 +12,7 @@ export class AvaliacoesService{
 
     constructor(private http:Http,
                 private configService:ConfigService){
-                    this.baseUrlService = configService.getUrlService() + '/avaliacoes';
+                    this.baseUrlService = configService.getUrlService();
                     this.headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8'});
                     this.options = new RequestOptions({headers:this.headers});
                 }
@@ -20,19 +20,24 @@ export class AvaliacoesService{
     /*Pega Avaliação do usuario no banco */
     getAvaliationsUser(id_usuario:Number){
         //http://localhost:8090/api/usuario/avaliacoes/191
-        return this.http.get(this.baseUrlService + '/' + id_usuario)
+        return this.http.get(this.baseUrlService + '/avaliacoes/' + id_usuario)
             .map(res => res.json());
 
     }
 
     getAllAvaliations(){
-        return this.http.get(this.baseUrlService)
+        return this.http.get(this.baseUrlService + '/avaliacoes')
             .map(res => res.json());
     }
    
 
     getAverage(){
-        return this.http.get(this.baseUrlService+ '/media')
+        return this.http.get(this.baseUrlService + '/avaliacoes' + '/media')
+            .map(res => res.json());
+    }
+
+    getStars(){
+        return this.http.get(this.baseUrlService + '/estrelas')
             .map(res => res.json());
     }
 }

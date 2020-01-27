@@ -8,6 +8,7 @@ import { RequestOptions, Http, Headers } from '@angular/http';
 export class UsuarioService {
 
     private baseUrlService: string = '';
+    private baseUrlServiceWithoutUser:String ='';
     private headers: Headers;
     private options: RequestOptions;
     usuarioFuncionario: Usuario[] = new Array();
@@ -16,6 +17,7 @@ export class UsuarioService {
     constructor(private http: Http,
         private configService: ConfigService) {
         this.baseUrlService = configService.getUrlService() + '/usuario';
+        this.baseUrlServiceWithoutUser = configService.getUrlService();
         this.headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8' });
         this.options = new RequestOptions({ headers: this.headers });
     }
@@ -27,7 +29,7 @@ export class UsuarioService {
     }
 
     getUsuariosPorPerfil(idRole: Number) {
-        return this.http.get(this.baseUrlService + '?idRole=' + idRole).map(res => res.json());
+        return this.http.get(this.baseUrlServiceWithoutUser + '/idRole/' + idRole).map(res => res.json());
     }
    
     getUsuarioPorLogin(login: String){

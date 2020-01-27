@@ -26,7 +26,7 @@ export class PerfilComponent implements OnInit {
   private formulario: FormGroup;
   private editingFields: boolean = true;
   private usuarioInfo: Usuario = new Usuario();
-  private avaliacoes: Avaliacoes = new Avaliacoes();
+  private avaliacoes: Avaliacoes;
   private media: number = 0.0;
   //private selectedFile:File = null;
   private newUsuarioInfo: Usuario = new Usuario();
@@ -202,20 +202,10 @@ export class PerfilComponent implements OnInit {
       this.usuarioInfo.hasWhatsapp = this.activatedRoute.snapshot.queryParams.hasWhatsapp;
     }
 
-    if (this.usuarioInfo.idRole == 3) {
-      this.usuarioInfo.experiencia = "Empregador";
-    } else if (this.usuarioInfo.idRole == 2) {
-      if (this.usuarioInfo.experiencia == null || this.usuarioInfo.experiencia == "") {
-        this.usuarioInfo.experiencia = "Sem experiência.";
-      } else {
-        this.usuarioInfo.experiencia = this.activatedRoute.snapshot.queryParams.experiencia;
-      }
-    }
-
-    if (this.usuarioInfo.id_avaliacao == null || this.usuarioInfo.id_avaliacao == 0) {
-      this.usuarioInfo.id_avaliacao = 0;
+    if (this.usuarioInfo.avaliacao == null || this.usuarioInfo.avaliacao == undefined) {
+      this.usuarioInfo.avaliacao = null;
     } else {
-      this.usuarioInfo.id_avaliacao = this.activatedRoute.snapshot.queryParams.avaliacao;
+      this.usuarioInfo.avaliacao = this.activatedRoute.snapshot.queryParams.avaliacao;
     }
     this.usuarioInfo.sexo = this.activatedRoute.snapshot.queryParams.sexo;
   }

@@ -1,4 +1,8 @@
+import { Stars } from './stars-model';
+import { Cidade } from './cidade-model';
+import { Estado } from './estado-model';
 import { Avaliacoes } from './avaliacoes-model';
+import { Experiencias } from './experiencias-model';
 export class Usuario {
     idUsuario: number;
     nome: string;
@@ -9,19 +13,19 @@ export class Usuario {
     hasWhatsapp: string;
     telefone: string;
     profissao: string;
-    experiencia: string;
     endereco: string;
     complemento: string;
-    cidade: string;
-    estado: string;
+    cidade: Cidade = new Cidade();
+    estado: Estado = new Estado();
     cep: string;
     sexo: string;
     sobrenome: string;
-    id_usuario: Number;
-    id_avaliacao: Avaliacoes;
+    avaliacao: Avaliacoes = new Avaliacoes(0,0);
     idFuncionario: number;
     residencia: string;
     cpf_cnpj: string;
     idRole: number;
     mediaAvaliacao:number;
+    experiencia:Experiencias =new Experiencias();
+    stars:Stars = new Stars();
 }

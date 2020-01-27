@@ -21,7 +21,7 @@ export class InfoFuncionarioComponent implements OnInit {
   private formulario: FormGroup;
   private edicao: Boolean = true;
   private usuarioInfoNovo: Usuario = new Usuario();
-  private avaliacoes: Avaliacoes = new Avaliacoes();
+  private avaliacoes: Avaliacoes;
   private chatActivated = false;
   private media:number = 0.0;
 
@@ -68,6 +68,7 @@ export class InfoFuncionarioComponent implements OnInit {
 
   //método que captura o funcionário selecionado no badge info da página pesquiasr
   recebendoParamsFuncionario() {
+
     //recebendo os valores vindo da router através do queryParams
     this.usuarioInfo.idUsuario = this.activatedRoute.snapshot.queryParams.idUsuario;
     this.usuarioInfo.nome = this.activatedRoute.snapshot.queryParams.nome;
@@ -96,7 +97,7 @@ export class InfoFuncionarioComponent implements OnInit {
     if (this.activatedRoute.snapshot.queryParams.hasWhatsapp == undefined ||
       this.activatedRoute.snapshot.queryParams.hasWhatsapp == "" ||
       this.activatedRoute.snapshot.queryParams.hasWhatsapp == null) {
-      this.usuarioInfo.urlFacebook = "Não cadastrou whatsapp.";
+      this.usuarioInfo.hasWhatsapp = "Não cadastrou whatsapp.";
     } else {
       this.usuarioInfo.hasWhatsapp = this.activatedRoute.snapshot.queryParams.hasWhatsapp;
       if (this.usuarioInfo.hasWhatsapp == '1') {
@@ -109,17 +110,17 @@ export class InfoFuncionarioComponent implements OnInit {
     if (this.activatedRoute.snapshot.queryParams.experiencia == undefined ||
       this.activatedRoute.snapshot.queryParams.experiencia == "" ||
       this.activatedRoute.snapshot.queryParams.experiencia == null) {
-      this.usuarioInfo.experiencia = "Sem experiência.";
+      this.usuarioInfo.experiencia = null;
     } else {
-      this.usuarioInfo.experiencia = this.activatedRoute.snapshot.queryParams.experiencia;
+      this.usuarioInfo.experiencia  = this.activatedRoute.snapshot.queryParams.experiencia;
     }
     //se o campo avaliacao estiver null ou vazio receberá um texto personalizado
     if (this.activatedRoute.snapshot.queryParams.avaliacao == undefined ||
       this.activatedRoute.snapshot.queryParams.avaliacao == "" ||
       this.activatedRoute.snapshot.queryParams.avaliacao == null) {
-      this.usuarioInfo.id_usuario = 0;
+      this.usuarioInfo.avaliacao.media = 0;
     } else {
-      this.usuarioInfo.id_usuario = this.activatedRoute.snapshot.queryParams.avaliacao;
+      this.usuarioInfo.avaliacao = this.activatedRoute.snapshot.queryParams.avaliacao;
     }
     //se o campo profissao estiver null ou vazio receberá um texto personalizado
     if (this.activatedRoute.snapshot.queryParams.profissao == undefined ||
@@ -195,7 +196,7 @@ export class InfoFuncionarioComponent implements OnInit {
     this.usuarioInfo.profissao = objetoFuncValueAntigo[14];
     this.usuarioInfo.urlFacebook = objetoFuncValueAntigo[15];
     this.usuarioInfo.hasWhatsapp = objetoFuncValueAntigo[16];
-    this.usuarioInfo.experiencia = objetoFuncValueAntigo[17];
+    this.usuarioInfo.experiencia.ds_tempo  = objetoFuncValueAntigo[17];
     //this.usuarioInfo.id_avaliacao = objetoFuncValueAntigo[18];
 
 

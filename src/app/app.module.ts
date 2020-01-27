@@ -1,3 +1,4 @@
+import { ExperienciaService } from './services/experienciaService/experiencia.service';
 import { LocalidadeService } from './services/localidade/localidade.service';
 import { AvaliacoesService } from './services/avaliacoes/avaliacoes.service';
 import { UsuarioService } from './services/usuario/usuario.service';
@@ -85,7 +86,6 @@ export function getAuthServiceConfigs() {
     ChatMessageComponent,
     ChatMessageOportunityComponent,
     NgbdRatingTemplate,
-    //JwPaginationComponent,
     PaginationComponent,
     CalendarComponent,
     HistoricoComponent,
@@ -120,6 +120,7 @@ export function getAuthServiceConfigs() {
                AvaliacoesService,
                LocalidadeService,
                OportunidadesModalComponent,
+               ExperienciaService,
     {
       provide: SocialServiceConfig,
       useFactory: getAuthServiceConfigs,      

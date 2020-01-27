@@ -1,3 +1,4 @@
+import { Usuario } from './../../system-objects/usuario-model';
 import { RoleEnum } from './../../system-objects/role-enum';
 import { PesquisaFuncionario } from './PesquisaFuncionario';
 import { Http, RequestOptions, Headers } from '@angular/http';
@@ -21,8 +22,10 @@ export class PesquisaFuncionarioService{
                 this.options =new RequestOptions({headers: this.headers})
                 }
 
-    buscar(pesquisaFuncionario: PesquisaFuncionario) {
-        return this.http.get(this.baseUrlService + '/listaUsuarios', {params: pesquisaFuncionario})
+
+      buscar(usuarioFuncionario: PesquisaFuncionario) {
+    //buscar(usuarioFuncionario: Usuario) {
+        return this.http.get(this.baseUrlService + '/listaUsuarios', {params: usuarioFuncionario})
         .map(res => res.json());
     }
 }

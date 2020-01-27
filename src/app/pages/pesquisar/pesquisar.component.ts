@@ -1,4 +1,7 @@
-﻿import { Avaliacoes } from './../../system-objects/avaliacoes-model';
+﻿import { Stars } from './../../system-objects/stars-model';
+import { Experiencias } from 'src/app/system-objects/experiencias-model';
+import { ExperienciaService } from './../../services/experienciaService/experiencia.service';
+import { Avaliacoes } from './../../system-objects/avaliacoes-model';
 import { AvaliacoesService } from './../../services/avaliacoes/avaliacoes.service';
 import { Estado } from './../../system-objects/estado-model';
 import { Cidade } from './../../system-objects/cidade-model';
@@ -34,6 +37,9 @@ export class PesquisarComponent implements OnInit {
   private states: Array<Estado>;
   private mediaArray: Array<number> = new Array;
   private allAvaliations: Array<Avaliacoes> = new Array;
+  private allStars:Array<Stars> = new Array;
+  private experiencias: Array<String> = new Array;
+  private camposPesquisa: PesquisaFuncionario = new PesquisaFuncionario();
 
   @ViewChild('cidade', { static: false }) cidadeInput: ElementRef;
 
@@ -42,25 +48,16 @@ export class PesquisarComponent implements OnInit {
     private pesquisaFuncionarioService: PesquisaFuncionarioService,
     private router: Router,
     private localidadeService: LocalidadeService,
-    private avaliacoesAservice: AvaliacoesService) {
+    private avaliacoesAservice: AvaliacoesService,
+    private experienciaService: ExperienciaService) {
     this.configurarFormulario();
   }
 
   ngOnInit() {
-    this.titulo = "Pesquisar Funcionários";
-    this.pegarUsuariosPorPerfil();
-    this.getAllAvaliation();
-    this.getStates();
+    this.titulo = "Pesquisar Funcionários"; 
+    this.pegarUsuariosPorPerfil();   
+    this.carregarCampos();    
   }
-
-  experiencias = [
-    new Experiencia(0, "Selecione"),
-    new Experiencia(1, 'Sem Experiência'),
-    new Experiencia(2, 'até 6 meses'),
-    new Experiencia(3, '6 a 12 meses'),
-    new Experiencia(4, '1 a 2 anos'),
-    new Experiencia(5, '2 anos e meio'),
-  ];
 
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
@@ -68,20 +65,29 @@ export class PesquisarComponent implements OnInit {
       sobrenome: new FormControl('', [Validators.minLength(3), Validators.maxLength(40)]),
       estado: new FormControl(''),
       cidade: new FormControl({ value: '', disabled: true }),
-      avaliacao: new FormControl(''),
+      star: new FormControl(''),
       experiencia: new FormControl('')
     });
+  }
+
+  carregarCampos() {
+    this.getStates();
+    this.getAllAvaliation();
+    this.getStars();
+    this.getExperience();
   }
 
   pegarUsuariosPorPerfil() {
     this.usuarioService.getUsuariosPorPerfil(RoleEnum.Funcionario).subscribe(res => {
       this.usuarios = res;
+      console.log(this.usuarios);
     });
   }
 
   onChangePage(pageOfItems: Array<any>) {
     //atualiza pagina de itens atual
     this.pageOfItems = pageOfItems;
+    console.log(this.usuarios);
   }
 
   limparCampos() {
@@ -89,26 +95,67 @@ export class PesquisarComponent implements OnInit {
     this.formulario.controls['sobrenome'].setValue("");
     this.formulario.controls['estado'].setValue("");
     this.formulario.controls['cidade'].setValue("");
-    this.formulario.controls['avaliacao'].setValue("");
+    this.formulario.controls['star'].setValue("");
     this.formulario.controls['experiencia'].setValue("");
     (<HTMLSelectElement>document.getElementById('campoEstadoPesquisar')).value = "Selecione";
-    (<HTMLSelectElement>document.getElementById('campoSexoPesquisar')).value = "Selecione";
+    (<HTMLSelectElement>document.getElementById('campoCidadePesquisar')).value = "Selecione";
+    (<HTMLSelectElement>document.getElementById('campoCidadePesquisar')).disabled = true;
+    (<HTMLSelectElement>document.getElementById('campoAvaliacaoPesquisar')).value = "Selecione";
     (<HTMLSelectElement>document.getElementById('campoExperienciaPesquisar')).value = "Selecione";
   }
 
   pesquisar() {
-    this.usuarioFuncionario = this.formulario.value;
-    this.todosCamposVazios = this.verificarCamposVazios(this.usuarioFuncionario);
+    //this.usuarioFuncionario = this.formulario.value;
+
+    let CamposPesquisa: PesquisaFuncionario = this.formulario.value;
+
+    this.todosCamposVazios = this.verificarCamposVazios(CamposPesquisa);
+
     if (this.todosCamposVazios) {
       alert("Preencha pelo menos um campo para pesquisar.");
       this.pegarUsuariosPorPerfil();
     } else {
-      this.pesquisaFuncionarioService.buscar(this.usuarioFuncionario)
+
+      console.log(CamposPesquisa);
+
+      CamposPesquisa.idRole = 2;
+
+      //Atualizando o usuario com os dado do campo NOME
+      if (CamposPesquisa.nome == null || CamposPesquisa.nome == undefined)
+        CamposPesquisa.nome = "";
+
+      //Atualizando o usuario com os dado do campo SOBRENOME
+      if (CamposPesquisa.sobrenome == null || CamposPesquisa.sobrenome == undefined)
+        CamposPesquisa.sobrenome = "";
+
+      //Atualizando o usuario com os dado do campo ESTADO
+      if (CamposPesquisa.estado == null || CamposPesquisa.estado == undefined ||
+        CamposPesquisa.estado == "Selecione" || CamposPesquisa.estado == "undefined")
+        CamposPesquisa.estado = "";
+
+      //Atualizando o usuario com os dado do campo CIDADE
+      if (CamposPesquisa.cidade == null || CamposPesquisa.cidade == undefined ||
+        CamposPesquisa.cidade == "Selecione" || CamposPesquisa.cidade == "undefined")
+        CamposPesquisa.cidade = "";
+
+      //Atualizando o usuario com os dado do campo AVALIAÇÃO / ESTRELA
+      if (CamposPesquisa.star == null || CamposPesquisa.star == undefined ||
+        CamposPesquisa.star == "Selecione" || CamposPesquisa.cidade == "undefined")
+        CamposPesquisa.star = "";
+
+      //Atualizando o usuario com os dado do campo EXPERIÊNCIA
+      if (CamposPesquisa.experiencia == null || CamposPesquisa.experiencia == undefined ||
+        CamposPesquisa.experiencia == "Selecione" || CamposPesquisa.cidade == "undefined")
+        CamposPesquisa.experiencia = "";
+
+      this.pesquisaFuncionarioService.buscar(CamposPesquisa)
+        //this.pesquisaFuncionarioService.buscar(this.usuarioFuncionario)
         .subscribe(response => {
           if (response == 0) {
             alert("Não há registros dessa pesquisa.");
           } else {
             this.usuarios = response;
+            console.log(this.usuarios);
           }
         },
           (erro) => {
@@ -116,6 +163,7 @@ export class PesquisarComponent implements OnInit {
           });
     }
   }
+
 
   excluir(codigo: number, index: number): void {
     if (confirm("Deseja realmente excluir esse funcionário?")) {
@@ -139,13 +187,13 @@ export class PesquisarComponent implements OnInit {
     this.router.navigate(['infoFuncionario'], { queryParams: funcionario });
   }
 
-  verificarCamposVazios(camposPesquisa: Usuario) {
+  verificarCamposVazios(camposPesquisa: PesquisaFuncionario) {
     if ((camposPesquisa.nome == null || camposPesquisa.nome == "")
       && (camposPesquisa.sobrenome == null || camposPesquisa.sobrenome == "")
       && (camposPesquisa.estado == null || camposPesquisa.estado == "")
       && (camposPesquisa.cidade == null || camposPesquisa.cidade == "")
-      && (camposPesquisa.id_avaliacao == null || camposPesquisa.id_avaliacao == undefined)
-      && (camposPesquisa.experiencia == null || camposPesquisa.experiencia == ""))
+      && (camposPesquisa.star == null || camposPesquisa.star == undefined)
+      && (camposPesquisa.experiencia == null || camposPesquisa.experiencia == undefined))
       return true;
     else
       return false;
@@ -171,9 +219,17 @@ export class PesquisarComponent implements OnInit {
     })
   }
 
+  getStars(){
+    this.avaliacoesAservice.getStars().subscribe(data => {
+      this.allStars = data;
+      console.log(this.allStars);
+    })
+  }
+
   getAllAvaliation() {
     this.avaliacoesAservice.getAllAvaliations().subscribe(res => {
       this.allAvaliations = res;
+      console.log(this.allAvaliations);
     })
     this.getAverageAvaliation();
   }
@@ -184,6 +240,12 @@ export class PesquisarComponent implements OnInit {
     })
   }
 
+  getExperience() {
+    this.experienciaService.getExperiences().subscribe(res => {
+      this.experiencias = res;
+      console.log(this.experiencias);
+    })
+  }
 
 
 }
