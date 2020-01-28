@@ -36,11 +36,12 @@ export class ContatoComponent implements OnInit {
   ]
 
   limparCampos(): void {
-    (<HTMLSelectElement>document.getElementById('inputNome')).value = "";
-    (<HTMLSelectElement>document.getElementById('inputSobreNome')).value = "";
-    (<HTMLSelectElement>document.getElementById('selectEmail')).value = "";
-    (<HTMLSelectElement>document.getElementById('selectMotivo')).value = "Selecione";
-    (<HTMLSelectElement>document.getElementById('TextAreaMensagm')).value = "";
+   (<HTMLSelectElement>document.getElementById('inputNome')).value = "";
+   (<HTMLSelectElement>document.getElementById('inputSobreNome')).value = "";
+   (<HTMLSelectElement>document.getElementById('inputEmail')).value = "";
+   (<HTMLSelectElement>document.getElementById('campoMotivoContato')).value = "Selecione";
+   (<HTMLSelectElement>document.getElementById('textAreaMsg')).value = "";
+
   }
 
   configurarFormulario() {
@@ -57,11 +58,14 @@ export class ContatoComponent implements OnInit {
   enviar() {
     this.contato = this.formulario.value;
 
+    console.log(this.formulario.invalid);
+
     this.contatoService.sendMessage(this.contato)
       .subscribe(response => {
         let res: Response = <Response>response;
         if (res.codigo == 1) {
           alert(res.mensagem);
+          this.limparCampos();
           this.formulario.reset();
         } else {
           alert(res.mensagem);

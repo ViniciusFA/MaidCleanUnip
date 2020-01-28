@@ -65,6 +65,7 @@ export class AnuncieComponent implements OnInit {
         alert(res.mensagem);
         this.vaga = new Vaga();
         this.limparCampos();
+        this.formulario.reset();
       } else {
         alert(res.mensagem);
       }

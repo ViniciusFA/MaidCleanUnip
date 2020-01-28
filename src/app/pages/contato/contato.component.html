@@ -7,20 +7,20 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputNome" id="textoLabelContato">Nome</label>
-      <input type="text" class="form-control estiloCampos" formControlName="nome" ngDefaultControl
+      <input type="text" class="form-control estiloCampos" id="inputNome" formControlName="nome" ngDefaultControl
         placeholder="Insira o seu nome">
       <p>(Insira entre 3 e 30 caracteres)</p>
     </div>
     <div class="form-group col-md-6">
       <label for="inputSobreNome" id="textoLabelContato">Sobrenome</label>
-      <input type="text" class="form-control estiloCampos" formControlName="sobrenome" ngDefaultControl
+      <input type="text" class="form-control estiloCampos" id="inputSobreNome" formControlName="sobrenome" ngDefaultControl
         placeholder="Insira o seu sobrenome">
       <p>(Insira entre 3 e 40 caracteres)</p>
     </div>
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1" id="textoLabelContato">Email</label>
-    <input type="email" class="form-control estiloCampos" formControlName="email" ngDefaultControl
+    <input type="email" class="form-control estiloCampos" id="inputEmail" formControlName="email" ngDefaultControl
       placeholder="name@example.com">
     <p>(Insira até 70 caracteres)</p>
   </div>
@@ -34,7 +34,7 @@
   </div>
   <div class="form-group">
     <label for="TextAreaMensagm" id="textoLabelContato">Mensagem</label>
-    <textarea class="form-control estiloCampos" rows="4" formControlName="mensagem" ngDefaultControl></textarea>
+    <textarea class="form-control estiloCampos" id="textAreaMsg" rows="4" formControlName="mensagem" ngDefaultControl></textarea>
     <p>(Insira até 400 caracteres)</p>
   </div>
   <div class="botoesContato">
