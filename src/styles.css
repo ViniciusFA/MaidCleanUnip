@@ -11174,10 +11174,12 @@ cursor:pointer;
 }
 .conteudoDivColunaInfo{
   margin-left: 2%;
+  text-align: center;
 }
 .contaudoInputInfo{
   padding: 0%;
   font-family: arial;
+  text-align: center;
 }
 .conteudoInputInfoOport{
   padding: 0%;
@@ -11840,4 +11842,7 @@ td > span:active{
 }
 .filledPesquisa {
   color: #ccc61a;
+}
+.formInfoFunc{
+  text-align: center;
 }

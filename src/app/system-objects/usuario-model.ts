@@ -9,7 +9,7 @@ export class Usuario {
     login: string;
     senha: string;
     email: string;
-    urlFacebook: string;
+    facebook: string;
     hasWhatsapp: string;
     telefone: string;
     profissao: string;
@@ -20,7 +20,7 @@ export class Usuario {
     cep: string;
     sexo: string;
     sobrenome: string;
-    avaliacao: Avaliacoes = new Avaliacoes(0,0);
+    avaliacao: Avaliacoes = new Avaliacoes();
     idFuncionario: number;
     residencia: string;
     cpf_cnpj: string;

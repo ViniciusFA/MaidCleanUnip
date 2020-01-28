@@ -17,11 +17,11 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 export class InfoFuncionarioComponent implements OnInit {
   
   private titulo: string;
-  private usuarioInfo: Usuario = new Usuario();
+   private usuarioInfo: Usuario = new Usuario();
   private formulario: FormGroup;
   private edicao: Boolean = true;
   private usuarioInfoNovo: Usuario = new Usuario();
-  private avaliacoes: Avaliacoes;
+  private avaliacoes: Avaliacoes = new Avaliacoes();
   private chatActivated = false;
   private media:number = 0.0;
 
@@ -37,8 +37,7 @@ export class InfoFuncionarioComponent implements OnInit {
 
   ngOnInit() {
     this.titulo = "Informação Funcionário";
-    this.recebendoParamsFuncionario();
-    this.getAvaliations();
+    this.recebendoParamsFuncionario();    
   }
 
   //recebe os dados no formulario inserido pelo usuário
@@ -66,70 +65,26 @@ export class InfoFuncionarioComponent implements OnInit {
     });
   }
 
+  getUserById(id_user:number){
+    let user:Usuario = new Usuario();
+    this.usuarioService.getUsuarioById(id_user).subscribe( data => {
+      this.usuarioInfo = data;
+      
+      if(this.usuarioInfo.facebook == null)
+        this.usuarioInfo.facebook ="Não tem facebook";
+
+      if(this.usuarioInfo.hasWhatsapp == '1')
+        this.usuarioInfo.hasWhatsapp = "Sim";
+      else
+        this.usuarioInfo.hasWhatsapp = "Não";
+    })
+  }
+
   //método que captura o funcionário selecionado no badge info da página pesquiasr
-  recebendoParamsFuncionario() {
-
-    //recebendo os valores vindo da router através do queryParams
-    this.usuarioInfo.idUsuario = this.activatedRoute.snapshot.queryParams.idUsuario;
-    this.usuarioInfo.nome = this.activatedRoute.snapshot.queryParams.nome;
-    this.usuarioInfo.sobrenome = this.activatedRoute.snapshot.queryParams.sobrenome;
-    this.usuarioInfo.login = this.activatedRoute.snapshot.queryParams.login;
-    this.usuarioInfo.senha = this.activatedRoute.snapshot.queryParams.senha;
-    this.usuarioInfo.email = this.activatedRoute.snapshot.queryParams.email;
-    this.usuarioInfo.cpf_cnpj = this.activatedRoute.snapshot.queryParams.cpf_cnpj;
-    this.usuarioInfo.endereco = this.activatedRoute.snapshot.queryParams.endereco;
-    this.usuarioInfo.complemento = this.activatedRoute.snapshot.queryParams.complemento;
-    this.usuarioInfo.cidade = this.activatedRoute.snapshot.queryParams.cidade;
-    this.usuarioInfo.estado = this.activatedRoute.snapshot.queryParams.estado;
-    this.usuarioInfo.cep = this.activatedRoute.snapshot.queryParams.cep;
-    this.usuarioInfo.sexo = this.activatedRoute.snapshot.queryParams.sexo;
-    this.usuarioInfo.telefone = this.activatedRoute.snapshot.queryParams.telefone;
-
-    //se o campo urlFacebbok estiver null ou vazio receberá um texto personalizado
-    if (this.usuarioInfo.urlFacebook == undefined ||
-      this.usuarioInfo.urlFacebook == "" ||
-      this.usuarioInfo.urlFacebook == null) {
-      this.usuarioInfo.urlFacebook = "Não cadastrou facebook.";
-    } else {
-      this.usuarioInfo.urlFacebook = this.activatedRoute.snapshot.queryParams.urlFacebook;
-    }
-    //se o campo hasWhatsapp estiver null ou vazio receberá um texto personalizado
-    if (this.activatedRoute.snapshot.queryParams.hasWhatsapp == undefined ||
-      this.activatedRoute.snapshot.queryParams.hasWhatsapp == "" ||
-      this.activatedRoute.snapshot.queryParams.hasWhatsapp == null) {
-      this.usuarioInfo.hasWhatsapp = "Não cadastrou whatsapp.";
-    } else {
-      this.usuarioInfo.hasWhatsapp = this.activatedRoute.snapshot.queryParams.hasWhatsapp;
-      if (this.usuarioInfo.hasWhatsapp == '1') {
-        this.usuarioInfo.hasWhatsapp = 'Sim';
-      } else {
-        this.usuarioInfo.hasWhatsapp = 'Não';
-      }
-    }
-    //se o campo experiencia estiver null ou vazio receberá um texto personalizado
-    if (this.activatedRoute.snapshot.queryParams.experiencia == undefined ||
-      this.activatedRoute.snapshot.queryParams.experiencia == "" ||
-      this.activatedRoute.snapshot.queryParams.experiencia == null) {
-      this.usuarioInfo.experiencia = null;
-    } else {
-      this.usuarioInfo.experiencia  = this.activatedRoute.snapshot.queryParams.experiencia;
-    }
-    //se o campo avaliacao estiver null ou vazio receberá um texto personalizado
-    if (this.activatedRoute.snapshot.queryParams.avaliacao == undefined ||
-      this.activatedRoute.snapshot.queryParams.avaliacao == "" ||
-      this.activatedRoute.snapshot.queryParams.avaliacao == null) {
-      this.usuarioInfo.avaliacao.media = 0;
-    } else {
-      this.usuarioInfo.avaliacao = this.activatedRoute.snapshot.queryParams.avaliacao;
-    }
-    //se o campo profissao estiver null ou vazio receberá um texto personalizado
-    if (this.activatedRoute.snapshot.queryParams.profissao == undefined ||
-      this.activatedRoute.snapshot.queryParams.profissao == "" ||
-      this.activatedRoute.snapshot.queryParams.profissao == null) {
-      this.usuarioInfo.profissao = "Profissão não cadastrada.";
-    } else {
-      this.usuarioInfo.profissao = this.activatedRoute.snapshot.queryParams.profissao;
-    }    
+  recebendoParamsFuncionario() {    
+    let id_user:number = this.activatedRoute.snapshot.queryParams.idUsuario;
+     this.getUserById(id_user);   
+     this.getAvaliations(id_user);    
   }
 
   //Exclui um funcionário ao clicar no botão excluir
@@ -151,7 +106,6 @@ export class InfoFuncionarioComponent implements OnInit {
         });
   }
 
-
   atualizar(usuarioInfoNovo: Usuario) {
     usuarioInfoNovo = this.formulario.value;
 
@@ -167,12 +121,10 @@ export class InfoFuncionarioComponent implements OnInit {
     var objetoFuncValueAntigo = Object.values(this.usuarioInfo);
     var objetoFuncValueNovo = Object.values(usuarioInfoNovo);
 
-
     for (var j = 0; j < tamanhoFuncIndiceNovo; j++) {
       for (var i = 0; i < tamanhoFuncIndiceAntigo; i++) {
         if (objetoFuncNomeAtrAntigo[i] == objetoFuncNomeAtrNovo[j]) {
-          //objeto com valores antigos receberá valores novos(atualizados).            
-
+          //objeto com valores antigos receberá valores novos(atualizados). 
           objetoFuncValueAntigo[i] = objetoFuncValueNovo[j];
         }
       }
@@ -194,11 +146,10 @@ export class InfoFuncionarioComponent implements OnInit {
     this.usuarioInfo.sexo = objetoFuncValueAntigo[12];
     this.usuarioInfo.telefone = objetoFuncValueAntigo[13];
     this.usuarioInfo.profissao = objetoFuncValueAntigo[14];
-    this.usuarioInfo.urlFacebook = objetoFuncValueAntigo[15];
+    this.usuarioInfo.facebook = objetoFuncValueAntigo[15];
     this.usuarioInfo.hasWhatsapp = objetoFuncValueAntigo[16];
     this.usuarioInfo.experiencia.ds_tempo  = objetoFuncValueAntigo[17];
     //this.usuarioInfo.id_avaliacao = objetoFuncValueAntigo[18];
-
 
     this.usuarioService.updateUsuario(this.usuarioInfo)
       .subscribe(response => {
@@ -231,8 +182,8 @@ export class InfoFuncionarioComponent implements OnInit {
     alert(this.chatActivated);
   }
 
-  getAvaliations(){
-    this.avaliacoesService.getAvaliationsUser(this.usuarioInfo.idUsuario).subscribe(res => {
+  getAvaliations(idUser:number){
+    this.avaliacoesService.getAvaliationsUser(idUser).subscribe(res => {
       this.avaliacoes = res;
       this.getAverageAvaliation(this.avaliacoes);
     });   
@@ -243,7 +194,6 @@ export class InfoFuncionarioComponent implements OnInit {
                   + this.avaliacoes.limpeza + this.avaliacoes.organizacao)/4;
     this.media = (parseFloat(this.media.toFixed(2)));
     }
-
 }
 
 

@@ -6,9 +6,7 @@ export class Avaliacoes{
     organizacao:number;
     disciplina:number;
     limpeza:number;
-    media:number;
+    mediaAvaliacao:number;
     stars:Stars = new Stars();    
 
-    constructor(public id:number, public star:number){}
-
-}
+  }

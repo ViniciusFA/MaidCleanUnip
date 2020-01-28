@@ -18,12 +18,12 @@
       </div>
       <br>
       <div class="form-row">
-        <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+        <div class="col-3 conteudoDivColunaInfo formInfoFunc inputInfoFunc">
           <label><b> Nome:</b></label>
           <input class="form-control contaudoInputInfo" formControlName="nome" type="text"
             placeholder="{{usuarioInfo.nome}}">
         </div>
-        <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+        <div class="col-3 conteudoDivColunaInfo formInfoFunc inputInfoFunc">
           <label><b> Sobrenome:</b></label>
           <input class="form-control contaudoInputInfo" formControlName="sobrenome" type="text"
             placeholder="{{usuarioInfo.sobrenome}}">
@@ -31,7 +31,7 @@
       </div>
       <br>
       <div class="form-row">
-        <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+        <div class="col-3 conteudoDivColunaInfo formInfoFunc inputInfoFunc">
           <label><b> Login:</b></label>
           <input class="form-control contaudoInputInfo" formControlName="login" type="text"
             placeholder="{{usuarioInfo.login}}">
@@ -52,7 +52,7 @@
         <div class="col-3 conteudoDivColunaInfo  inputInfoFunc">
           <label><b> Facebook:</b></label>
           <input class="form-control contaudoInputInfo" formControlName="facebook" type="text"
-            placeholder="{{usuarioInfo.urlFacebook}}">
+            placeholder="{{usuarioInfo.facebook}}">
         </div>
       </div>
       <br>
@@ -104,7 +104,7 @@
         <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
           <label><b>Cidade:</b></label>
           <input class="form-control contaudoInputInfo" formControlName="cidade" type="text"
-            placeholder="{{usuarioInfo.cidade}}">
+            placeholder="{{usuarioInfo.cidade.nome_cidade}}">
         </div>
       </div>
       <br>
@@ -112,7 +112,7 @@
         <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
           <label><b>Estado:</b></label>
           <input class="form-control contaudoInputInfo" formControlName="estado" type="text"
-            placeholder="{{usuarioInfo.estado}}">
+            placeholder="{{usuarioInfo.estado.nome_estado}}">
         </div>
         <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
           <label><b>CEP:</b></label>
@@ -123,9 +123,9 @@
       <br>
       <div class="form-row">
         <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
-          <label><b>Avaliação:</b></label>
+          <label><b>Avaliação / Média:</b></label>
           <input class="form-control contaudoInputInfo" formControlName="avaliacao" type="text"
-            placeholder="{{usuarioInfo.avaliacao}}">
+            placeholder="{{usuarioInfo.avaliacao.mediaAvaliacao}}">
         </div>
         <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
           <label><b>Sexo:</b></label>

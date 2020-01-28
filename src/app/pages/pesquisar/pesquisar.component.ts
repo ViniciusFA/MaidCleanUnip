@@ -37,7 +37,7 @@ export class PesquisarComponent implements OnInit {
   private states: Array<Estado>;
   private mediaArray: Array<number> = new Array;
   private allAvaliations: Array<Avaliacoes> = new Array;
-  private allStars:Array<Stars> = new Array;
+  private allStars: Array<Stars> = new Array;
   private experiencias: Array<String> = new Array;
   private camposPesquisa: PesquisaFuncionario = new PesquisaFuncionario();
 
@@ -54,9 +54,9 @@ export class PesquisarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.titulo = "Pesquisar Funcionários"; 
-    this.pegarUsuariosPorPerfil();   
-    this.carregarCampos();    
+    this.titulo = "Pesquisar Funcionários";
+    this.pegarUsuariosPorPerfil();
+    this.carregarCampos();
   }
 
   configurarFormulario() {
@@ -80,14 +80,11 @@ export class PesquisarComponent implements OnInit {
   pegarUsuariosPorPerfil() {
     this.usuarioService.getUsuariosPorPerfil(RoleEnum.Funcionario).subscribe(res => {
       this.usuarios = res;
-      console.log(this.usuarios);
     });
   }
 
   onChangePage(pageOfItems: Array<any>) {
-    //atualiza pagina de itens atual
     this.pageOfItems = pageOfItems;
-    console.log(this.usuarios);
   }
 
   limparCampos() {
@@ -108,15 +105,12 @@ export class PesquisarComponent implements OnInit {
     //this.usuarioFuncionario = this.formulario.value;
 
     let CamposPesquisa: PesquisaFuncionario = this.formulario.value;
-
     this.todosCamposVazios = this.verificarCamposVazios(CamposPesquisa);
 
     if (this.todosCamposVazios) {
       alert("Preencha pelo menos um campo para pesquisar.");
       this.pegarUsuariosPorPerfil();
     } else {
-
-      console.log(CamposPesquisa);
 
       CamposPesquisa.idRole = 2;
 
@@ -155,7 +149,6 @@ export class PesquisarComponent implements OnInit {
             alert("Não há registros dessa pesquisa.");
           } else {
             this.usuarios = response;
-            console.log(this.usuarios);
           }
         },
           (erro) => {
@@ -163,7 +156,6 @@ export class PesquisarComponent implements OnInit {
           });
     }
   }
-
 
   excluir(codigo: number, index: number): void {
     if (confirm("Deseja realmente excluir esse funcionário?")) {
@@ -183,8 +175,8 @@ export class PesquisarComponent implements OnInit {
     }
   }
 
-  infoFuncionario(funcionario: Funcionario) {
-    this.router.navigate(['infoFuncionario'], { queryParams: funcionario });
+  infoFuncionario(usuario: Usuario) {
+    this.router.navigate(['infoFuncionario'], { queryParams: usuario });
   }
 
   verificarCamposVazios(camposPesquisa: PesquisaFuncionario) {
@@ -219,17 +211,15 @@ export class PesquisarComponent implements OnInit {
     })
   }
 
-  getStars(){
+  getStars() {
     this.avaliacoesAservice.getStars().subscribe(data => {
       this.allStars = data;
-      console.log(this.allStars);
     })
   }
 
   getAllAvaliation() {
     this.avaliacoesAservice.getAllAvaliations().subscribe(res => {
       this.allAvaliations = res;
-      console.log(this.allAvaliations);
     })
     this.getAverageAvaliation();
   }
@@ -243,9 +233,7 @@ export class PesquisarComponent implements OnInit {
   getExperience() {
     this.experienciaService.getExperiences().subscribe(res => {
       this.experiencias = res;
-      console.log(this.experiencias);
     })
   }
-
 
 }

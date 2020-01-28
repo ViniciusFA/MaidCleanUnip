@@ -60,5 +60,10 @@ export class UsuarioService {
             .map(res => res.json());
     }
 
+    getUsuarioById(id_user:number){
+        return this.http.get(this.baseUrlService + '/idUsuario/' + id_user)
+            .map(res => res.json());
+    }
+
     
 }
