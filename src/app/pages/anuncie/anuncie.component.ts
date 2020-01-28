@@ -32,7 +32,6 @@ export class AnuncieComponent implements OnInit {
 
   ngOnInit() {
     this.titulo = 'Anunciar Vagas';
-    //this.getNameUser();
     this.fillFieldIdName();
     this.getStates();
   }
@@ -47,13 +46,12 @@ export class AnuncieComponent implements OnInit {
       nomeEmpregador: new FormControl(''),
       titulo: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
       subtitulo: new FormControl('', [Validators.minLength(3), Validators.maxLength(40)]),
-      cidade: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(3), Validators.maxLength(40)]),
-      estado: new FormControl('', Validators.required),
+      cidade: new FormControl({ value: '', disabled: true }),
+      estado: new FormControl(''),
       telefone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
-      descricao: new FormControl('', [Validators.required, Validators.maxLength(400)])
+      descricao: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(400)])
     });
   }
-
 
   anunciar() {
     let vaga = this.formulario.value as Vaga;
@@ -61,14 +59,12 @@ export class AnuncieComponent implements OnInit {
     vaga.idEmpregador = JSON.parse(localStorage.getItem('IdUser'));
     vaga.nomeEmpregador = localStorage.getItem("NomeUser");
 
-    console.log(vaga.nomeEmpregador);
-
     this.vagaService.anunciarVagas(vaga).subscribe(response => {
       let res: Response = <Response>response;
       if (res.codigo == 1) {
         alert(res.mensagem);
         this.vaga = new Vaga();
-        this.formulario.reset();
+        this.limparCampos();
       } else {
         alert(res.mensagem);
       }
@@ -82,9 +78,10 @@ export class AnuncieComponent implements OnInit {
     (<HTMLSelectElement>document.getElementById('campoAnuncievagaTitulo')).value = "";
     (<HTMLSelectElement>document.getElementById('campoAnuncioVagaSubtitulo')).value = "";
     (<HTMLSelectElement>document.getElementById('campoEstadoVagas')).value = "Selecione";
-    (<HTMLSelectElement>document.getElementById('campoAnuncievagasCidade')).value = "";
+    (<HTMLSelectElement>document.getElementById('TextAreaMensagm')).value = "";
     (<HTMLSelectElement>document.getElementById('campoAnuncievagastelefone')).value = "";
-    (<HTMLSelectElement>document.getElementById('textoLabelAnuncieDesc')).value = "";
+    (<HTMLSelectElement>document.getElementById('campoCidadeVagas')).value = "Selecione";
+    (<HTMLSelectElement>document.getElementById('campoCidadeVagas')).disabled = true;
   }
 
   getCities(id_estado: any) {

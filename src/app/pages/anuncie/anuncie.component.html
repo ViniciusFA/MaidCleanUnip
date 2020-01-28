@@ -33,10 +33,11 @@
                                     <p>(Insira entre 3 a 40 caracteres)</p>
                                 </div>
                                 <br>
-                                <div class="col-4" id="textoLabelPadrao">
+                                <div class="col-4" formControlName="estado" name="estado" ngDefaultControl
+                                         id="textoLabelPadrao">
                                     <b>Estado</b>
-                                    <select class="form-control form-control-sm-3 estiloCampos" #state
-                                        (change)="getCities($event.target.value)" id="campoEstadoVagas">
+                                    <select class="form-control form-control-sm-3 estiloCampos" #state                                        
+                                        (change)="getCities($event.target.value)" id="campoEstadoVagas" >
                                         <option>Selecione</option>
                                         <option *ngFor="let estado of states" [value]="estado.id_estado">
                                             {{estado.nome_estado}}
