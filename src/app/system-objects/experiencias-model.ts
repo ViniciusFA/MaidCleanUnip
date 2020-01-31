@@ -1,7 +1,8 @@
 export class Experiencias {
     idExperiencia:number;
-    ds_tempo:String;
+    tempo:String;
 
+    constructor(){}
     /*
     constructor(public id:number, public tempo:String){
         this.idExperiencia = id;

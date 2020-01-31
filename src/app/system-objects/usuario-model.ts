@@ -14,9 +14,9 @@ export class Usuario {
     telefone: string;
     profissao: string;
     endereco: string;
-    complemento: string;
-    cidade: Cidade = new Cidade();
+    complemento: string;   
     estado: Estado = new Estado();
+    cidade: Cidade = new Cidade();
     cep: string;
     sexo: string;
     sobrenome: string;

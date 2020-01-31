@@ -66,7 +66,6 @@ export class InfoFuncionarioComponent implements OnInit {
   }
 
   getUserById(id_user:number){
-    let user:Usuario = new Usuario();
     this.usuarioService.getUsuarioById(id_user).subscribe( data => {
       this.usuarioInfo = data;
       
@@ -148,7 +147,7 @@ export class InfoFuncionarioComponent implements OnInit {
     this.usuarioInfo.profissao = objetoFuncValueAntigo[14];
     this.usuarioInfo.facebook = objetoFuncValueAntigo[15];
     this.usuarioInfo.hasWhatsapp = objetoFuncValueAntigo[16];
-    this.usuarioInfo.experiencia.ds_tempo  = objetoFuncValueAntigo[17];
+    this.usuarioInfo.experiencia.tempo  = objetoFuncValueAntigo[17];
     //this.usuarioInfo.id_avaliacao = objetoFuncValueAntigo[18];
 
     this.usuarioService.updateUsuario(this.usuarioInfo)

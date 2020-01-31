@@ -2012,7 +2012,7 @@
  .form-control {
    display: block;
    width: 100%;
-   height: calc(1.5em + 1.5rem + 0px);
+   height: calc(2.5em + 1.5rem + 0px);
    padding: 0.75rem 1.5rem;
    font-size: 0.875rem;
    font-weight: 400;
@@ -11292,6 +11292,7 @@ margin-top: 4%;
  }
 .estiloCampos{
   border: 1px solid lightblue;  
+  height:  calc(3.0rem + 2px) !important;
 }
 .contaudoInputInfo ::placeholder{
   color:black;

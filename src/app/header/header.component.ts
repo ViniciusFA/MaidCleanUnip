@@ -88,7 +88,7 @@ export class HeaderComponent implements OnInit {
       this.usuarioInfo.login = resposta.login;
       this.usuarioInfo.senha = resposta.senha;
       this.usuarioInfo.email = resposta.email;
-      this.usuarioInfo.urlFacebook = resposta.facebook;
+      this.usuarioInfo.facebook = resposta.facebook;
       this.usuarioInfo.hasWhatsapp = resposta.hasWhatsapp;
       this.usuarioInfo.telefone = resposta.telefone;
       this.usuarioInfo.profissao = resposta.profissao;

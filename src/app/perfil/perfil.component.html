@@ -20,8 +20,8 @@
                         <div class="form-row">
                                 <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
                                         <label><b> Nome:</b></label>
-                                        <input class="form-control contaudoInputInfo" name="nome" formControlName="nome" type="text"
-                                                value="{{usuarioInfo.nome}}">
+                                        <input class="form-control contaudoInputInfo" name="nome" formControlName="nome"
+                                                type="text" value="{{usuarioInfo.nome}}">
 
                                 </div>
                                 <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
@@ -53,7 +53,7 @@
                                 <div class="col-3 conteudoDivColunaInfo  inputInfoFunc">
                                         <label><b> Facebook:</b></label>
                                         <input class="form-control contaudoInputInfo" formControlName="facebook"
-                                                type="text" value="{{usuarioInfo.urlFacebook}}">
+                                                type="text" value="{{usuarioInfo.facebook}}">
                                 </div>
                         </div>
                         <br>
@@ -76,10 +76,16 @@
                                         <input class="form-control contaudoInputInfo" formControlName="profissao"
                                                 type="text" value="{{usuarioInfo.profissao}}">
                                 </div>
-                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc" >
                                         <label><b>Experiência::</b></label>
-                                        <input class="form-control contaudoInputInfo" formControlName="experiencia"
-                                                type="text" value="{{usuarioInfo.experiencia}}">
+                                        <select name="experiencia" formControlName="experiencia" ngDefaultControl
+                                                class="form-control form-control-sm-3 estiloCampos" >
+                                                <option *ngFor="let experiencia of experiencias"
+                                                [selected]="experiencia.tempo === usuarioInfo.experiencia.tempo"
+                                                [value]="experiencia.idExperiencia" >
+                                                        {{experiencia.tempo}}
+                                                </option>
+                                        </select>
                                 </div>
                         </div>
                         <br>
@@ -88,6 +94,35 @@
                                         <label><b>CPF:</b></label>
                                         <input class="form-control contaudoInputInfo" formControlName="cpf_cnpj"
                                                 type="text" value="{{usuarioInfo.cpf_cnpj}}">
+                                </div>
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc" >
+                                        <label><b>Estado:</b></label>
+                                        <select  name="estado" formControlName="estado" ngDefaultControl 
+                                                class="form-control form-control-sm-3 estiloCampos"
+                                                (change)="getCitiesWithIdState($event.target.value)">    
+
+                                                <option *ngFor="let estado of states" 
+                                                [selected]="estado.nome_estado == usuarioInfo.estado.nome_estado"
+                                                [value]="estado.id_estado">
+                                                        {{estado.nome_estado}}
+                                                </option>
+                                        </select>
+                                </div>
+                        </div>
+                        <br>
+                        <div class="form-row" >
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc" >
+                                        <label><b>Cidade:</b></label>
+                                        <select name="cidade" formControlName="cidade" ngDefaultControl
+                                                class="form-control form-control-sm-3 estiloCampos" >
+                                                
+                                                <option *ngFor="let cidade of cities" 
+                                                [selected]="cidade.nome_cidade == usuarioInfo.cidade.nome_cidade
+                                                || 'Selecione'"
+                                                [value]="cidade.id_cidade">                                           
+                                                        {{cidade.nome_cidade}}
+                                                </option>           
+                                        </select>
                                 </div>
                                 <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
                                         <label><b>Endereço:</b></label>
@@ -103,19 +138,6 @@
                                                 type="text" value="{{usuarioInfo.complemento}}">
                                 </div>
                                 <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
-                                        <label><b>Cidade:</b></label>
-                                        <input class="form-control contaudoInputInfo" formControlName="cidade"
-                                                type="text" value="{{usuarioInfo.cidade}}">
-                                </div>
-                        </div>
-                        <br>
-                        <div class="form-row">
-                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
-                                        <label><b>Estado:</b></label>
-                                        <input class="form-control contaudoInputInfo" formControlName="estado"
-                                                type="text" value="{{usuarioInfo.estado}}">
-                                </div>
-                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
                                         <label><b>CEP:</b></label>
                                         <input class="form-control contaudoInputInfo" formControlName="cep" type="text"
                                                 value="{{usuarioInfo.cep}}">
@@ -124,9 +146,9 @@
                         <br>
                         <div class="form-row">
                                 <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
-                                        <label><b>Avaliação:</b></label>
+                                        <label><b>Avaliação / Média:</b></label>
                                         <input class="form-control contaudoInputInfo" formControlName="avaliacao"
-                                                type="text" value="{{usuarioInfo.avaliacao}}">
+                                                type="text" value="{{usuarioInfo.avaliacao.mediaAvaliacao}}">
                                 </div>
                                 <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
                                         <label><b>Sexo:</b></label>
@@ -225,7 +247,6 @@
         <div class="botaoVoltarInfoPerfil">
                 <button type="button" class="btn btn-outline-info" data-toggle="modal"
                         data-target="#confirmExcluir">Excluir conta</button>
-
         </div>
 </div>
 
@@ -241,11 +262,11 @@
 </div>
 
 <div class="avaliacoesPerfil">
-        <p>Compromisso: {{avaliacoes.compromisso}}</p>
-        <p>Organização: {{avaliacoes.organizacao}}</p>
-        <p>Disciplina: {{avaliacoes.disciplina}}</p>
-        <p>Limpeza: {{avaliacoes.limpeza}}</p>
-        <p>Media: {{media}}</p>
+        <p>Compromisso: {{usuarioInfo.avaliacao.compromisso}}</p>
+        <p>Organização: {{usuarioInfo.avaliacao.organizacao}}</p>
+        <p>Disciplina: {{usuarioInfo.avaliacao.disciplina}}</p>
+        <p>Limpeza: {{usuarioInfo.avaliacao.limpeza}}</p>
+        <p>Media: {{usuarioInfo.avaliacao.mediaAvaliacao}}</p>
 </div>
 
 

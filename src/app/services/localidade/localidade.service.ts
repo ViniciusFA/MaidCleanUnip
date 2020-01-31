@@ -17,11 +17,15 @@ export class LocalidadeService {
     }
 
     //get citys of databse throught id_estado
-    getCitys(id_estado: number){
+    getCitysWithIdStates(id_estado: number){
        return this.Http.get(this.baseUrlService + '/cidades' + '/' + id_estado).map(res => res.json());
     }
 
     getStates(){
         return this.Http.get(this.baseUrlService + '/estados').map(res => res.json());
+    }
+
+    getCities(){
+        return this.Http.get(this.baseUrlService + '/cidades').map(res => res.json());
     }
 }

@@ -208,6 +208,7 @@ export class PesquisarComponent implements OnInit {
   getStates() {
     this.localidadeService.getStates().subscribe(data => {
       this.states = data;
+      console.log(this.states);
     })
   }
 

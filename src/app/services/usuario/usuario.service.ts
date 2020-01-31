@@ -39,7 +39,7 @@ export class UsuarioService {
 
      //ADICIONA UMA NOVA PESSOA 
      addUsuario(usuario: Usuario) {
-        return this.http.post(this.baseUrlService, JSON.stringify(usuario), this.options)
+        return this.http.post(this.baseUrlService, usuario, this.options)
             .map(res => res.json());
     }
     

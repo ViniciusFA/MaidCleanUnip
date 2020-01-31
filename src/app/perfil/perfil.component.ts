@@ -1,3 +1,9 @@
+import { Experiencia } from './../util/experiencia';
+import { UsuarioCamposTela } from './../system-objects/usuario-campos-model';
+import { ExperienciaService } from './../services/experienciaService/experiencia.service';
+import { LocalidadeService } from './../services/localidade/localidade.service';
+import { Cidade } from './../system-objects/cidade-model';
+import { Estado } from './../system-objects/estado-model';
 import { Response } from './../services/response';
 import { AvaliacoesService } from './../services/avaliacoes/avaliacoes.service';
 import { UsuarioService } from './../services/usuario/usuario.service';
@@ -15,27 +21,32 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class PerfilComponent implements OnInit {
 
+  private formulario: FormGroup;
+  private editingFields: boolean = true;
+  private usuarioInfo: Usuario = new Usuario();
+  private media: number = 0.0;
+  private newUsuarioInfo: Usuario = new Usuario();
+  private oldsuarioInfo: Usuario = new Usuario();
+  private cities: Array<Cidade>;
+  private states: Array<Estado>;
+  private experiencias: Array<String> = new Array;
+  private valuesCamposTela: UsuarioCamposTela = new UsuarioCamposTela();
+  private estado: Estado = new Estado();
+  private cities2: Cidade = new Cidade();
+
   constructor(private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private avaliacoesService: AvaliacoesService,
     private usuarioService: UsuarioService,
-    private router: Router) {
+    private router: Router,
+    private localidadeService: LocalidadeService,
+    private experienciaService: ExperienciaService) {
     this.configurarFormulario();
   }
 
-  private formulario: FormGroup;
-  private editingFields: boolean = true;
-  private usuarioInfo: Usuario = new Usuario();
-  private avaliacoes: Avaliacoes;
-  private media: number = 0.0;
-  //private selectedFile:File = null;
-  private newUsuarioInfo: Usuario = new Usuario();
-  private oldsuarioInfo: Usuario = new Usuario();
-
   ngOnInit() {
-    this.recebendoParametroInfoUsuario();
-    this.getRatingUser(this.usuarioInfo.idUsuario);
-    this.getIdNameUser();
+    this.carregarCampos();
+    //this.getRatingUser(this.usuarioInfo.idUsuario);   
   }
 
   configurarFormulario() {
@@ -54,14 +65,23 @@ export class PerfilComponent implements OnInit {
       cpf_cnpj: new FormControl({ value: '', disabled: true }),
       endereco: new FormControl({ value: '', disabled: true }),
       complemento: new FormControl({ value: '', disabled: true }),
-      cidade: new FormControl({ value: '', disabled: true }),
       estado: new FormControl({ value: '', disabled: true }),
+      cidade: new FormControl({ value: '', disabled: true }),
       cep: new FormControl({ value: '', disabled: true }),
       avaliacao: new FormControl({ value: '', disabled: true }),
       sexo: new FormControl({ value: '', disabled: true }),
     })
   }
 
+
+  carregarCampos() {
+    this.getStates();
+    this.getCities();
+    this.getExperience();
+    this.recebendoParametroInfoUsuario();
+    this.getIdNameUser();
+
+  }
 
   editarCamposPerfil() {
     this.habilitaCamposFormulario();
@@ -72,19 +92,20 @@ export class PerfilComponent implements OnInit {
     this.editingFields = !this.editingFields;
   }
 
-  cancelarAlteracaoPerfil() {   
+  cancelarAlteracaoPerfil() {
     this.desabilitaCamposFormulario();
     this.toggleShowBtnEdit();
   }
-  
-  teste(){
-    console.log("testando");
+
+  teste() {
     alert("teste");
   }
 
   salvarAlteracao(newUserInfo: FormBuilder) {
+
     this.oldsuarioInfo = this.usuarioInfo;
-    this.newUsuarioInfo = this.formulario.value;
+
+    this.valuesCamposTela = this.formulario.value;
 
     //size = 20
     let sizeOldUsuarioInfo: number = Object.keys(this.oldsuarioInfo).length;
@@ -101,18 +122,39 @@ export class PerfilComponent implements OnInit {
 
     //getting values old to variable new
     this.newUsuarioInfo = this.oldsuarioInfo;
+    let experienciaObj: Experiencia;
+    let cidadeObj: Cidade = new Cidade;
+    let estadoObj: Estado = new Estado();
+
 
     for (let i = 0; i < sizeOldUsuarioInfo; i++) {
       for (let j = 0; j < sizeNewUsuarioInfo; j++) {
         if (keysOldUserInfo[i] == keysNewUserInfo[j]) {
           if (valuesNewUserInfo[j] != '' && valuesNewUserInfo[j] != null
             && valuesNewUserInfo[j] != undefined && valuesNewUserInfo[j] != valuesOldUserInfo[i]) {
-            this.newUsuarioInfo[keysNewUserInfo[j]] = valuesNewUserInfo[j]
+
+            if (this.newUsuarioInfo[keysNewUserInfo[j]] === this.newUsuarioInfo.experiencia) {
+              this.newUsuarioInfo.experiencia.idExperiencia = valuesNewUserInfo[j];
+              this.newUsuarioInfo.experiencia.tempo = "";
+
+            } else if (this.newUsuarioInfo[keysNewUserInfo[j]] === this.newUsuarioInfo.estado) {
+
+              this.newUsuarioInfo.estado.id_estado = valuesNewUserInfo[j];
+              this.newUsuarioInfo.estado.nome_estado = "";
+              this.newUsuarioInfo.cidade.id_estado = this.newUsuarioInfo.estado
+
+            } else if (this.newUsuarioInfo[keysNewUserInfo[j]] === this.newUsuarioInfo.cidade) {
+              this.newUsuarioInfo.cidade.id_cidade = valuesNewUserInfo[j];
+              this.newUsuarioInfo.cidade.nome_cidade = "";
+
+            } else
+              this.newUsuarioInfo[keysNewUserInfo[j]] = valuesNewUserInfo[j];
           }
         }
       }
     }
-    
+
+
     this.usuarioService.addUsuario(this.newUsuarioInfo).subscribe(response => {
       let res: Response = <Response>response;
       if (res.codigo == 1) {
@@ -141,14 +183,24 @@ export class PerfilComponent implements OnInit {
     this.formulario.controls.cpf_cnpj.enable();
     this.formulario.controls.endereco.enable();
     this.formulario.controls.complemento.enable();
-    this.formulario.controls.cidade.enable();
     this.formulario.controls.estado.enable();
     this.formulario.controls.cep.enable();
     this.formulario.controls.avaliacao.enable();
     this.formulario.controls.sexo.enable();
+
+    if (this.formulario.controls['estado'].value == "Selecione" ||
+      this.formulario.controls['estado'].value == "" ||
+      this.formulario.controls['estado'].value == null ||
+      this.formulario.controls['estado'].value == undefined)
+      this.formulario.controls.cidade.disable();
+    else
+      this.formulario.controls.cidade.enable();
   }
 
   desabilitaCamposFormulario() {
+    let sizeFormulario: number = Object.keys(this.formulario).length;
+    for (let i = 0; i < sizeFormulario; i++) {
+    }
     this.formulario.controls.nome.disable();
     this.formulario.controls.sobrenome.disable();
     this.formulario.controls.senha.disable();
@@ -175,51 +227,32 @@ export class PerfilComponent implements OnInit {
   }
 
   recebendoParametroInfoUsuario() {
-    this.usuarioInfo.idRole = this.activatedRoute.snapshot.queryParams.idRole;
-    this.usuarioInfo.idUsuario = this.activatedRoute.snapshot.queryParams.idUsuario;
-    this.usuarioInfo.nome = this.activatedRoute.snapshot.queryParams.nome;
-    this.usuarioInfo.sobrenome = this.activatedRoute.snapshot.queryParams.sobrenome;
-    this.usuarioInfo.login = this.activatedRoute.snapshot.queryParams.login;
-    this.usuarioInfo.senha = this.activatedRoute.snapshot.queryParams.senha;
-    this.usuarioInfo.email = this.activatedRoute.snapshot.queryParams.email;
-    this.usuarioInfo.cpf_cnpj = this.activatedRoute.snapshot.queryParams.cpf_cnpj;
-    this.usuarioInfo.endereco = this.activatedRoute.snapshot.queryParams.endereco;
-    this.usuarioInfo.complemento = this.activatedRoute.snapshot.queryParams.complemento;
-    this.usuarioInfo.cidade = this.activatedRoute.snapshot.queryParams.cidade;
-    this.usuarioInfo.estado = this.activatedRoute.snapshot.queryParams.estado;
-    this.usuarioInfo.cep = this.activatedRoute.snapshot.queryParams.cep;
-    this.usuarioInfo.telefone = this.activatedRoute.snapshot.queryParams.telefone;
-    this.usuarioInfo.profissao = this.activatedRoute.snapshot.queryParams.profissao;
+    let idUser = this.activatedRoute.snapshot.queryParams.idUsuario;
 
-    if (this.usuarioInfo.urlFacebook == null || this.usuarioInfo.urlFacebook == "") {
-      this.usuarioInfo.urlFacebook = "Facebook não cadastrado.";
-    } else {
-      this.usuarioInfo.urlFacebook = this.activatedRoute.snapshot.queryParams.urlFacebook;
-    }
-    if (this.usuarioInfo.hasWhatsapp == null || this.usuarioInfo.hasWhatsapp == "") {
-      this.usuarioInfo.hasWhatsapp = "Whatsapp não cadastrado.";
-    } else {
-      this.usuarioInfo.hasWhatsapp = this.activatedRoute.snapshot.queryParams.hasWhatsapp;
-    }
+    this.usuarioService.getUsuarioById(idUser).subscribe(data => {
+      this.usuarioInfo = data;
+      let id_estado: number = this.usuarioInfo.estado.id_estado;
 
-    if (this.usuarioInfo.avaliacao == null || this.usuarioInfo.avaliacao == undefined) {
-      this.usuarioInfo.avaliacao = null;
-    } else {
-      this.usuarioInfo.avaliacao = this.activatedRoute.snapshot.queryParams.avaliacao;
-    }
-    this.usuarioInfo.sexo = this.activatedRoute.snapshot.queryParams.sexo;
+      if (this.usuarioInfo.facebook == null || this.usuarioInfo.facebook == undefined) {
+        this.usuarioInfo.facebook = "Facebook não cadastrado.";
+      }
+
+      if (this.usuarioInfo.hasWhatsapp == null || this.usuarioInfo.hasWhatsapp == undefined
+        || this.usuarioInfo.hasWhatsapp != "1") {
+        this.usuarioInfo.hasWhatsapp = "Não";
+      } else
+        this.usuarioInfo.hasWhatsapp = "Sim";
+    })
+    this.getAverageAvaliation(this.usuarioInfo.avaliacao);
   }
 
   excluirConta(id: number) {
-    console.log(id);
     this.usuarioService.deleteUsuario(id).subscribe(response => {
       let res: Response = <Response>response;
       if (res.codigo == 1) {
         alert(res.mensagem);
         //apagando os registros do localstorage
         this.logout();
-        //
-
         this.router.navigate(['/login']);
       } else {
         alert(res.mensagem)
@@ -227,7 +260,7 @@ export class PerfilComponent implements OnInit {
     })
   }
 
-  getIdNameUser(){
+  getIdNameUser() {
     localStorage.setItem("IdUser", JSON.stringify(this.usuarioInfo.idUsuario))
     localStorage.setItem("NameUser", JSON.stringify(this.usuarioInfo.nome));
   }
@@ -245,10 +278,33 @@ export class PerfilComponent implements OnInit {
       });
   }
 
-  getRatingUser(id_user: Number) {
-    this.avaliacoesService.getAvaliationsUser(id_user).subscribe(response => {
-      this.avaliacoes = response;
-      this.getAverageAvaliation(this.avaliacoes);
+  getStates() {
+    this.localidadeService.getStates().subscribe(data => {
+      this.states = data;
+    })
+  }
+
+  getExperience() {
+    this.experienciaService.getExperiences().subscribe(res => {
+      this.experiencias = res;
+    })
+  }
+
+  getCitiesWithIdState(id_estado: any) {
+    if (id_estado == "Selecione" || id_estado == null || id_estado == undefined) {
+      this.formulario.controls['cidade'].setValue("Selecione");
+      this.formulario.controls['cidade'].disable();
+    } else {
+      this.localidadeService.getCitysWithIdStates(id_estado).subscribe(data => {
+        this.cities = data;   
+      });
+      this.formulario.controls.cidade.enable();
+    }
+  }
+
+  getCities() {
+    this.localidadeService.getCities().subscribe(data => {
+      this.cities = data;
     });
   }
 
