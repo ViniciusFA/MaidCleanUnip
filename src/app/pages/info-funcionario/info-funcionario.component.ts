@@ -1,3 +1,4 @@
+import { ExperienciaService } from './../../services/experienciaService/experiencia.service';
 import { Avaliacoes } from './../../system-objects/avaliacoes-model';
 import { AvaliacoesService } from './../../services/avaliacoes/avaliacoes.service';
 import { ChatMessageComponent } from './chat-message/chat-message.component';
@@ -22,14 +23,16 @@ export class InfoFuncionarioComponent implements OnInit {
   private edicao: Boolean = true;
   private usuarioInfoNovo: Usuario = new Usuario();
   private avaliacoes: Avaliacoes = new Avaliacoes();
+  private experiencias: Array<String> = new Array;
   private chatActivated = false;
-  private media:number = 0.0;
+  private media:number = 0.0;  
 
   @ViewChild('confirmExcluir', { static: false }) confirmExcluir: ElementRef;
 
   constructor(private activatedRoute: ActivatedRoute,
     private usuarioService: UsuarioService,
     private avaliacoesService: AvaliacoesService, 
+    private experienciaService: ExperienciaService,
     private router: Router,
     private formBuilder: FormBuilder) {
     this.configurarCampos();
@@ -179,6 +182,12 @@ export class InfoFuncionarioComponent implements OnInit {
   fecharMessageChat() {
     this.chatActivated = false;
     alert(this.chatActivated);
+  }
+
+  getExperience() {
+    this.experienciaService.getExperiences().subscribe(res => {
+      this.experiencias = res;
+    })
   }
 
   getAvaliations(idUser:number){

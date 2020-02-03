@@ -1,3 +1,6 @@
+import { Cidade } from './../../system-objects/cidade-model';
+import { LocalidadeService } from './../../services/localidade/localidade.service';
+import { Estado } from './../../system-objects/estado-model';
 import { Component, OnInit } from '@angular/core';
 import { Vaga } from '../../services/vaga/vaga';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
@@ -20,11 +23,14 @@ export class OportunidadesComponent implements OnInit {
   private listaParametros: String[] = new Array();
   pageOfItems:Array<any>;
   private todosCamposVazios:Boolean = false;
+  private states: Array<Estado>;
+    private cidades: Array<Cidade>;
 
 
   constructor(private formBuilder: FormBuilder,
     private vagaService: VagaService,
-    private router: Router) {
+    private router: Router,
+    private localidadeService:LocalidadeService) {
 
     this.configurarFormulario();
   }
@@ -32,15 +38,10 @@ export class OportunidadesComponent implements OnInit {
   ngOnInit() {
     this.titulo = "Oportunidades";
     this.getAllOportunity();
+    this.carregarCampos();
   }
 
-  estados = [
-    new Estados(0, 'Selecione'),
-    new Estados(1, 'RJ'),
-    new Estados(2, 'SP'),
-    new Estados(3, 'BA'),
-  ];
-
+ 
   residencias = [
     new Residencia(0, 'Selecione'),
     new Residencia(1, 'Apartamento'),
@@ -53,15 +54,18 @@ export class OportunidadesComponent implements OnInit {
     new Residencia(2, '+1 ano'),
   ];
 
-
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
       titulo: new FormControl(''),
       subtitulo: new FormControl(''),
       nomeEmpregador: new FormControl({value:'',disabled: true}),
       estado: new FormControl(''),
-      cidade: new FormControl('')
+      cidade: new FormControl({value: 'Selecione', disabled: true})
     });
+  }
+
+  carregarCampos(){
+    this.getEstados();
   }
 
   onChangePage(pageOfItems: Array<any>){
@@ -102,12 +106,15 @@ export class OportunidadesComponent implements OnInit {
 
     this.todosCamposVazios = this.verificaCamposVazio(this.vaga);
     
+    console.log(this.vaga);
+
     if(this.todosCamposVazios){      
       alert("Preencha pelo menos um campo para pesquisar.");   
       this.getAllOportunity();
-    }else{
+    }else{      
     this.vagaService.pesquisar(this.vaga)
       .subscribe(response => {
+        console.log(response);
         if (response == 0) {
           alert("Não há registros dessa pesquisa.");
         } else {
@@ -130,6 +137,30 @@ export class OportunidadesComponent implements OnInit {
       return true
     else
       return false;
+  }
+
+  getEstados(){
+    return this.localidadeService.getStates().subscribe(data => {
+      this.states = data;
+    })
+  }
+
+  getCities(){
+    this.localidadeService.getCities().subscribe(data => {
+      this.cidades = data;
+    });
+  }
+
+  getCitiesWithIdState(id_estado:any){
+    if (id_estado == "Selecione" || id_estado == null || id_estado == undefined) {
+      this.formulario.controls['cidade'].setValue("Selecione");
+      this.formulario.controls['cidade'].disable();
+    } else {
+      this.localidadeService.getCitysWithIdStates(id_estado).subscribe(data => {
+        this.cidades = data;   
+      });
+      this.formulario.controls.cidade.enable();
+    }
   }
 
 }

@@ -91,7 +91,7 @@ export class AnuncieComponent implements OnInit {
       this.formulario.controls['cidade'].setValue("Selecione");
       this.formulario.controls['cidade'].disable();
     } else {
-      this.localidadeService.getCitys(id_estado).subscribe(data => {
+      this.localidadeService.getCitysWithIdStates(id_estado).subscribe(data => {
         this.cities = data;
       });
       this.formulario.controls['cidade'].setValue("Selecione");

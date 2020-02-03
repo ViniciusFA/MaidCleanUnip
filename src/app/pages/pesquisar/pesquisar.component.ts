@@ -64,7 +64,7 @@ export class PesquisarComponent implements OnInit {
       nome: new FormControl('', [Validators.minLength(3), Validators.maxLength(15)]),
       sobrenome: new FormControl('', [Validators.minLength(3), Validators.maxLength(40)]),
       estado: new FormControl(''),
-      cidade: new FormControl({ value: '', disabled: true }),
+      cidade: new FormControl({ value: 'Selecione', disabled: true }),
       star: new FormControl(''),
       experiencia: new FormControl('')
     });
@@ -180,12 +180,12 @@ export class PesquisarComponent implements OnInit {
   }
 
   verificarCamposVazios(camposPesquisa: PesquisaFuncionario) {
-    if ((camposPesquisa.nome == null || camposPesquisa.nome == "")
-      && (camposPesquisa.sobrenome == null || camposPesquisa.sobrenome == "")
-      && (camposPesquisa.estado == null || camposPesquisa.estado == "")
-      && (camposPesquisa.cidade == null || camposPesquisa.cidade == "")
-      && (camposPesquisa.star == null || camposPesquisa.star == undefined)
-      && (camposPesquisa.experiencia == null || camposPesquisa.experiencia == undefined))
+    if ((camposPesquisa.nome === null || camposPesquisa.nome === "")
+      && (camposPesquisa.sobrenome === null || camposPesquisa.sobrenome === "")
+      && (camposPesquisa.estado === null || camposPesquisa.estado === "")
+      && (camposPesquisa.cidade === null || camposPesquisa.cidade === "")
+      && (camposPesquisa.star === null || camposPesquisa.star === "")
+      && (camposPesquisa.experiencia === null || camposPesquisa.experiencia === ""))
       return true;
     else
       return false;
@@ -197,7 +197,7 @@ export class PesquisarComponent implements OnInit {
       this.formulario.controls['cidade'].setValue("Selecione");
       this.formulario.controls['cidade'].disable();
     } else {
-      this.localidadeService.getCitys(id_estado).subscribe(data => {
+      this.localidadeService.getCitysWithIdStates(id_estado).subscribe(data => {
         this.cities = data;
       });
       this.formulario.controls['cidade'].setValue("Selecione");
@@ -207,8 +207,7 @@ export class PesquisarComponent implements OnInit {
 
   getStates() {
     this.localidadeService.getStates().subscribe(data => {
-      this.states = data;
-      console.log(this.states);
+      this.states = data; 
     })
   }
 

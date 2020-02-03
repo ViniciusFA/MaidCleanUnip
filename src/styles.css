@@ -11294,6 +11294,10 @@ margin-top: 4%;
   border: 1px solid lightblue;  
   height:  calc(3.0rem + 2px) !important;
 }
+.estiloCampoTxtAreaMsg{
+  border: 1px solid lightblue; 
+} 
+ 
 .contaudoInputInfo ::placeholder{
   color:black;
 }
@@ -11847,3 +11851,4 @@ td > span:active{
 .formInfoFunc{
   text-align: center;
 }
+

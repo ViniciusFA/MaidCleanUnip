@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-3" id="textoLabelPadrao" >
                                 <b>Cidade</b>
-                                <select  formControlName="cidade" name="cidade" ngDefaultControl 
+                                <select formControlName="cidade" name="cidade" ngDefaultControl 
                                     class="form-control form-control-sm-3 estiloCampos" id="campoCidadePesquisar">
                                     <option>Selecione</option>
                                     <option *ngFor="let cidade of cities" [value]="cidade.id_cidade">

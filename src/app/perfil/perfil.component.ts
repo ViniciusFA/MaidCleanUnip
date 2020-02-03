@@ -154,7 +154,7 @@ export class PerfilComponent implements OnInit {
       }
     }
 
-
+    console.log(this.newUsuarioInfo);
     this.usuarioService.addUsuario(this.newUsuarioInfo).subscribe(response => {
       let res: Response = <Response>response;
       if (res.codigo == 1) {
