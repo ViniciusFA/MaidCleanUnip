@@ -11017,6 +11017,11 @@ font-family: arial;
   height: 53%;
   border: 1px solid lightblue;
 }
+#campoCidadeOportunidades{
+  width: 100%;
+  height: 53%;
+  border: 1px solid lightblue;
+}
 #campoResidenciaOportunidades{
   width: 100%;
   height: 68%;

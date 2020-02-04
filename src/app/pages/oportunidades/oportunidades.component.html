@@ -15,7 +15,9 @@
             <input type="text" class="form-control" id="campoTitulo" formControlName="titulo" name="titulo"
               ngDefaultControl placeholder="Título da Vaga">
           </div>
+
           <br>
+
           <div class="col-6" id="textoLabelPadrao">
             <b>Subtítulo</b>
             <input type="text" class="form-control" id="campoSubTitulo" formControlName="subtitulo" name="assunto"
@@ -34,22 +36,23 @@
             <select class="form-control form-control-sm-3" id="campoEstadoOportunidades"
             (change)="getCitiesWithIdState($event.target.value)">
               <option>Selecione</option>
-              <option *ngFor="let estado of states" 
-              [value]="estado.id_estado">
+              <option *ngFor="let estado of states" [value]="estado.id_estado">
                 {{estado.nome_estado}}
               </option>
             </select>
           </div>
+
           <div class="col-4" id="textoLabelPadrao">
             <b>Cidade</b>
-            <select class="form-control form-control-sm-3" 
-            formControlName="estado" name="ddlEstado" ngDefaultControl
-            id="campoEstadoOportunidades">
-              <option *ngFor="let cidade of cidades" [value]="cidade.id_cidade">
+            <select  formControlName="cidade"  name="ddlCidade" ngDefaultControl            
+             class="form-control form-control-sm-3" id="campoCidadeOportunidades">
+              <option *ngFor="let cidade of cidades" [selected]="cidade.nome_cidade || 'Selecione'" 
+              [value]="cidade.id_cidade">                
                 {{cidade.nome_cidade}}
               </option>
             </select>
           </div>
+
         </div>
 
         <!--Botões limpar e pesquisar -->
@@ -80,7 +83,7 @@
               <label class="conteudoGridVaga"> {{vaga.descricao}}</label>
             </p>
             <p class="card-text">
-                {{vaga.estado}} - {{vaga.cidade}}
+                {{vaga.estado.nome_estado}} - {{vaga.cidade.nome_cidade}}
             </p>
             
             <a class="card-link" id="saberMaisOportunidades" (click)="oportunidadeInfo(vaga)">

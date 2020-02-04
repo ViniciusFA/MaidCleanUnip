@@ -30,17 +30,18 @@ export class OportunidadesModalComponent implements OnInit {
   }
 
   recebendoParamsFuncionario(){    
-    //passando os parametros vindo da pagina anterior para os labels              
+    //passando os parametros vindo da pagina anterior para os labels  
 
-    this.vaga.id = this.activatedRoute.snapshot.queryParams.id;
-    this.vaga.titulo = this.activatedRoute.snapshot.queryParams.titulo;
-    this.vaga.subtitulo = this.activatedRoute.snapshot.queryParams.subtitulo;
-    this.vaga.idEmpregador = this.activatedRoute.snapshot.queryParams.idEmpregador;
-    this.vaga.nomeEmpregador = this.activatedRoute.snapshot.queryParams.nomeEmpregador;
-    this.vaga.estado = this.activatedRoute.snapshot.queryParams.estado;
-    this.vaga.cidade = this.activatedRoute.snapshot.queryParams.cidade;
-    this.vaga.descricao = this.activatedRoute.snapshot.queryParams.descricao;
-    this.vaga.telefone =  this.activatedRoute.snapshot.queryParams.telefone;
+   this.vaga.id = this.activatedRoute.snapshot.queryParams.id_vaga;
+   this.vaga.idEmpregador = this.activatedRoute.snapshot.queryParams.idEmpregador;
+   this.vaga.subtitulo = this.activatedRoute.snapshot.queryParams.subtitulo;
+   this.vaga.titulo = this.activatedRoute.snapshot.queryParams.titulo;
+   this.vaga.estado.nome_estado = this.activatedRoute.snapshot.queryParams.estado;
+   this.vaga.cidade.nome_cidade = this.activatedRoute.snapshot.queryParams.cidade;
+   this.vaga.descricao = this.activatedRoute.snapshot.queryParams.descricao;
+   this.vaga.nomeEmpregador = this.activatedRoute.snapshot.queryParams.nomeEmpregador;
+   console.log(this.vaga);
+   console.log(this.activatedRoute.snapshot.queryParams);
   }
 
   Candidatar(){

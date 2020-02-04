@@ -1,3 +1,4 @@
+import { CamposPesquisaVaga } from './../../system-objects/camposPesquisaVaga-model';
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { ConfigService } from '../config.service';
@@ -28,8 +29,8 @@ export class VagaService {
     }
 
 
-    pesquisar(vaga: Vaga) {
-        return this.http.get(this.baseUrlService + '/listaVagas', { params: vaga })
+    pesquisar(camposPesquisa: CamposPesquisaVaga) {
+        return this.http.get(this.baseUrlService + '/listaVagas', { params: camposPesquisa })
             .map(res => res.json());
     }
 
