@@ -3,7 +3,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -27,7 +27,7 @@ export class ChatMessageOportunityComponent implements OnInit {
     this.configurarFormulario();
   }
 
-  ngOnInit():void {   
+  ngOnInit(){   
     this.initializeWebSocketConnection();  
     this.receberNomeParam();
     this.abrirChatMessage();

@@ -1,13 +1,8 @@
 export class Experiencias {
-    idExperiencia:number;
-    tempo:String;
+    idExperiencia:number = 0;
+    tempo:string = "";
 
     constructor(){}
-    /*
-    constructor(public id:number, public tempo:String){
-        this.idExperiencia = id;
-        this.ds_tempo = tempo;
-    }
-*/
+  
    
 }

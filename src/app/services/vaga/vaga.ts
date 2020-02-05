@@ -1,6 +1,8 @@
+import { Experiencias } from 'src/app/system-objects/experiencias-model';
 import { Cidade } from './../../system-objects/cidade-model';
 import { Estado } from './../../system-objects/estado-model';
 import { Usuario } from './../../system-objects/usuario-model';
+
 export class Vaga {
     id: string;
     titulo: string;
@@ -9,6 +11,7 @@ export class Vaga {
     nomeEmpregador: string;
     estado: Estado = new Estado();
     cidade: Cidade = new Cidade();
-    idUsuario:Usuario;
+    usuario:Usuario = new Usuario();
     idEmpregador:number;
+    experiencia:Experiencias = new Experiencias();
 }

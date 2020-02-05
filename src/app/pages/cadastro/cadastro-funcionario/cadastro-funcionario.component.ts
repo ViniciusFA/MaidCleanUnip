@@ -1,4 +1,5 @@
-﻿import { LocalidadeService } from './../../../services/localidade/localidade.service';
+﻿import { ExperienciaService } from './../../../services/experienciaService/experiencia.service';
+import { LocalidadeService } from './../../../services/localidade/localidade.service';
 import { Estado } from './../../../system-objects/estado-model';
 import { Cidade } from './../../../system-objects/cidade-model';
 import { Observable } from 'rxjs';
@@ -28,20 +29,22 @@ export class CadastroFuncionarioComponent implements OnInit {
   private valorInteiro: Number = null;
   private cities:Array<Cidade>
   private states:Array<Estado>
+  private experiencias: Array<String> = new Array;
 
   constructor(private UsuarioService: UsuarioService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private localidadeService:LocalidadeService) {
+    private localidadeService:LocalidadeService,
+    private experienciaService:ExperienciaService) {
 
     this.configurarFormulario();
   }
 
   ngOnInit() {
     this.titulo = "Cadastro";
-    this.subtitulo = "Funcionário";
-    this.getStates();
+    this.subtitulo = "Funcionário";    
+    this.carregarCamppos();
   }
 
   estados = [
@@ -77,6 +80,11 @@ export class CadastroFuncionarioComponent implements OnInit {
       experiencia: new FormControl('', Validators.maxLength(35)),
       cep: new FormControl('', Validators.maxLength(8))
     });
+  }
+
+  carregarCamppos(){
+    this.getStates();
+    this.getExperiences();
   }
 
   salvar(): void {
@@ -126,6 +134,12 @@ export class CadastroFuncionarioComponent implements OnInit {
   getStates() {
     this.localidadeService.getStates().subscribe(data => {
       this.states = data;
+    })
+  }
+
+  getExperiences(){
+    this.experienciaService.getExperiences().subscribe(data => {
+      this.experiencias = data;
     })
   }
 

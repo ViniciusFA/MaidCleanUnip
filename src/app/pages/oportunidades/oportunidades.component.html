@@ -26,9 +26,15 @@
           <br>
          
           <div class="col-4" id="textoLabelPadrao">
-            <b>Campo Vazio </b>
-            <input type="text" id="textoLabelPadrao" class="form-control" placeholder="Campo vazio" id="campoNome"
-              formControlName="nomeEmpregador" name="nome" ngDefaultControl>
+            <b>Experiência Exigida</b>
+            <select formControlName="experiencia" name="ddlExperiencia" ngDefaultControl            
+            class="form-control form-control-sm-3" id="campoExperienciaOportunidades">
+            <option>Selecione</option>
+             <option *ngFor="let experiencia of experiencias"
+             [value]="experiencia.tempo">                
+               {{experiencia.tempo}}
+             </option>
+           </select>           
           </div>
           
           <div class="col-4" id="textoLabelPadrao" formControlName="estado" name="ddlEstado" ngDefaultControl>
@@ -44,10 +50,11 @@
 
           <div class="col-4" id="textoLabelPadrao">
             <b>Cidade</b>
-            <select  formControlName="cidade"  name="ddlCidade" ngDefaultControl            
+            <select  formControlName="cidade"  name="cidade" ngDefaultControl            
              class="form-control form-control-sm-3" id="campoCidadeOportunidades">
+             <option>Selecione</option>
               <option *ngFor="let cidade of cidades" [selected]="cidade.nome_cidade || 'Selecione'" 
-              [value]="cidade.id_cidade">                
+              [value]="cidade.nome_cidade">                
                 {{cidade.nome_cidade}}
               </option>
             </select>
@@ -85,6 +92,9 @@
             <p class="card-text">
                 {{vaga.estado.nome_estado}} - {{vaga.cidade.nome_cidade}}
             </p>
+              <p class="card-text" >
+                {{vaga.experiencia.tempo}}
+              </p>
             
             <a class="card-link" id="saberMaisOportunidades" (click)="oportunidadeInfo(vaga)">
               <label class="saberMaisOportunidades">Saber mais</label>

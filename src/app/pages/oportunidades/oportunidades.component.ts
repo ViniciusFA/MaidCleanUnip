@@ -1,3 +1,4 @@
+import { ExperienciaService } from './../../services/experienciaService/experiencia.service';
 import { informacoesVaga } from './../../system-objects/informacoesVaga.model';
 import { CamposPesquisaVaga } from './../../system-objects/camposPesquisaVaga-model';
 import { Cidade } from './../../system-objects/cidade-model';
@@ -29,22 +30,24 @@ export class OportunidadesComponent implements OnInit {
   private cidades: Array<Cidade>;
   private selecione: String = 'Selecione';
   private camposPesq: CamposPesquisaVaga = new CamposPesquisaVaga();
+  private experiencias: Array<String> = new Array;
   private estado: Estado = new Estado();
   private cidade: Cidade = new Cidade();
-  private informacoesVaga:informacoesVaga = new informacoesVaga();
+  private informacoesVaga: informacoesVaga = new informacoesVaga();
+
 
 
   constructor(private formBuilder: FormBuilder,
     private vagaService: VagaService,
     private router: Router,
-    private localidadeService: LocalidadeService) {
+    private localidadeService: LocalidadeService,
+    private experienciaService: ExperienciaService) {
 
     this.configurarFormulario();
   }
 
   ngOnInit() {
     this.titulo = "Oportunidades";
-    this.getAllOportunity();
     this.carregarCampos();
   }
 
@@ -55,29 +58,27 @@ export class OportunidadesComponent implements OnInit {
     new Residencia(2, 'Casa'),
   ];
 
-  experiencias = [
-    new Residencia(0, 'Selecione'),
-    new Residencia(1, '+6 meses'),
-    new Residencia(2, '+1 ano'),
-  ];
 
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
       titulo: new FormControl(''),
       subtitulo: new FormControl(''),
-      nomeEmpregador: new FormControl({ value: '', disabled: true }),
+      experiencia: new FormControl('Selecione'),
       estado: new FormControl(''),
-      cidade: new FormControl({ value: '', disabled: true })
+      cidade: new FormControl({ value: 'Selecione', disabled: true })
     });
   }
 
   carregarCampos() {
+    this.getAllOportunity();
     this.getEstados();
+    this.getExperiences();
   }
 
   onChangePage(pageOfItems: Array<any>) {
     //atualiza pagina de itens atual
     this.pageOfItems = pageOfItems;
+    console.log(this.pageOfItems);
   }
 
   getAllOportunity() {
@@ -87,62 +88,67 @@ export class OportunidadesComponent implements OnInit {
   limparCampos() {
     this.formulario.controls['titulo'].setValue("");
     this.formulario.controls['subtitulo'].setValue("");
-    // this.formulario.controls['nomeEmpregador'].setValue("");
+    this.formulario.controls['experiencia'].setValue("");
     this.formulario.controls['estado'].setValue("");
     this.formulario.controls['cidade'].setValue("");
     (<HTMLSelectElement>document.getElementById('campoEstadoOportunidades')).value = "Selecione";
+    (<HTMLSelectElement>document.getElementById('campoExperienciaOportunidades')).value = "Selecione";
+    (<HTMLSelectElement>document.getElementById('campoCidadeOportunidades')).value = "Selecione";
+    (<HTMLSelectElement>document.getElementById('campoCidadeOportunidades')).disabled = true;
+    
   }
 
   oportunidadeInfo(vaga: Vaga) {
 
-   this.informacoesVaga.id_vaga = vaga.id;
-   this.informacoesVaga.idEmpregador = vaga.idUsuario.idUsuario;
-   this.informacoesVaga.subtitulo = vaga.subtitulo;
-   this.informacoesVaga.titulo = vaga.titulo;
-   this.informacoesVaga.estado = vaga.estado.nome_estado;
-   this.informacoesVaga.cidade = vaga.cidade.nome_cidade;
-   this.informacoesVaga.descricao = vaga.descricao;
-   this.informacoesVaga.nomeEmpregador = vaga.idUsuario.nome;
-
-   console.log(vaga);
-   console.log(this.informacoesVaga);
+    this.informacoesVaga.id_vaga = vaga.id;
+    this.informacoesVaga.idEmpregador = vaga.usuario.idUsuario;
+    this.informacoesVaga.subtitulo = vaga.subtitulo;
+    this.informacoesVaga.titulo = vaga.titulo;
+    this.informacoesVaga.estado = vaga.estado.nome_estado;
+    this.informacoesVaga.cidade = vaga.cidade.nome_cidade;
+    this.informacoesVaga.descricao = vaga.descricao;
+    this.informacoesVaga.nomeEmpregador = vaga.usuario.nome;
+    this.informacoesVaga.tempoExperiencia = vaga.experiencia.tempo;
 
     this.router.navigate(['oportunidade-modal'], { queryParams: this.informacoesVaga });
   }
 
   pesquisarVaga() {
-
     console.log(this.formulario.value);
-
     this.camposPesq.titulo = this.formulario.controls['titulo'].value;
     this.camposPesq.subtitulo = this.formulario.controls['subtitulo'].value;
     this.camposPesq.estado = this.formulario.controls['estado'].value;
     this.camposPesq.cidade = this.formulario.controls['cidade'].value;
-
-    this.todosCamposVazios = this.verificaCamposVazio(this.camposPesq);
+    this.camposPesq.experiencia = this.formulario.controls['experiencia'].value;
 
     console.log(this.camposPesq);
+
+    this.todosCamposVazios = this.verificaCamposVazio(this.camposPesq);
 
     if (this.todosCamposVazios) {
       alert("Preencha pelo menos um campo para pesquisar.");
       this.getAllOportunity();
     } else {
+      if (this.camposPesq.titulo == null || this.camposPesq == undefined)
+        this.camposPesq.titulo = "";
 
-    if(this.camposPesq.titulo == null || this.camposPesq == undefined)
-      this.camposPesq.titulo = "";
+      if (this.camposPesq.subtitulo == null || this.camposPesq == undefined)
+        this.camposPesq.subtitulo = "";
 
-    if(this.camposPesq.subtitulo == null || this.camposPesq == undefined)
-      this.camposPesq.subtitulo = "";
+      if (this.camposPesq.experiencia == null || this.camposPesq == undefined
+          || this.camposPesq.experiencia == "Selecione")
+        this.camposPesq.experiencia = "";
 
-    if(this.camposPesq.estado == null || this.camposPesq == undefined)
-      this.camposPesq.estado = "";
+      if (this.camposPesq.estado == null || this.camposPesq.estado == undefined
+         || this.camposPesq.estado == "Selecione")
+        this.camposPesq.estado = "";
 
-      if(this.camposPesq.cidade == null || this.camposPesq == undefined)
-      this.camposPesq.cidade = "";
+      if (this.camposPesq.cidade == null || this.camposPesq.cidade == undefined
+        || this.camposPesq.cidade == "Selecione")
+        this.camposPesq.cidade = "";
 
       this.vagaService.pesquisar(this.camposPesq)
         .subscribe(response => {
-          console.log(response);
           if (response == 0) {
             alert("Não há registros dessa pesquisa.");
           } else {
@@ -161,11 +167,12 @@ export class OportunidadesComponent implements OnInit {
       camposPesquisa.titulo == undefined)
       && (camposPesquisa.subtitulo == "" || camposPesquisa.subtitulo == null ||
         camposPesquisa.subtitulo == undefined)
-      //&& (camposPesquisa.nomeEmpregador == "" || camposPesquisa.nomeEmpregador == null )
+      && (camposPesquisa.experiencia == "" || camposPesquisa.experiencia == null ||
+        camposPesquisa.experiencia == undefined || camposPesquisa.experiencia == "Selecione")
       && (camposPesquisa.estado == "" || this.camposPesq.estado == null ||
-        this.camposPesq.estado == undefined)
+        this.camposPesq.estado == undefined) || camposPesquisa.estado == "Selecione"
       && (camposPesquisa.cidade == "" || camposPesquisa.cidade == null ||
-        camposPesquisa.cidade == undefined))
+        camposPesquisa.cidade == undefined || camposPesquisa.cidade == "Selecione"))
       return true
     else
       return false;
@@ -190,10 +197,15 @@ export class OportunidadesComponent implements OnInit {
     } else {
       this.localidadeService.getCitysWithIdStates(id_estado).subscribe(data => {
         this.cidades = data;
-        console.log(this.cidades);
       });
       this.formulario.controls.cidade.enable();
     }
+  }
+
+  getExperiences() {
+    this.experienciaService.getExperiences().subscribe(data => {
+      this.experiencias = data;
+    })
   }
 
 }

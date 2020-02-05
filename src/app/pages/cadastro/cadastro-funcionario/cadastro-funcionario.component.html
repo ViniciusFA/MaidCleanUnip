@@ -107,11 +107,14 @@
                     </div>
                 </div>
                 <!-- Quinta Linha-->
-                <div class="form-group">
+                <div class="form-group" >
                     <label for="inpuExperiencia" id="textoLabelPadrao"><b>Experiência</b></label>
-                    <input type="text" class="form-control estiloCampos" id="inputExperiencia"
-                        formControlName="experiencia" ngDefaultControl placeholder="Experiência Profissional">
-                    <p>(Insira até 15 caracteres)</p>
+                    <select id="inputWhatsapp" class="form-control estiloCampos">
+                        <option>Selecione</option>
+                        <option *ngFor="let experiencia of experiencias" [value]="experiencia.tempo" >
+                            {{experiencia.tempo}}
+                        </option>
+                    </select>            
                 </div>
                 <!-- Sexta Linha-->
                 <div class="form-row">

@@ -40,6 +40,7 @@ export class OportunidadesModalComponent implements OnInit {
    this.vaga.cidade.nome_cidade = this.activatedRoute.snapshot.queryParams.cidade;
    this.vaga.descricao = this.activatedRoute.snapshot.queryParams.descricao;
    this.vaga.nomeEmpregador = this.activatedRoute.snapshot.queryParams.nomeEmpregador;
+   this.vaga.experiencia.tempo = this.activatedRoute.snapshot.queryParams.tempoExperiencia;
    console.log(this.vaga);
    console.log(this.activatedRoute.snapshot.queryParams);
   }

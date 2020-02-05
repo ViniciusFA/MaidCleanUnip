@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
-import $ from 'jquery';
+import * as $ from 'jquery/dist/jquery.min.js';
 
 @Component({
   selector: 'app-chat-message',
@@ -51,8 +51,6 @@ export class ChatMessageComponent implements OnInit {
         //cada vez qaue envia mensagem entra nesse if
         if (message.body) {
           $(".chat").append("<div class='message'>" + message.body + "</div>");
-          console.log("Message:");
-          console.log(message);
         }
       })
     })

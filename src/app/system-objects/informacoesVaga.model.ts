@@ -7,4 +7,5 @@ export class informacoesVaga {
     cidade:string = "";
     estado:string ="";
     descricao:string ="";
+    tempoExperiencia:string ="";
 }
