@@ -1,3 +1,7 @@
+import { ImagemPerfil } from './../system-objects/imagem-perfil-model';
+import { Http } from '@angular/http';
+import { UtilService } from './../services/util/util.service';
+import { HttpClient } from 'selenium-webdriver/http';
 import { Experiencia } from './../util/experiencia';
 import { UsuarioCamposTela } from './../system-objects/usuario-campos-model';
 import { ExperienciaService } from './../services/experienciaService/experiencia.service';
@@ -12,7 +16,6 @@ import { Avaliacoes } from './../system-objects/avaliacoes-model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
 
 
 @Component({
@@ -33,6 +36,9 @@ export class PerfilComponent implements OnInit {
   private valuesCamposTela: UsuarioCamposTela = new UsuarioCamposTela();
   private estado: Estado = new Estado();
   private cities2: Cidade = new Cidade();
+  private imageUrl: string = "/assets/img/funcionario/photo-here.jpg";
+  private fileToUpload: File = null;
+  private formData: FormData = new FormData();
 
   constructor(private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
@@ -40,7 +46,9 @@ export class PerfilComponent implements OnInit {
     private usuarioService: UsuarioService,
     private router: Router,
     private localidadeService: LocalidadeService,
-    private experienciaService: ExperienciaService) {
+    private experienciaService: ExperienciaService,
+    private http: Http,
+    private utilService: UtilService) {
     this.configurarFormulario();
   }
 
@@ -51,7 +59,7 @@ export class PerfilComponent implements OnInit {
 
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
-      id: new FormControl({ value: '', disabled: true }),
+      idUsuario: new FormControl({ value: '', disabled: true }),
       nome: new FormControl({ value: '', disabled: true }),
       sobrenome: new FormControl({ value: '', disabled: true }),
       login: new FormControl({ value: '', disabled: true }),
@@ -80,7 +88,6 @@ export class PerfilComponent implements OnInit {
     this.getExperience();
     this.recebendoParametroInfoUsuario();
     this.getIdNameUser();
-
   }
 
   editarCamposPerfil() {
@@ -93,13 +100,85 @@ export class PerfilComponent implements OnInit {
   }
 
   cancelarAlteracaoPerfil() {
+    this.backOldValues();
     this.desabilitaCamposFormulario();
     this.toggleShowBtnEdit();
   }
 
-  teste() {
-    alert("teste");
+  backOldValues() {
+
   }
+
+  handleFileInput(file: FileList) {
+
+    let respostaOK: String = "Foto salva com sucesso";
+    let respostaError: String = "Problemas ao tentar salvar o arquivo.";
+    let respostaReal: String = "";
+    let sizeAllowed: boolean = false;
+    let user: Usuario = new Usuario();
+    let imagePerfil: ImagemPerfil = new ImagemPerfil();
+    const formData = new FormData();
+
+    this.fileToUpload = file.item(0);
+
+    user = this.getUser();
+
+    //imagePerfil.name_image = this.fileToUpload.name;   
+    imagePerfil.type_image = this.fileToUpload.type;
+
+    //user.foto = imagePerfil;
+
+    sizeAllowed = this.converterSizePicture(this.fileToUpload);
+
+    if (!sizeAllowed)
+      alert("Foto excedeu o limite de 200 kb.");
+    else {
+      formData.append('foto', this.fileToUpload);
+
+      console.log(this.usuarioInfo);
+
+      this.utilService.sendUser(this.usuarioInfo).subscribe(data => {
+        let resultado: String = data;
+      });
+
+      //show image preview
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.imageUrl = event.target.result;
+      }
+      reader.readAsDataURL(this.fileToUpload);
+
+      this.utilService.sendFoto(formData).subscribe(response => {
+        respostaReal = response;
+        if (respostaReal == respostaOK)
+          alert(respostaOK);
+        else if (respostaReal == respostaError)
+          alert(respostaError);
+      })
+
+    }
+  }
+
+  getPhotoProfile(idUser:number){
+    this.utilService.getPhotoProfile(idUser).subscribe(data => {
+      this.imageUrl = data;
+    })
+  }
+
+  converterSizePicture(file: File): boolean {
+    let sizePictureByte: any;
+    let letsizePictureKB: any;
+    let sizeLimitToUploadKB: number = 200;
+
+    sizePictureByte = file.size;
+    letsizePictureKB = Number.parseInt(Math.trunc((sizePictureByte / 1024)).toFixed(3));
+
+    if (letsizePictureKB > sizeLimitToUploadKB)
+      return false;
+    else
+      return true;
+  }
+
 
   salvarAlteracao(newUserInfo: FormBuilder) {
 
@@ -120,7 +199,7 @@ export class PerfilComponent implements OnInit {
     let valuesOldUserInfo = Object.values(this.usuarioInfo);
     let valuesNewUserInfo = Object.values(newUserInfo);
 
-    //getting values old to variable new
+    //adding the values old to variable new
     this.newUsuarioInfo = this.oldsuarioInfo;
     let experienciaObj: Experiencia;
     let cidadeObj: Cidade = new Cidade;
@@ -154,7 +233,6 @@ export class PerfilComponent implements OnInit {
       }
     }
 
-    console.log(this.newUsuarioInfo);
     this.usuarioService.addUsuario(this.newUsuarioInfo).subscribe(response => {
       let res: Response = <Response>response;
       if (res.codigo == 1) {
@@ -221,28 +299,47 @@ export class PerfilComponent implements OnInit {
   }
 
   onFileSelected(event) {
-    // this.selectedFile = <File>event.target.files[0];
-    //const fd = new FormData();
-    // fd.append('iamge',this.selectedFile,this.selectedFile.name);
+  }
+
+  getUser(): Usuario {
+    let idUser = this.activatedRoute.snapshot.queryParams.idUsuario;
+
+    
+    this.usuarioService.getUsuarioById(idUser).subscribe(data => {
+      this.usuarioInfo = data;
+    });
+
+    return this.usuarioInfo
   }
 
   recebendoParametroInfoUsuario() {
     let idUser = this.activatedRoute.snapshot.queryParams.idUsuario;
 
-    this.usuarioService.getUsuarioById(idUser).subscribe(data => {
-      this.usuarioInfo = data;
-      let id_estado: number = this.usuarioInfo.estado.id_estado;
+    this.getPhotoProfile(idUser);
 
-      if (this.usuarioInfo.facebook == null || this.usuarioInfo.facebook == undefined) {
-        this.usuarioInfo.facebook = "Facebook não cadastrado.";
-      }
+    this.usuarioInfo = this.getUser();
 
-      if (this.usuarioInfo.hasWhatsapp == null || this.usuarioInfo.hasWhatsapp == undefined
-        || this.usuarioInfo.hasWhatsapp != "1") {
-        this.usuarioInfo.hasWhatsapp = "Não";
-      } else
-        this.usuarioInfo.hasWhatsapp = "Sim";
-    })
+    alert(this.usuarioInfo.facebook);
+
+    let id_estado: number = this.usuarioInfo.estado.id_estado;
+
+    if (this.usuarioInfo.facebook == null || this.usuarioInfo.facebook == undefined) {
+      this.usuarioInfo.facebook = "Facebook não cadastrado.";
+    }
+
+    if (this.usuarioInfo.hasWhatsapp == null || this.usuarioInfo.hasWhatsapp == undefined
+      || this.usuarioInfo.hasWhatsapp != "1") {
+      this.usuarioInfo.hasWhatsapp = "Não";
+    } else
+      this.usuarioInfo.hasWhatsapp = "Sim";
+
+    if (this.usuarioInfo.foto == null || this.usuarioInfo == undefined) {
+      let imagePerfil: ImagemPerfil = new ImagemPerfil();
+      this.usuarioInfo.foto = imagePerfil;
+    }
+
+  
+
     this.getAverageAvaliation(this.usuarioInfo.avaliacao);
   }
 
@@ -296,7 +393,7 @@ export class PerfilComponent implements OnInit {
       this.formulario.controls['cidade'].disable();
     } else {
       this.localidadeService.getCitysWithIdStates(id_estado).subscribe(data => {
-        this.cities = data;   
+        this.cities = data;
       });
       this.formulario.controls.cidade.enable();
     }

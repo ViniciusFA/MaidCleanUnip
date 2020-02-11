@@ -1,3 +1,4 @@
+import { UtilService } from './services/util/util.service';
 import { ExperienciaService } from './services/experienciaService/experiencia.service';
 import { LocalidadeService } from './services/localidade/localidade.service';
 import { AvaliacoesService } from './services/avaliacoes/avaliacoes.service';
@@ -121,6 +122,7 @@ export function getAuthServiceConfigs() {
                LocalidadeService,
                OportunidadesModalComponent,
                ExperienciaService,
+               UtilService,
     {
       provide: SocialServiceConfig,
       useFactory: getAuthServiceConfigs,      

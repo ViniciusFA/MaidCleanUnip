@@ -75,7 +75,7 @@
       <!--<div class="container">-->
       <div class="row" id="conteudoGridsOportunidade">
         <!--Cards sendo iterados-->
-        <div class="col-4 card" style="width: 18rem;" *ngFor="let vaga of pageOfItems">
+        <div class="col-4 card" style="width: 18rem;" *ngFor="let vaga of pageOfItems | slice:0:6 ">
           <div class="card-body">
             <p class="card-text">
               <label class="conteudoGridVaga"> ID Vaga: {{vaga.id}}</label>

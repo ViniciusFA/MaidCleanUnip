@@ -76,13 +76,14 @@
                                         <input class="form-control contaudoInputInfo" formControlName="profissao"
                                                 type="text" value="{{usuarioInfo.profissao}}">
                                 </div>
-                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc" >
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
                                         <label><b>Experiência::</b></label>
                                         <select name="experiencia" formControlName="experiencia" ngDefaultControl
-                                                class="form-control form-control-sm-3 estiloCampos" >
+                                                class="form-control form-control-sm-3 estiloCampos"
+                                                id="selectExperiencia">
                                                 <option *ngFor="let experiencia of experiencias"
-                                                [selected]="experiencia.tempo === usuarioInfo.experiencia.tempo"
-                                                [value]="experiencia.idExperiencia" >
+                                                        [selected]="experiencia.tempo === usuarioInfo.experiencia.tempo"
+                                                        [value]="experiencia.idExperiencia">
                                                         {{experiencia.tempo}}
                                                 </option>
                                         </select>
@@ -95,33 +96,31 @@
                                         <input class="form-control contaudoInputInfo" formControlName="cpf_cnpj"
                                                 type="text" value="{{usuarioInfo.cpf_cnpj}}">
                                 </div>
-                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc" >
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
                                         <label><b>Estado:</b></label>
-                                        <select  name="estado" formControlName="estado" ngDefaultControl 
+                                        <select name="estado" formControlName="estado" ngDefaultControl
                                                 class="form-control form-control-sm-3 estiloCampos"
-                                                (change)="getCitiesWithIdState($event.target.value)">    
+                                                (change)="getCitiesWithIdState($event.target.value)">
 
-                                                <option *ngFor="let estado of states" 
-                                                [selected]="estado.nome_estado == usuarioInfo.estado.nome_estado"
-                                                [value]="estado.id_estado">
+                                                <option *ngFor="let estado of states"
+                                                        [selected]="estado.nome_estado == usuarioInfo.estado.nome_estado"
+                                                        [value]="estado.id_estado">
                                                         {{estado.nome_estado}}
                                                 </option>
                                         </select>
                                 </div>
                         </div>
                         <br>
-                        <div class="form-row" >
-                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc" >
+                        <div class="form-row">
+                                <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
                                         <label><b>Cidade:</b></label>
                                         <select name="cidade" formControlName="cidade" ngDefaultControl
-                                                class="form-control form-control-sm-3 estiloCampos" >
-                                                
-                                                <option *ngFor="let cidade of cities" 
-                                                [selected]="cidade.nome_cidade == usuarioInfo.cidade.nome_cidade
-                                                || 'Selecione'"
-                                                [value]="cidade.id_cidade">                                           
+                                                class="form-control form-control-sm-3 estiloCampos">
+
+                                                <option *ngFor="let cidade of cities" [selected]="cidade.nome_cidade == usuarioInfo.cidade.nome_cidade
+                                                || 'Selecione'" [value]="cidade.id_cidade">
                                                         {{cidade.nome_cidade}}
-                                                </option>           
+                                                </option>
                                         </select>
                                 </div>
                                 <div class="col-3 conteudoDivColunaInfo inputInfoFunc">
@@ -209,13 +208,50 @@
 
 <!-- Criando um campo para colocar foto -->
 <div id="conteudoFotoPerfil">
-        <img src="../../../assets/img/funcionario/photo-here.jpg" alt="Smiley face" width="180" height="250">
+        <img [src]="imageUrl" alt="Smiley face" width="180" height="250">
+
 </div>
-<span class="editarFotoPerfil"><a>Editar foto</a></span>
+<div class="chooseFilePerfil">
+        <input type="file" value="teste" #image accept="image/*"
+        (change)="handleFileInput($event.target.files)">
+</div>
 <!--
-<input type="file" (change)="onFileSelected($event)">
+<span class="editarFotoPerfil" data-toggle="modal" data-target="#ExemploModalCentralizado">
+        <a>Editar foto</a></span>
 -->
 <br>
+
+<!-- Modal para alterar a foto-->
+<form method="POST" enctype="multipart/form-data" action="/">
+        <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog"
+                aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content modalAlterarFoto">
+                                <div class="modal-header">
+                                        <h5 class="modal-title" id="TituloModalCentralizado">Alteração de foto</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                                <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                                <div class="modal-body">
+                                        <div id="conteudoFotoModalPerfil">
+                                                <img [src]="imageUrl" alt="Smiley face" width="180" height="250">
+                                        </div>
+                                        <div class="jfileChooserModalFoto">
+                                                <input type="file" value="teste" #image accept="image/*"
+                                                        (change)="handleFileInput($event.target.files)">
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Fechar</button>
+                                        <button type="button" class="btn btn-primary"
+                                                (click)="salvandoFotoNova()">Salvar foto</button>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</form>
 
 <!--Botões de integração do Patrão para o funcionário-->
 <div class="botoesInfoPerfil">

@@ -11048,6 +11048,10 @@ font-family: arial;
 .inputInfoFunc{
   background-color:#d4dfea;
 }
+#optionInfoFunc{
+  background-color:#d4dfea;
+  text-align: center;
+}
 #inputInfoFunc{
   background-color:#d4dfea;
 }
@@ -11161,6 +11165,15 @@ margin-left: -8%;
   border: 5px;
   border-style: groove;
 }
+.chooseFilePerfil{
+  margin-left: 70%;
+}
+#conteudoFotoModalPerfil{
+  margin-left: 29%;
+  margin-top: 2%;
+  width: 11%;
+}
+
 #conteudoCurriculoPerfil{
   margin-left: 80%;
   margin-top: 55%;
@@ -11489,6 +11502,9 @@ border-top: 0px !important;
 }
 .editarFotoPerfil{
   margin-left: 73%;
+}
+.editarFotoPerfilModal{
+  margin-left: 13%;
 }
 .editarFotoPerfil:hover{
   color:blue;
@@ -11857,5 +11873,12 @@ td > span:active{
 }
 .formInfoFunc{
   text-align: center;
+}
+.modalAlterarFoto{
+  height: 440px ;
+}
+.jfileChooserModalFoto{
+  margin-left: 29%;
+  margin-top: 2%;
 }
 

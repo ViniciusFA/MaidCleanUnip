@@ -1,3 +1,4 @@
+import { ImagemPerfil } from './imagem-perfil-model';
 import { Stars } from './stars-model';
 import { Cidade } from './cidade-model';
 import { Estado } from './estado-model';
@@ -28,4 +29,5 @@ export class Usuario {
     mediaAvaliacao:number;
     experiencia:Experiencias =new Experiencias();
     stars:Stars = new Stars();
+    foto:ImagemPerfil =  new ImagemPerfil();
 }

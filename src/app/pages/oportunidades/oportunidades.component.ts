@@ -24,13 +24,13 @@ export class OportunidadesComponent implements OnInit {
   private formulario: FormGroup;
   private vaga: Vaga = new Vaga();
   private listaParametros: String[] = new Array();
-  pageOfItems: Array<any>;
+  pageOfItems: Array<any>[] = new Array();
   private todosCamposVazios: Boolean = false;
-  private states: Array<Estado>;
-  private cidades: Array<Cidade>;
+  private states: Array<Estado> = new Array();
+  private cidades: Array<Cidade> = new Array();
   private selecione: String = 'Selecione';
   private camposPesq: CamposPesquisaVaga = new CamposPesquisaVaga();
-  private experiencias: Array<String> = new Array;
+  private experiencias: Array<String> = new Array();
   private estado: Estado = new Estado();
   private cidade: Cidade = new Cidade();
   private informacoesVaga: informacoesVaga = new informacoesVaga();
@@ -51,13 +51,11 @@ export class OportunidadesComponent implements OnInit {
     this.carregarCampos();
   }
 
-
   residencias = [
     new Residencia(0, 'Selecione'),
     new Residencia(1, 'Apartamento'),
     new Residencia(2, 'Casa'),
   ];
-
 
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
@@ -69,20 +67,23 @@ export class OportunidadesComponent implements OnInit {
     });
   }
 
-  carregarCampos() {
-    this.getAllOportunity();
+  carregarCampos() {    
     this.getEstados();
     this.getExperiences();
+    this.getAllOportunity();
   }
 
-  onChangePage(pageOfItems: Array<any>) {
-    //atualiza pagina de itens atual
+  //onChangePage(pageOfItems: Array<any> ) {
+    onChangePage(pageOfItems: Array<any> ) {
     this.pageOfItems = pageOfItems;
     console.log(this.pageOfItems);
   }
 
   getAllOportunity() {
-    this.vagaService.getVagas().subscribe(res => this.vagas = res);
+    this.vagaService.getVagas().subscribe(res => {
+     this.vagas = res
+     //this.pageOfItems = res;
+    });
   }
 
   limparCampos() {
@@ -94,11 +95,12 @@ export class OportunidadesComponent implements OnInit {
     (<HTMLSelectElement>document.getElementById('campoEstadoOportunidades')).value = "Selecione";
     (<HTMLSelectElement>document.getElementById('campoExperienciaOportunidades')).value = "Selecione";
     (<HTMLSelectElement>document.getElementById('campoCidadeOportunidades')).value = "Selecione";
-    (<HTMLSelectElement>document.getElementById('campoCidadeOportunidades')).disabled = true;
-    
+    (<HTMLSelectElement>document.getElementById('campoCidadeOportunidades')).disabled = true;    
   }
 
   oportunidadeInfo(vaga: Vaga) {
+
+    console.log(vaga);
 
     this.informacoesVaga.id_vaga = vaga.id;
     this.informacoesVaga.idEmpregador = vaga.usuario.idUsuario;
@@ -110,18 +112,16 @@ export class OportunidadesComponent implements OnInit {
     this.informacoesVaga.nomeEmpregador = vaga.usuario.nome;
     this.informacoesVaga.tempoExperiencia = vaga.experiencia.tempo;
 
+    console.log(this.informacoesVaga);
     this.router.navigate(['oportunidade-modal'], { queryParams: this.informacoesVaga });
   }
 
   pesquisarVaga() {
-    console.log(this.formulario.value);
     this.camposPesq.titulo = this.formulario.controls['titulo'].value;
     this.camposPesq.subtitulo = this.formulario.controls['subtitulo'].value;
     this.camposPesq.estado = this.formulario.controls['estado'].value;
     this.camposPesq.cidade = this.formulario.controls['cidade'].value;
     this.camposPesq.experiencia = this.formulario.controls['experiencia'].value;
-
-    console.log(this.camposPesq);
 
     this.todosCamposVazios = this.verificaCamposVazio(this.camposPesq);
 
