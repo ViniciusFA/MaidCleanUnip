@@ -6,13 +6,13 @@
 
 	<div class="calendar">
 		<div class="calendar-header">
-			<span class="btn btn-prev">
-				<i class="icon-angle-left"></i>
+			<span class="btn btn-prev" (click)="btnPrevious()">
+				<i class="icon-angle-left" ></i>
 			</span>
 
-			<span class="">Janeiro</span>
+			<span class="monthsCalendar">{{monthCurrentString}}</span>
 			
-			<span class="btn btn-next">
+			<span class="btn btn-next" (click)="btnNext()">
 				<i class="icon-angle-right"></i>
 			</span>
 		</div>
@@ -80,9 +80,9 @@
 	</div>
 	<div class="schedule">
 			<ul class="tabs">
-			<li class="tab active"><a href="#">Meetings</a></li>
-			<li class="tab"><a href="#">Reminders</a></li>
-			<li class="tab"><a href="#">Notes</a></li>
+			<li class="tab active" (click)="isActiveHistorico()" ><a >Histórico</a></li>
+			<li class="tab" (click)="isActiveAgendados()"><a >Agendados</a></li>
+			<li class="tab" (click)="isActiveNotas()"><a >Notas</a></li>
 			</ul>
 			
 		<div class="tab-pane">
@@ -93,10 +93,13 @@
 						<span>9</span>
 						<span>am</span>
 					</div>
-					<div class="description">
-						<div class="description-header">Faxina - Familia Andrade</div>
+					
+
+					<!--Painel principal e o mesmo painel que abre ao clicar em histórico-->
+					<div class="description" *ngIf="historicoActive">
+						<div class="description-header">Histórico</div>
 						<div class="description-content">
-							<p>Anotação extra</p>
+							<p>Histórico</p>
 							<ul class="contact-list">
 								<li class="contact">
 									<a href="#"><img src="http://gravatar.com/avatar/8b1d44e3b2310823bd41d609003b70a9?s=80" alt="" /></a>
@@ -110,15 +113,44 @@
 							</ul>
 						</div>
 					</div>
+
+					<!-- Painel que abre ao clicar em agendados-->
+					<div class="description"  *ngIf="agendadoActive">
+						<div class="description-header">Agendados</div>
+						<div class="description-content">
+							<p>Agendamentos</p>
+							<ul class="contact-list">
+								<li class="contact">
+									<a href="#"><img src="http://gravatar.com/avatar/8b1d44e3b2310823bd41d609003b70a9?s=80" alt="" /></a>
+								</li>
+								<li class="contact">
+									<a href="#"><img src="http://gravatar.com/avatar/8b1d44e3b2310823bd41d609003b70a9?s=80" alt="" /></a>
+								</li>
+								<li class="contact add-contact">
+									<a href="#"><i class="icon-plus"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Painel que abre ao clicar em notas-->
+					<div class="description"  *ngIf="notasActive">
+						<div class="description-header">Notas</div>
+						<div class="description-content">
+							{{todayDate | date:'dd/MM/yyyy HH:mm:ss'}}
+							<textarea> </textarea>
+						</div>
+					</div>
+
 				</div>
 	
-				<div class="schedule-item free">
-					<div class="time">
+				<div class="schedule-item free" >
+					<div class="time" *ngIf="availableDay">
 						<span>10</span>
 						<span>am</span>
 					</div>
-					<div class="description">
-            <div class="description-header">Disponível</div>
+					<div class="description" *ngIf="availableDay">
+            <div class="description-header" >Disponível</div>
 						<div class="description-content">&nbsp;</div>
 					</div>
 				</div>

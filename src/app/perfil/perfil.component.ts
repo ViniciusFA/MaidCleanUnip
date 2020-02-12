@@ -168,7 +168,7 @@ export class PerfilComponent implements OnInit {
   converterSizePicture(file: File): boolean {
     let sizePictureByte: any;
     let letsizePictureKB: any;
-    let sizeLimitToUploadKB: number = 200;
+    let sizeLimitToUploadKB: number = 300;
 
     sizePictureByte = file.size;
     letsizePictureKB = Number.parseInt(Math.trunc((sizePictureByte / 1024)).toFixed(3));
@@ -319,8 +319,6 @@ export class PerfilComponent implements OnInit {
 
     this.usuarioInfo = this.getUser();
 
-    alert(this.usuarioInfo.facebook);
-
     let id_estado: number = this.usuarioInfo.estado.id_estado;
 
     if (this.usuarioInfo.facebook == null || this.usuarioInfo.facebook == undefined) {
@@ -337,7 +335,6 @@ export class PerfilComponent implements OnInit {
       let imagePerfil: ImagemPerfil = new ImagemPerfil();
       this.usuarioInfo.foto = imagePerfil;
     }
-
   
 
     this.getAverageAvaliation(this.usuarioInfo.avaliacao);

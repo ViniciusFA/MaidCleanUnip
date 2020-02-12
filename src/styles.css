@@ -11159,14 +11159,17 @@ margin-left: -8%;
   cursor:pointer;
 }
 #conteudoFotoPerfil{
-  margin-left: 70%;
-  margin-top: -62%;
-  width: 12%;
+  margin-left: 67%;
+  margin-top: -69%;
+  width: 15%;
   border: 5px;
-  border-style: groove;
+  /*height: 48%;
+ 
+  border-style: groove;*/
 }
 .chooseFilePerfil{
-  margin-left: 70%;
+  margin-left: 67%;
+  margin-top: 1%;
 }
 #conteudoFotoModalPerfil{
   margin-left: 29%;
@@ -11880,5 +11883,9 @@ td > span:active{
 .jfileChooserModalFoto{
   margin-left: 29%;
   margin-top: 2%;
+}
+
+.contentBtnsSaveClose{
+  margin-right: 20%;
 }
 
