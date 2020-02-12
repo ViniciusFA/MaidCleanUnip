@@ -118,4 +118,9 @@ export class CalendarComponent implements OnInit {
       this.monthNow = 12;
   }
 
+  backToMonthCurrent(){
+    this.getMonthCurrentNumber();
+  }
+
+
 }

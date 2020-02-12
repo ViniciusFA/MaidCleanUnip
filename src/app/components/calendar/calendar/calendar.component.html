@@ -1,5 +1,5 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.min.css" rel="stylesheet">
-	
+
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
 <div class="planner">
@@ -7,14 +7,20 @@
 	<div class="calendar">
 		<div class="calendar-header">
 			<span class="btn btn-prev" (click)="btnPrevious()">
-				<i class="icon-angle-left" ></i>
+				<i class="icon-angle-left"></i>
 			</span>
 
 			<span class="monthsCalendar">{{monthCurrentString}}</span>
-			
+
 			<span class="btn btn-next" (click)="btnNext()">
 				<i class="icon-angle-right"></i>
 			</span>
+
+			<div class="btnbackMonthCurrent">
+				<span (click)="backToMonthCurrent()">
+					<h6>Voltar</h6>
+				</span>
+			</div>
 		</div>
 		<table>
 			<thead>
@@ -30,101 +36,106 @@
 			</thead>
 			<tbody>
 				<tr>
+					<td><span>29</span></td>
 					<td><span>30</span></td>
+					<td><span>31</span></td>
 					<td><span>1</span></td>
 					<td><span class="active">2</span></td>
 					<td><span>3</span></td>
 					<td><span>4</span></td>
+				</tr>
+				<tr>
 					<td><span>5</span></td>
 					<td><span>6</span></td>
-				</tr>
-				<tr>
-					<td><span>7</span></td>
+					<td><span class="active">7</span></td>
 					<td><span>8</span></td>
-					<td><span class="active">9</span></td>
+					<td><span>9</span></td>
 					<td><span>10</span></td>
 					<td><span>11</span></td>
-					<td><span>12</span></td>
-					<td><span>13</span></td>
 				</tr>
 				<tr>
-					<td><span class="active">14</span></td>
+					<td><span class="active">12</span></td>
+					<td><span>13</span></td>
+					<td><span>14</span></td>
 					<td><span>15</span></td>
-					<td><span>16</span></td>
+					<td><span class="active">16</span></td>
 					<td><span>17</span></td>
-					<td><span class="active">18</span></td>
+					<td><span>18</span></td>
+				</tr>
+				<tr>
 					<td><span>19</span></td>
 					<td><span>20</span></td>
-				</tr>
-				<tr>
 					<td><span>21</span></td>
 					<td><span>22</span></td>
 					<td><span>23</span></td>
 					<td><span>24</span></td>
 					<td><span>25</span></td>
-					<td><span>27</span></td>
-					<td><span>27</span></td>
 				</tr>
 				<tr>
+					<td><span>26</span></td>
+					<td><span>27</span></td>
 					<td><span>28</span></td>
 					<td><span>29</span></td>
+					<td><span>30</span></td>
 					<td><span>31</span></td>
 					<td><span>1</span></td>
-					<td><span>2</span></td>
-					<td><span>3</span></td>
-					<td><span>4</span></td>
 				</tr>
 			</tbody>
 
 		</table>
 	</div>
 	<div class="schedule">
-			<ul class="tabs">
-			<li class="tab active" (click)="isActiveHistorico()" ><a >Histórico</a></li>
-			<li class="tab" (click)="isActiveAgendados()"><a >Agendados</a></li>
-			<li class="tab" (click)="isActiveNotas()"><a >Notas</a></li>
-			</ul>
-			
+		<ul class="tabs">
+			<li class="tab active" (click)="isActiveHistorico()"><a>Histórico</a></li>
+			<li class="tab" (click)="isActiveAgendados()"><a>Agendados</a></li>
+			<li class="tab" (click)="isActiveNotas()"><a>Notas</a></li>
+		</ul>
+
 		<div class="tab-pane">
 			<div class="schedule-list">
-				
+
 				<div class="schedule-item">
 					<div class="time">
 						<span>9</span>
 						<span>am</span>
 					</div>
-					
+
 
 					<!--Painel principal e o mesmo painel que abre ao clicar em histórico-->
 					<div class="description" *ngIf="historicoActive">
 						<div class="description-header">Histórico</div>
 						<div class="description-content">
-							<p>Histórico</p>
+							<p>{{todayDate | date:'dd/MM/yyyy HH:mm:ss'}}</p>
 							<ul class="contact-list">
 								<li class="contact">
-									<a href="#"><img src="http://gravatar.com/avatar/8b1d44e3b2310823bd41d609003b70a9?s=80" alt="" /></a>
+									<a href="#"><img
+											src="http://gravatar.com/avatar/8b1d44e3b2310823bd41d609003b70a9?s=80"
+											alt="" /></a>
 								</li>
 								<li class="contact">
-									<a href="#"><img src="http://gravatar.com/avatar/8b1d44e3b2310823bd41d609003b70a9?s=80" alt="" /></a>
-								</li>
-								<li class="contact add-contact">
-									<a href="#"><i class="icon-plus"></i></a>
-								</li>
+									<a href="#"><img
+											src="http://gravatar.com/avatar/8b1d44e3b2310823bd41d609003b70a9?s=80"
+											alt="" /></a>
+								</li>								
 							</ul>
 						</div>
 					</div>
 
 					<!-- Painel que abre ao clicar em agendados-->
-					<div class="description"  *ngIf="agendadoActive">
+					<div class="description" *ngIf="agendadoActive">
 						<div class="description-header">Agendados</div>
 						<div class="description-content">
-							<p>Agendamentos</p>
+							<p>{{todayDate | date:'dd/MM/yyyy HH:mm:ss'}}</p>
 							<ul class="contact-list">
 								<li class="contact">
-									<a href="#"><img src="http://gravatar.com/avatar/8b1d44e3b2310823bd41d609003b70a9?s=80" alt="" /></a>
+									<a href="#"><img
+											src="http://gravatar.com/avatar/8b1d44e3b2310823bd41d609003b70a9?s=80"
+											alt="" /></a>
 								</li>
 								<li class="contact">
-									<a href="#"><img src="http://gravatar.com/avatar/8b1d44e3b2310823bd41d609003b70a9?s=80" alt="" /></a>
+									<a href="#"><img
+											src="http://gravatar.com/avatar/8b1d44e3b2310823bd41d609003b70a9?s=80"
+											alt="" /></a>
 								</li>
 								<li class="contact add-contact">
 									<a href="#"><i class="icon-plus"></i></a>
@@ -134,23 +145,26 @@
 					</div>
 
 					<!-- Painel que abre ao clicar em notas-->
-					<div class="description"  *ngIf="notasActive">
+					<div class="description" *ngIf="notasActive">
 						<div class="description-header">Notas</div>
 						<div class="description-content">
 							{{todayDate | date:'dd/MM/yyyy HH:mm:ss'}}
-							<textarea> </textarea>
+							<textarea rows="3" cols="35"> </textarea>
+						</div>
+						<div class="btnSalvarNotasCalendar">
+							<a>Salvar</a>
 						</div>
 					</div>
 
 				</div>
-	
-				<div class="schedule-item free" >
+
+				<div class="schedule-item free">
 					<div class="time" *ngIf="availableDay">
 						<span>10</span>
 						<span>am</span>
 					</div>
 					<div class="description" *ngIf="availableDay">
-            <div class="description-header" >Disponível</div>
+						<div class="description-header">Disponível</div>
 						<div class="description-content">&nbsp;</div>
 					</div>
 				</div>
