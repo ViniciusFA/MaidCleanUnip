@@ -82,12 +82,13 @@ export class PerfilComponent implements OnInit {
   }
 
 
-  carregarCampos() {
+  carregarCampos() {  
     this.getStates();
     this.getCities();
     this.getExperience();
     this.recebendoParametroInfoUsuario();
-    this.getIdNameUser();
+    this.getIdNameUser();   
+    this.getPhotoProfile();
   }
 
   editarCamposPerfil() {
@@ -100,15 +101,12 @@ export class PerfilComponent implements OnInit {
   }
 
   cancelarAlteracaoPerfil() {
-    this.backOldValues();
+    //this.backOldValues();
     this.desabilitaCamposFormulario();
     this.toggleShowBtnEdit();
   }
 
-  backOldValues() {
-
-  }
-
+  
   handleFileInput(file: FileList) {
 
     let respostaOK: String = "Foto salva com sucesso";
@@ -138,6 +136,7 @@ export class PerfilComponent implements OnInit {
       console.log(this.usuarioInfo);
 
       this.utilService.sendUser(this.usuarioInfo).subscribe(data => {
+        console.log(data);
         let resultado: String = data;
       });
 
@@ -159,7 +158,12 @@ export class PerfilComponent implements OnInit {
     }
   }
 
-  getPhotoProfile(idUser:number){
+getPhotoProfile(){
+  let idUser: number = this.usuarioInfo.idUsuario;  
+  this.getPhoto(idUser);
+}
+
+  getPhoto(idUser:number){
     this.utilService.getPhotoProfile(idUser).subscribe(data => {
       this.imageUrl = data;
     })
@@ -315,7 +319,7 @@ export class PerfilComponent implements OnInit {
   recebendoParametroInfoUsuario() {
     let idUser = this.activatedRoute.snapshot.queryParams.idUsuario;
 
-    this.getPhotoProfile(idUser);
+    this.getPhoto(idUser);
 
     this.usuarioInfo = this.getUser();
 

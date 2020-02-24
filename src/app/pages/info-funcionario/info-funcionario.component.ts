@@ -1,3 +1,5 @@
+import { UtilService } from './../../services/util/util.service';
+import { ImagemPerfil } from './../../system-objects/imagem-perfil-model';
 import { ExperienciaService } from './../../services/experienciaService/experiencia.service';
 import { Avaliacoes } from './../../system-objects/avaliacoes-model';
 import { AvaliacoesService } from './../../services/avaliacoes/avaliacoes.service';
@@ -18,14 +20,16 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 export class InfoFuncionarioComponent implements OnInit {
   
   private titulo: string;
-   private usuarioInfo: Usuario = new Usuario();
+  private usuarioInfo: Usuario = new Usuario();
   private formulario: FormGroup;
   private edicao: Boolean = true;
   private usuarioInfoNovo: Usuario = new Usuario();
   private avaliacoes: Avaliacoes = new Avaliacoes();
+  private imageUrl: string = "/assets/img/funcionario/photo-here.jpg";
   private experiencias: Array<String> = new Array;
   private chatActivated = false;
-  private media:number = 0.0;  
+  private fileToUpload: File = null;
+  private media:number = 0.0;    
 
   @ViewChild('confirmExcluir', { static: false }) confirmExcluir: ElementRef;
 
@@ -34,13 +38,15 @@ export class InfoFuncionarioComponent implements OnInit {
     private avaliacoesService: AvaliacoesService, 
     private experienciaService: ExperienciaService,
     private router: Router,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private utilService: UtilService) {
     this.configurarCampos();
   }
 
   ngOnInit() {
     this.titulo = "Informação Funcionário";
-    this.recebendoParamsFuncionario();    
+    this.recebendoParamsFuncionario();   
+    this.uploadPicture(); 
   }
 
   //recebe os dados no formulario inserido pelo usuário
@@ -87,6 +93,54 @@ export class InfoFuncionarioComponent implements OnInit {
     let id_user:number = this.activatedRoute.snapshot.queryParams.idUsuario;
      this.getUserById(id_user);   
      this.getAvaliations(id_user);    
+  }
+
+  uploadPicture() {
+    let respostaReal: String = "";
+    let sizeAllowed: boolean = false;
+    let user: Usuario = new Usuario();
+    let imagePerfil: ImagemPerfil = new ImagemPerfil();
+    const formData = new FormData();
+
+    console.log(this.usuarioInfo.idUsuario);
+
+    let id_user:number = this.activatedRoute.snapshot.queryParams.idUsuario;
+    console.log(id_user);
+    ///assets/img/funcionario/photo-here.jpg
+    this.utilService.getPhotoProfile(id_user).subscribe(data => {      
+      if(data != null){
+        this.imageUrl = data;
+      }else{
+        this.imageUrl = "/assets/img/funcionario/photo-here.jpg";
+      }
+      
+    })
+
+  }
+
+  getUser(): Usuario {
+    let idUser = this.activatedRoute.snapshot.queryParams.idUsuario;
+
+    
+    this.usuarioService.getUsuarioById(idUser).subscribe(data => {
+      this.usuarioInfo = data;
+    });
+
+    return this.usuarioInfo
+  }
+
+  converterSizePicture(file: File): boolean {
+    let sizePictureByte: any;
+    let letsizePictureKB: any;
+    let sizeLimitToUploadKB: number = 300;
+
+    sizePictureByte = file.size;
+    letsizePictureKB = Number.parseInt(Math.trunc((sizePictureByte / 1024)).toFixed(3));
+
+    if (letsizePictureKB > sizeLimitToUploadKB)
+      return false;
+    else
+      return true;
   }
 
   //Exclui um funcionário ao clicar no botão excluir
