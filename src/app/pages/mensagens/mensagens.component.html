@@ -1,20 +1,47 @@
-<div class="tituloConteudoPaginas" id="tituloFuncCadastrados">
-    <h4>Mensagens</h4>
-</div>
-<div class="mensagemUsuario">
-    <h4>Ciclano</h4>
-    <a href="">Ver conversa</a>
-</div>
-<br>
-<div class="mensagemUsuario">
-    <h4>Beltrano</h4>
-    <a>Ver conversa</a>
-</div>
-<div class="todosBotoes">
-    <div class="botaoVoltarHistorico">
-        <button type="button" class="btn btn-outline-info" [routerLink]="['/home']">Voltar</button>
+<div >
+    <div class="tituloConteudoPaginas" id="tituloFuncCadastrados">
+        <h4>Mensagens</h4>
     </div>
+    
+    <hr>
+    <div class="mensagemUsuario">
+        <div class="form-row">
+            <img src="http://gravatar.com/avatar/8b1d44e3b2310823bd41d609003b70a9?s=80" alt="" />
+            &nbsp;
+            <div class="titleImageMsg">
+                <h4>Ciclano</h4> 
+            </div>             
+        </div>
+        <div class="lastMessage">
+            <a href="">Usuario: Última Conversa...</a>
+        </div>
+    </div>
+    <br>
+    <hr>
+
+    <div class="mensagemUsuario">
+        <div class="form-row">
+            <img src="http://gravatar.com/avatar/8b1d44e3b2310823bd41d609003b70a9?s=80" alt="" />
+            &nbsp;
+            <div class="titleImageMsg">
+                <h4>Beltrano</h4> 
+            </div>             
+        </div>
+        <div class="lastMessage">
+            <a href="">Usuario: Última Conversa...</a>
+        </div>
+    </div>
+    <br>
+    <hr>
+
+    <!-- Paginação-->
+    <div class="paginacaoPesquisar">
+        <jw-pagination [items]="usuarios" (changePage)="onChangePage($event)"></jw-pagination>
+    </div>
+    
+    <div class="todosBotoes">
+        <div class="botaoVoltarHistorico">
+            <button type="button" class="btn btn-outline-info" [routerLink]="['/home']">Voltar</button>
+        </div>
+    </div>     
 </div>
-
-
-<!--Modal Mensagens-->

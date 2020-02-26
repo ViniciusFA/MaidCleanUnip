@@ -6,13 +6,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MensagensComponent implements OnInit {
 
+  private pageOfItems: Array<any>;
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  apagarMensagem(){
-    
+  apagarMensagem(){}
+
+  onChangePage(pageOfItems: Array<any>) {
+    this.pageOfItems = pageOfItems;
   }
 
 }

@@ -11547,6 +11547,12 @@ border-top: 0px !important;
   margin-left: 13%;
 }
 
+.paginacaoMensagens{
+  margin-bottom: 9%;
+  margin-top: -4%;
+  margin-left: 13%;
+}
+
 .paginacaoVagas{
   margin-bottom: 6%;
   margin-left: 13%;
@@ -11859,8 +11865,9 @@ td > span:active{
   margin-top: 4%;
 }
 .mensagemUsuario{
-  margin-left: 30%;
-  margin-top: 4%;
+  margin-left: 2%;
+  margin-top: 2%;
+  margin-bottom: 1%;
 }
 #contentChatMessage{
   width: 66%;
@@ -11900,4 +11907,10 @@ td > span:active{
 .btnSalvarNotasCalendar:hover{
   color: blue;
 }
-
+.titleImageMsg{
+  margin-top: 1%;
+}
+.lastMessage{
+  margin-left: 5%;
+  margin-top: -2%;
+}
