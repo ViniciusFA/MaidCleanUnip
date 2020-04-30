@@ -35,7 +35,7 @@
     "emailjs": "^2.2.0",
     "firebase": ">= 5.5.7 <7",
     "http-headers": "^3.0.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jw-angular-pagination": "^1.1.0",
     "jw-paginate": "^1.0.4",
     "loader-utils": "^1.2.3",
